@@ -219,17 +219,7 @@
           <span>Projects & Code</span>
         </a>
 
-        <a href="https://docs.google.com/presentation/d/1JefxdfbX2Pg09J3zPT0e3LKRoDEggwdq/edit?usp=sharing&ouid=104847496384061111514&rtpof=true&sd=true" target="_blank" rel="noopener noreferrer" class="sidebar-link flex items-center justify-between px-3 py-2.5 rounded-xl text-cyan-700 dark:text-cyan-400 hover:bg-cyan-50 dark:hover:bg-white/5 transition font-semibold">
-          <div class="flex items-center gap-3">
-            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
-              <line x1="8" y1="21" x2="16" y2="21"></line>
-              <line x1="12" y1="17" x2="12" y2="21"></line>
-            </svg>
-            <span>Compendium</span>
-          </div>
-          <span class="text-[10px] font-mono">40+ ↗</span>
-        </a>
+
 
         <a href="#skills" class="sidebar-link flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-slate-100 dark:hover:bg-white/5 transition">
           <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -297,7 +287,7 @@
     <div class="sticky top-0 z-30 h-16 bg-white/95 dark:bg-[#0c1222]/90 backdrop-blur-md border-b border-slate-200/90 dark:border-white/10 px-4 sm:px-8 flex items-center justify-between gap-4 transition-colors">
       
       <!-- Left: Mobile Menu Trigger & Search -->
-      <div class="flex items-center gap-3 flex-1 max-w-md">
+      <div class="flex items-center gap-3 flex-1 max-w-xl">
         <button id="mobile-menu-open" class="md:hidden p-2 rounded-xl border border-slate-200 dark:border-white/10 text-slate-700 dark:text-white" aria-label="Open menu">
           <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" /></svg>
         </button>
@@ -332,22 +322,7 @@
         </div>
       </div>
 
-      <!-- Right: Status Pill, Compendium Link & Actions -->
-      <div class="flex items-center gap-3">
-        <div class="hidden sm:inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-50 dark:bg-emerald-950/40 border border-emerald-200 dark:border-emerald-500/30 text-[11px] font-mono font-medium text-emerald-700 dark:text-emerald-300">
-          <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
-          <span>AIS Telemetry Active</span>
-        </div>
 
-        <a href="https://docs.google.com/presentation/d/1JefxdfbX2Pg09J3zPT0e3LKRoDEggwdq/edit?usp=sharing&ouid=104847496384061111514&rtpof=true&sd=true" target="_blank" rel="noopener noreferrer" class="hidden sm:flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl border border-cyan-500/40 bg-cyan-50/50 dark:bg-cyan-950/20 text-cyan-700 dark:text-cyan-300 font-semibold text-xs hover:bg-cyan-100 transition">
-          <span>Compendium</span>
-          <span class="text-[10px]">↗</span>
-        </a>
-
-        <button id="nav-cv-btn" class="px-3.5 py-1.5 rounded-xl bg-slate-900 hover:bg-slate-800 dark:bg-white dark:hover:bg-slate-100 text-white dark:text-slate-950 font-medium text-xs shadow-sm transition">
-          Resume
-        </button>
-      </div>
 
     </div>
 
@@ -382,16 +357,7 @@
           <!-- Live Dynamic Wake Canvas (Generates continuous bubbling sea spray along hull) -->
           <canvas id="wake-particles-canvas" class="absolute inset-0 w-full h-full pointer-events-none"></canvas>
 
-          <!-- Top HUD Overlay -->
-          <div class="absolute top-4 left-4 right-4 flex flex-wrap items-center justify-between gap-3 z-10">
-            <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-black/60 backdrop-blur-md border border-white/20 text-xs font-mono text-white">
-              <span class="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></span>
-              <span>VESSEL: MV ARRAIHAN VANGUARD · IMO 9845210</span>
-            </div>
-            <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-black/60 backdrop-blur-md border border-white/20 text-xs font-mono text-white/90">
-              <span id="vessel-speed-badge">Speed: 19.4 kts · High Seas Cruising</span>
-            </div>
-          </div>
+
 
           <!-- Hero Value Proposition Text Over Ship -->
           <div class="absolute bottom-6 left-6 right-6 md:left-10 md:right-10 text-white z-10">
@@ -1274,7 +1240,7 @@
       const baseSpeed = isSlowSteaming ? 14.2 : 19.4;
       const speed = isStorm ? (baseSpeed * 0.72).toFixed(1) : baseSpeed.toFixed(1);
       document.getElementById('telemetry-speed').textContent = speed + ' knots';
-      document.getElementById('vessel-speed-badge').textContent = 'Speed: ' + speed + ' kts · ' + (isStorm ? 'Storm Swell' : isSlowSteaming ? 'Eco Steaming' : 'High Seas Cruising');
+      const speedBadge = document.getElementById('vessel-speed-badge'); if (speedBadge) speedBadge.textContent = 'Speed: ' + speed + ' kts · ' + (isStorm ? 'Storm Swell' : isSlowSteaming ? 'Eco Steaming' : 'High Seas Cruising');
       
       const fuelEff = isSlowSteaming ? '-18.2% mt/nmi' : isStorm ? '+6.5% mt/nmi' : '-8.4% mt/nmi';
       document.getElementById('telemetry-fuel').textContent = fuelEff;
