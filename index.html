@@ -23,9 +23,9 @@
             mono: ['JetBrains Mono', 'monospace'],
           },
           colors: {
-            slateDark: '#090d16',
-            slateCard: '#0f1422',
-            slateHover: '#161d30',
+            slateDark: '#080c14',
+            slateCard: '#0e1424',
+            slateHover: '#141c30',
           },
           animation: {
             'fade-in-up': 'fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards',
@@ -43,7 +43,7 @@
   </script>
 
   <style>
-    /* Global scrollbar hiding for cinematic aesthetic */
+    /* Global scrollbar hiding for clean look */
     ::-webkit-scrollbar {
       display: none;
     }
@@ -59,8 +59,8 @@
   <div class="fixed top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-blue-600/15 blur-[120px] rounded-full pointer-events-none -z-10" aria-hidden="true"></div>
   <div class="fixed bottom-0 right-0 w-[500px] h-[500px] bg-cyan-600/10 blur-[140px] rounded-full pointer-events-none -z-10" aria-hidden="true"></div>
 
-  <!-- Step 2: Navigation Bar -->
-  <header class="fixed top-0 left-0 right-0 z-50 backdrop-blur-md bg-slateDark/75 border-b border-white/10 animate-fade-in-up">
+  <!-- Navigation Bar -->
+  <header class="fixed top-0 left-0 right-0 z-50 backdrop-blur-md bg-slateDark/80 border-b border-white/10 animate-fade-in-up">
     <div class="max-w-6xl mx-auto px-6 h-20 flex items-center justify-between">
       
       <!-- Logo: Text only, semibold, text-xl -->
@@ -70,6 +70,7 @@
 
       <!-- Menu Items: 14px, regular weight, 90% opacity -->
       <nav class="hidden md:flex items-center gap-8 text-[14px] font-normal text-white/90">
+        <a href="#simulator" class="hover:text-white transition">Maritime Live</a>
         <a href="#record" class="hover:text-white transition">The Record</a>
         <a href="#architecture" class="hover:text-white transition">Architecture</a>
         <a href="#projects" class="hover:text-white transition">Case Studies</a>
@@ -78,7 +79,7 @@
         <a href="#credentials" class="hover:text-white transition">Credentials</a>
       </nav>
 
-      <!-- Right-side Action: Transparent button with white border, 14px regular text, hover fill -->
+      <!-- Right-side Action: Transparent button with white border -->
       <div class="flex items-center gap-3">
         <button id="cv-modal-open-btn" class="hidden sm:inline-flex items-center gap-2 border border-white/40 text-white text-[14px] font-normal px-4 py-2 rounded transition hover:bg-white hover:text-black">
           <span>Download CV</span>
@@ -98,6 +99,7 @@
 
     <!-- Mobile Drawer Menu -->
     <div id="mobile-menu-drawer" class="hidden md:hidden px-6 pb-6 pt-2 bg-slateDark/95 border-b border-white/10 flex flex-col gap-4 text-[14px] text-white/90">
+      <a href="#simulator" class="mobile-nav-link hover:text-white py-1">Maritime Live</a>
       <a href="#record" class="mobile-nav-link hover:text-white py-1">The Record</a>
       <a href="#architecture" class="mobile-nav-link hover:text-white py-1">Architecture</a>
       <a href="#projects" class="mobile-nav-link hover:text-white py-1">Case Studies</a>
@@ -110,60 +112,96 @@
     </div>
   </header>
 
-  <!-- Step 1 & 3: Hero Section (100vh Fullscreen Cinematic Feel) -->
-  <section id="hero" class="min-h-screen relative flex items-center justify-center px-6 pt-20">
-    <div class="max-w-4xl mx-auto text-center flex flex-col items-center justify-center animate-fade-in-up [animation-delay:200ms]">
+  <!-- Hero Section -->
+  <section id="hero" class="min-h-screen relative flex items-center justify-center px-6 pt-28 pb-16">
+    <div class="max-w-5xl mx-auto text-center flex flex-col items-center justify-center animate-fade-in-up">
       
       <!-- Live Radar Status Beacon -->
-      <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/5 border border-white/10 text-[13px] text-white/80 mb-8">
+      <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/5 border border-white/10 text-[13px] text-white/80 mb-6">
         <span class="w-2 h-2 rounded-full bg-emerald-400 shadow-[0_0_8px_#34d399] animate-pulse-slow"></span>
         <span>Available for roles: GCC, EU, Global Remote</span>
       </div>
 
-      <!-- Main Headline: exactly 38px mobile, 56px desktop, medium weight, line-height tight (1.1) -->
-      <h1 class="text-[38px] md:text-[56px] font-medium leading-[1.1] text-white tracking-tight mb-6">
+      <!-- Main Headline -->
+      <h1 class="text-[38px] md:text-[56px] font-medium leading-[1.1] text-white tracking-tight mb-6 max-w-4xl">
         From Operational Friction<br>To Algorithmic Precision
       </h1>
 
-      <!-- Secondary Text: exactly 15px mobile, 18px desktop, white text 80% opacity -->
-      <p class="text-[15px] md:text-[18px] text-white/80 font-normal leading-relaxed max-w-2xl mb-10">
-        Supply chain analytics professional with two years of direct experience turning event logs, demand variance, and multi-echelon inventory into deterministic optimization models with Python, Celonis, and SimPy.
+      <!-- Secondary Text -->
+      <p class="text-[15px] md:text-[18px] text-white/80 font-normal leading-relaxed max-w-2xl mb-8">
+        Supply chain analytics professional turning event logs, demand variance, and multi-echelon inventory into deterministic optimization models with Python, Celonis, and SimPy.
       </p>
 
-      <!-- CTA Button: solid white, black text, 15px, px-[26px], py-[12px], subtle shadow, scale-105 hover -->
-      <div class="flex flex-wrap items-center justify-center gap-4">
-        <a href="#projects" class="bg-white text-black text-[15px] font-medium px-[26px] py-[12px] rounded shadow-sm hover:scale-105 hover:shadow-lg transition-all duration-200">
-          Start Exploring
+      <!-- CTA Buttons -->
+      <div class="flex flex-wrap items-center justify-center gap-4 mb-14">
+        <a href="#simulator" class="bg-white text-black text-[15px] font-medium px-[26px] py-[12px] rounded shadow-sm hover:scale-105 hover:shadow-lg transition-all duration-200">
+          Inspect Maritime Dispatch
         </a>
         <a href="#contact" class="border border-white/30 text-white text-[15px] font-normal px-[26px] py-[12px] rounded hover:border-white transition-all duration-200">
           Contact Desk
         </a>
       </div>
 
-      <!-- Quick Metadata Strip -->
-      <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 mt-16 pt-8 border-t border-white/10 w-full text-left">
-        <div class="p-3 bg-white/[0.02] border border-white/5 rounded">
-          <span class="block text-[11px] font-mono text-white/50 uppercase tracking-wider">Domain</span>
-          <span class="text-[13px] font-medium text-white/90">Procurement & Distribution</span>
+      <!-- Live Interactive Maritime Logistics Simulation Component -->
+      <div id="simulator" class="w-full rounded-xl bg-slateCard border border-white/15 overflow-hidden shadow-2xl relative text-left">
+        
+        <!-- Simulator Top Control Bar -->
+        <div class="px-5 py-3.5 bg-white/[0.03] border-b border-white/10 flex flex-wrap items-center justify-between gap-3 font-mono text-[12px]">
+          <div class="flex items-center gap-2.5">
+            <span class="w-2.5 h-2.5 rounded-full bg-cyan-400 animate-pulse"></span>
+            <span class="text-white/90 font-semibold tracking-wide">MARITIME COLD-CHAIN DISPATCH // SIMULATION RUNNER</span>
+          </div>
+          <div class="flex items-center gap-4 text-white/60">
+            <span>VESSEL: <span class="text-cyan-300">MV-ARRAIHAN-01</span></span>
+            <span class="hidden sm:inline">TEMP: <span class="text-emerald-400">-20.4 C</span></span>
+            <span class="hidden sm:inline">STATUS: <span class="text-emerald-400 font-semibold">OPTIMAL (MILP FEASIBLE)</span></span>
+          </div>
         </div>
-        <div class="p-3 bg-white/[0.02] border border-white/5 rounded">
-          <span class="block text-[11px] font-mono text-white/50 uppercase tracking-wider">Stack</span>
-          <span class="text-[13px] font-medium text-white/90">Python, SQL, Celonis, SimPy</span>
+
+        <!-- Canvas Container -->
+        <div class="relative w-full h-[280px] sm:h-[340px] bg-[#070b14] overflow-hidden">
+          <canvas id="maritimeCanvas" class="w-full h-full block cursor-crosshair"></canvas>
+          
+          <!-- Route Waypoint HUD Overlay -->
+          <div class="absolute bottom-3 left-3 right-3 flex flex-wrap items-center justify-between gap-2 pointer-events-none text-[11px] font-mono bg-black/40 backdrop-blur-sm px-3.5 py-2 rounded border border-white/10">
+            <div class="flex items-center gap-4 text-white/75">
+              <span>WAYPOINT A: <strong class="text-white">SURABAYA PORT</strong></span>
+              <span>VIA: <strong class="text-cyan-300">MALACCA STRAIT</strong></span>
+              <span>WAYPOINT B: <strong class="text-emerald-300">GCC TRANSIT</strong></span>
+              <span>DEST: <strong class="text-blue-300">ROTTERDAM HUB</strong></span>
+            </div>
+            <div class="text-cyan-400">
+              DISRUPTION RISK: <span class="text-emerald-400">0.03 (LOW)</span>
+            </div>
+          </div>
         </div>
-        <div class="p-3 bg-white/[0.02] border border-white/5 rounded">
-          <span class="block text-[11px] font-mono text-white/50 uppercase tracking-wider">Education</span>
-          <span class="text-[13px] font-medium text-white/90">UNAIR (Cum Laude, 3.60)</span>
+
+        <!-- Simulation Telemetry Metrics Strip -->
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 p-4 bg-white/[0.02] border-t border-white/10 font-mono text-[11.5px]">
+          <div class="p-2.5 rounded bg-white/[0.02] border border-white/5">
+            <span class="text-white/40 block text-[10px] uppercase">Routing Model</span>
+            <span class="text-white font-medium">Stochastic Two-Stage MILP</span>
+          </div>
+          <div class="p-2.5 rounded bg-white/[0.02] border border-white/5">
+            <span class="text-white/40 block text-[10px] uppercase">Monte Carlo Variance</span>
+            <span class="text-emerald-400 font-medium">-28% via CRN Method</span>
+          </div>
+          <div class="p-2.5 rounded bg-white/[0.02] border border-white/5">
+            <span class="text-white/40 block text-[10px] uppercase">Cargo Spec</span>
+            <span class="text-cyan-300 font-medium">Regulated Vaccine Cold-Chain</span>
+          </div>
+          <div class="p-2.5 rounded bg-white/[0.02] border border-white/5">
+            <span class="text-white/40 block text-[10px] uppercase">Service Level SLA</span>
+            <span class="text-white font-medium">99.2% Target Bound</span>
+          </div>
         </div>
-        <div class="p-3 bg-white/[0.02] border border-white/5 rounded">
-          <span class="block text-[11px] font-mono text-white/50 uppercase tracking-wider">Language</span>
-          <span class="text-[13px] font-medium text-white/90">English (IELTS C2 Mastery)</span>
-        </div>
+
       </div>
 
     </div>
   </section>
 
-  <!-- Step 4: The Record (Bento Grid Metrics) -->
+  <!-- The Record (Bento Grid Metrics) -->
   <section id="record" class="py-24 px-6 border-t border-white/10">
     <div class="max-w-6xl mx-auto">
       
@@ -236,7 +274,7 @@
     </div>
   </section>
 
-  <!-- Step 5: Architecture Section -->
+  <!-- Architecture Section -->
   <section id="architecture" class="py-24 px-6 border-t border-white/10 bg-white/[0.01]">
     <div class="max-w-6xl mx-auto">
       
@@ -305,7 +343,7 @@
     </div>
   </section>
 
-  <!-- Step 6: Case Studies Section -->
+  <!-- Case Studies Section -->
   <section id="projects" class="py-24 px-6 border-t border-white/10">
     <div class="max-w-6xl mx-auto">
       
@@ -578,7 +616,7 @@
     </div>
   </section>
 
-  <!-- Step 7: Experience Section -->
+  <!-- Experience Section -->
   <section id="experience" class="py-24 px-6 border-t border-white/10 bg-white/[0.01]">
     <div class="max-w-6xl mx-auto">
       
@@ -697,7 +735,7 @@
     </div>
   </section>
 
-  <!-- Step 8: Capabilities Section -->
+  <!-- Capabilities Section -->
   <section id="skills" class="py-24 px-6 border-t border-white/10">
     <div class="max-w-6xl mx-auto">
       
@@ -791,7 +829,7 @@
     </div>
   </section>
 
-  <!-- Step 9: Credentials & Thesis Section -->
+  <!-- Credentials & Thesis Section -->
   <section id="credentials" class="py-24 px-6 border-t border-white/10 bg-white/[0.01]">
     <div class="max-w-6xl mx-auto">
       
@@ -901,7 +939,7 @@
     </div>
   </section>
 
-  <!-- Step 10: Contact Section -->
+  <!-- Contact Section -->
   <section id="contact" class="py-24 px-6 border-t border-white/10">
     <div class="max-w-4xl mx-auto text-center">
       
@@ -952,7 +990,7 @@
     </div>
   </section>
 
-  <!-- Step 11: Footer -->
+  <!-- Footer -->
   <footer class="py-10 px-6 border-t border-white/10 text-white/50 text-[13px]">
     <div class="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
       <div>
@@ -1018,8 +1056,220 @@
   <!-- Toast Container -->
   <div id="toast" class="fixed bottom-6 right-6 z-50 bg-slateCard border border-white/20 text-white font-mono text-[13px] px-4 py-2.5 rounded shadow-xl opacity-0 pointer-events-none transition-all duration-200"></div>
 
-  <!-- Interactive Logic -->
+  <!-- Interactive Logic & Maritime Canvas Animation -->
   <script>
+    // -------------------------------------------------------------------------
+    // 1. Maritime Logistics Transport Simulator (Canvas Animation)
+    // -------------------------------------------------------------------------
+    (function initMaritimeSimulator() {
+      const canvas = document.getElementById('maritimeCanvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+
+      let width = (canvas.width = canvas.parentElement.clientWidth);
+      let height = (canvas.height = canvas.parentElement.clientHeight);
+
+      window.addEventListener('resize', () => {
+        if (!canvas.parentElement) return;
+        width = canvas.width = canvas.parentElement.clientWidth;
+        height = canvas.height = canvas.parentElement.clientHeight;
+      });
+
+      // Waypoints mapped across nautical coordinates
+      function getWaypoints() {
+        return [
+          { x: width * 0.10, y: height * 0.76, label: 'SURABAYA PORT', code: 'SUB' },
+          { x: width * 0.28, y: height * 0.62, label: 'MALACCA STRAIT', code: 'SGP' },
+          { x: width * 0.48, y: height * 0.68, label: 'INDIAN OCEAN TRANSIT', code: 'IOT' },
+          { x: width * 0.68, y: height * 0.46, label: 'JEBEL ALI (GCC)', code: 'DXB' },
+          { x: width * 0.82, y: height * 0.36, label: 'SUEZ GATEWAY', code: 'SUZ' },
+          { x: width * 0.92, y: height * 0.22, label: 'ROTTERDAM (EU)', code: 'RTM' }
+        ];
+      }
+
+      // Catmull-Rom or Bezier interpolation for smooth maritime curved route
+      function getPointOnRoute(t, pts) {
+        const n = pts.length - 1;
+        const totalSegments = n;
+        const scaledT = t * totalSegments;
+        const index = Math.min(Math.floor(scaledT), n - 1);
+        const localT = scaledT - index;
+
+        const p0 = pts[Math.max(index - 1, 0)];
+        const p1 = pts[index];
+        const p2 = pts[Math.min(index + 1, n)];
+        const p3 = pts[Math.min(index + 2, n)];
+
+        // Catmull-Rom spline formula
+        const t2 = localT * localT;
+        const t3 = t2 * localT;
+
+        const x = 0.5 * (
+          (2 * p1.x) +
+          (-p0.x + p2.x) * localT +
+          (2 * p0.x - 5 * p1.x + 4 * p2.x - p3.x) * t2 +
+          (-p0.x + 3 * p1.x - 3 * p2.x + p3.x) * t3
+        );
+
+        const y = 0.5 * (
+          (2 * p1.y) +
+          (-p0.y + p2.y) * localT +
+          (2 * p0.y - 5 * p1.y + 4 * p2.y - p3.y) * t2 +
+          (-p0.y + 3 * p1.y - 3 * p2.y + p3.y) * t3
+        );
+
+        return { x, y };
+      }
+
+      let progress = 0;
+      let wavePhase = 0;
+
+      function render() {
+        ctx.clearRect(0, 0, width, height);
+
+        // 1. Draw subtle sea grid lines
+        ctx.strokeStyle = 'rgba(255, 255, 255, 0.03)';
+        ctx.lineWidth = 1;
+        const gridSize = 40;
+        for (let x = 0; x < width; x += gridSize) {
+          ctx.beginPath();
+          ctx.moveTo(x, 0);
+          ctx.lineTo(x, height);
+          ctx.stroke();
+        }
+        for (let y = 0; y < height; y += gridSize) {
+          ctx.beginPath();
+          ctx.moveTo(0, y);
+          ctx.lineTo(width, y);
+          ctx.stroke();
+        }
+
+        // 2. Draw animated ocean wave contours
+        wavePhase += 0.02;
+        ctx.lineWidth = 1.2;
+        for (let row = 0; row < 5; row++) {
+          const baseY = height * (0.2 + row * 0.16);
+          ctx.strokeStyle = `rgba(6, 182, 212, ${0.04 + row * 0.015})`;
+          ctx.beginPath();
+          for (let x = 0; x <= width; x += 15) {
+            const waveY = baseY + Math.sin((x * 0.012) + wavePhase + row) * 5 + Math.cos((x * 0.006) - wavePhase) * 4;
+            if (x === 0) ctx.moveTo(x, waveY);
+            else ctx.lineTo(x, waveY);
+          }
+          ctx.stroke();
+        }
+
+        const pts = getWaypoints();
+
+        // 3. Draw shipping lane path
+        ctx.beginPath();
+        for (let i = 0; i <= 100; i++) {
+          const pt = getPointOnRoute(i / 100, pts);
+          if (i === 0) ctx.moveTo(pt.x, pt.y);
+          else ctx.lineTo(pt.x, pt.y);
+        }
+        ctx.strokeStyle = 'rgba(59, 130, 246, 0.35)';
+        ctx.lineWidth = 2;
+        ctx.setLineDash([6, 6]);
+        ctx.stroke();
+        ctx.setLineDash([]);
+
+        // 4. Draw Waypoint Nodes with radar ping pulses
+        pts.forEach((wp, idx) => {
+          // Radar expanding pulse
+          const pingRadius = (Date.now() / 25 + idx * 30) % 24;
+          const pingAlpha = Math.max(0, 1 - pingRadius / 24) * 0.4;
+          ctx.beginPath();
+          ctx.arc(wp.x, wp.y, pingRadius, 0, Math.PI * 2);
+          ctx.strokeStyle = `rgba(6, 182, 212, ${pingAlpha})`;
+          ctx.lineWidth = 1.5;
+          ctx.stroke();
+
+          // Core node dot
+          ctx.beginPath();
+          ctx.arc(wp.x, wp.y, 4, 0, Math.PI * 2);
+          ctx.fillStyle = idx === 0 || idx === pts.length - 1 ? '#3b82f6' : '#06b6d4';
+          ctx.fill();
+
+          // Waypoint labels
+          ctx.font = '10px "JetBrains Mono", monospace';
+          ctx.fillStyle = 'rgba(255, 255, 255, 0.65)';
+          ctx.fillText(wp.code, wp.x - 10, wp.y - 10);
+        });
+
+        // 5. Update Ship Position along shipping lane
+        progress = (progress + 0.0016) % 1;
+        const currentPt = getPointOnRoute(progress, pts);
+        const nextPt = getPointOnRoute((progress + 0.01) % 1, pts);
+        const angle = Math.atan2(nextPt.y - currentPt.y, nextPt.x - currentPt.x);
+
+        // Ship stern wake (foam trail)
+        const wakeLength = 22;
+        const wakeX = currentPt.x - Math.cos(angle) * wakeLength;
+        const wakeY = currentPt.y - Math.sin(angle) * wakeLength;
+        ctx.beginPath();
+        ctx.moveTo(currentPt.x, currentPt.y);
+        ctx.lineTo(wakeX + Math.sin(angle) * 4, wakeY - Math.cos(angle) * 4);
+        ctx.lineTo(wakeX - Math.sin(angle) * 4, wakeY + Math.cos(angle) * 4);
+        ctx.closePath();
+        ctx.fillStyle = 'rgba(6, 182, 212, 0.18)';
+        ctx.fill();
+
+        // Draw Container Cargo Ship
+        ctx.save();
+        ctx.translate(currentPt.x, currentPt.y);
+        ctx.rotate(angle);
+
+        // Vessel Hull
+        ctx.beginPath();
+        ctx.moveTo(18, 0); // Bow (pointed front)
+        ctx.lineTo(8, -6);
+        ctx.lineTo(-16, -6); // Port side
+        ctx.lineTo(-20, -3); // Stern
+        ctx.lineTo(-20, 3);
+        ctx.lineTo(-16, 6); // Starboard side
+        ctx.lineTo(8, 6);
+        ctx.closePath();
+        ctx.fillStyle = '#0f172a';
+        ctx.fill();
+        ctx.lineWidth = 1.5;
+        ctx.strokeStyle = '#38bdf8';
+        ctx.stroke();
+
+        // Bridge / Navigation Tower (aft)
+        ctx.fillStyle = '#f8fafc';
+        ctx.fillRect(-16, -4, 6, 8);
+
+        // Container Cargo Stacks
+        // Bay 1
+        ctx.fillStyle = '#0284c7'; // Blue container
+        ctx.fillRect(-7, -4.5, 4.5, 9);
+        // Bay 2
+        ctx.fillStyle = '#10b981'; // Emerald container
+        ctx.fillRect(-1, -4.5, 4.5, 9);
+        // Bay 3
+        ctx.fillStyle = '#f59e0b'; // Amber container
+        ctx.fillRect(5, -4, 4, 8);
+
+        ctx.restore();
+
+        // 6. Vessel Status Tooltip Floating with Ship
+        ctx.save();
+        const tooltipX = currentPt.x + 14;
+        const tooltipY = currentPt.y - 28;
+        ctx.font = '10px "JetBrains Mono", monospace';
+        ctx.fillStyle = '#06b6d4';
+        ctx.fillText('18.4 KTS', tooltipX, tooltipY);
+        ctx.fillStyle = 'rgba(255, 255, 255, 0.5)';
+        ctx.fillText('COLD-CHAIN SECURE', tooltipX, tooltipY + 11);
+        ctx.restore();
+
+        requestAnimationFrame(render);
+      }
+
+      render();
+    })();
+
     // Mobile Drawer Toggle
     const mobileBtn = document.getElementById('mobile-menu-toggle');
     const mobileDrawer = document.getElementById('mobile-menu-drawer');
