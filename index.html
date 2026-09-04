@@ -200,15 +200,7 @@
           <span>Sea Freight Map</span>
         </a>
 
-        <a href="#orders-section" class="sidebar-link flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-slate-100 dark:hover:bg-white/5 transition">
-          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <line x1="16.5" y1="9.4" x2="7.5" y2="4.21"></line>
-            <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
-            <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
-            <line x1="12" y1="22.08" x2="12" y2="12"></line>
-          </svg>
-          <span>Active Shipments</span>
-        </a>
+
 
         <a href="#projects" class="sidebar-link flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-slate-100 dark:hover:bg-white/5 transition">
           <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -309,7 +301,7 @@
           <input 
             type="text" 
             id="global-search" 
-            placeholder="Search shipments, models, metrics..." 
+            placeholder="Search projects (e.g. compendium, inventory brain, MILP, SimPy, RAG)..." 
             autocomplete="off"
             class="w-full pl-9 pr-14 py-1.5 text-xs rounded-xl bg-slate-100/80 dark:bg-white/5 border border-slate-200 dark:border-white/10 focus:outline-none focus:border-cyan-500 text-slate-800 dark:text-white placeholder:text-slate-400"
           />
@@ -414,8 +406,8 @@
                 <a href="#maritime-transport" class="px-5 py-2.5 rounded-xl bg-white/20 hover:bg-white/30 backdrop-blur-md text-white font-medium text-xs transition border border-white/30">
                   Live Sea Freight Map
                 </a>
-                <a href="#orders-section" class="px-5 py-2.5 rounded-xl bg-white/20 hover:bg-white/30 backdrop-blur-md text-white font-medium text-xs transition border border-white/30">
-                  Order Dispatch Table
+                <a href="#projects" class="px-5 py-2.5 rounded-xl bg-white/20 hover:bg-white/30 backdrop-blur-md text-white font-medium text-xs transition border border-white/30">
+                  Engineering Projects & Code
                 </a>
               </div>
             </div>
@@ -523,144 +515,6 @@
         </div>
       </section>
 
-      <!-- ============ LIVE ORDERS & SHIPMENTS TABLE (LOADLOGIC STYLE) ============ -->
-      <section id="orders-section" class="rounded-3xl bg-white dark:bg-[#0c1222] border border-slate-200/90 dark:border-white/10 shadow-sm p-6">
-        <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6">
-          <div class="flex items-center gap-3">
-            <h2 class="text-lg font-bold text-slate-900 dark:text-white tracking-tight">Active Shipments & Orders</h2>
-            <span class="px-2.5 py-0.5 rounded-full bg-slate-100 dark:bg-white/10 text-xs font-mono font-semibold text-slate-600 dark:text-white/80">264 Monitored</span>
-          </div>
-
-          <div class="flex flex-wrap items-center gap-2 text-xs font-medium" id="order-filters">
-            <button class="filter-pill active px-3.5 py-1.5 rounded-xl bg-slate-900 text-white dark:bg-white dark:text-slate-950 font-semibold transition" data-status="all">All 264</button>
-            <button class="filter-pill px-3.5 py-1.5 rounded-xl bg-slate-100 text-slate-700 dark:bg-white/5 dark:text-white/70 hover:bg-slate-200 dark:hover:bg-white/10 transition" data-status="transit">In transit 53</button>
-            <button class="filter-pill px-3.5 py-1.5 rounded-xl bg-slate-100 text-slate-700 dark:bg-white/5 dark:text-white/70 hover:bg-slate-200 dark:hover:bg-white/10 transition" data-status="port">At Port 70</button>
-            <button class="filter-pill px-3.5 py-1.5 rounded-xl bg-slate-100 text-slate-700 dark:bg-white/5 dark:text-white/70 hover:bg-slate-200 dark:hover:bg-white/10 transition" data-status="cleared">Cleared 56</button>
-            <button class="filter-pill px-3.5 py-1.5 rounded-xl bg-slate-100 text-slate-700 dark:bg-white/5 dark:text-white/70 hover:bg-slate-200 dark:hover:bg-white/10 transition" data-status="delayed">Weather Buffer 85</button>
-          </div>
-        </div>
-
-        <div class="space-y-2.5 overflow-x-auto" id="orders-list">
-          
-          <div class="order-row min-w-[720px] p-4 rounded-2xl bg-slate-50/70 hover:bg-slate-100/80 dark:bg-white/5 dark:hover:bg-white/10 border border-slate-200/60 dark:border-white/5 transition flex items-center justify-between text-xs" data-status="port">
-            <div class="w-32 font-mono font-semibold text-slate-900 dark:text-white flex items-center gap-1.5">
-              <span class="w-2 h-2 rounded-full bg-amber-500"></span>
-              <span>#SC-324561324</span>
-            </div>
-            <div class="w-40 text-slate-700 dark:text-white/80 font-medium">
-              MV Arraihan Vanguard
-            </div>
-            <div class="w-48 text-slate-600 dark:text-white/70 flex items-center gap-2">
-              <span class="font-mono text-[10px] px-1.5 py-0.5 rounded bg-slate-200 dark:bg-white/10 font-bold">GB</span> London, UK
-              <span class="text-slate-400">→</span>
-              <span class="font-mono text-[10px] px-1.5 py-0.5 rounded bg-slate-200 dark:bg-white/10 font-bold">EE</span> Tallinn, EE
-            </div>
-            <div class="w-28 font-mono text-slate-500 dark:text-white/50">
-              12 Sep, 2026
-            </div>
-            <div class="w-28">
-              <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-amber-100 dark:bg-amber-950/40 text-amber-800 dark:text-amber-300 font-mono text-[11px] font-medium">
-                <span class="w-1.5 h-1.5 rounded-full bg-amber-500"></span>
-                At Port
-              </span>
-            </div>
-            <div>
-              <a href="#compendium-card" class="px-3 py-1.5 rounded-lg bg-white dark:bg-white/10 border border-slate-200 dark:border-white/10 font-medium hover:bg-slate-50 dark:hover:bg-white/20 transition text-[11px]">
-                Inspect
-              </a>
-            </div>
-          </div>
-
-          <div class="order-row min-w-[720px] p-4 rounded-2xl bg-slate-50/70 hover:bg-slate-100/80 dark:bg-white/5 dark:hover:bg-white/10 border border-slate-200/60 dark:border-white/5 transition flex items-center justify-between text-xs" data-status="transit">
-            <div class="w-32 font-mono font-semibold text-slate-900 dark:text-white flex items-center gap-1.5">
-              <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
-              <span>#SC-183896772</span>
-            </div>
-            <div class="w-40 text-slate-700 dark:text-white/80 font-medium">
-              Starlight Maritime
-            </div>
-            <div class="w-48 text-slate-600 dark:text-white/70 flex items-center gap-2">
-              <span class="font-mono text-[10px] px-1.5 py-0.5 rounded bg-slate-200 dark:bg-white/10 font-bold">ID</span> Jakarta, ID
-              <span class="text-slate-400">→</span>
-              <span class="font-mono text-[10px] px-1.5 py-0.5 rounded bg-slate-200 dark:bg-white/10 font-bold">NL</span> Rotterdam, NL
-            </div>
-            <div class="w-28 font-mono text-slate-500 dark:text-white/50">
-              14 Sep, 2026
-            </div>
-            <div class="w-28">
-              <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-emerald-100 dark:bg-emerald-950/40 text-emerald-800 dark:text-emerald-300 font-mono text-[11px] font-medium">
-                <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
-                In transit
-              </span>
-            </div>
-            <div>
-              <a href="#compendium-card" class="px-3 py-1.5 rounded-lg bg-white dark:bg-white/10 border border-slate-200 dark:border-white/10 font-medium hover:bg-slate-50 dark:hover:bg-white/20 transition text-[11px]">
-                Inspect
-              </a>
-            </div>
-          </div>
-
-          <div class="order-row min-w-[720px] p-4 rounded-2xl bg-slate-50/70 hover:bg-slate-100/80 dark:bg-white/5 dark:hover:bg-white/10 border border-slate-200/60 dark:border-white/5 transition flex items-center justify-between text-xs" data-status="transit">
-            <div class="w-32 font-mono font-semibold text-slate-900 dark:text-white flex items-center gap-1.5">
-              <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
-              <span>#SC-267189302</span>
-            </div>
-            <div class="w-40 text-slate-700 dark:text-white/80 font-medium">
-              Gulf Gateway Express
-            </div>
-            <div class="w-48 text-slate-600 dark:text-white/70 flex items-center gap-2">
-              <span class="font-mono text-[10px] px-1.5 py-0.5 rounded bg-slate-200 dark:bg-white/10 font-bold">AE</span> Dubai, AE
-              <span class="text-slate-400">→</span>
-              <span class="font-mono text-[10px] px-1.5 py-0.5 rounded bg-slate-200 dark:bg-white/10 font-bold">DE</span> Hamburg, DE
-            </div>
-            <div class="w-28 font-mono text-slate-500 dark:text-white/50">
-              15 Sep, 2026
-            </div>
-            <div class="w-28">
-              <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-emerald-100 dark:bg-emerald-950/40 text-emerald-800 dark:text-emerald-300 font-mono text-[11px] font-medium">
-                <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
-                In transit
-              </span>
-            </div>
-            <div>
-              <a href="#compendium-card" class="px-3 py-1.5 rounded-lg bg-white dark:bg-white/10 border border-slate-200 dark:border-white/10 font-medium hover:bg-slate-50 dark:hover:bg-white/20 transition text-[11px]">
-                Inspect
-              </a>
-            </div>
-          </div>
-
-          <div class="order-row min-w-[720px] p-4 rounded-2xl bg-slate-50/70 hover:bg-slate-100/80 dark:bg-white/5 dark:hover:bg-white/10 border border-slate-200/60 dark:border-white/5 transition flex items-center justify-between text-xs" data-status="cleared">
-            <div class="w-32 font-mono font-semibold text-slate-900 dark:text-white flex items-center gap-1.5">
-              <span class="w-2 h-2 rounded-full bg-cyan-500"></span>
-              <span>#SC-942625346</span>
-            </div>
-            <div class="w-40 text-slate-700 dark:text-white/80 font-medium">
-              Nordic Feeder Lines
-            </div>
-            <div class="w-48 text-slate-600 dark:text-white/70 flex items-center gap-2">
-              <span class="font-mono text-[10px] px-1.5 py-0.5 rounded bg-slate-200 dark:bg-white/10 font-bold">SG</span> Singapore, SG
-              <span class="text-slate-400">→</span>
-              <span class="font-mono text-[10px] px-1.5 py-0.5 rounded bg-slate-200 dark:bg-white/10 font-bold">NO</span> Oslo, NO
-            </div>
-            <div class="w-28 font-mono text-slate-500 dark:text-white/50">
-              18 Sep, 2026
-            </div>
-            <div class="w-28">
-              <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-cyan-100 dark:bg-cyan-950/40 text-cyan-800 dark:text-cyan-300 font-mono text-[11px] font-medium">
-                <span class="w-1.5 h-1.5 rounded-full bg-cyan-500"></span>
-                Cleared
-              </span>
-            </div>
-            <div>
-              <a href="#compendium-card" class="px-3 py-1.5 rounded-lg bg-white dark:bg-white/10 border border-slate-200 dark:border-white/10 font-medium hover:bg-slate-50 dark:hover:bg-white/20 transition text-[11px]">
-                Inspect
-              </a>
-            </div>
-          </div>
-
-        </div>
-      </section>
-
       <!-- ============ PROJECTS & RESEARCH SECTION ============ -->
       <section id="projects" class="space-y-6">
         <div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
@@ -709,7 +563,7 @@
         <!-- Project Grid -->
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="projects-grid">
           
-          <article class="proj-card p-6 rounded-3xl bg-white dark:bg-[#0c1222] border border-slate-200/90 dark:border-white/10 shadow-sm flex flex-col justify-between" data-cat="planning">
+          <article id="proj-inventory-brain" class="proj-card p-6 rounded-3xl bg-white dark:bg-[#0c1222] border border-slate-200/90 dark:border-white/10 shadow-sm flex flex-col justify-between" data-cat="planning">
             <div>
               <div class="flex items-center justify-between text-[11px] font-mono text-slate-500 dark:text-white/40 mb-2">
                 <span class="text-blue-600 dark:text-blue-400 font-semibold">Inventory Optimization</span>
@@ -733,7 +587,7 @@
             </div>
           </article>
 
-          <article class="proj-card p-6 rounded-3xl bg-white dark:bg-[#0c1222] border border-slate-200/90 dark:border-white/10 shadow-sm flex flex-col justify-between" data-cat="planning">
+          <article id="proj-demand-ml" class="proj-card p-6 rounded-3xl bg-white dark:bg-[#0c1222] border border-slate-200/90 dark:border-white/10 shadow-sm flex flex-col justify-between" data-cat="planning">
             <div>
               <div class="flex items-center justify-between text-[11px] font-mono text-slate-500 dark:text-white/40 mb-2">
                 <span class="text-cyan-600 dark:text-cyan-400 font-semibold">Machine Learning Forecasting</span>
@@ -757,7 +611,7 @@
             </div>
           </article>
 
-          <article class="proj-card p-6 rounded-3xl bg-white dark:bg-[#0c1222] border border-slate-200/90 dark:border-white/10 shadow-sm flex flex-col justify-between" data-cat="simulation">
+          <article id="proj-multi-agent-ai" class="proj-card p-6 rounded-3xl bg-white dark:bg-[#0c1222] border border-slate-200/90 dark:border-white/10 shadow-sm flex flex-col justify-between" data-cat="simulation">
             <div>
               <div class="flex items-center justify-between text-[11px] font-mono text-slate-500 dark:text-white/40 mb-2">
                 <span class="text-emerald-600 dark:text-emerald-400 font-semibold">Autonomous Agent Swarm</span>
@@ -781,7 +635,7 @@
             </div>
           </article>
 
-          <article class="proj-card p-6 rounded-3xl bg-white dark:bg-[#0c1222] border border-slate-200/90 dark:border-white/10 shadow-sm flex flex-col justify-between" data-cat="simulation">
+          <article id="proj-simpy-agent" class="proj-card p-6 rounded-3xl bg-white dark:bg-[#0c1222] border border-slate-200/90 dark:border-white/10 shadow-sm flex flex-col justify-between" data-cat="simulation">
             <div>
               <div class="flex items-center justify-between text-[11px] font-mono text-slate-500 dark:text-white/40 mb-2">
                 <span class="text-purple-600 dark:text-purple-400 font-semibold">SimPy Simulation</span>
@@ -805,7 +659,7 @@
             </div>
           </article>
 
-          <article class="proj-card p-6 rounded-3xl bg-white dark:bg-[#0c1222] border border-slate-200/90 dark:border-white/10 shadow-sm flex flex-col justify-between" data-cat="optimization">
+          <article id="proj-coldchain" class="proj-card p-6 rounded-3xl bg-white dark:bg-[#0c1222] border border-slate-200/90 dark:border-white/10 shadow-sm flex flex-col justify-between" data-cat="optimization">
             <div>
               <div class="flex items-center justify-between text-[11px] font-mono text-slate-500 dark:text-white/40 mb-2">
                 <span class="text-amber-600 dark:text-amber-400 font-semibold">Stochastic MILP</span>
@@ -829,7 +683,7 @@
             </div>
           </article>
 
-          <article class="proj-card p-6 rounded-3xl bg-white dark:bg-[#0c1222] border border-slate-200/90 dark:border-white/10 shadow-sm flex flex-col justify-between" data-cat="optimization">
+          <article id="proj-procure-rag" class="proj-card p-6 rounded-3xl bg-white dark:bg-[#0c1222] border border-slate-200/90 dark:border-white/10 shadow-sm flex flex-col justify-between" data-cat="optimization">
             <div>
               <div class="flex items-center justify-between text-[11px] font-mono text-slate-500 dark:text-white/40 mb-2">
                 <span class="text-rose-600 dark:text-rose-400 font-semibold">Procurement AI</span>
@@ -849,6 +703,53 @@
               <a href="https://github.com/yzarrai/procure-rag" target="_blank" rel="noopener noreferrer" class="text-xs font-semibold text-rose-600 dark:text-rose-400 hover:underline flex items-center gap-1">
                 <span>procure-rag</span>
                 <span class="text-[10px]">↗</span>
+              </a>
+            </div>
+          </article>
+          <article id="proj-loanflow-dss" class="proj-card p-6 rounded-3xl bg-white dark:bg-[#0c1222] border border-slate-200/90 dark:border-white/10 shadow-sm flex flex-col justify-between" data-cat="simulation">
+            <div>
+              <div class="flex items-center justify-between text-[11px] font-mono text-slate-500 dark:text-white/40 mb-2">
+                <span class="text-indigo-600 dark:text-indigo-400 font-semibold">Decision Support & MLOps</span>
+                <span>2025</span>
+              </div>
+              <h4 class="text-base font-bold text-slate-900 dark:text-white mb-2">LoanFlow DSS & Clinic Operations</h4>
+              <p class="text-xs text-slate-600 dark:text-white/70 leading-relaxed mb-4">
+                End-to-end decision support systems across loan origination and clinic operations, combining SimPy simulation, process mining (pm4py), and MLflow drift monitoring with automated retraining.
+              </p>
+            </div>
+            <div>
+              <div class="flex flex-wrap gap-1 font-mono text-[10px] text-slate-500 dark:text-white/50 mb-4 pt-3 border-t border-slate-100 dark:border-white/5">
+                <span class="px-2 py-0.5 bg-slate-100 dark:bg-white/5 rounded">SimPy</span>
+                <span class="px-2 py-0.5 bg-slate-100 dark:bg-white/5 rounded">pm4py</span>
+                <span class="px-2 py-0.5 bg-slate-100 dark:bg-white/5 rounded">MLflow</span>
+              </div>
+              <a href="https://github.com/yzarrai/loanflow-dss" target="_blank" rel="noopener noreferrer" class="text-xs font-semibold text-indigo-600 dark:text-indigo-400 hover:underline flex items-center gap-1">
+                <span>loanflow-dss</span>
+                <span class="text-[10px]">↗</span>
+              </a>
+            </div>
+          </article>
+
+          <article id="proj-dmaic-thesis" class="proj-card p-6 rounded-3xl bg-white dark:bg-[#0c1222] border border-slate-200/90 dark:border-white/10 shadow-sm flex flex-col justify-between" data-cat="optimization">
+            <div>
+              <div class="flex items-center justify-between text-[11px] font-mono text-slate-500 dark:text-white/40 mb-2">
+                <span class="text-emerald-600 dark:text-emerald-400 font-semibold">Six Sigma & OR Thesis</span>
+                <span>2023</span>
+              </div>
+              <h4 class="text-base font-bold text-slate-900 dark:text-white mb-2">Lean Six Sigma DMAIC Thesis</h4>
+              <p class="text-xs text-slate-600 dark:text-white/70 leading-relaxed mb-4">
+                Analysis of Service Quality Improvement at Hortus Medicus Clinic. Mined a 534-minute total patient lead time (80% non-value-added) and reduced post-lab waiting time by 42.6% using discrete-event simulation.
+              </p>
+            </div>
+            <div>
+              <div class="flex flex-wrap gap-1 font-mono text-[10px] text-slate-500 dark:text-white/50 mb-4 pt-3 border-t border-slate-100 dark:border-white/5">
+                <span class="px-2 py-0.5 bg-slate-100 dark:bg-white/5 rounded">DMAIC</span>
+                <span class="px-2 py-0.5 bg-slate-100 dark:bg-white/5 rounded">Process Mining</span>
+                <span class="px-2 py-0.5 bg-slate-100 dark:bg-white/5 rounded">Simulation</span>
+              </div>
+              <a href="#record" class="text-xs font-semibold text-emerald-600 dark:text-emerald-400 hover:underline flex items-center gap-1">
+                <span>View Verified Impact</span>
+                <span class="text-[10px]">↑</span>
               </a>
             </div>
           </article>
@@ -1426,241 +1327,129 @@
 
   })();
 
-  // ============ GLOBAL SEARCH & COMMAND PALETTE ============
-  (function initGlobalSearch() {
+  // ============ GLOBAL PROJECTS SEARCH & COMMAND PALETTE ============
+  (function initProjectsSearch() {
     const searchInput = document.getElementById('global-search');
     const searchDropdown = document.getElementById('search-dropdown');
     const searchResultsList = document.getElementById('search-results-list');
     const searchCountBadge = document.getElementById('search-count-badge');
     const searchClearBtn = document.getElementById('search-clear-btn');
     const searchContainer = document.getElementById('search-container');
-    const orderRows = document.querySelectorAll('.order-row');
+    const projectCards = document.querySelectorAll('.proj-card');
+    const compendiumCard = document.getElementById('compendium-card');
+    const projectTabs = document.querySelectorAll('.project-tab');
 
     if (!searchInput || !searchDropdown) return;
 
-    const searchData = [
-      // Shipments & Vessels
+    // Direct Projects & Research Data (Yusuf Zaidany Arraihan)
+    const projectsData = [
       {
-        id: 'ship-1',
-        title: 'MV Arraihan Vanguard (#SC-324561324)',
-        subtitle: 'London, UK (GB) to Tallinn, EE | At Port | 12 Sep',
-        category: 'Shipment / AIS',
-        badgeColor: 'bg-amber-100 text-amber-800 dark:bg-amber-950/50 dark:text-amber-300',
-        actionType: 'order',
-        orderId: '#SC-324561324',
-        targetId: 'orders-section',
-        keywords: 'arraihan vanguard london tallinn sc-324561324 at port gb ee'
-      },
-      {
-        id: 'ship-2',
-        title: 'Starlight Maritime (#SC-183896772)',
-        subtitle: 'Jakarta, ID (ID) to Rotterdam, NL | In transit | 14 Sep',
-        category: 'Shipment / AIS',
-        badgeColor: 'bg-emerald-100 text-emerald-800 dark:bg-emerald-950/50 dark:text-emerald-300',
-        actionType: 'order',
-        orderId: '#SC-183896772',
-        targetId: 'orders-section',
-        keywords: 'starlight maritime jakarta rotterdam sc-183896772 in transit id nl'
-      },
-      {
-        id: 'ship-3',
-        title: 'Gulf Gateway Express (#SC-267189302)',
-        subtitle: 'Dubai, AE (AE) to Singapore, SG | In transit | 16 Sep',
-        category: 'Shipment / AIS',
-        badgeColor: 'bg-emerald-100 text-emerald-800 dark:bg-emerald-950/50 dark:text-emerald-300',
-        actionType: 'order',
-        orderId: '#SC-267189302',
-        targetId: 'orders-section',
-        keywords: 'gulf gateway express dubai singapore sc-267189302 in transit ae sg'
-      },
-      {
-        id: 'ship-4',
-        title: 'Nordic Carrier VII (#SC-491028341)',
-        subtitle: 'Hamburg, DE (DE) to Antwerp, BE | Weather Buffer | 17 Sep',
-        category: 'Shipment / AIS',
-        badgeColor: 'bg-rose-100 text-rose-800 dark:bg-rose-950/50 dark:text-rose-300',
-        actionType: 'order',
-        orderId: '#SC-491028341',
-        targetId: 'orders-section',
-        keywords: 'nordic carrier vii hamburg antwerp sc-491028341 weather buffer delayed de be'
-      },
-      {
-        id: 'ship-5',
-        title: 'Pacific Horizon (#SC-658291034)',
-        subtitle: 'Singapore, SG (SG) to Busan, KR | Cleared | 18 Sep',
-        category: 'Shipment / AIS',
-        badgeColor: 'bg-blue-100 text-blue-800 dark:bg-blue-950/50 dark:text-blue-300',
-        actionType: 'order',
-        orderId: '#SC-658291034',
-        targetId: 'orders-section',
-        keywords: 'pacific horizon singapore busan sc-658291034 cleared sg kr'
-      },
-      {
-        id: 'ship-6',
-        title: 'Baltic Pioneer (#SC-881204918)',
-        subtitle: 'Tallinn, EE (EE) to Helsinki, FI | At Port | 19 Sep',
-        category: 'Shipment / AIS',
-        badgeColor: 'bg-amber-100 text-amber-800 dark:bg-amber-950/50 dark:text-amber-300',
-        actionType: 'order',
-        orderId: '#SC-881204918',
-        targetId: 'orders-section',
-        keywords: 'baltic pioneer tallinn helsinki sc-881204918 at port ee fi'
-      },
-
-      // Research & Models
-      {
-        id: 'res-compendium',
-        title: 'Supply Chain Analytics Compendium',
-        subtitle: 'Stochastic lead times, multi-echelon inventory control, EOQ, safety stock, MILP',
-        category: 'Compendium / Deck',
+        id: 'proj-compendium',
+        title: 'Supply Chain Analytics Compendium (Flagship Deck)',
+        category: 'Flagship Deck / 6 Cases',
         badgeColor: 'bg-cyan-100 text-cyan-800 dark:bg-cyan-950/50 dark:text-cyan-300',
-        actionType: 'external',
-        url: 'https://docs.google.com/presentation/d/1JefxdfbX2Pg09J3zPT0e3LKRoDEggwdq/edit?usp=sharing&ouid=104847496384061111514&rtpof=true&sd=true',
-        keywords: 'supply chain analytics compendium google docs presentation inventory eoq safety stock milp stochastic'
-      },
-      {
-        id: 'res-gurobi',
-        title: 'Gurobi MILP Berth Allocation & Quay Crane Scheduling',
-        subtitle: 'Mathematical programming formulation minimizing vessel turnaround times and demurrage',
-        category: 'Operations Research',
-        badgeColor: 'bg-indigo-100 text-indigo-800 dark:bg-indigo-950/50 dark:text-indigo-300',
-        actionType: 'scroll',
+        subtitle: 'Six cases: multiple regression forecasting (MAPE 10.57%), ABC classification (36 SKUs), push vs pull inventory economics, semiconductor sourcing risk',
         targetId: 'compendium-card',
-        keywords: 'gurobi milp berth allocation quay crane scheduling mathematical programming operations research optimization'
+        externalUrl: 'https://docs.google.com/presentation/d/1JefxdfbX2Pg09J3zPT0e3LKRoDEggwdq/edit?usp=sharing&ouid=104847496384061111514&rtpof=true&sd=true',
+        isExternal: true,
+        tags: ['Google Slides', 'Regression', 'ABC Classification', 'Semiconductor Risk'],
+        keywords: 'compendium flagship supply chain analytics regression forecasting abc classification push pull semiconductor sourcing risk google slides'
       },
       {
-        id: 'res-dmaic',
+        id: 'proj-inventory-brain',
+        title: 'Inventory Brain & Demand Planning Platform',
+        category: 'Inventory Optimization',
+        badgeColor: 'bg-blue-100 text-blue-800 dark:bg-blue-950/50 dark:text-blue-300',
+        subtitle: 'Multi-echelon inventory optimization across distribution tiers, discrete-event simulation of replenishment policies under lead-time variance, scenario dashboard',
+        targetId: 'proj-inventory-brain',
+        externalUrl: 'https://github.com/yzarrai/inventory-brain',
+        isExternal: false,
+        tags: ['Python', 'SimPy', 'Streamlit', 'Multi-Echelon'],
+        keywords: 'inventory brain demand planning platform multi-echelon simpy streamlit discrete event replenishment scenario dashboard'
+      },
+      {
+        id: 'proj-demand-ml',
+        title: 'Demand & Stock Fluctuation Forecasting ML',
+        category: 'Machine Learning',
+        badgeColor: 'bg-cyan-100 text-cyan-800 dark:bg-cyan-950/50 dark:text-cyan-300',
+        subtitle: 'Walk-forward benchmarking of SARIMA, Prophet, and XGBoost on MAE/RMSE/MAPE; service-level safety stock recommendations with SHAP attribution',
+        targetId: 'proj-demand-ml',
+        externalUrl: 'https://github.com/yzarrai/retail-demand-forecasting-ml',
+        isExternal: false,
+        tags: ['XGBoost', 'SARIMA', 'Prophet', 'SHAP'],
+        keywords: 'demand stock fluctuation forecasting ml machine learning sarima prophet xgboost shap walk forward safety stock'
+      },
+      {
+        id: 'proj-multi-agent-ai',
+        title: 'Multi-Agent Supply Chain Agentic AI',
+        category: 'Agentic Swarm',
+        badgeColor: 'bg-emerald-100 text-emerald-800 dark:bg-emerald-950/50 dark:text-emerald-300',
+        subtitle: '4-agent autonomous swarm (Demand, Inventory, Risk, Logistics) with 2-round debate protocol for Pareto-optimal trade-offs, MILP lot-sizing, and ERP webhooks',
+        targetId: 'proj-multi-agent-ai',
+        externalUrl: 'https://github.com/yzarrai/supply-chain-agentic-ai',
+        isExternal: false,
+        tags: ['MILP', 'DuckDB', 'FastAPI', 'Multi-Agent'],
+        keywords: 'multi-agent supply chain agentic ai swarm debate pareto milp pulp duckdb chromadb fastapi docker erp'
+      },
+      {
+        id: 'proj-simpy-agent',
+        title: 'Supply Chain Simulation LLM Agent',
+        category: 'Discrete-Event Sim',
+        badgeColor: 'bg-purple-100 text-purple-800 dark:bg-purple-950/50 dark:text-purple-300',
+        subtitle: 'Discrete-event simulation of 4-echelon replenishment using Common Random Numbers to cut Monte Carlo variance by 19% to 37% for statistical policy evaluation',
+        targetId: 'proj-simpy-agent',
+        externalUrl: 'https://github.com/yzarrai/supply-chain-simulation-agent',
+        isExternal: false,
+        tags: ['SimPy', 'LangChain', 'Common Random Numbers', 'Pydantic'],
+        keywords: 'supply chain simulation llm agent simpy langchain common random numbers monte carlo 4-echelon'
+      },
+      {
+        id: 'proj-coldchain',
+        title: 'Stochastic Cold-Chain Distribution Planner',
+        category: 'Stochastic MILP',
+        badgeColor: 'bg-amber-100 text-amber-800 dark:bg-amber-950/50 dark:text-amber-300',
+        subtitle: 'Two-stage stochastic mathematical optimization for cold-chain vaccine distribution, modeling maritime disruption scenarios for robust planning',
+        targetId: 'proj-coldchain',
+        externalUrl: 'https://github.com/yzarrai/stochastic-coldchain-planner',
+        isExternal: false,
+        tags: ['MILP', 'Stochastic Optimization', 'Cold-Chain', 'Vaccines'],
+        keywords: 'stochastic cold-chain distribution planner milp vaccine maritime disruption optimization'
+      },
+      {
+        id: 'proj-procure-rag',
+        title: 'Procurement RAG Assistant',
+        category: 'Enterprise RAG',
+        badgeColor: 'bg-rose-100 text-rose-800 dark:bg-rose-950/50 dark:text-rose-300',
+        subtitle: 'Enterprise RAG assistant for procurement documentation with clause-level citations and 5-layer grounding guardrail system preventing hallucination',
+        targetId: 'proj-procure-rag',
+        externalUrl: 'https://github.com/yzarrai/procure-rag',
+        isExternal: false,
+        tags: ['BM25 + Dense RRF', 'LLM Guardrails', 'Contracts', 'Risk'],
+        keywords: 'procurement rag assistant bm25 rrf guardrails clause citations contracts risk scanning'
+      },
+      {
+        id: 'proj-loanflow-dss',
+        title: 'Decision Support & MLOps Systems (LoanFlow DSS)',
+        category: 'DSS & MLOps',
+        badgeColor: 'bg-indigo-100 text-indigo-800 dark:bg-indigo-950/50 dark:text-indigo-300',
+        subtitle: 'Decision support and MLOps platforms across loan origination and clinic operations, combining SimPy simulation, process mining (pm4py), and MLflow drift monitoring',
+        targetId: 'proj-loanflow-dss',
+        externalUrl: 'https://github.com/yzarrai/loanflow-dss',
+        isExternal: false,
+        tags: ['SimPy', 'pm4py', 'MLflow', 'Streamlit'],
+        keywords: 'decision support mlops systems loanflow clinicflow simpy pm4py mlflow drift monitoring closed-loop'
+      },
+      {
+        id: 'proj-dmaic-thesis',
         title: 'Lean Six Sigma DMAIC Thesis (Hortus Medicus Clinic)',
-        subtitle: 'Applied DMAIC and discrete-event simulation to cut patient queue time by 42.6%',
-        category: 'Thesis / Six Sigma',
-        badgeColor: 'bg-purple-100 text-purple-800 dark:bg-purple-950/50 dark:text-purple-300',
-        actionType: 'scroll',
-        targetId: 'methodology',
-        keywords: 'lean six sigma dmaic thesis hortus medicus clinic queue time simulation discrete event'
-      },
-      {
-        id: 'res-celonis',
-        title: 'Celonis Process Mining & Bottleneck Discovery',
-        subtitle: 'Mined event logs at Contra.com to identify rework loops and reduce cycle time by 22%',
-        category: 'Process Mining',
-        badgeColor: 'bg-cyan-100 text-cyan-800 dark:bg-cyan-950/50 dark:text-cyan-300',
-        actionType: 'scroll',
-        targetId: 'record',
-        keywords: 'celonis process mining contra event logs bottleneck rework cycle time'
-      },
-      {
-        id: 'res-python',
-        title: 'Python Workflow Automation Pipelines',
-        subtitle: 'Automated data transformation scripts eliminating 14 hours of weekly manual reporting',
-        category: 'Automation / Python',
-        badgeColor: 'bg-blue-100 text-blue-800 dark:bg-blue-950/50 dark:text-blue-300',
-        actionType: 'scroll',
-        targetId: 'record',
-        keywords: 'python workflow automation pipelines manual work eliminated reporting'
-      },
-      {
-        id: 'res-sql',
-        title: 'SQL Relational Database Quality Audits',
-        subtitle: 'Audited internal relational databases, achieving 98% model-ready data accuracy',
-        category: 'Data Engineering',
+        category: 'Six Sigma & Simulation',
         badgeColor: 'bg-emerald-100 text-emerald-800 dark:bg-emerald-950/50 dark:text-emerald-300',
-        actionType: 'scroll',
-        targetId: 'record',
-        keywords: 'sql relational database quality audits accuracy model ready'
-      },
-
-      // Key Metrics
-      {
-        id: 'metric-1',
-        title: '22% Average Cycle Time Cut',
-        subtitle: 'Celonis event log mining and process optimization (Contra.com)',
-        category: 'Metric',
-        badgeColor: 'bg-cyan-100 text-cyan-800 dark:bg-cyan-950/50 dark:text-cyan-300',
-        actionType: 'scroll',
-        targetId: 'record',
-        keywords: '22% cycle time cut metric contra celonis'
-      },
-      {
-        id: 'metric-2',
-        title: '14 hrs Weekly Manual Work Cut',
-        subtitle: 'Automated Python data ingestion and ETL transformation pipelines',
-        category: 'Metric',
-        badgeColor: 'bg-blue-100 text-blue-800 dark:bg-blue-950/50 dark:text-blue-300',
-        actionType: 'scroll',
-        targetId: 'record',
-        keywords: '14 hrs weekly manual work cut automation metric'
-      },
-      {
-        id: 'metric-3',
-        title: '42.6% Non-Value Added Queue Time Cut',
-        subtitle: 'DMAIC Six Sigma clinic process simulation thesis',
-        category: 'Metric',
-        badgeColor: 'bg-purple-100 text-purple-800 dark:bg-purple-950/50 dark:text-purple-300',
-        actionType: 'scroll',
-        targetId: 'record',
-        keywords: '42.6% queue time cut six sigma thesis metric'
-      },
-      {
-        id: 'metric-4',
-        title: '98% Model-Ready Accuracy',
-        subtitle: 'Enterprise SQL database audits and schema validation',
-        category: 'Metric',
-        badgeColor: 'bg-emerald-100 text-emerald-800 dark:bg-emerald-950/50 dark:text-emerald-300',
-        actionType: 'scroll',
-        targetId: 'record',
-        keywords: '98% accuracy data quality sql database metric'
-      },
-
-      // Navigation / Sections
-      {
-        id: 'sec-hero',
-        title: 'Overview & Animated Vessel Corridor',
-        subtitle: 'Aerial container ship hydrodynamics and live sea freight corridor telemetry',
-        category: 'Section',
-        badgeColor: 'bg-slate-100 text-slate-800 dark:bg-white/10 dark:text-white',
-        actionType: 'scroll',
-        targetId: 'hero',
-        keywords: 'overview hero animated vessel corridor ship telemetry home'
-      },
-      {
-        id: 'sec-map',
-        title: 'Cartographic Maritime Map & AIS Tracker',
-        subtitle: 'Interactive Leaflet transit simulator between Jakarta, Singapore, Suez, and Rotterdam',
-        category: 'Section',
-        badgeColor: 'bg-slate-100 text-slate-800 dark:bg-white/10 dark:text-white',
-        actionType: 'scroll',
-        targetId: 'maritime-transport',
-        keywords: 'cartographic maritime map ais tracker leaflet routing sea freight'
-      },
-      {
-        id: 'sec-orders',
-        title: 'Active Shipments & Orders Table',
-        subtitle: 'Monitor 264 shipments, port arrivals, customs clearances, and weather buffers',
-        category: 'Section',
-        badgeColor: 'bg-slate-100 text-slate-800 dark:bg-white/10 dark:text-white',
-        actionType: 'scroll',
-        targetId: 'orders-section',
-        keywords: 'active shipments orders table monitored port transit cleared'
-      },
-      {
-        id: 'sec-methodology',
-        title: 'DMAIC Six Sigma & Operations Research Methodology',
-        subtitle: '5-phase DMAIC execution framework and mathematical modeling pipelines',
-        category: 'Section',
-        badgeColor: 'bg-slate-100 text-slate-800 dark:bg-white/10 dark:text-white',
-        actionType: 'scroll',
-        targetId: 'methodology',
-        keywords: 'dmaic six sigma operations research methodology mathematical modeling'
-      },
-      {
-        id: 'sec-contact',
-        title: 'Transmission / Contact Information',
-        subtitle: 'Direct email, LinkedIn, and GitHub channels',
-        category: 'Section',
-        badgeColor: 'bg-slate-100 text-slate-800 dark:bg-white/10 dark:text-white',
-        actionType: 'scroll',
-        targetId: 'contact',
-        keywords: 'transmission contact email linkedin github'
+        subtitle: 'Analysis of Service Quality Improvement at Hortus Medicus Clinic using DMAIC and discrete-event simulation, reducing waiting queue time by 42.6%',
+        targetId: 'proj-dmaic-thesis',
+        externalUrl: '#record',
+        isExternal: false,
+        tags: ['DMAIC', 'Six Sigma', 'Discrete-Event Sim', 'Process Mapping'],
+        keywords: 'lean six sigma dmaic thesis hortus medicus clinic queue time simulation process mapping'
       }
     ];
 
@@ -1671,16 +1460,17 @@
       const q = query.trim().toLowerCase();
 
       if (!q) {
-        currentResults = searchData.slice(0, 5);
-        searchCountBadge.textContent = 'Suggestions';
+        currentResults = projectsData;
+        searchCountBadge.textContent = 'All ' + projectsData.length + ' Projects';
       } else {
-        currentResults = searchData.filter(item => {
+        currentResults = projectsData.filter(item => {
           return item.title.toLowerCase().includes(q) ||
                  item.subtitle.toLowerCase().includes(q) ||
                  item.category.toLowerCase().includes(q) ||
-                 item.keywords.toLowerCase().includes(q);
+                 item.keywords.toLowerCase().includes(q) ||
+                 item.tags.some(t => t.toLowerCase().includes(q));
         });
-        searchCountBadge.textContent = currentResults.length + (currentResults.length === 1 ? ' result' : ' results');
+        searchCountBadge.textContent = currentResults.length + (currentResults.length === 1 ? ' match' : ' matches');
       }
 
       selectedIndex = -1;
@@ -1688,8 +1478,8 @@
       if (currentResults.length === 0) {
         searchResultsList.innerHTML = `
           <div class="p-4 text-center text-slate-500 dark:text-white/50 space-y-1">
-            <p class="font-medium">No results found for "<span class="text-slate-900 dark:text-white font-semibold">${query}</span>"</p>
-            <p class="text-[11px] text-slate-400">Try searching: <span class="font-mono text-cyan-600 dark:text-cyan-400">compendium, thesis, suez, rotterdam, gurobi, or SC-324</span></p>
+            <p class="font-medium">No projects found matching "<span class="text-slate-900 dark:text-white font-semibold">${query}</span>"</p>
+            <p class="text-[11px] text-slate-400">Try searching: <span class="font-mono text-cyan-600 dark:text-cyan-400">compendium, inventory, milp, simpy, rag, forecast, or six sigma</span></p>
           </div>
         `;
         searchDropdown.classList.remove('hidden');
@@ -1699,17 +1489,25 @@
       searchResultsList.innerHTML = currentResults.map((item, index) => {
         return `
           <div 
-            class="search-result-item flex items-center justify-between p-2.5 rounded-xl cursor-pointer hover:bg-slate-100 dark:hover:bg-white/5 transition"
+            class="search-result-item flex items-center justify-between p-3 rounded-xl cursor-pointer hover:bg-slate-100 dark:hover:bg-white/5 transition group"
             data-index="${index}"
           >
             <div class="flex-1 pr-3">
-              <div class="flex items-center gap-2 mb-0.5">
+              <div class="flex items-center gap-2 mb-1">
                 <span class="font-semibold text-slate-900 dark:text-white text-xs">${item.title}</span>
                 <span class="px-1.5 py-0.5 rounded text-[9px] font-mono font-medium ${item.badgeColor}">${item.category}</span>
               </div>
-              <div class="text-[11px] text-slate-500 dark:text-white/50 line-clamp-1">${item.subtitle}</div>
+              <div class="text-[11px] text-slate-500 dark:text-white/50 line-clamp-1 mb-1.5">${item.subtitle}</div>
+              <div class="flex flex-wrap gap-1">
+                ${item.tags.map(t => `<span class="text-[9px] font-mono px-1.5 py-0.2 bg-slate-100 dark:bg-white/5 text-slate-600 dark:text-white/60 rounded">${t}</span>`).join('')}
+              </div>
             </div>
-            <div class="text-slate-400 text-xs font-mono">enter</div>
+            <div class="flex items-center gap-2">
+              ${item.isExternal ? 
+                `<span class="text-[10px] font-mono text-cyan-600 dark:text-cyan-400 font-semibold px-2 py-1 rounded bg-cyan-50 dark:bg-cyan-950/40">Slides ↗</span>` : 
+                `<span class="text-[10px] font-mono text-slate-400 group-hover:text-slate-900 dark:group-hover:text-white transition">Jump to Card ↓</span>`
+              }
+            </div>
           </div>
         `;
       }).join('');
@@ -1731,46 +1529,52 @@
       searchDropdown.classList.add('hidden');
       searchInput.blur();
 
-      if (item.actionType === 'external') {
-        window.open(item.url, '_blank', 'noopener,noreferrer');
-      } else if (item.actionType === 'scroll') {
+      if (item.targetId) {
         const target = document.getElementById(item.targetId);
         if (target) {
-          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-          target.classList.add('ring-2', 'ring-cyan-500', 'transition-all');
+          target.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          target.classList.add('ring-4', 'ring-cyan-500', 'scale-[1.01]', 'transition-all');
           setTimeout(() => {
-            target.classList.remove('ring-2', 'ring-cyan-500');
-          }, 2000);
+            target.classList.remove('ring-4', 'ring-cyan-500', 'scale-[1.01]');
+          }, 2500);
+          return;
         }
-      } else if (item.actionType === 'order') {
-        const targetSection = document.getElementById(item.targetId);
-        if (targetSection) {
-          targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+
+      if (item.externalUrl) {
+        if (item.externalUrl.startsWith('http')) {
+          window.open(item.externalUrl, '_blank', 'noopener,noreferrer');
+        } else {
+          const section = document.querySelector(item.externalUrl);
+          if (section) section.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
-        orderRows.forEach(row => {
-          if (row.textContent.includes(item.orderId)) {
-            row.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-            row.classList.add('ring-2', 'ring-cyan-500', 'bg-cyan-50', 'dark:bg-cyan-950/40');
-            setTimeout(() => {
-              row.classList.remove('ring-2', 'ring-cyan-500', 'bg-cyan-50', 'dark:bg-cyan-950/40');
-            }, 3000);
-          }
-        });
       }
     }
 
-    function filterOrderRows(query) {
+    // Live filter project cards on the page
+    function filterProjectCards(query) {
       const q = query.trim().toLowerCase();
-      orderRows.forEach(row => {
+      
+      projectCards.forEach(card => {
         if (!q) {
-          row.style.display = '';
+          card.style.display = '';
         } else {
-          const text = row.textContent.toLowerCase();
-          row.style.display = text.includes(q) ? '' : 'none';
+          const text = card.textContent.toLowerCase();
+          card.style.display = text.includes(q) ? '' : 'none';
         }
       });
+
+      if (compendiumCard) {
+        if (!q) {
+          compendiumCard.style.display = '';
+        } else {
+          const text = compendiumCard.textContent.toLowerCase();
+          compendiumCard.style.display = text.includes(q) ? '' : 'none';
+        }
+      }
     }
 
+    // Input Events
     searchInput.addEventListener('input', (e) => {
       const val = e.target.value;
       if (val) {
@@ -1779,7 +1583,7 @@
         searchClearBtn.classList.add('hidden');
       }
       renderResults(val);
-      filterOrderRows(val);
+      filterProjectCards(val);
     });
 
     searchInput.addEventListener('focus', () => {
@@ -1790,7 +1594,7 @@
       searchInput.value = '';
       searchClearBtn.classList.add('hidden');
       searchDropdown.classList.add('hidden');
-      filterOrderRows('');
+      filterProjectCards('');
       searchInput.focus();
     });
 
@@ -1800,6 +1604,7 @@
       }
     });
 
+    // Keyboard Navigation
     searchInput.addEventListener('keydown', (e) => {
       const items = searchResultsList.querySelectorAll('.search-result-item');
       if (items.length === 0) return;
@@ -1836,6 +1641,7 @@
       });
     }
 
+    // Global Shortcut: Cmd+K / Ctrl+K / '/'
     window.addEventListener('keydown', (e) => {
       if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') {
         e.preventDefault();
@@ -1848,22 +1654,22 @@
       }
     });
 
-    const filterPills = document.querySelectorAll('.filter-pill');
-    filterPills.forEach(pill => {
-      pill.addEventListener('click', () => {
-        filterPills.forEach(p => {
-          p.classList.remove('bg-slate-900', 'text-white', 'dark:bg-white', 'dark:text-slate-950', 'font-semibold');
-          p.classList.add('bg-slate-100', 'text-slate-700', 'dark:bg-white/5', 'dark:text-white/70');
+    // Project Category Tabs Filtering
+    projectTabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        projectTabs.forEach(t => {
+          t.classList.remove('bg-slate-900', 'text-white', 'dark:bg-white', 'dark:text-slate-950', 'font-semibold');
+          t.classList.add('bg-white', 'text-slate-700', 'dark:bg-white/5', 'dark:text-white/70');
         });
-        pill.classList.remove('bg-slate-100', 'text-slate-700', 'dark:bg-white/5', 'dark:text-white/70');
-        pill.classList.add('bg-slate-900', 'text-white', 'dark:bg-white', 'dark:text-slate-950', 'font-semibold');
+        tab.classList.remove('bg-white', 'text-slate-700', 'dark:bg-white/5', 'dark:text-white/70');
+        tab.classList.add('bg-slate-900', 'text-white', 'dark:bg-white', 'dark:text-slate-950', 'font-semibold');
 
-        const status = pill.getAttribute('data-status');
-        orderRows.forEach(row => {
-          if (status === 'all') {
-            row.style.display = '';
+        const cat = tab.getAttribute('data-cat');
+        projectCards.forEach(card => {
+          if (cat === 'all') {
+            card.style.display = '';
           } else {
-            row.style.display = (row.getAttribute('data-status') === status) ? '' : 'none';
+            card.style.display = (card.getAttribute('data-cat') === cat) ? '' : 'none';
           }
         });
       });
