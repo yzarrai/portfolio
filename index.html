@@ -283,11 +283,7 @@
         </button>
       </div>
 
-      <!-- Live Role Status -->
-      <div class="flex items-center gap-2 px-1 text-[11px] font-mono text-emerald-700 dark:text-emerald-400">
-        <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-        <span>Open to Roles (GCC / EU / Remote)</span>
-      </div>
+
 
     </div>
 
@@ -305,8 +301,8 @@
           <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" /></svg>
         </button>
 
-        <div class="relative w-full">
-          <svg class="w-4 h-4 text-slate-400 absolute left-3 top-1/2 -translate-y-1/2" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+        <div class="relative w-full" id="search-container">
+          <svg class="w-4 h-4 text-slate-400 absolute left-3 top-1/2 -translate-y-1/2 pointer-events-none" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
             <circle cx="11" cy="11" r="8"></circle>
             <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
           </svg>
@@ -314,9 +310,24 @@
             type="text" 
             id="global-search" 
             placeholder="Search shipments, models, metrics..." 
-            class="w-full pl-9 pr-8 py-1.5 text-xs rounded-xl bg-slate-100/80 dark:bg-white/5 border border-slate-200 dark:border-white/10 focus:outline-none focus:border-cyan-500 text-slate-800 dark:text-white placeholder:text-slate-400"
+            autocomplete="off"
+            class="w-full pl-9 pr-14 py-1.5 text-xs rounded-xl bg-slate-100/80 dark:bg-white/5 border border-slate-200 dark:border-white/10 focus:outline-none focus:border-cyan-500 text-slate-800 dark:text-white placeholder:text-slate-400"
           />
-          <span class="absolute right-2.5 top-1/2 -translate-y-1/2 text-[10px] font-mono text-slate-400 border border-slate-200 dark:border-white/10 px-1 rounded">⌘K</span>
+          <button id="search-clear-btn" class="hidden absolute right-9 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 dark:hover:text-white p-0.5" aria-label="Clear search">
+            <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+          </button>
+          <span class="absolute right-2.5 top-1/2 -translate-y-1/2 text-[10px] font-mono text-slate-400 border border-slate-200 dark:border-white/10 px-1 rounded pointer-events-none">⌘K</span>
+
+          <!-- Dropdown Command Palette Results -->
+          <div id="search-dropdown" class="hidden absolute left-0 right-0 top-full mt-2 bg-white dark:bg-[#0c1222] border border-slate-200 dark:border-white/15 rounded-2xl shadow-xl z-50 overflow-hidden max-h-[440px] flex flex-col transition-all">
+            <div id="search-results-list" class="overflow-y-auto divide-y divide-slate-100 dark:divide-white/5 p-2 text-xs">
+              <!-- Rendered dynamically -->
+            </div>
+            <div class="px-3 py-2 bg-slate-50 dark:bg-white/5 border-t border-slate-100 dark:border-white/5 text-[10px] font-mono text-slate-400 flex items-center justify-between">
+              <span>navigate with arrows or click to jump</span>
+              <span id="search-count-badge">0 results</span>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -434,128 +445,9 @@
 
       </section>
 
-      <!-- ============ BENTO ANALYTICS ROW ============ -->
-      <section id="record" class="grid grid-cols-1 lg:grid-cols-12 gap-6">
-        
-        <!-- Fulfillment Performance Widget -->
-        <div class="lg:col-span-6 p-6 rounded-3xl bg-white dark:bg-[#0c1222] border border-slate-200/90 dark:border-white/10 shadow-sm flex flex-col justify-between">
-          <div>
-            <div class="flex items-center justify-between mb-4">
-              <div>
-                <h3 class="text-base font-bold text-slate-900 dark:text-white tracking-tight">Fulfillment Performance</h3>
-                <p class="text-xs text-slate-500 dark:text-white/50">OTIF (On-Time, In-Full) replenishment tracking across 14-day window</p>
-              </div>
-              <div class="flex items-center gap-1 text-xs font-mono text-slate-500 dark:text-white/50 bg-slate-100 dark:bg-white/5 px-2.5 py-1 rounded-lg">
-                <span>19 Sep</span>
-                <span class="text-slate-300 dark:text-white/20">|</span>
-                <span class="text-emerald-600 dark:text-emerald-400 font-semibold">96.8%</span>
-              </div>
-            </div>
+      <!-- ============ VERIFIED OUTCOMES & IMPACT GRID ============ -->
+      <section id="record" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
 
-            <!-- Bar Chart -->
-            <div class="relative h-44 w-full flex items-end justify-between pt-6 pb-2 px-2 border-b border-slate-100 dark:border-white/5 font-mono text-[10px] text-slate-400">
-              <div class="absolute inset-x-0 top-6 border-b border-dashed border-slate-200 dark:border-white/10"></div>
-              <span class="absolute right-1 top-4 text-[9px] text-slate-400">100%</span>
-              
-              <div class="absolute inset-x-0 top-24 border-b border-dashed border-slate-200 dark:border-white/10"></div>
-              <span class="absolute right-1 top-22 text-[9px] text-slate-400">50%</span>
-
-              <div class="flex flex-col items-center gap-1.5 z-10">
-                <div class="w-5 bg-slate-200 dark:bg-white/10 rounded-t-sm" style="height: 60px;"></div>
-                <span>13</span>
-              </div>
-              <div class="flex flex-col items-center gap-1.5 z-10">
-                <div class="w-5 bg-slate-200 dark:bg-white/10 rounded-t-sm" style="height: 85px;"></div>
-                <span>14</span>
-              </div>
-              <div class="flex flex-col items-center gap-1.5 z-10">
-                <div class="w-5 bg-slate-200 dark:bg-white/10 rounded-t-sm" style="height: 75px;"></div>
-                <span>15</span>
-              </div>
-              <div class="flex flex-col items-center gap-1.5 z-10">
-                <div class="w-5 bg-slate-200 dark:bg-white/10 rounded-t-sm" style="height: 95px;"></div>
-                <span>16</span>
-              </div>
-              <div class="flex flex-col items-center gap-1.5 z-10">
-                <div class="w-5 bg-slate-200 dark:bg-white/10 rounded-t-sm" style="height: 70px;"></div>
-                <span>17</span>
-              </div>
-              <div class="flex flex-col items-center gap-1.5 z-10">
-                <div class="w-5 bg-slate-200 dark:bg-white/10 rounded-t-sm" style="height: 110px;"></div>
-                <span>18</span>
-              </div>
-              <!-- Target Highlight Bar: 19 Sep -->
-              <div class="flex flex-col items-center gap-1.5 z-10">
-                <div class="w-6 bg-slate-900 dark:bg-cyan-400 rounded-t-sm shadow-md" style="height: 130px;"></div>
-                <span class="font-bold text-slate-900 dark:text-cyan-300">19</span>
-              </div>
-              <div class="flex flex-col items-center gap-1.5 z-10">
-                <div class="w-5 bg-slate-200 dark:bg-white/10 rounded-t-sm" style="height: 90px;"></div>
-                <span>20</span>
-              </div>
-              <div class="flex flex-col items-center gap-1.5 z-10">
-                <div class="w-5 bg-slate-200 dark:bg-white/10 rounded-t-sm" style="height: 105px;"></div>
-                <span>21</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="mt-4 pt-3 flex items-center justify-between text-xs font-mono text-slate-500 dark:text-white/40">
-            <span>Target Service Level: 95%</span>
-            <span class="text-emerald-600 dark:text-emerald-400 font-semibold">+1.8% above policy threshold</span>
-          </div>
-        </div>
-
-        <!-- Volume & Flow Overview Widget -->
-        <div class="lg:col-span-6 p-6 rounded-3xl bg-white dark:bg-[#0c1222] border border-slate-200/90 dark:border-white/10 shadow-sm flex flex-col justify-between">
-          <div>
-            <div class="flex items-center justify-between mb-2">
-              <h3 class="text-base font-bold text-slate-900 dark:text-white tracking-tight">Trade Lane Volume & Flow</h3>
-              <span class="text-xs font-mono font-semibold px-2 py-0.5 rounded-full bg-emerald-100 dark:bg-emerald-950/40 text-emerald-800 dark:text-emerald-300">+32.2% growth</span>
-            </div>
-            <div class="text-3xl font-bold text-slate-900 dark:text-white font-mono tracking-tight mb-4">$440,925 <span class="text-xs font-normal text-slate-500 dark:text-white/40 font-sans">across 36 monitored SKUs</span></div>
-
-            <div class="space-y-3 pt-2">
-              <div>
-                <div class="flex items-center justify-between text-xs font-mono mb-1">
-                  <span class="text-slate-600 dark:text-white/70">China / Far East Transshipment</span>
-                  <span class="font-semibold text-slate-900 dark:text-white">$156,646 (35.5%)</span>
-                </div>
-                <div class="w-full h-3 bg-slate-100 dark:bg-white/5 rounded-full overflow-hidden">
-                  <div class="h-full bg-slate-900 dark:bg-cyan-500 rounded-full" style="width: 35.5%;"></div>
-                </div>
-              </div>
-
-              <div>
-                <div class="flex items-center justify-between text-xs font-mono mb-1">
-                  <span class="text-slate-600 dark:text-white/70">EU / Port of Rotterdam Inbound</span>
-                  <span class="font-semibold text-slate-900 dark:text-white">$198,116 (44.9%)</span>
-                </div>
-                <div class="w-full h-3 bg-slate-100 dark:bg-white/5 rounded-full overflow-hidden">
-                  <div class="h-full bg-blue-600 dark:bg-blue-400 rounded-full" style="width: 44.9%;"></div>
-                </div>
-              </div>
-
-              <div>
-                <div class="flex items-center justify-between text-xs font-mono mb-1">
-                  <span class="text-slate-600 dark:text-white/70">Middle East / Jebel Ali Hub</span>
-                  <span class="font-semibold text-slate-900 dark:text-white">$86,163 (19.6%)</span>
-                </div>
-                <div class="w-full h-3 bg-slate-100 dark:bg-white/5 rounded-full overflow-hidden">
-                  <div class="h-full bg-emerald-500 dark:bg-emerald-400 rounded-full" style="width: 19.6%;"></div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="mt-4 pt-3 border-t border-slate-100 dark:border-white/5 flex items-center justify-between text-xs text-slate-500 dark:text-white/40 font-mono">
-            <span>Channel: Ocean Freight AIS</span>
-            <span>Lead Time Buffer: 4.2 days</span>
-          </div>
-        </div>
-
-        <!-- Measured Outcomes Strip -->
-        <div class="lg:col-span-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
           <div class="p-5 rounded-2xl bg-white dark:bg-[#0c1222] border border-slate-200/90 dark:border-white/10 shadow-sm">
             <span class="text-[11px] font-mono text-cyan-700 dark:text-cyan-400 uppercase font-semibold block mb-1">Contra.com Consulting</span>
             <div class="text-2xl font-bold text-slate-900 dark:text-white tracking-tight mb-1">22%</div>
@@ -583,8 +475,7 @@
             <div class="text-xs font-semibold text-slate-800 dark:text-white/90 mb-1">Non-Value Time Removed</div>
             <p class="text-xs text-slate-500 dark:text-white/60 leading-relaxed">Applied DMAIC at Hortus Medicus Clinic, raising efficiency from 20.0% to 30.3%.</p>
           </div>
-        </div>
-
+        
       </section>
 
       <!-- ============ REAL-WORLD GEOGRAPHIC SEA FREIGHT MAP ============ -->
@@ -1534,6 +1425,451 @@
     }
 
   })();
+
+  // ============ GLOBAL SEARCH & COMMAND PALETTE ============
+  (function initGlobalSearch() {
+    const searchInput = document.getElementById('global-search');
+    const searchDropdown = document.getElementById('search-dropdown');
+    const searchResultsList = document.getElementById('search-results-list');
+    const searchCountBadge = document.getElementById('search-count-badge');
+    const searchClearBtn = document.getElementById('search-clear-btn');
+    const searchContainer = document.getElementById('search-container');
+    const orderRows = document.querySelectorAll('.order-row');
+
+    if (!searchInput || !searchDropdown) return;
+
+    const searchData = [
+      // Shipments & Vessels
+      {
+        id: 'ship-1',
+        title: 'MV Arraihan Vanguard (#SC-324561324)',
+        subtitle: 'London, UK (GB) to Tallinn, EE | At Port | 12 Sep',
+        category: 'Shipment / AIS',
+        badgeColor: 'bg-amber-100 text-amber-800 dark:bg-amber-950/50 dark:text-amber-300',
+        actionType: 'order',
+        orderId: '#SC-324561324',
+        targetId: 'orders-section',
+        keywords: 'arraihan vanguard london tallinn sc-324561324 at port gb ee'
+      },
+      {
+        id: 'ship-2',
+        title: 'Starlight Maritime (#SC-183896772)',
+        subtitle: 'Jakarta, ID (ID) to Rotterdam, NL | In transit | 14 Sep',
+        category: 'Shipment / AIS',
+        badgeColor: 'bg-emerald-100 text-emerald-800 dark:bg-emerald-950/50 dark:text-emerald-300',
+        actionType: 'order',
+        orderId: '#SC-183896772',
+        targetId: 'orders-section',
+        keywords: 'starlight maritime jakarta rotterdam sc-183896772 in transit id nl'
+      },
+      {
+        id: 'ship-3',
+        title: 'Gulf Gateway Express (#SC-267189302)',
+        subtitle: 'Dubai, AE (AE) to Singapore, SG | In transit | 16 Sep',
+        category: 'Shipment / AIS',
+        badgeColor: 'bg-emerald-100 text-emerald-800 dark:bg-emerald-950/50 dark:text-emerald-300',
+        actionType: 'order',
+        orderId: '#SC-267189302',
+        targetId: 'orders-section',
+        keywords: 'gulf gateway express dubai singapore sc-267189302 in transit ae sg'
+      },
+      {
+        id: 'ship-4',
+        title: 'Nordic Carrier VII (#SC-491028341)',
+        subtitle: 'Hamburg, DE (DE) to Antwerp, BE | Weather Buffer | 17 Sep',
+        category: 'Shipment / AIS',
+        badgeColor: 'bg-rose-100 text-rose-800 dark:bg-rose-950/50 dark:text-rose-300',
+        actionType: 'order',
+        orderId: '#SC-491028341',
+        targetId: 'orders-section',
+        keywords: 'nordic carrier vii hamburg antwerp sc-491028341 weather buffer delayed de be'
+      },
+      {
+        id: 'ship-5',
+        title: 'Pacific Horizon (#SC-658291034)',
+        subtitle: 'Singapore, SG (SG) to Busan, KR | Cleared | 18 Sep',
+        category: 'Shipment / AIS',
+        badgeColor: 'bg-blue-100 text-blue-800 dark:bg-blue-950/50 dark:text-blue-300',
+        actionType: 'order',
+        orderId: '#SC-658291034',
+        targetId: 'orders-section',
+        keywords: 'pacific horizon singapore busan sc-658291034 cleared sg kr'
+      },
+      {
+        id: 'ship-6',
+        title: 'Baltic Pioneer (#SC-881204918)',
+        subtitle: 'Tallinn, EE (EE) to Helsinki, FI | At Port | 19 Sep',
+        category: 'Shipment / AIS',
+        badgeColor: 'bg-amber-100 text-amber-800 dark:bg-amber-950/50 dark:text-amber-300',
+        actionType: 'order',
+        orderId: '#SC-881204918',
+        targetId: 'orders-section',
+        keywords: 'baltic pioneer tallinn helsinki sc-881204918 at port ee fi'
+      },
+
+      // Research & Models
+      {
+        id: 'res-compendium',
+        title: 'Supply Chain Analytics Compendium',
+        subtitle: 'Stochastic lead times, multi-echelon inventory control, EOQ, safety stock, MILP',
+        category: 'Compendium / Deck',
+        badgeColor: 'bg-cyan-100 text-cyan-800 dark:bg-cyan-950/50 dark:text-cyan-300',
+        actionType: 'external',
+        url: 'https://docs.google.com/presentation/d/1JefxdfbX2Pg09J3zPT0e3LKRoDEggwdq/edit?usp=sharing&ouid=104847496384061111514&rtpof=true&sd=true',
+        keywords: 'supply chain analytics compendium google docs presentation inventory eoq safety stock milp stochastic'
+      },
+      {
+        id: 'res-gurobi',
+        title: 'Gurobi MILP Berth Allocation & Quay Crane Scheduling',
+        subtitle: 'Mathematical programming formulation minimizing vessel turnaround times and demurrage',
+        category: 'Operations Research',
+        badgeColor: 'bg-indigo-100 text-indigo-800 dark:bg-indigo-950/50 dark:text-indigo-300',
+        actionType: 'scroll',
+        targetId: 'compendium-card',
+        keywords: 'gurobi milp berth allocation quay crane scheduling mathematical programming operations research optimization'
+      },
+      {
+        id: 'res-dmaic',
+        title: 'Lean Six Sigma DMAIC Thesis (Hortus Medicus Clinic)',
+        subtitle: 'Applied DMAIC and discrete-event simulation to cut patient queue time by 42.6%',
+        category: 'Thesis / Six Sigma',
+        badgeColor: 'bg-purple-100 text-purple-800 dark:bg-purple-950/50 dark:text-purple-300',
+        actionType: 'scroll',
+        targetId: 'methodology',
+        keywords: 'lean six sigma dmaic thesis hortus medicus clinic queue time simulation discrete event'
+      },
+      {
+        id: 'res-celonis',
+        title: 'Celonis Process Mining & Bottleneck Discovery',
+        subtitle: 'Mined event logs at Contra.com to identify rework loops and reduce cycle time by 22%',
+        category: 'Process Mining',
+        badgeColor: 'bg-cyan-100 text-cyan-800 dark:bg-cyan-950/50 dark:text-cyan-300',
+        actionType: 'scroll',
+        targetId: 'record',
+        keywords: 'celonis process mining contra event logs bottleneck rework cycle time'
+      },
+      {
+        id: 'res-python',
+        title: 'Python Workflow Automation Pipelines',
+        subtitle: 'Automated data transformation scripts eliminating 14 hours of weekly manual reporting',
+        category: 'Automation / Python',
+        badgeColor: 'bg-blue-100 text-blue-800 dark:bg-blue-950/50 dark:text-blue-300',
+        actionType: 'scroll',
+        targetId: 'record',
+        keywords: 'python workflow automation pipelines manual work eliminated reporting'
+      },
+      {
+        id: 'res-sql',
+        title: 'SQL Relational Database Quality Audits',
+        subtitle: 'Audited internal relational databases, achieving 98% model-ready data accuracy',
+        category: 'Data Engineering',
+        badgeColor: 'bg-emerald-100 text-emerald-800 dark:bg-emerald-950/50 dark:text-emerald-300',
+        actionType: 'scroll',
+        targetId: 'record',
+        keywords: 'sql relational database quality audits accuracy model ready'
+      },
+
+      // Key Metrics
+      {
+        id: 'metric-1',
+        title: '22% Average Cycle Time Cut',
+        subtitle: 'Celonis event log mining and process optimization (Contra.com)',
+        category: 'Metric',
+        badgeColor: 'bg-cyan-100 text-cyan-800 dark:bg-cyan-950/50 dark:text-cyan-300',
+        actionType: 'scroll',
+        targetId: 'record',
+        keywords: '22% cycle time cut metric contra celonis'
+      },
+      {
+        id: 'metric-2',
+        title: '14 hrs Weekly Manual Work Cut',
+        subtitle: 'Automated Python data ingestion and ETL transformation pipelines',
+        category: 'Metric',
+        badgeColor: 'bg-blue-100 text-blue-800 dark:bg-blue-950/50 dark:text-blue-300',
+        actionType: 'scroll',
+        targetId: 'record',
+        keywords: '14 hrs weekly manual work cut automation metric'
+      },
+      {
+        id: 'metric-3',
+        title: '42.6% Non-Value Added Queue Time Cut',
+        subtitle: 'DMAIC Six Sigma clinic process simulation thesis',
+        category: 'Metric',
+        badgeColor: 'bg-purple-100 text-purple-800 dark:bg-purple-950/50 dark:text-purple-300',
+        actionType: 'scroll',
+        targetId: 'record',
+        keywords: '42.6% queue time cut six sigma thesis metric'
+      },
+      {
+        id: 'metric-4',
+        title: '98% Model-Ready Accuracy',
+        subtitle: 'Enterprise SQL database audits and schema validation',
+        category: 'Metric',
+        badgeColor: 'bg-emerald-100 text-emerald-800 dark:bg-emerald-950/50 dark:text-emerald-300',
+        actionType: 'scroll',
+        targetId: 'record',
+        keywords: '98% accuracy data quality sql database metric'
+      },
+
+      // Navigation / Sections
+      {
+        id: 'sec-hero',
+        title: 'Overview & Animated Vessel Corridor',
+        subtitle: 'Aerial container ship hydrodynamics and live sea freight corridor telemetry',
+        category: 'Section',
+        badgeColor: 'bg-slate-100 text-slate-800 dark:bg-white/10 dark:text-white',
+        actionType: 'scroll',
+        targetId: 'hero',
+        keywords: 'overview hero animated vessel corridor ship telemetry home'
+      },
+      {
+        id: 'sec-map',
+        title: 'Cartographic Maritime Map & AIS Tracker',
+        subtitle: 'Interactive Leaflet transit simulator between Jakarta, Singapore, Suez, and Rotterdam',
+        category: 'Section',
+        badgeColor: 'bg-slate-100 text-slate-800 dark:bg-white/10 dark:text-white',
+        actionType: 'scroll',
+        targetId: 'maritime-transport',
+        keywords: 'cartographic maritime map ais tracker leaflet routing sea freight'
+      },
+      {
+        id: 'sec-orders',
+        title: 'Active Shipments & Orders Table',
+        subtitle: 'Monitor 264 shipments, port arrivals, customs clearances, and weather buffers',
+        category: 'Section',
+        badgeColor: 'bg-slate-100 text-slate-800 dark:bg-white/10 dark:text-white',
+        actionType: 'scroll',
+        targetId: 'orders-section',
+        keywords: 'active shipments orders table monitored port transit cleared'
+      },
+      {
+        id: 'sec-methodology',
+        title: 'DMAIC Six Sigma & Operations Research Methodology',
+        subtitle: '5-phase DMAIC execution framework and mathematical modeling pipelines',
+        category: 'Section',
+        badgeColor: 'bg-slate-100 text-slate-800 dark:bg-white/10 dark:text-white',
+        actionType: 'scroll',
+        targetId: 'methodology',
+        keywords: 'dmaic six sigma operations research methodology mathematical modeling'
+      },
+      {
+        id: 'sec-contact',
+        title: 'Transmission / Contact Information',
+        subtitle: 'Direct email, LinkedIn, and GitHub channels',
+        category: 'Section',
+        badgeColor: 'bg-slate-100 text-slate-800 dark:bg-white/10 dark:text-white',
+        actionType: 'scroll',
+        targetId: 'contact',
+        keywords: 'transmission contact email linkedin github'
+      }
+    ];
+
+    let selectedIndex = -1;
+    let currentResults = [];
+
+    function renderResults(query) {
+      const q = query.trim().toLowerCase();
+
+      if (!q) {
+        currentResults = searchData.slice(0, 5);
+        searchCountBadge.textContent = 'Suggestions';
+      } else {
+        currentResults = searchData.filter(item => {
+          return item.title.toLowerCase().includes(q) ||
+                 item.subtitle.toLowerCase().includes(q) ||
+                 item.category.toLowerCase().includes(q) ||
+                 item.keywords.toLowerCase().includes(q);
+        });
+        searchCountBadge.textContent = currentResults.length + (currentResults.length === 1 ? ' result' : ' results');
+      }
+
+      selectedIndex = -1;
+
+      if (currentResults.length === 0) {
+        searchResultsList.innerHTML = `
+          <div class="p-4 text-center text-slate-500 dark:text-white/50 space-y-1">
+            <p class="font-medium">No results found for "<span class="text-slate-900 dark:text-white font-semibold">${query}</span>"</p>
+            <p class="text-[11px] text-slate-400">Try searching: <span class="font-mono text-cyan-600 dark:text-cyan-400">compendium, thesis, suez, rotterdam, gurobi, or SC-324</span></p>
+          </div>
+        `;
+        searchDropdown.classList.remove('hidden');
+        return;
+      }
+
+      searchResultsList.innerHTML = currentResults.map((item, index) => {
+        return `
+          <div 
+            class="search-result-item flex items-center justify-between p-2.5 rounded-xl cursor-pointer hover:bg-slate-100 dark:hover:bg-white/5 transition"
+            data-index="${index}"
+          >
+            <div class="flex-1 pr-3">
+              <div class="flex items-center gap-2 mb-0.5">
+                <span class="font-semibold text-slate-900 dark:text-white text-xs">${item.title}</span>
+                <span class="px-1.5 py-0.5 rounded text-[9px] font-mono font-medium ${item.badgeColor}">${item.category}</span>
+              </div>
+              <div class="text-[11px] text-slate-500 dark:text-white/50 line-clamp-1">${item.subtitle}</div>
+            </div>
+            <div class="text-slate-400 text-xs font-mono">enter</div>
+          </div>
+        `;
+      }).join('');
+
+      const items = searchResultsList.querySelectorAll('.search-result-item');
+      items.forEach(el => {
+        el.addEventListener('click', () => {
+          const idx = parseInt(el.getAttribute('data-index'), 10);
+          activateResult(currentResults[idx]);
+        });
+      });
+
+      searchDropdown.classList.remove('hidden');
+    }
+
+    function activateResult(item) {
+      if (!item) return;
+
+      searchDropdown.classList.add('hidden');
+      searchInput.blur();
+
+      if (item.actionType === 'external') {
+        window.open(item.url, '_blank', 'noopener,noreferrer');
+      } else if (item.actionType === 'scroll') {
+        const target = document.getElementById(item.targetId);
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          target.classList.add('ring-2', 'ring-cyan-500', 'transition-all');
+          setTimeout(() => {
+            target.classList.remove('ring-2', 'ring-cyan-500');
+          }, 2000);
+        }
+      } else if (item.actionType === 'order') {
+        const targetSection = document.getElementById(item.targetId);
+        if (targetSection) {
+          targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+        orderRows.forEach(row => {
+          if (row.textContent.includes(item.orderId)) {
+            row.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            row.classList.add('ring-2', 'ring-cyan-500', 'bg-cyan-50', 'dark:bg-cyan-950/40');
+            setTimeout(() => {
+              row.classList.remove('ring-2', 'ring-cyan-500', 'bg-cyan-50', 'dark:bg-cyan-950/40');
+            }, 3000);
+          }
+        });
+      }
+    }
+
+    function filterOrderRows(query) {
+      const q = query.trim().toLowerCase();
+      orderRows.forEach(row => {
+        if (!q) {
+          row.style.display = '';
+        } else {
+          const text = row.textContent.toLowerCase();
+          row.style.display = text.includes(q) ? '' : 'none';
+        }
+      });
+    }
+
+    searchInput.addEventListener('input', (e) => {
+      const val = e.target.value;
+      if (val) {
+        searchClearBtn.classList.remove('hidden');
+      } else {
+        searchClearBtn.classList.add('hidden');
+      }
+      renderResults(val);
+      filterOrderRows(val);
+    });
+
+    searchInput.addEventListener('focus', () => {
+      renderResults(searchInput.value);
+    });
+
+    searchClearBtn.addEventListener('click', () => {
+      searchInput.value = '';
+      searchClearBtn.classList.add('hidden');
+      searchDropdown.classList.add('hidden');
+      filterOrderRows('');
+      searchInput.focus();
+    });
+
+    document.addEventListener('click', (e) => {
+      if (!searchContainer.contains(e.target)) {
+        searchDropdown.classList.add('hidden');
+      }
+    });
+
+    searchInput.addEventListener('keydown', (e) => {
+      const items = searchResultsList.querySelectorAll('.search-result-item');
+      if (items.length === 0) return;
+
+      if (e.key === 'ArrowDown') {
+        e.preventDefault();
+        selectedIndex = (selectedIndex + 1) % items.length;
+        updateSelectedHighlight(items);
+      } else if (e.key === 'ArrowUp') {
+        e.preventDefault();
+        selectedIndex = (selectedIndex - 1 + items.length) % items.length;
+        updateSelectedHighlight(items);
+      } else if (e.key === 'Enter') {
+        e.preventDefault();
+        if (selectedIndex >= 0 && selectedIndex < currentResults.length) {
+          activateResult(currentResults[selectedIndex]);
+        } else if (currentResults.length > 0) {
+          activateResult(currentResults[0]);
+        }
+      } else if (e.key === 'Escape') {
+        searchDropdown.classList.add('hidden');
+        searchInput.blur();
+      }
+    });
+
+    function updateSelectedHighlight(items) {
+      items.forEach((el, i) => {
+        if (i === selectedIndex) {
+          el.classList.add('bg-slate-100', 'dark:bg-white/10');
+          el.scrollIntoView({ block: 'nearest' });
+        } else {
+          el.classList.remove('bg-slate-100', 'dark:bg-white/10');
+        }
+      });
+    }
+
+    window.addEventListener('keydown', (e) => {
+      if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') {
+        e.preventDefault();
+        searchInput.focus();
+        searchInput.select();
+      } else if (e.key === '/' && document.activeElement !== searchInput && document.activeElement.tagName !== 'INPUT' && document.activeElement.tagName !== 'TEXTAREA') {
+        e.preventDefault();
+        searchInput.focus();
+        searchInput.select();
+      }
+    });
+
+    const filterPills = document.querySelectorAll('.filter-pill');
+    filterPills.forEach(pill => {
+      pill.addEventListener('click', () => {
+        filterPills.forEach(p => {
+          p.classList.remove('bg-slate-900', 'text-white', 'dark:bg-white', 'dark:text-slate-950', 'font-semibold');
+          p.classList.add('bg-slate-100', 'text-slate-700', 'dark:bg-white/5', 'dark:text-white/70');
+        });
+        pill.classList.remove('bg-slate-100', 'text-slate-700', 'dark:bg-white/5', 'dark:text-white/70');
+        pill.classList.add('bg-slate-900', 'text-white', 'dark:bg-white', 'dark:text-slate-950', 'font-semibold');
+
+        const status = pill.getAttribute('data-status');
+        orderRows.forEach(row => {
+          if (status === 'all') {
+            row.style.display = '';
+          } else {
+            row.style.display = (row.getAttribute('data-status') === status) ? '' : 'none';
+          }
+        });
+      });
+    });
+  })();
+
 </script>
 
 </body>
