@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Yusuf Zaidany Arraihan | Supply Chain Analytics & Control Tower</title>
-<meta name="description" content="Supply chain analytics and operations control tower by Yusuf Zaidany Arraihan. Specializing in demand planning, multi-echelon inventory optimization, Celonis process mining, and discrete-event simulation." />
+<title>Yusuf Zaidany Arraihan | Supply Chain Analytics & Operations Portfolio</title>
+<meta name="description" content="Personal portfolio of Yusuf Zaidany Arraihan. Specializing in supply chain analytics, demand planning, multi-echelon inventory optimization, Celonis process mining, and discrete-event simulation." />
 
 <!-- Tailwind CSS via CDN -->
 <script src="https://cdn.tailwindcss.com"></script>
@@ -17,21 +17,6 @@
           sans: ['Inter', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
           mono: ['JetBrains Mono', 'monospace'],
         },
-        colors: {
-          canvas: {
-            light: '#f4f6f5',
-            dark: '#080c14',
-          },
-          panel: {
-            light: '#ffffff',
-            dark: '#0f172a',
-          },
-          brand: {
-            emerald: '#10b981',
-            cyan: '#06b6d4',
-            dark: '#111827',
-          }
-        }
       }
     }
   };
@@ -60,7 +45,77 @@
     transition: background-color 0.25s ease, color 0.25s ease;
   }
 
-  /* Custom Leaflet Dark and Light adaptations */
+  /* Ship Hydrodynamic Sailing Animation */
+  @keyframes shipHydrodynamicSwell {
+    0% {
+      transform: translateY(0px) scale(1) rotate(0deg);
+    }
+    25% {
+      transform: translateY(-5px) scale(1.015) rotate(0.4deg);
+    }
+    50% {
+      transform: translateY(2px) scale(1.005) rotate(0deg);
+    }
+    75% {
+      transform: translateY(-4px) scale(1.018) rotate(-0.4deg);
+    }
+    100% {
+      transform: translateY(0px) scale(1) rotate(0deg);
+    }
+  }
+
+  .animated-ship-sailing {
+    animation: shipHydrodynamicSwell 6.5s ease-in-out infinite;
+    transform-origin: center 65%;
+    will-change: transform;
+  }
+
+  /* Water current & wave shimmer stream */
+  @keyframes waterCurrentFlow {
+    0% {
+      background-position: 0 0;
+      opacity: 0.35;
+    }
+    50% {
+      opacity: 0.65;
+    }
+    100% {
+      background-position: 0 600px;
+      opacity: 0.35;
+    }
+  }
+
+  .water-stream-overlay {
+    background-image: radial-gradient(circle at 50% 30%, rgba(255, 255, 255, 0.25) 1px, transparent 1px),
+                      radial-gradient(circle at 20% 70%, rgba(255, 255, 255, 0.18) 1.5px, transparent 1.5px),
+                      radial-gradient(circle at 80% 60%, rgba(255, 255, 255, 0.2) 1.2px, transparent 1.2px);
+    background-size: 80px 140px, 120px 180px, 100px 160px;
+    animation: waterCurrentFlow 3.5s linear infinite;
+    pointer-events: none;
+  }
+
+  /* Wake Foam Wave Pulse */
+  @keyframes bowWavePulse {
+    0% {
+      transform: scaleX(0.92) scaleY(0.95);
+      opacity: 0.5;
+    }
+    50% {
+      transform: scaleX(1.05) scaleY(1.02);
+      opacity: 0.9;
+    }
+    100% {
+      transform: scaleX(0.92) scaleY(0.95);
+      opacity: 0.5;
+    }
+  }
+
+  .bow-wave-pulse {
+    animation: bowWavePulse 3.8s ease-in-out infinite;
+    pointer-events: none;
+  }
+
+  /* Leaflet styling */
   .leaflet-container {
     font-family: 'Inter', sans-serif !important;
     background: #f1f5f9 !important;
@@ -74,7 +129,6 @@
     border: 1px solid #cbd5e1 !important;
     border-radius: 12px !important;
     box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1) !important;
-    font-family: 'Inter', sans-serif !important;
   }
   .dark .leaflet-popup-content-wrapper {
     background: rgba(15, 23, 42, 0.95) !important;
@@ -87,835 +141,917 @@
   .dark .leaflet-popup-tip {
     background: #0f172a !important;
   }
-  .leaflet-control-zoom a {
-    background: #ffffff !important;
-    color: #0f172a !important;
-    border-color: #cbd5e1 !important;
-  }
-  .dark .leaflet-control-zoom a {
-    background: rgba(15, 23, 42, 0.85) !important;
-    color: #ffffff !important;
-    border-color: rgba(255, 255, 255, 0.15) !important;
-  }
 </style>
 </head>
 
 <body class="bg-[#f4f6f5] text-slate-900 dark:bg-[#080c14] dark:text-white antialiased selection:bg-cyan-500 selection:text-white">
 
-<!-- ============ APP SHELL HEADER (LOADLOGIC & PULSE CLINIC STYLE) ============ -->
-<header id="topbar" class="sticky top-0 z-40 w-full bg-white/95 dark:bg-[#0c1222]/90 backdrop-blur-md border-b border-slate-200/90 dark:border-white/10 transition-colors">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-4">
-    
-    <!-- Left: Brand Logo & Navigation Indicator -->
-    <div class="flex items-center gap-6">
-      <a href="#hero" class="flex items-center gap-2.5 font-bold text-slate-900 dark:text-white tracking-tight text-lg">
-        <div class="w-8 h-8 rounded-lg bg-slate-900 dark:bg-white flex items-center justify-center text-white dark:text-slate-900 shadow-sm">
-          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-            <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
-            <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
-          </svg>
-        </div>
-        <span>LoadLogic</span>
-        <span class="text-xs font-mono font-medium px-2 py-0.5 rounded-full bg-slate-100 dark:bg-white/10 text-slate-600 dark:text-white/70">YZA</span>
-      </a>
+<div class="min-h-screen flex flex-col md:flex-row">
 
-      <!-- Desktop Section Nav Items -->
-      <nav class="hidden md:flex items-center gap-1 text-xs font-medium text-slate-600 dark:text-white/70">
-        <a href="#hero" class="px-3 py-1.5 rounded-lg bg-slate-100 dark:bg-white/10 text-slate-900 dark:text-white font-semibold">Dashboard</a>
-        <a href="#maritime-transport" class="px-3 py-1.5 rounded-lg hover:bg-slate-100 dark:hover:bg-white/5 transition">Sea Freight</a>
-        <a href="#orders-section" class="px-3 py-1.5 rounded-lg hover:bg-slate-100 dark:hover:bg-white/5 transition">Shipments</a>
-        <a href="#projects" class="px-3 py-1.5 rounded-lg hover:bg-slate-100 dark:hover:bg-white/5 transition">Projects</a>
-        <a href="https://docs.google.com/presentation/d/1JefxdfbX2Pg09J3zPT0e3LKRoDEggwdq/edit?usp=sharing&ouid=104847496384061111514&rtpof=true&sd=true" target="_blank" rel="noopener noreferrer" class="px-3 py-1.5 rounded-lg hover:bg-slate-100 dark:hover:bg-white/5 text-cyan-600 dark:text-cyan-400 font-semibold flex items-center gap-1">
+  <!-- ============ LEFT SIDEBAR (PULSE CLINIC & LOADLOGIC STYLE) ============ -->
+  <aside id="sidebar" class="w-full md:w-64 lg:w-72 shrink-0 md:sticky md:top-0 md:h-screen bg-white dark:bg-[#0c1222] border-r border-slate-200/90 dark:border-white/10 flex flex-col justify-between p-5 z-40 transition-colors">
+    
+    <!-- Top: Personal Profile & Branding (NOT LoadLogic) -->
+    <div class="space-y-6">
+      
+      <!-- Brand & Profile Card -->
+      <div class="flex items-center justify-between pb-4 border-b border-slate-100 dark:border-white/5">
+        <a href="#hero" class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-xl bg-slate-900 dark:bg-white flex items-center justify-center text-white dark:text-slate-900 font-bold text-sm shadow-sm">
+            YZA
+          </div>
+          <div>
+            <div class="text-sm font-bold text-slate-900 dark:text-white tracking-tight leading-none mb-1">
+              Yusuf Zaidany
+            </div>
+            <div class="text-[11px] font-mono text-cyan-600 dark:text-cyan-400 font-medium">
+              Portfolio
+            </div>
+          </div>
+        </a>
+
+        <!-- Mobile Drawer Toggle -->
+        <button id="mobile-sidebar-close" class="md:hidden p-1.5 text-slate-500 hover:text-slate-900 dark:hover:text-white" aria-label="Toggle menu">
+          <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" /></svg>
+        </button>
+      </div>
+
+      <!-- Navigation Section -->
+      <nav id="sidebar-nav" class="space-y-1 text-xs font-medium text-slate-600 dark:text-white/70">
+        
+        <div class="text-[10px] font-mono uppercase font-semibold text-slate-400 dark:text-white/30 px-3 py-1.5 tracking-wider">
+          Workspace
+        </div>
+
+        <a href="#hero" class="sidebar-link active flex items-center gap-3 px-3 py-2.5 rounded-xl bg-slate-900 text-white dark:bg-white dark:text-slate-950 font-semibold transition">
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="3" width="7" height="7"></rect>
+            <rect x="14" y="3" width="7" height="7"></rect>
+            <rect x="14" y="14" width="7" height="7"></rect>
+            <rect x="3" y="14" width="7" height="7"></rect>
+          </svg>
+          <span>Dashboard & Ship</span>
+        </a>
+
+        <a href="#maritime-transport" class="sidebar-link flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-slate-100 dark:hover:bg-white/5 transition">
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polygon points="3 11 22 2 13 21 11 13 3 11"></polygon>
+          </svg>
+          <span>Sea Freight Map</span>
+        </a>
+
+        <a href="#orders-section" class="sidebar-link flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-slate-100 dark:hover:bg-white/5 transition">
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="16.5" y1="9.4" x2="7.5" y2="4.21"></line>
+            <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+            <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+            <line x1="12" y1="22.08" x2="12" y2="12"></line>
+          </svg>
+          <span>Active Shipments</span>
+        </a>
+
+        <a href="#projects" class="sidebar-link flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-slate-100 dark:hover:bg-white/5 transition">
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="16 18 22 12 16 6"></polyline>
+            <polyline points="8 6 2 12 8 18"></polyline>
+          </svg>
+          <span>Projects & Code</span>
+        </a>
+
+        <a href="https://docs.google.com/presentation/d/1JefxdfbX2Pg09J3zPT0e3LKRoDEggwdq/edit?usp=sharing&ouid=104847496384061111514&rtpof=true&sd=true" target="_blank" rel="noopener noreferrer" class="sidebar-link flex items-center justify-between px-3 py-2.5 rounded-xl text-cyan-700 dark:text-cyan-400 hover:bg-cyan-50 dark:hover:bg-white/5 transition font-semibold">
+          <div class="flex items-center gap-3">
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+              <line x1="8" y1="21" x2="16" y2="21"></line>
+              <line x1="12" y1="17" x2="12" y2="21"></line>
+            </svg>
+            <span>Compendium</span>
+          </div>
+          <span class="text-[10px] font-mono">40+ ↗</span>
+        </a>
+
+        <a href="#skills" class="sidebar-link flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-slate-100 dark:hover:bg-white/5 transition">
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
+          </svg>
+          <span>Technical Stack</span>
+        </a>
+
+        <a href="#contact" class="sidebar-link flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-slate-100 dark:hover:bg-white/5 transition">
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+            <polyline points="22,6 12,13 2,6"></polyline>
+          </svg>
+          <span>Contact Desk</span>
+        </a>
+
+      </nav>
+
+      <!-- Profile Overview Box (LoadLogic Pro Plan Card Style) -->
+      <div class="p-4 rounded-2xl bg-slate-50 dark:bg-white/5 border border-slate-200/80 dark:border-white/5">
+        <div class="text-[10px] font-mono uppercase font-semibold text-slate-400 dark:text-white/40 mb-1">
+          Academic Foundation
+        </div>
+        <div class="text-xs font-bold text-slate-900 dark:text-white mb-1">
+          Universitas Airlangga
+        </div>
+        <p class="text-[11px] text-slate-500 dark:text-white/60 leading-relaxed mb-3">
+          Bachelor of Management, Operations & Supply Chain / Operations Research. Cum Laude (GPA 3.60).
+        </p>
+        <button id="sidebar-cv-btn" class="w-full py-2 px-3 rounded-xl bg-slate-900 hover:bg-slate-800 dark:bg-white dark:hover:bg-slate-100 text-white dark:text-slate-950 font-semibold text-xs shadow-sm transition flex items-center justify-center gap-1.5">
+          <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" /></svg>
+          <span>Download CV (PDF)</span>
+        </button>
+      </div>
+
+    </div>
+
+    <!-- Bottom: Theme Switcher & Availability Status -->
+    <div class="pt-4 border-t border-slate-100 dark:border-white/5 space-y-3">
+      
+      <!-- Theme Switcher Row -->
+      <div class="flex items-center justify-between px-1">
+        <span class="text-xs text-slate-500 dark:text-white/50 font-medium">Theme Mode</span>
+        <button id="theme-toggle" class="p-2 rounded-xl border border-slate-200 dark:border-white/10 bg-slate-50 dark:bg-white/5 text-slate-700 dark:text-white hover:bg-slate-100 transition shadow-sm" aria-label="Toggle Theme" title="Toggle Light / Dark Theme">
+          <svg id="theme-icon-sun" class="w-4 h-4 hidden dark:block text-amber-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="4"></circle>
+            <path d="M12 2v2m0 16v2M4.93 4.93l1.41 1.41m11.32 11.32l1.41 1.41M2 12h2m16 0h2M6.34 17.66l-1.41 1.41m14.14-14.14l-1.41 1.41"></path>
+          </svg>
+          <svg id="theme-icon-moon" class="w-4 h-4 block dark:hidden text-slate-700" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+          </svg>
+        </button>
+      </div>
+
+      <!-- Live Role Status -->
+      <div class="flex items-center gap-2 px-1 text-[11px] font-mono text-emerald-700 dark:text-emerald-400">
+        <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+        <span>Open to Roles (GCC / EU / Remote)</span>
+      </div>
+
+    </div>
+
+  </aside>
+
+  <!-- ============ RIGHT WORKSPACE / CONTENT AREA ============ -->
+  <div class="flex-1 flex flex-col min-w-0">
+    
+    <!-- Top Workspace Utility Bar -->
+    <div class="sticky top-0 z-30 h-16 bg-white/95 dark:bg-[#0c1222]/90 backdrop-blur-md border-b border-slate-200/90 dark:border-white/10 px-4 sm:px-8 flex items-center justify-between gap-4 transition-colors">
+      
+      <!-- Left: Mobile Menu Trigger & Search -->
+      <div class="flex items-center gap-3 flex-1 max-w-md">
+        <button id="mobile-menu-open" class="md:hidden p-2 rounded-xl border border-slate-200 dark:border-white/10 text-slate-700 dark:text-white" aria-label="Open menu">
+          <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" /></svg>
+        </button>
+
+        <div class="relative w-full">
+          <svg class="w-4 h-4 text-slate-400 absolute left-3 top-1/2 -translate-y-1/2" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+          <input 
+            type="text" 
+            id="global-search" 
+            placeholder="Search shipments, models, metrics..." 
+            class="w-full pl-9 pr-8 py-1.5 text-xs rounded-xl bg-slate-100/80 dark:bg-white/5 border border-slate-200 dark:border-white/10 focus:outline-none focus:border-cyan-500 text-slate-800 dark:text-white placeholder:text-slate-400"
+          />
+          <span class="absolute right-2.5 top-1/2 -translate-y-1/2 text-[10px] font-mono text-slate-400 border border-slate-200 dark:border-white/10 px-1 rounded">⌘K</span>
+        </div>
+      </div>
+
+      <!-- Right: Status Pill, Compendium Link & Actions -->
+      <div class="flex items-center gap-3">
+        <div class="hidden sm:inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-50 dark:bg-emerald-950/40 border border-emerald-200 dark:border-emerald-500/30 text-[11px] font-mono font-medium text-emerald-700 dark:text-emerald-300">
+          <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+          <span>AIS Telemetry Active</span>
+        </div>
+
+        <a href="https://docs.google.com/presentation/d/1JefxdfbX2Pg09J3zPT0e3LKRoDEggwdq/edit?usp=sharing&ouid=104847496384061111514&rtpof=true&sd=true" target="_blank" rel="noopener noreferrer" class="hidden sm:flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl border border-cyan-500/40 bg-cyan-50/50 dark:bg-cyan-950/20 text-cyan-700 dark:text-cyan-300 font-semibold text-xs hover:bg-cyan-100 transition">
           <span>Compendium</span>
           <span class="text-[10px]">↗</span>
         </a>
-        <a href="#skills" class="px-3 py-1.5 rounded-lg hover:bg-slate-100 dark:hover:bg-white/5 transition">Stack</a>
-        <a href="#contact" class="px-3 py-1.5 rounded-lg hover:bg-slate-100 dark:hover:bg-white/5 transition">Contact</a>
-      </nav>
-    </div>
 
-    <!-- Center: Search Input Bar (Pulse Clinic / LoadLogic) -->
-    <div class="hidden lg:flex items-center flex-1 max-w-xs relative">
-      <svg class="w-4 h-4 text-slate-400 absolute left-3 top-1/2 -translate-y-1/2" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-        <circle cx="11" cy="11" r="8"></circle>
-        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-      </svg>
-      <input 
-        type="text" 
-        id="global-search" 
-        placeholder="Search shipments, models, metrics..." 
-        class="w-full pl-9 pr-8 py-1.5 text-xs rounded-xl bg-slate-100/80 dark:bg-white/5 border border-slate-200 dark:border-white/10 focus:outline-none focus:border-cyan-500 text-slate-800 dark:text-white placeholder:text-slate-400"
-      />
-      <span class="absolute right-2.5 top-1/2 -translate-y-1/2 text-[10px] font-mono text-slate-400 border border-slate-200 dark:border-white/10 px-1 rounded">⌘K</span>
-    </div>
-
-    <!-- Right: Telemetry Badge, Actions & Profile -->
-    <div class="flex items-center gap-3">
-      
-      <!-- Live Status Pill -->
-      <div class="hidden sm:inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-50 dark:bg-emerald-950/40 border border-emerald-200 dark:border-emerald-500/30 text-[11px] font-mono font-medium text-emerald-700 dark:text-emerald-300">
-        <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
-        <span>AIS Stream Online</span>
+        <button id="nav-cv-btn" class="px-3.5 py-1.5 rounded-xl bg-slate-900 hover:bg-slate-800 dark:bg-white dark:hover:bg-slate-100 text-white dark:text-slate-950 font-medium text-xs shadow-sm transition">
+          Resume
+        </button>
       </div>
 
-      <!-- Theme Switcher (Sun/Moon) -->
-      <button id="theme-toggle" class="p-2 rounded-xl border border-slate-200 dark:border-white/10 bg-white dark:bg-white/5 text-slate-700 dark:text-white hover:bg-slate-100 dark:hover:bg-white/10 transition shadow-sm" aria-label="Toggle Light / Dark Mode" title="Toggle Light or Dark Mode">
-        <svg id="theme-icon-sun" class="w-4 h-4 hidden dark:block text-amber-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-          <circle cx="12" cy="12" r="4"></circle>
-          <path d="M12 2v2m0 16v2M4.93 4.93l1.41 1.41m11.32 11.32l1.41 1.41M2 12h2m16 0h2M6.34 17.66l-1.41 1.41m14.14-14.14l-1.41 1.41"></path>
-        </svg>
-        <svg id="theme-icon-moon" class="w-4 h-4 block dark:hidden text-slate-700" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-        </svg>
-      </button>
-
-      <!-- Primary Action: Download CV -->
-      <button id="nav-cv-btn" class="px-4 py-2 rounded-xl bg-slate-900 hover:bg-slate-800 dark:bg-white dark:hover:bg-slate-100 text-white dark:text-slate-950 font-medium text-xs shadow-sm transition flex items-center gap-1.5">
-        <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" /></svg>
-        <span>Download CV</span>
-      </button>
-
-      <!-- Mobile Menu Button -->
-      <button id="menu-toggle" class="md:hidden p-2 text-slate-700 dark:text-white" aria-label="Open menu">
-        <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
-        </svg>
-      </button>
     </div>
 
-  </div>
+    <!-- Scrollable Workspace Body -->
+    <main class="flex-1 p-4 sm:p-6 lg:p-8 space-y-8 max-w-7xl w-full">
 
-  <!-- Mobile Drawer Menu -->
-  <div id="mobile-menu" class="hidden md:hidden px-4 pb-4 border-t border-slate-200 dark:border-white/10 bg-white dark:bg-[#0c1222]">
-    <div class="flex flex-col gap-2 pt-3 text-xs font-medium">
-      <a href="#hero" class="mobile-link py-2 px-3 rounded-lg bg-slate-100 dark:bg-white/5 font-semibold">Dashboard</a>
-      <a href="#maritime-transport" class="mobile-link py-2 px-3 rounded-lg hover:bg-slate-50 dark:hover:bg-white/5">Sea Freight Map</a>
-      <a href="#orders-section" class="mobile-link py-2 px-3 rounded-lg hover:bg-slate-50 dark:hover:bg-white/5">Live Shipments</a>
-      <a href="#projects" class="mobile-link py-2 px-3 rounded-lg hover:bg-slate-50 dark:hover:bg-white/5">Selected Projects</a>
-      <a href="https://docs.google.com/presentation/d/1JefxdfbX2Pg09J3zPT0e3LKRoDEggwdq/edit?usp=sharing&ouid=104847496384061111514&rtpof=true&sd=true" target="_blank" rel="noopener noreferrer" class="mobile-link py-2 px-3 rounded-lg text-cyan-600 font-semibold">Analytics Compendium ↗</a>
-      <a href="#skills" class="mobile-link py-2 px-3 rounded-lg hover:bg-slate-50 dark:hover:bg-white/5">Technical Stack</a>
-      <a href="#contact" class="mobile-link py-2 px-3 rounded-lg hover:bg-slate-50 dark:hover:bg-white/5">Contact Desk</a>
-    </div>
-  </div>
-</header>
-
-<!-- ============ MAIN DASHBOARD WORKSPACE ============ -->
-<main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
-
-  <!-- ============ HERO SHOWCASE: AERIAL CONTAINER SHIP (MATCHING USER REFERENCE) ============ -->
-  <section id="hero" class="relative rounded-3xl overflow-hidden border border-slate-200/90 dark:border-white/10 bg-white dark:bg-[#0c1222] shadow-sm">
-    
-    <!-- Container Ship Aerial Bow Photography -->
-    <div class="relative w-full h-[420px] sm:h-[480px] md:h-[540px] overflow-hidden">
-      <img 
-        src="assets/images/hero-containership-aerial.jpg" 
-        alt="Aerial view of container ship sailing forward with symmetric foaming wakes" 
-        class="w-full h-full object-cover object-center"
-      />
-      <!-- Soft Gradient Overlay for Optimal Readability -->
-      <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/40 to-transparent"></div>
-      
-      <!-- Top HUD Badge Strip -->
-      <div class="absolute top-4 left-4 right-4 flex flex-wrap items-center justify-between gap-3">
-        <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-black/60 backdrop-blur-md border border-white/20 text-xs font-mono text-white">
-          <span class="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></span>
-          <span>MV ARRAIHAN VANGUARD · IMO 9845210</span>
-        </div>
-        <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-black/60 backdrop-blur-md border border-white/20 text-xs font-mono text-white/90">
-          <span>Route: Singapore → Suez → Rotterdam</span>
-        </div>
-      </div>
-
-      <!-- Hero Value Proposition & Text Over Ship -->
-      <div class="absolute bottom-6 left-6 right-6 md:left-10 md:right-10 text-white">
-        <div class="max-w-3xl">
-          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/20 backdrop-blur-md border border-white/30 text-xs font-medium text-white mb-3">
-            <span>Operations & Supply Chain Analytics · Universitas Airlangga</span>
+      <!-- ============ HERO: DYNAMIC MOVING CONTAINER SHIP (ANIMATED IN OCEAN) ============ -->
+      <section id="hero" class="relative rounded-3xl overflow-hidden border border-slate-200/90 dark:border-white/10 bg-slate-900 shadow-sm">
+        
+        <!-- Animated Container Vessel Motion Canvas & Frame -->
+        <div class="relative w-full h-[440px] sm:h-[500px] md:h-[540px] overflow-hidden bg-[#0a2336]">
+          
+          <!-- Base Image with Smooth Continuous Hydrodynamic Sailing Sway -->
+          <div class="absolute inset-0 w-full h-full animated-ship-sailing overflow-hidden">
+            <img 
+              id="hero-ship-img"
+              src="assets/images/hero-containership-aerial.jpg" 
+              alt="Container ship sailing forward in deep ocean water with symmetric foaming wakes" 
+              class="w-full h-full object-cover object-center scale-105"
+            />
           </div>
-          <h1 class="text-2xl sm:text-4xl md:text-5xl font-bold tracking-tight text-white leading-tight mb-3">
-            Optimizing Global Supply Chains Through Data, Simulation & Code
-          </h1>
-          <p class="text-sm sm:text-base text-white/85 leading-relaxed max-w-2xl mb-6">
-            Hi, I am <strong class="text-white font-semibold">Yusuf Zaidany Arraihan</strong>. I solve real-world logistics and operations bottlenecks using Celonis process mining, walk-forward demand forecasting, multi-echelon safety stock optimization, and discrete-event simulation.
-          </p>
 
-          <!-- Primary Hero Actions -->
-          <div class="flex flex-wrap items-center gap-3">
-            <a href="https://docs.google.com/presentation/d/1JefxdfbX2Pg09J3zPT0e3LKRoDEggwdq/edit?usp=sharing&ouid=104847496384061111514&rtpof=true&sd=true" target="_blank" rel="noopener noreferrer" class="px-5 py-2.5 rounded-xl bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-semibold text-xs transition shadow-md flex items-center gap-1.5">
-              <span>View Analytics Compendium (40+ Slides)</span>
+          <!-- Dynamic Water Current & Moving Wave Texture Layer (Streams backwards) -->
+          <div class="absolute inset-0 water-stream-overlay"></div>
+
+          <!-- Symmetrical Wake Foam Waves Generator Overlay (Pulsing bow displacement) -->
+          <div class="absolute inset-0 bow-wave-pulse pointer-events-none">
+            <!-- Simulated ambient sunlight glimmer on sea -->
+            <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/35 to-transparent"></div>
+          </div>
+
+          <!-- Live Dynamic Wake Canvas (Generates continuous bubbling sea spray along hull) -->
+          <canvas id="wake-particles-canvas" class="absolute inset-0 w-full h-full pointer-events-none"></canvas>
+
+          <!-- Top HUD Overlay -->
+          <div class="absolute top-4 left-4 right-4 flex flex-wrap items-center justify-between gap-3 z-10">
+            <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-black/60 backdrop-blur-md border border-white/20 text-xs font-mono text-white">
+              <span class="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></span>
+              <span>VESSEL: MV ARRAIHAN VANGUARD · IMO 9845210</span>
+            </div>
+            <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-black/60 backdrop-blur-md border border-white/20 text-xs font-mono text-white/90">
+              <span id="vessel-speed-badge">Speed: 19.4 kts · High Seas Cruising</span>
+            </div>
+          </div>
+
+          <!-- Hero Value Proposition Text Over Ship -->
+          <div class="absolute bottom-6 left-6 right-6 md:left-10 md:right-10 text-white z-10">
+            <div class="max-w-3xl">
+              <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/20 backdrop-blur-md border border-white/30 text-xs font-medium text-white mb-3">
+                <span>Personal Portfolio · Yusuf Zaidany Arraihan</span>
+              </div>
+              <h1 class="text-2xl sm:text-4xl md:text-5xl font-bold tracking-tight text-white leading-tight mb-3">
+                Optimizing Global Supply Chains Through Data, Simulation & Code
+              </h1>
+              <p class="text-sm sm:text-base text-white/85 leading-relaxed max-w-2xl mb-6">
+                I help supply chain and logistics teams uncover operational delays with Celonis process mining, build dependable demand forecasts in Python, and cut inventory holding costs through discrete-event simulation.
+              </p>
+
+              <!-- Hero Actions -->
+              <div class="flex flex-wrap items-center gap-3">
+                <a href="https://docs.google.com/presentation/d/1JefxdfbX2Pg09J3zPT0e3LKRoDEggwdq/edit?usp=sharing&ouid=104847496384061111514&rtpof=true&sd=true" target="_blank" rel="noopener noreferrer" class="px-5 py-2.5 rounded-xl bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-semibold text-xs transition shadow-md flex items-center gap-1.5">
+                  <span>View Analytics Compendium (40+ Slides)</span>
+                  <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                </a>
+                <a href="#maritime-transport" class="px-5 py-2.5 rounded-xl bg-white/20 hover:bg-white/30 backdrop-blur-md text-white font-medium text-xs transition border border-white/30">
+                  Live Sea Freight Map
+                </a>
+                <a href="#orders-section" class="px-5 py-2.5 rounded-xl bg-white/20 hover:bg-white/30 backdrop-blur-md text-white font-medium text-xs transition border border-white/30">
+                  Order Dispatch Table
+                </a>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Telemetry Bottom Bar -->
+        <div class="grid grid-cols-2 sm:grid-cols-4 divide-x divide-slate-200 dark:divide-white/10 border-t border-slate-200 dark:border-white/10 bg-slate-50/95 dark:bg-white/5 font-mono text-xs text-slate-800 dark:text-white">
+          <div class="p-3.5 px-6">
+            <div class="text-slate-500 dark:text-white/50 text-[10px] uppercase font-sans mb-0.5">Speed Over Ground</div>
+            <div id="telemetry-speed" class="font-bold text-sm text-slate-900 dark:text-white">19.4 knots</div>
+          </div>
+          <div class="p-3.5 px-6">
+            <div class="text-slate-500 dark:text-white/50 text-[10px] uppercase font-sans mb-0.5">Container Payload</div>
+            <div class="font-bold text-sm text-cyan-600 dark:text-cyan-400">18,450 TEU (92%)</div>
+          </div>
+          <div class="p-3.5 px-6">
+            <div class="text-slate-500 dark:text-white/50 text-[10px] uppercase font-sans mb-0.5">Bunker Burn Efficiency</div>
+            <div id="telemetry-fuel" class="font-bold text-sm text-emerald-600 dark:text-emerald-400">-8.4% mt/nmi</div>
+          </div>
+          <div class="p-3.5 px-6">
+            <div class="text-slate-500 dark:text-white/50 text-[10px] uppercase font-sans mb-0.5">Stochastic Lead Time</div>
+            <div id="telemetry-eta" class="font-bold text-sm text-purple-600 dark:text-purple-400">-14.2h (Optimal)</div>
+          </div>
+        </div>
+
+      </section>
+
+      <!-- ============ BENTO ANALYTICS ROW ============ -->
+      <section id="record" class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+        
+        <!-- Fulfillment Performance Widget -->
+        <div class="lg:col-span-6 p-6 rounded-3xl bg-white dark:bg-[#0c1222] border border-slate-200/90 dark:border-white/10 shadow-sm flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <div>
+                <h3 class="text-base font-bold text-slate-900 dark:text-white tracking-tight">Fulfillment Performance</h3>
+                <p class="text-xs text-slate-500 dark:text-white/50">OTIF (On-Time, In-Full) replenishment tracking across 14-day window</p>
+              </div>
+              <div class="flex items-center gap-1 text-xs font-mono text-slate-500 dark:text-white/50 bg-slate-100 dark:bg-white/5 px-2.5 py-1 rounded-lg">
+                <span>19 Sep</span>
+                <span class="text-slate-300 dark:text-white/20">|</span>
+                <span class="text-emerald-600 dark:text-emerald-400 font-semibold">96.8%</span>
+              </div>
+            </div>
+
+            <!-- Bar Chart -->
+            <div class="relative h-44 w-full flex items-end justify-between pt-6 pb-2 px-2 border-b border-slate-100 dark:border-white/5 font-mono text-[10px] text-slate-400">
+              <div class="absolute inset-x-0 top-6 border-b border-dashed border-slate-200 dark:border-white/10"></div>
+              <span class="absolute right-1 top-4 text-[9px] text-slate-400">100%</span>
+              
+              <div class="absolute inset-x-0 top-24 border-b border-dashed border-slate-200 dark:border-white/10"></div>
+              <span class="absolute right-1 top-22 text-[9px] text-slate-400">50%</span>
+
+              <div class="flex flex-col items-center gap-1.5 z-10">
+                <div class="w-5 bg-slate-200 dark:bg-white/10 rounded-t-sm" style="height: 60px;"></div>
+                <span>13</span>
+              </div>
+              <div class="flex flex-col items-center gap-1.5 z-10">
+                <div class="w-5 bg-slate-200 dark:bg-white/10 rounded-t-sm" style="height: 85px;"></div>
+                <span>14</span>
+              </div>
+              <div class="flex flex-col items-center gap-1.5 z-10">
+                <div class="w-5 bg-slate-200 dark:bg-white/10 rounded-t-sm" style="height: 75px;"></div>
+                <span>15</span>
+              </div>
+              <div class="flex flex-col items-center gap-1.5 z-10">
+                <div class="w-5 bg-slate-200 dark:bg-white/10 rounded-t-sm" style="height: 95px;"></div>
+                <span>16</span>
+              </div>
+              <div class="flex flex-col items-center gap-1.5 z-10">
+                <div class="w-5 bg-slate-200 dark:bg-white/10 rounded-t-sm" style="height: 70px;"></div>
+                <span>17</span>
+              </div>
+              <div class="flex flex-col items-center gap-1.5 z-10">
+                <div class="w-5 bg-slate-200 dark:bg-white/10 rounded-t-sm" style="height: 110px;"></div>
+                <span>18</span>
+              </div>
+              <!-- Target Highlight Bar: 19 Sep -->
+              <div class="flex flex-col items-center gap-1.5 z-10">
+                <div class="w-6 bg-slate-900 dark:bg-cyan-400 rounded-t-sm shadow-md" style="height: 130px;"></div>
+                <span class="font-bold text-slate-900 dark:text-cyan-300">19</span>
+              </div>
+              <div class="flex flex-col items-center gap-1.5 z-10">
+                <div class="w-5 bg-slate-200 dark:bg-white/10 rounded-t-sm" style="height: 90px;"></div>
+                <span>20</span>
+              </div>
+              <div class="flex flex-col items-center gap-1.5 z-10">
+                <div class="w-5 bg-slate-200 dark:bg-white/10 rounded-t-sm" style="height: 105px;"></div>
+                <span>21</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-4 pt-3 flex items-center justify-between text-xs font-mono text-slate-500 dark:text-white/40">
+            <span>Target Service Level: 95%</span>
+            <span class="text-emerald-600 dark:text-emerald-400 font-semibold">+1.8% above policy threshold</span>
+          </div>
+        </div>
+
+        <!-- Volume & Flow Overview Widget -->
+        <div class="lg:col-span-6 p-6 rounded-3xl bg-white dark:bg-[#0c1222] border border-slate-200/90 dark:border-white/10 shadow-sm flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-2">
+              <h3 class="text-base font-bold text-slate-900 dark:text-white tracking-tight">Trade Lane Volume & Flow</h3>
+              <span class="text-xs font-mono font-semibold px-2 py-0.5 rounded-full bg-emerald-100 dark:bg-emerald-950/40 text-emerald-800 dark:text-emerald-300">+32.2% growth</span>
+            </div>
+            <div class="text-3xl font-bold text-slate-900 dark:text-white font-mono tracking-tight mb-4">$440,925 <span class="text-xs font-normal text-slate-500 dark:text-white/40 font-sans">across 36 monitored SKUs</span></div>
+
+            <div class="space-y-3 pt-2">
+              <div>
+                <div class="flex items-center justify-between text-xs font-mono mb-1">
+                  <span class="text-slate-600 dark:text-white/70">China / Far East Transshipment</span>
+                  <span class="font-semibold text-slate-900 dark:text-white">$156,646 (35.5%)</span>
+                </div>
+                <div class="w-full h-3 bg-slate-100 dark:bg-white/5 rounded-full overflow-hidden">
+                  <div class="h-full bg-slate-900 dark:bg-cyan-500 rounded-full" style="width: 35.5%;"></div>
+                </div>
+              </div>
+
+              <div>
+                <div class="flex items-center justify-between text-xs font-mono mb-1">
+                  <span class="text-slate-600 dark:text-white/70">EU / Port of Rotterdam Inbound</span>
+                  <span class="font-semibold text-slate-900 dark:text-white">$198,116 (44.9%)</span>
+                </div>
+                <div class="w-full h-3 bg-slate-100 dark:bg-white/5 rounded-full overflow-hidden">
+                  <div class="h-full bg-blue-600 dark:bg-blue-400 rounded-full" style="width: 44.9%;"></div>
+                </div>
+              </div>
+
+              <div>
+                <div class="flex items-center justify-between text-xs font-mono mb-1">
+                  <span class="text-slate-600 dark:text-white/70">Middle East / Jebel Ali Hub</span>
+                  <span class="font-semibold text-slate-900 dark:text-white">$86,163 (19.6%)</span>
+                </div>
+                <div class="w-full h-3 bg-slate-100 dark:bg-white/5 rounded-full overflow-hidden">
+                  <div class="h-full bg-emerald-500 dark:bg-emerald-400 rounded-full" style="width: 19.6%;"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-4 pt-3 border-t border-slate-100 dark:border-white/5 flex items-center justify-between text-xs text-slate-500 dark:text-white/40 font-mono">
+            <span>Channel: Ocean Freight AIS</span>
+            <span>Lead Time Buffer: 4.2 days</span>
+          </div>
+        </div>
+
+        <!-- Measured Outcomes Strip -->
+        <div class="lg:col-span-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          <div class="p-5 rounded-2xl bg-white dark:bg-[#0c1222] border border-slate-200/90 dark:border-white/10 shadow-sm">
+            <span class="text-[11px] font-mono text-cyan-700 dark:text-cyan-400 uppercase font-semibold block mb-1">Contra.com Consulting</span>
+            <div class="text-2xl font-bold text-slate-900 dark:text-white tracking-tight mb-1">22%</div>
+            <div class="text-xs font-semibold text-slate-800 dark:text-white/90 mb-1">Average Cycle Time Cut</div>
+            <p class="text-xs text-slate-500 dark:text-white/60 leading-relaxed">Mined event logs with Celonis to quantify bottleneck stages and rework loops.</p>
+          </div>
+
+          <div class="p-5 rounded-2xl bg-white dark:bg-[#0c1222] border border-slate-200/90 dark:border-white/10 shadow-sm">
+            <span class="text-[11px] font-mono text-blue-700 dark:text-blue-400 uppercase font-semibold block mb-1">Workflow Automation</span>
+            <div class="text-2xl font-bold text-slate-900 dark:text-white tracking-tight mb-1">14 hrs</div>
+            <div class="text-xs font-semibold text-slate-800 dark:text-white/90 mb-1">Weekly Manual Work Cut</div>
+            <p class="text-xs text-slate-500 dark:text-white/60 leading-relaxed">Built Python pipelines replacing recurring manual spreadsheet updates.</p>
+          </div>
+
+          <div class="p-5 rounded-2xl bg-white dark:bg-[#0c1222] border border-slate-200/90 dark:border-white/10 shadow-sm">
+            <span class="text-[11px] font-mono text-emerald-700 dark:text-emerald-400 uppercase font-semibold block mb-1">Enterprise Data Quality</span>
+            <div class="text-2xl font-bold text-slate-900 dark:text-white tracking-tight mb-1">98%</div>
+            <div class="text-xs font-semibold text-slate-800 dark:text-white/90 mb-1">Model-Ready Accuracy</div>
+            <p class="text-xs text-slate-500 dark:text-white/60 leading-relaxed">Audited internal relational databases using SQL, cutting operational waste by 19%.</p>
+          </div>
+
+          <div class="p-5 rounded-2xl bg-white dark:bg-[#0c1222] border border-slate-200/90 dark:border-white/10 shadow-sm">
+            <span class="text-[11px] font-mono text-purple-700 dark:text-purple-400 uppercase font-semibold block mb-1">Lean Six Sigma Thesis</span>
+            <div class="text-2xl font-bold text-slate-900 dark:text-white tracking-tight mb-1">42.6%</div>
+            <div class="text-xs font-semibold text-slate-800 dark:text-white/90 mb-1">Non-Value Time Removed</div>
+            <p class="text-xs text-slate-500 dark:text-white/60 leading-relaxed">Applied DMAIC at Hortus Medicus Clinic, raising efficiency from 20.0% to 30.3%.</p>
+          </div>
+        </div>
+
+      </section>
+
+      <!-- ============ REAL-WORLD GEOGRAPHIC SEA FREIGHT MAP ============ -->
+      <section id="maritime-transport" class="rounded-3xl bg-white dark:bg-[#0c1222] border border-slate-200/90 dark:border-white/10 shadow-sm overflow-hidden p-6">
+        <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6">
+          <div>
+            <div class="flex items-center gap-2 mb-1">
+              <span class="w-2 h-2 rounded-full bg-cyan-500 animate-pulse"></span>
+              <span class="text-xs font-mono uppercase font-semibold text-cyan-700 dark:text-cyan-400">Cartographic AIS Engine</span>
+            </div>
+            <h2 class="text-xl font-bold text-slate-900 dark:text-white tracking-tight">Sea Freight Routing & Stochastic Vessel Dispatch</h2>
+            <p class="text-xs text-slate-500 dark:text-white/60">Cartographic transit across Jakarta, Singapore, Colombo, Dubai, Suez Canal, and Rotterdam.</p>
+          </div>
+          
+          <div class="flex flex-wrap items-center gap-2">
+            <button id="btn-route-suez" class="px-3 py-1.5 rounded-lg bg-slate-900 dark:bg-cyan-400 text-white dark:text-slate-950 font-mono text-xs font-semibold shadow-sm transition">
+              Direct Suez Corridor
+            </button>
+            <button id="btn-route-cape" class="px-3 py-1.5 rounded-lg bg-slate-100 dark:bg-white/10 text-slate-700 dark:text-white font-mono text-xs hover:bg-slate-200 transition">
+              Cape Alternate Route
+            </button>
+            <button id="btn-monsoon" class="px-3 py-1.5 rounded-lg bg-slate-100 dark:bg-white/10 text-slate-700 dark:text-white font-mono text-xs hover:bg-slate-200 transition">
+              Inject Storm Delay (+18h)
+            </button>
+            <button id="btn-steaming" class="px-3 py-1.5 rounded-lg bg-slate-100 dark:bg-white/10 text-slate-700 dark:text-white font-mono text-xs hover:bg-slate-200 transition">
+              Slow-Steaming (-18% Fuel)
+            </button>
+          </div>
+        </div>
+
+        <div class="relative rounded-2xl overflow-hidden border border-slate-200 dark:border-white/10">
+          <div id="maritime-leaflet-map" class="w-full h-80 sm:h-96 md:h-[420px]"></div>
+        </div>
+
+        <div id="port-card" class="mt-4 p-4 rounded-xl bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/5 text-xs font-mono text-slate-700 dark:text-white/70 flex flex-wrap items-center justify-between gap-4">
+          <div>
+            <span class="text-cyan-700 dark:text-cyan-400 font-semibold">SELECTED WAYPOINT:</span>
+            <span id="port-card-name" class="text-slate-900 dark:text-white font-bold ml-2">Port of Singapore (Transshipment Hub)</span>
+          </div>
+          <div class="flex items-center gap-5 text-slate-600 dark:text-white/60">
+            <span>Quay Crane: <strong class="text-slate-900 dark:text-white font-medium">34 moves/hr</strong></span>
+            <span>Dwell Time: <strong class="text-slate-900 dark:text-white font-medium">1.8 days</strong></span>
+            <span>Demurrage Risk: <strong class="text-emerald-600 dark:text-emerald-400 font-medium">Low (0.01)</strong></span>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ LIVE ORDERS & SHIPMENTS TABLE (LOADLOGIC STYLE) ============ -->
+      <section id="orders-section" class="rounded-3xl bg-white dark:bg-[#0c1222] border border-slate-200/90 dark:border-white/10 shadow-sm p-6">
+        <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6">
+          <div class="flex items-center gap-3">
+            <h2 class="text-lg font-bold text-slate-900 dark:text-white tracking-tight">Active Shipments & Orders</h2>
+            <span class="px-2.5 py-0.5 rounded-full bg-slate-100 dark:bg-white/10 text-xs font-mono font-semibold text-slate-600 dark:text-white/80">264 Monitored</span>
+          </div>
+
+          <div class="flex flex-wrap items-center gap-2 text-xs font-medium" id="order-filters">
+            <button class="filter-pill active px-3.5 py-1.5 rounded-xl bg-slate-900 text-white dark:bg-white dark:text-slate-950 font-semibold transition" data-status="all">All 264</button>
+            <button class="filter-pill px-3.5 py-1.5 rounded-xl bg-slate-100 text-slate-700 dark:bg-white/5 dark:text-white/70 hover:bg-slate-200 dark:hover:bg-white/10 transition" data-status="transit">In transit 53</button>
+            <button class="filter-pill px-3.5 py-1.5 rounded-xl bg-slate-100 text-slate-700 dark:bg-white/5 dark:text-white/70 hover:bg-slate-200 dark:hover:bg-white/10 transition" data-status="port">At Port 70</button>
+            <button class="filter-pill px-3.5 py-1.5 rounded-xl bg-slate-100 text-slate-700 dark:bg-white/5 dark:text-white/70 hover:bg-slate-200 dark:hover:bg-white/10 transition" data-status="cleared">Cleared 56</button>
+            <button class="filter-pill px-3.5 py-1.5 rounded-xl bg-slate-100 text-slate-700 dark:bg-white/5 dark:text-white/70 hover:bg-slate-200 dark:hover:bg-white/10 transition" data-status="delayed">Weather Buffer 85</button>
+          </div>
+        </div>
+
+        <div class="space-y-2.5 overflow-x-auto" id="orders-list">
+          
+          <div class="order-row min-w-[720px] p-4 rounded-2xl bg-slate-50/70 hover:bg-slate-100/80 dark:bg-white/5 dark:hover:bg-white/10 border border-slate-200/60 dark:border-white/5 transition flex items-center justify-between text-xs" data-status="port">
+            <div class="w-32 font-mono font-semibold text-slate-900 dark:text-white flex items-center gap-1.5">
+              <span class="w-2 h-2 rounded-full bg-amber-500"></span>
+              <span>#SC-324561324</span>
+            </div>
+            <div class="w-40 text-slate-700 dark:text-white/80 font-medium">
+              MV Arraihan Vanguard
+            </div>
+            <div class="w-48 text-slate-600 dark:text-white/70 flex items-center gap-2">
+              <span class="font-mono text-[10px] px-1.5 py-0.5 rounded bg-slate-200 dark:bg-white/10 font-bold">GB</span> London, UK
+              <span class="text-slate-400">→</span>
+              <span class="font-mono text-[10px] px-1.5 py-0.5 rounded bg-slate-200 dark:bg-white/10 font-bold">EE</span> Tallinn, EE
+            </div>
+            <div class="w-28 font-mono text-slate-500 dark:text-white/50">
+              12 Sep, 2026
+            </div>
+            <div class="w-28">
+              <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-amber-100 dark:bg-amber-950/40 text-amber-800 dark:text-amber-300 font-mono text-[11px] font-medium">
+                <span class="w-1.5 h-1.5 rounded-full bg-amber-500"></span>
+                At Port
+              </span>
+            </div>
+            <div>
+              <a href="#compendium-card" class="px-3 py-1.5 rounded-lg bg-white dark:bg-white/10 border border-slate-200 dark:border-white/10 font-medium hover:bg-slate-50 dark:hover:bg-white/20 transition text-[11px]">
+                Inspect
+              </a>
+            </div>
+          </div>
+
+          <div class="order-row min-w-[720px] p-4 rounded-2xl bg-slate-50/70 hover:bg-slate-100/80 dark:bg-white/5 dark:hover:bg-white/10 border border-slate-200/60 dark:border-white/5 transition flex items-center justify-between text-xs" data-status="transit">
+            <div class="w-32 font-mono font-semibold text-slate-900 dark:text-white flex items-center gap-1.5">
+              <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+              <span>#SC-183896772</span>
+            </div>
+            <div class="w-40 text-slate-700 dark:text-white/80 font-medium">
+              Starlight Maritime
+            </div>
+            <div class="w-48 text-slate-600 dark:text-white/70 flex items-center gap-2">
+              <span class="font-mono text-[10px] px-1.5 py-0.5 rounded bg-slate-200 dark:bg-white/10 font-bold">ID</span> Jakarta, ID
+              <span class="text-slate-400">→</span>
+              <span class="font-mono text-[10px] px-1.5 py-0.5 rounded bg-slate-200 dark:bg-white/10 font-bold">NL</span> Rotterdam, NL
+            </div>
+            <div class="w-28 font-mono text-slate-500 dark:text-white/50">
+              14 Sep, 2026
+            </div>
+            <div class="w-28">
+              <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-emerald-100 dark:bg-emerald-950/40 text-emerald-800 dark:text-emerald-300 font-mono text-[11px] font-medium">
+                <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+                In transit
+              </span>
+            </div>
+            <div>
+              <a href="#compendium-card" class="px-3 py-1.5 rounded-lg bg-white dark:bg-white/10 border border-slate-200 dark:border-white/10 font-medium hover:bg-slate-50 dark:hover:bg-white/20 transition text-[11px]">
+                Inspect
+              </a>
+            </div>
+          </div>
+
+          <div class="order-row min-w-[720px] p-4 rounded-2xl bg-slate-50/70 hover:bg-slate-100/80 dark:bg-white/5 dark:hover:bg-white/10 border border-slate-200/60 dark:border-white/5 transition flex items-center justify-between text-xs" data-status="transit">
+            <div class="w-32 font-mono font-semibold text-slate-900 dark:text-white flex items-center gap-1.5">
+              <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+              <span>#SC-267189302</span>
+            </div>
+            <div class="w-40 text-slate-700 dark:text-white/80 font-medium">
+              Gulf Gateway Express
+            </div>
+            <div class="w-48 text-slate-600 dark:text-white/70 flex items-center gap-2">
+              <span class="font-mono text-[10px] px-1.5 py-0.5 rounded bg-slate-200 dark:bg-white/10 font-bold">AE</span> Dubai, AE
+              <span class="text-slate-400">→</span>
+              <span class="font-mono text-[10px] px-1.5 py-0.5 rounded bg-slate-200 dark:bg-white/10 font-bold">DE</span> Hamburg, DE
+            </div>
+            <div class="w-28 font-mono text-slate-500 dark:text-white/50">
+              15 Sep, 2026
+            </div>
+            <div class="w-28">
+              <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-emerald-100 dark:bg-emerald-950/40 text-emerald-800 dark:text-emerald-300 font-mono text-[11px] font-medium">
+                <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+                In transit
+              </span>
+            </div>
+            <div>
+              <a href="#compendium-card" class="px-3 py-1.5 rounded-lg bg-white dark:bg-white/10 border border-slate-200 dark:border-white/10 font-medium hover:bg-slate-50 dark:hover:bg-white/20 transition text-[11px]">
+                Inspect
+              </a>
+            </div>
+          </div>
+
+          <div class="order-row min-w-[720px] p-4 rounded-2xl bg-slate-50/70 hover:bg-slate-100/80 dark:bg-white/5 dark:hover:bg-white/10 border border-slate-200/60 dark:border-white/5 transition flex items-center justify-between text-xs" data-status="cleared">
+            <div class="w-32 font-mono font-semibold text-slate-900 dark:text-white flex items-center gap-1.5">
+              <span class="w-2 h-2 rounded-full bg-cyan-500"></span>
+              <span>#SC-942625346</span>
+            </div>
+            <div class="w-40 text-slate-700 dark:text-white/80 font-medium">
+              Nordic Feeder Lines
+            </div>
+            <div class="w-48 text-slate-600 dark:text-white/70 flex items-center gap-2">
+              <span class="font-mono text-[10px] px-1.5 py-0.5 rounded bg-slate-200 dark:bg-white/10 font-bold">SG</span> Singapore, SG
+              <span class="text-slate-400">→</span>
+              <span class="font-mono text-[10px] px-1.5 py-0.5 rounded bg-slate-200 dark:bg-white/10 font-bold">NO</span> Oslo, NO
+            </div>
+            <div class="w-28 font-mono text-slate-500 dark:text-white/50">
+              18 Sep, 2026
+            </div>
+            <div class="w-28">
+              <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-cyan-100 dark:bg-cyan-950/40 text-cyan-800 dark:text-cyan-300 font-mono text-[11px] font-medium">
+                <span class="w-1.5 h-1.5 rounded-full bg-cyan-500"></span>
+                Cleared
+              </span>
+            </div>
+            <div>
+              <a href="#compendium-card" class="px-3 py-1.5 rounded-lg bg-white dark:bg-white/10 border border-slate-200 dark:border-white/10 font-medium hover:bg-slate-50 dark:hover:bg-white/20 transition text-[11px]">
+                Inspect
+              </a>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ============ PROJECTS & RESEARCH SECTION ============ -->
+      <section id="projects" class="space-y-6">
+        <div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
+          <div>
+            <span class="text-xs font-mono uppercase font-semibold text-cyan-700 dark:text-cyan-400 block mb-1">Codebases & Research</span>
+            <h2 class="text-2xl font-bold text-slate-900 dark:text-white tracking-tight">Engineering Portfolio</h2>
+            <p class="text-xs text-slate-500 dark:text-white/60">Verified quantitative models, simulation engines, and analytical decks from my GitHub repositories.</p>
+          </div>
+
+          <div class="flex flex-wrap gap-2 text-xs font-mono">
+            <button class="project-tab active px-3.5 py-1.5 rounded-xl bg-slate-900 text-white dark:bg-white dark:text-slate-950 font-medium transition" data-cat="all">All Codebases</button>
+            <button class="project-tab px-3.5 py-1.5 rounded-xl bg-white dark:bg-white/5 text-slate-700 dark:text-white/70 border border-slate-200 dark:border-white/10 hover:bg-slate-100 transition" data-cat="planning">Planning</button>
+            <button class="project-tab px-3.5 py-1.5 rounded-xl bg-white dark:bg-white/5 text-slate-700 dark:text-white/70 border border-slate-200 dark:border-white/10 hover:bg-slate-100 transition" data-cat="simulation">Simulation</button>
+            <button class="project-tab px-3.5 py-1.5 rounded-xl bg-white dark:bg-white/5 text-slate-700 dark:text-white/70 border border-slate-200 dark:border-white/10 hover:bg-slate-100 transition" data-cat="optimization">Optimization</button>
+          </div>
+        </div>
+
+        <!-- Flagship Compendium Card -->
+        <article id="compendium-card" class="p-8 rounded-3xl bg-white dark:bg-[#0c1222] border border-cyan-300 dark:border-cyan-500/30 shadow-sm flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+          <div class="max-w-2xl">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-50 dark:bg-cyan-950/40 text-cyan-800 dark:text-cyan-300 border border-cyan-200 dark:border-cyan-500/30 text-xs font-mono font-medium mb-3">
+              <span class="w-2 h-2 rounded-full bg-cyan-500 animate-pulse"></span>
+              FLAGSHIP ANALYTICAL DECK · SIX CASES
+            </div>
+            <h3 class="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white tracking-tight mb-2">
+              Supply Chain Analytics Compendium
+            </h3>
+            <p class="text-xs sm:text-sm text-slate-600 dark:text-white/70 leading-relaxed mb-4">
+              Six end-to-end analytical cases covering multiple regression forecasting on 24-month time-series (R-squared 0.439 to 0.948, MAPE 10.57%), ABC classification across 36 SKUs, push versus pull inventory economics, and sourcing risk under supplier concentration in the semiconductor industry. Transparently reports rejected models rather than only favorable fits.
+            </p>
+            <div class="flex flex-wrap gap-2 text-xs font-mono text-cyan-700 dark:text-cyan-300">
+              <span class="px-2.5 py-1 bg-slate-100 dark:bg-white/5 rounded-md">Regression (24-mo)</span>
+              <span class="px-2.5 py-1 bg-slate-100 dark:bg-white/5 rounded-md">ABC Classification (36 SKUs)</span>
+              <span class="px-2.5 py-1 bg-slate-100 dark:bg-white/5 rounded-md">Push vs Pull Economics</span>
+              <span class="px-2.5 py-1 bg-slate-100 dark:bg-white/5 rounded-md">Sourcing Risk</span>
+            </div>
+          </div>
+          <div class="shrink-0">
+            <a href="https://docs.google.com/presentation/d/1JefxdfbX2Pg09J3zPT0e3LKRoDEggwdq/edit?usp=sharing&ouid=104847496384061111514&rtpof=true&sd=true" target="_blank" rel="noopener noreferrer" class="px-5 py-3 rounded-xl bg-slate-900 hover:bg-slate-800 dark:bg-cyan-400 dark:hover:bg-cyan-300 text-white dark:text-slate-950 font-semibold text-xs transition shadow-sm flex items-center gap-1.5">
+              <span>Open in Google Slides</span>
               <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
             </a>
-            <a href="#maritime-transport" class="px-5 py-2.5 rounded-xl bg-white/20 hover:bg-white/30 backdrop-blur-md text-white font-medium text-xs transition border border-white/30">
-              Live Sea Freight Map
-            </a>
-            <a href="#orders-section" class="px-5 py-2.5 rounded-xl bg-white/20 hover:bg-white/30 backdrop-blur-md text-white font-medium text-xs transition border border-white/30">
-              Order Dispatch Table
-            </a>
           </div>
-        </div>
-      </div>
+        </article>
 
-    </div>
-
-    <!-- Live Telemetry Banner (Directly under ship) -->
-    <div class="grid grid-cols-2 sm:grid-cols-4 divide-x divide-slate-200 dark:divide-white/10 border-t border-slate-200 dark:border-white/10 bg-slate-50/90 dark:bg-white/5 font-mono text-xs text-slate-800 dark:text-white">
-      <div class="p-3.5 px-6">
-        <div class="text-slate-500 dark:text-white/50 text-[10px] uppercase font-sans mb-0.5">Speed Over Ground</div>
-        <div class="font-bold text-sm text-slate-900 dark:text-white">19.4 knots</div>
-      </div>
-      <div class="p-3.5 px-6">
-        <div class="text-slate-500 dark:text-white/50 text-[10px] uppercase font-sans mb-0.5">Vessel Payload</div>
-        <div class="font-bold text-sm text-cyan-600 dark:text-cyan-400">18,450 TEU (92%)</div>
-      </div>
-      <div class="p-3.5 px-6">
-        <div class="text-slate-500 dark:text-white/50 text-[10px] uppercase font-sans mb-0.5">Fuel Burn Efficiency</div>
-        <div class="font-bold text-sm text-emerald-600 dark:text-emerald-400">-8.4% mt/nmi</div>
-      </div>
-      <div class="p-3.5 px-6">
-        <div class="text-slate-500 dark:text-white/50 text-[10px] uppercase font-sans mb-0.5">Stochastic Lead Time</div>
-        <div class="font-bold text-sm text-purple-600 dark:text-purple-400">-14.2h (Optimal)</div>
-      </div>
-    </div>
-
-  </section>
-
-  <!-- ============ BENTO ANALYTICS ROW: FULFILLMENT & VOLUME OVERVIEW (LOADLOGIC STYLE) ============ -->
-  <section id="record" class="grid grid-cols-1 lg:grid-cols-12 gap-6">
-    
-    <!-- Widget 1: Fulfillment Performance Bar Chart (Col 6) -->
-    <div class="lg:col-span-6 p-6 rounded-3xl bg-white dark:bg-[#0c1222] border border-slate-200/90 dark:border-white/10 shadow-sm flex flex-col justify-between">
-      <div>
-        <div class="flex items-center justify-between mb-4">
-          <div>
-            <h3 class="text-base font-bold text-slate-900 dark:text-white tracking-tight">Fulfillment Performance</h3>
-            <p class="text-xs text-slate-500 dark:text-white/50">OTIF (On-Time, In-Full) replenishment tracking across 14-day window</p>
-          </div>
-          <div class="flex items-center gap-1 text-xs font-mono text-slate-500 dark:text-white/50 bg-slate-100 dark:bg-white/5 px-2.5 py-1 rounded-lg">
-            <span>19 Sep</span>
-            <span class="text-slate-300 dark:text-white/20">|</span>
-            <span class="text-emerald-600 dark:text-emerald-400 font-semibold">96.8%</span>
-          </div>
-        </div>
-
-        <!-- Simulated Bar Chart Layout matching LoadLogic -->
-        <div class="relative h-44 w-full flex items-end justify-between pt-6 pb-2 px-2 border-b border-slate-100 dark:border-white/5 font-mono text-[10px] text-slate-400">
+        <!-- Project Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="projects-grid">
           
-          <!-- Horizontal Threshold Guideline (50% & 100%) -->
-          <div class="absolute inset-x-0 top-6 border-b border-dashed border-slate-200 dark:border-white/10"></div>
-          <span class="absolute right-1 top-4 text-[9px] text-slate-400">100%</span>
-          
-          <div class="absolute inset-x-0 top-24 border-b border-dashed border-slate-200 dark:border-white/10"></div>
-          <span class="absolute right-1 top-22 text-[9px] text-slate-400">50%</span>
+          <article class="proj-card p-6 rounded-3xl bg-white dark:bg-[#0c1222] border border-slate-200/90 dark:border-white/10 shadow-sm flex flex-col justify-between" data-cat="planning">
+            <div>
+              <div class="flex items-center justify-between text-[11px] font-mono text-slate-500 dark:text-white/40 mb-2">
+                <span class="text-blue-600 dark:text-blue-400 font-semibold">Inventory Optimization</span>
+                <span>2026</span>
+              </div>
+              <h4 class="text-base font-bold text-slate-900 dark:text-white mb-2">Inventory Brain & Demand Platform</h4>
+              <p class="text-xs text-slate-600 dark:text-white/70 leading-relaxed mb-4">
+                Multi-echelon inventory optimization across distribution tiers, discrete-event simulation of replenishment policies under demand and lead-time variability, and scenario decision dashboard.
+              </p>
+            </div>
+            <div>
+              <div class="flex flex-wrap gap-1 font-mono text-[10px] text-slate-500 dark:text-white/50 mb-4 pt-3 border-t border-slate-100 dark:border-white/5">
+                <span class="px-2 py-0.5 bg-slate-100 dark:bg-white/5 rounded">Python</span>
+                <span class="px-2 py-0.5 bg-slate-100 dark:bg-white/5 rounded">SimPy</span>
+                <span class="px-2 py-0.5 bg-slate-100 dark:bg-white/5 rounded">Streamlit</span>
+              </div>
+              <a href="https://github.com/yzarrai/inventory-brain" target="_blank" rel="noopener noreferrer" class="text-xs font-semibold text-blue-600 dark:text-blue-400 hover:underline flex items-center gap-1">
+                <span>inventory-brain</span>
+                <span class="text-[10px]">↗</span>
+              </a>
+            </div>
+          </article>
 
-          <!-- Day Bars -->
-          <div class="flex flex-col items-center gap-1.5 z-10">
-            <div class="w-5 bg-slate-200 dark:bg-white/10 rounded-t-sm" style="height: 60px;"></div>
-            <span>13</span>
+          <article class="proj-card p-6 rounded-3xl bg-white dark:bg-[#0c1222] border border-slate-200/90 dark:border-white/10 shadow-sm flex flex-col justify-between" data-cat="planning">
+            <div>
+              <div class="flex items-center justify-between text-[11px] font-mono text-slate-500 dark:text-white/40 mb-2">
+                <span class="text-cyan-600 dark:text-cyan-400 font-semibold">Machine Learning Forecasting</span>
+                <span>2026</span>
+              </div>
+              <h4 class="text-base font-bold text-slate-900 dark:text-white mb-2">Demand & Stock Fluctuation ML</h4>
+              <p class="text-xs text-slate-600 dark:text-white/70 leading-relaxed mb-4">
+                Walk-forward benchmark of SARIMA, Prophet, and XGBoost on MAE/RMSE/MAPE; converted into service-level safety stock and reorder point recommendations with SHAP attribution.
+              </p>
+            </div>
+            <div>
+              <div class="flex flex-wrap gap-1 font-mono text-[10px] text-slate-500 dark:text-white/50 mb-4 pt-3 border-t border-slate-100 dark:border-white/5">
+                <span class="px-2 py-0.5 bg-slate-100 dark:bg-white/5 rounded">XGBoost</span>
+                <span class="px-2 py-0.5 bg-slate-100 dark:bg-white/5 rounded">SARIMA</span>
+                <span class="px-2 py-0.5 bg-slate-100 dark:bg-white/5 rounded">SHAP</span>
+              </div>
+              <a href="https://github.com/yzarrai/retail-demand-forecasting-ml" target="_blank" rel="noopener noreferrer" class="text-xs font-semibold text-cyan-600 dark:text-cyan-400 hover:underline flex items-center gap-1">
+                <span>retail-demand-forecasting-ml</span>
+                <span class="text-[10px]">↗</span>
+              </a>
+            </div>
+          </article>
+
+          <article class="proj-card p-6 rounded-3xl bg-white dark:bg-[#0c1222] border border-slate-200/90 dark:border-white/10 shadow-sm flex flex-col justify-between" data-cat="simulation">
+            <div>
+              <div class="flex items-center justify-between text-[11px] font-mono text-slate-500 dark:text-white/40 mb-2">
+                <span class="text-emerald-600 dark:text-emerald-400 font-semibold">Autonomous Agent Swarm</span>
+                <span>2025</span>
+              </div>
+              <h4 class="text-base font-bold text-slate-900 dark:text-white mb-2">Multi-Agent Supply Chain AI</h4>
+              <p class="text-xs text-slate-600 dark:text-white/70 leading-relaxed mb-4">
+                4-agent autonomous swarm (Demand, Inventory, Risk, Logistics) using a 2-round debate protocol for Pareto-optimal trade-offs, MILP lot-sizing, and simulated ERP webhook dispatch.
+              </p>
+            </div>
+            <div>
+              <div class="flex flex-wrap gap-1 font-mono text-[10px] text-slate-500 dark:text-white/50 mb-4 pt-3 border-t border-slate-100 dark:border-white/5">
+                <span class="px-2 py-0.5 bg-slate-100 dark:bg-white/5 rounded">MILP</span>
+                <span class="px-2 py-0.5 bg-slate-100 dark:bg-white/5 rounded">DuckDB</span>
+                <span class="px-2 py-0.5 bg-slate-100 dark:bg-white/5 rounded">FastAPI</span>
+              </div>
+              <a href="https://github.com/yzarrai/supply-chain-agentic-ai" target="_blank" rel="noopener noreferrer" class="text-xs font-semibold text-emerald-600 dark:text-emerald-400 hover:underline flex items-center gap-1">
+                <span>supply-chain-agentic-ai</span>
+                <span class="text-[10px]">↗</span>
+              </a>
+            </div>
+          </article>
+
+          <article class="proj-card p-6 rounded-3xl bg-white dark:bg-[#0c1222] border border-slate-200/90 dark:border-white/10 shadow-sm flex flex-col justify-between" data-cat="simulation">
+            <div>
+              <div class="flex items-center justify-between text-[11px] font-mono text-slate-500 dark:text-white/40 mb-2">
+                <span class="text-purple-600 dark:text-purple-400 font-semibold">SimPy Simulation</span>
+                <span>2025</span>
+              </div>
+              <h4 class="text-base font-bold text-slate-900 dark:text-white mb-2">Supply Chain Simulation Agent</h4>
+              <p class="text-xs text-slate-600 dark:text-white/70 leading-relaxed mb-4">
+                Discrete-event simulation of 4-echelon replenishment using Common Random Numbers to cut Monte Carlo variance by 19% to 37% for statistical policy evaluation.
+              </p>
+            </div>
+            <div>
+              <div class="flex flex-wrap gap-1 font-mono text-[10px] text-slate-500 dark:text-white/50 mb-4 pt-3 border-t border-slate-100 dark:border-white/5">
+                <span class="px-2 py-0.5 bg-slate-100 dark:bg-white/5 rounded">SimPy</span>
+                <span class="px-2 py-0.5 bg-slate-100 dark:bg-white/5 rounded">LangChain</span>
+                <span class="px-2 py-0.5 bg-slate-100 dark:bg-white/5 rounded">Pydantic</span>
+              </div>
+              <a href="https://github.com/yzarrai/supply-chain-simulation-agent" target="_blank" rel="noopener noreferrer" class="text-xs font-semibold text-purple-600 dark:text-purple-400 hover:underline flex items-center gap-1">
+                <span>supply-chain-simulation-agent</span>
+                <span class="text-[10px]">↗</span>
+              </a>
+            </div>
+          </article>
+
+          <article class="proj-card p-6 rounded-3xl bg-white dark:bg-[#0c1222] border border-slate-200/90 dark:border-white/10 shadow-sm flex flex-col justify-between" data-cat="optimization">
+            <div>
+              <div class="flex items-center justify-between text-[11px] font-mono text-slate-500 dark:text-white/40 mb-2">
+                <span class="text-amber-600 dark:text-amber-400 font-semibold">Stochastic MILP</span>
+                <span>2026</span>
+              </div>
+              <h4 class="text-base font-bold text-slate-900 dark:text-white mb-2">Stochastic Cold-Chain Planner</h4>
+              <p class="text-xs text-slate-600 dark:text-white/70 leading-relaxed mb-4">
+                Two-stage stochastic mathematical optimization pipeline for cold-chain vaccine distribution, modeling maritime disruption scenarios to recommend robust replenishment plans.
+              </p>
+            </div>
+            <div>
+              <div class="flex flex-wrap gap-1 font-mono text-[10px] text-slate-500 dark:text-white/50 mb-4 pt-3 border-t border-slate-100 dark:border-white/5">
+                <span class="px-2 py-0.5 bg-slate-100 dark:bg-white/5 rounded">MILP</span>
+                <span class="px-2 py-0.5 bg-slate-100 dark:bg-white/5 rounded">Stochastic</span>
+                <span class="px-2 py-0.5 bg-slate-100 dark:bg-white/5 rounded">Cold-Chain</span>
+              </div>
+              <a href="https://github.com/yzarrai/stochastic-coldchain-planner" target="_blank" rel="noopener noreferrer" class="text-xs font-semibold text-amber-600 dark:text-amber-400 hover:underline flex items-center gap-1">
+                <span>stochastic-coldchain-planner</span>
+                <span class="text-[10px]">↗</span>
+              </a>
+            </div>
+          </article>
+
+          <article class="proj-card p-6 rounded-3xl bg-white dark:bg-[#0c1222] border border-slate-200/90 dark:border-white/10 shadow-sm flex flex-col justify-between" data-cat="optimization">
+            <div>
+              <div class="flex items-center justify-between text-[11px] font-mono text-slate-500 dark:text-white/40 mb-2">
+                <span class="text-rose-600 dark:text-rose-400 font-semibold">Procurement AI</span>
+                <span>2026</span>
+              </div>
+              <h4 class="text-base font-bold text-slate-900 dark:text-white mb-2">Procurement RAG Assistant</h4>
+              <p class="text-xs text-slate-600 dark:text-white/70 leading-relaxed mb-4">
+                Enterprise retrieval-augmented generation assistant for procurement documentation with clause-level citations and 5-layer grounding guardrail system preventing hallucination.
+              </p>
+            </div>
+            <div>
+              <div class="flex flex-wrap gap-1 font-mono text-[10px] text-slate-500 dark:text-white/50 mb-4 pt-3 border-t border-slate-100 dark:border-white/5">
+                <span class="px-2 py-0.5 bg-slate-100 dark:bg-white/5 rounded">BM25 + RRF</span>
+                <span class="px-2 py-0.5 bg-slate-100 dark:bg-white/5 rounded">Guardrails</span>
+                <span class="px-2 py-0.5 bg-slate-100 dark:bg-white/5 rounded">Contracts</span>
+              </div>
+              <a href="https://github.com/yzarrai/procure-rag" target="_blank" rel="noopener noreferrer" class="text-xs font-semibold text-rose-600 dark:text-rose-400 hover:underline flex items-center gap-1">
+                <span>procure-rag</span>
+                <span class="text-[10px]">↗</span>
+              </a>
+            </div>
+          </article>
+
+        </div>
+      </section>
+
+      <!-- ============ TECHNICAL CAPABILITIES & STACK ============ -->
+      <section id="skills" class="rounded-3xl bg-white dark:bg-[#0c1222] border border-slate-200/90 dark:border-white/10 shadow-sm p-6 sm:p-8">
+        <div class="mb-6">
+          <span class="text-xs font-mono uppercase font-semibold text-cyan-700 dark:text-cyan-400 block mb-1">Competencies & Frameworks</span>
+          <h2 class="text-xl font-bold text-slate-900 dark:text-white tracking-tight">Supply Chain Stack & Optimization Frameworks</h2>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div class="p-5 rounded-2xl bg-slate-50 dark:bg-white/5 border border-slate-200/60 dark:border-white/5">
+            <h3 class="text-sm font-bold text-slate-900 dark:text-white mb-2">Supply Chain & Operations</h3>
+            <p class="text-xs text-slate-600 dark:text-white/70 leading-relaxed mb-4">
+              Demand Planning & Forecasting, Inventory Optimization, Safety Stock Modelling, Sourcing & Supplier Risk, Lean Six Sigma (DMAIC), Process Mining (Celonis, pm4py).
+            </p>
+            <div class="flex flex-wrap gap-1.5 font-mono text-[11px] text-cyan-700 dark:text-cyan-300">
+              <span class="px-2 py-0.5 bg-white dark:bg-white/10 rounded">Process Mining</span>
+              <span class="px-2 py-0.5 bg-white dark:bg-white/10 rounded">Safety Stock</span>
+              <span class="px-2 py-0.5 bg-white dark:bg-white/10 rounded">DMAIC</span>
+            </div>
           </div>
-          <div class="flex flex-col items-center gap-1.5 z-10">
-            <div class="w-5 bg-slate-200 dark:bg-white/10 rounded-t-sm" style="height: 85px;"></div>
-            <span>14</span>
+
+          <div class="p-5 rounded-2xl bg-slate-50 dark:bg-white/5 border border-slate-200/60 dark:border-white/5">
+            <h3 class="text-sm font-bold text-slate-900 dark:text-white mb-2">Data Science & Optimization</h3>
+            <p class="text-xs text-slate-600 dark:text-white/70 leading-relaxed mb-4">
+              Python, SQL, Celonis, SimPy (Discrete-Event Simulation), PuLP (MILP), Pandas, Polars, Scikit-learn, SARIMAX, XGBoost, SHAP, DuckDB, ChromaDB.
+            </p>
+            <div class="flex flex-wrap gap-1.5 font-mono text-[11px] text-blue-700 dark:text-blue-300">
+              <span class="px-2 py-0.5 bg-white dark:bg-white/10 rounded">Python</span>
+              <span class="px-2 py-0.5 bg-white dark:bg-white/10 rounded">SQL</span>
+              <span class="px-2 py-0.5 bg-white dark:bg-white/10 rounded">Celonis</span>
+              <span class="px-2 py-0.5 bg-white dark:bg-white/10 rounded">SimPy</span>
+            </div>
           </div>
-          <div class="flex flex-col items-center gap-1.5 z-10">
-            <div class="w-5 bg-slate-200 dark:bg-white/10 rounded-t-sm" style="height: 75px;"></div>
-            <span>15</span>
-          </div>
-          <div class="flex flex-col items-center gap-1.5 z-10">
-            <div class="w-5 bg-slate-200 dark:bg-white/10 rounded-t-sm" style="height: 95px;"></div>
-            <span>16</span>
-          </div>
-          <div class="flex flex-col items-center gap-1.5 z-10">
-            <div class="w-5 bg-slate-200 dark:bg-white/10 rounded-t-sm" style="height: 70px;"></div>
-            <span>17</span>
-          </div>
-          <div class="flex flex-col items-center gap-1.5 z-10">
-            <div class="w-5 bg-slate-200 dark:bg-white/10 rounded-t-sm" style="height: 110px;"></div>
-            <span>18</span>
-          </div>
-          <!-- Target Highlight Bar: 19 Sep -->
-          <div class="flex flex-col items-center gap-1.5 z-10">
-            <div class="w-6 bg-slate-900 dark:bg-cyan-400 rounded-t-sm shadow-md" style="height: 130px;"></div>
-            <span class="font-bold text-slate-900 dark:text-cyan-300">19</span>
-          </div>
-          <div class="flex flex-col items-center gap-1.5 z-10">
-            <div class="w-5 bg-slate-200 dark:bg-white/10 rounded-t-sm" style="height: 90px;"></div>
-            <span>20</span>
-          </div>
-          <div class="flex flex-col items-center gap-1.5 z-10">
-            <div class="w-5 bg-slate-200 dark:bg-white/10 rounded-t-sm" style="height: 105px;"></div>
-            <span>21</span>
+
+          <div class="p-5 rounded-2xl bg-slate-50 dark:bg-white/5 border border-slate-200/60 dark:border-white/5">
+            <h3 class="text-sm font-bold text-slate-900 dark:text-white mb-2">Engineering & Delivery</h3>
+            <p class="text-xs text-slate-600 dark:text-white/70 leading-relaxed mb-4">
+              Git & GitHub, FastAPI, Docker, Power BI, Tableau, Streamlit, Automated ETL Pipelines, Working Knowledge of SAP, Oracle, Odoo, and Salesforce.
+            </p>
+            <div class="flex flex-wrap gap-1.5 font-mono text-[11px] text-emerald-700 dark:text-emerald-300">
+              <span class="px-2 py-0.5 bg-white dark:bg-white/10 rounded">Git</span>
+              <span class="px-2 py-0.5 bg-white dark:bg-white/10 rounded">FastAPI</span>
+              <span class="px-2 py-0.5 bg-white dark:bg-white/10 rounded">Docker</span>
+              <span class="px-2 py-0.5 bg-white dark:bg-white/10 rounded">Streamlit</span>
+            </div>
           </div>
         </div>
-      </div>
+      </section>
 
-      <div class="mt-4 pt-3 flex items-center justify-between text-xs font-mono text-slate-500 dark:text-white/40">
-        <span>Target Service Level: 95%</span>
-        <span class="text-emerald-600 dark:text-emerald-400 font-semibold">+1.8% above policy threshold</span>
-      </div>
-    </div>
-
-    <!-- Widget 2: Sales & Volume Overview (Col 6) -->
-    <div class="lg:col-span-6 p-6 rounded-3xl bg-white dark:bg-[#0c1222] border border-slate-200/90 dark:border-white/10 shadow-sm flex flex-col justify-between">
-      <div>
-        <div class="flex items-center justify-between mb-2">
-          <h3 class="text-base font-bold text-slate-900 dark:text-white tracking-tight">Trade Lane Volume & Flow</h3>
-          <span class="text-xs font-mono font-semibold px-2 py-0.5 rounded-full bg-emerald-100 dark:bg-emerald-950/40 text-emerald-800 dark:text-emerald-300">+32.2% growth</span>
-        </div>
-        <div class="text-3xl font-bold text-slate-900 dark:text-white font-mono tracking-tight mb-4">$440,925 <span class="text-xs font-normal text-slate-500 dark:text-white/40 font-sans">across 36 monitored SKUs</span></div>
-
-        <!-- Tiered Stacked Distribution Bar Chart -->
-        <div class="space-y-3 pt-2">
+      <!-- ============ CONTACT & FOOTER ============ -->
+      <footer id="contact" class="rounded-3xl bg-white dark:bg-[#0c1222] border border-slate-200/90 dark:border-white/10 shadow-sm p-6 sm:p-8">
+        <div class="flex flex-col md:flex-row md:items-center justify-between gap-6 pb-6 border-b border-slate-100 dark:border-white/5">
           <div>
-            <div class="flex items-center justify-between text-xs font-mono mb-1">
-              <span class="text-slate-600 dark:text-white/70">China / Far East Transshipment</span>
-              <span class="font-semibold text-slate-900 dark:text-white">$156,646 (35.5%)</span>
-            </div>
-            <div class="w-full h-3 bg-slate-100 dark:bg-white/5 rounded-full overflow-hidden">
-              <div class="h-full bg-slate-900 dark:bg-cyan-500 rounded-full" style="width: 35.5%;"></div>
-            </div>
+            <h3 class="text-lg font-bold text-slate-900 dark:text-white tracking-tight">Connect with Yusuf Zaidany Arraihan</h3>
+            <p class="text-xs text-slate-500 dark:text-white/60">Open to full-time roles, contract consulting, and global supply chain analytics engagements.</p>
           </div>
+          <div class="flex flex-wrap items-center gap-3">
+            <button id="copy-email-btn" class="px-4 py-2.5 rounded-xl bg-slate-900 hover:bg-slate-800 dark:bg-white dark:hover:bg-slate-100 text-white dark:text-slate-950 font-semibold text-xs transition shadow-sm flex items-center gap-2">
+              <span>Copy Email</span>
+              <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" /></svg>
+            </button>
+            <button id="footer-cv-btn" class="px-4 py-2.5 rounded-xl border border-slate-300 dark:border-white/20 text-slate-800 dark:text-white font-medium text-xs hover:bg-slate-100 dark:hover:bg-white/10 transition">
+              Download CV
+            </button>
+            <a href="https://docs.google.com/presentation/d/1JefxdfbX2Pg09J3zPT0e3LKRoDEggwdq/edit?usp=sharing&ouid=104847496384061111514&rtpof=true&sd=true" target="_blank" rel="noopener noreferrer" class="px-4 py-2.5 rounded-xl border border-cyan-500/40 text-cyan-700 dark:text-cyan-300 font-medium text-xs hover:bg-cyan-50 dark:hover:bg-cyan-950/30 transition flex items-center gap-1.5">
+              <span>Analytics Compendium</span>
+              <span class="text-[10px]">↗</span>
+            </a>
+          </div>
+        </div>
 
+        <div class="pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-mono text-slate-500 dark:text-white/40">
           <div>
-            <div class="flex items-center justify-between text-xs font-mono mb-1">
-              <span class="text-slate-600 dark:text-white/70">EU / Port of Rotterdam Inbound</span>
-              <span class="font-semibold text-slate-900 dark:text-white">$198,116 (44.9%)</span>
-            </div>
-            <div class="w-full h-3 bg-slate-100 dark:bg-white/5 rounded-full overflow-hidden">
-              <div class="h-full bg-blue-600 dark:bg-blue-400 rounded-full" style="width: 44.9%;"></div>
-            </div>
+            Yusuf Zaidany Arraihan · Supply Chain Analytics & Operations Portfolio
           </div>
-
-          <div>
-            <div class="flex items-center justify-between text-xs font-mono mb-1">
-              <span class="text-slate-600 dark:text-white/70">Middle East / Jebel Ali Hub</span>
-              <span class="font-semibold text-slate-900 dark:text-white">$86,163 (19.6%)</span>
-            </div>
-            <div class="w-full h-3 bg-slate-100 dark:bg-white/5 rounded-full overflow-hidden">
-              <div class="h-full bg-emerald-500 dark:bg-emerald-400 rounded-full" style="width: 19.6%;"></div>
-            </div>
+          <div class="flex items-center gap-6">
+            <a href="https://github.com/yzarrai" target="_blank" rel="noopener noreferrer" class="hover:text-slate-900 dark:hover:text-white transition">GitHub</a>
+            <a href="https://linkedin.com/in/yzarraihan" target="_blank" rel="noopener noreferrer" class="hover:text-slate-900 dark:hover:text-white transition">LinkedIn</a>
+            <a href="mailto:yusufzarraihan@gmail.com" class="hover:text-slate-900 dark:hover:text-white transition">Email</a>
           </div>
         </div>
-      </div>
+      </footer>
 
-      <div class="mt-4 pt-3 border-t border-slate-100 dark:border-white/5 flex items-center justify-between text-xs text-slate-500 dark:text-white/40 font-mono">
-        <span>Channel: Ocean Freight AIS</span>
-        <span>Lead Time Buffer: 4.2 days</span>
-      </div>
-    </div>
+    </main>
 
-    <!-- Widget 3: Measured Impact Grid (Full Width 12 Cols) -->
-    <div class="lg:col-span-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-      <div class="p-5 rounded-2xl bg-white dark:bg-[#0c1222] border border-slate-200/90 dark:border-white/10 shadow-sm">
-        <span class="text-[11px] font-mono text-cyan-700 dark:text-cyan-400 uppercase font-semibold block mb-1">Contra.com Client Consulting</span>
-        <div class="text-2xl font-bold text-slate-900 dark:text-white tracking-tight mb-1">22%</div>
-        <div class="text-xs font-semibold text-slate-800 dark:text-white/90 mb-1">Average Cycle Time Cut</div>
-        <p class="text-xs text-slate-500 dark:text-white/60 leading-relaxed">Mined event logs with Celonis to quantify bottleneck stages and rework loops.</p>
-      </div>
+  </div>
 
-      <div class="p-5 rounded-2xl bg-white dark:bg-[#0c1222] border border-slate-200/90 dark:border-white/10 shadow-sm">
-        <span class="text-[11px] font-mono text-blue-700 dark:text-blue-400 uppercase font-semibold block mb-1">Workflow Automation</span>
-        <div class="text-2xl font-bold text-slate-900 dark:text-white tracking-tight mb-1">14 hrs</div>
-        <div class="text-xs font-semibold text-slate-800 dark:text-white/90 mb-1">Weekly Manual Work Cut</div>
-        <p class="text-xs text-slate-500 dark:text-white/60 leading-relaxed">Built Python pipelines replacing recurring manual spreadsheet updates.</p>
-      </div>
-
-      <div class="p-5 rounded-2xl bg-white dark:bg-[#0c1222] border border-slate-200/90 dark:border-white/10 shadow-sm">
-        <span class="text-[11px] font-mono text-emerald-700 dark:text-emerald-400 uppercase font-semibold block mb-1">Enterprise Data Quality</span>
-        <div class="text-2xl font-bold text-slate-900 dark:text-white tracking-tight mb-1">98%</div>
-        <div class="text-xs font-semibold text-slate-800 dark:text-white/90 mb-1">Model-Ready Accuracy</div>
-        <p class="text-xs text-slate-500 dark:text-white/60 leading-relaxed">Audited internal relational databases using SQL, cutting operational waste by 19%.</p>
-      </div>
-
-      <div class="p-5 rounded-2xl bg-white dark:bg-[#0c1222] border border-slate-200/90 dark:border-white/10 shadow-sm">
-        <span class="text-[11px] font-mono text-purple-700 dark:text-purple-400 uppercase font-semibold block mb-1">Lean Six Sigma Thesis</span>
-        <div class="text-2xl font-bold text-slate-900 dark:text-white tracking-tight mb-1">42.6%</div>
-        <div class="text-xs font-semibold text-slate-800 dark:text-white/90 mb-1">Non-Value Time Removed</div>
-        <p class="text-xs text-slate-500 dark:text-white/60 leading-relaxed">Applied DMAIC at Hortus Medicus Clinic, raising efficiency from 20.0% to 30.3%.</p>
-      </div>
-    </div>
-
-  </section>
-
-  <!-- ============ REAL-WORLD GEOGRAPHIC SEA FREIGHT MAP (LEAFLET) ============ -->
-  <section id="maritime-transport" class="rounded-3xl bg-white dark:bg-[#0c1222] border border-slate-200/90 dark:border-white/10 shadow-sm overflow-hidden p-6">
-    <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6">
-      <div>
-        <div class="flex items-center gap-2 mb-1">
-          <span class="w-2 h-2 rounded-full bg-cyan-500 animate-pulse"></span>
-          <span class="text-xs font-mono uppercase font-semibold text-cyan-700 dark:text-cyan-400">Geographic Maritime Engine</span>
-        </div>
-        <h2 class="text-xl font-bold text-slate-900 dark:text-white tracking-tight">Sea Freight Routing & Stochastic Vessel Dispatch</h2>
-        <p class="text-xs text-slate-500 dark:text-white/60">Cartographic routing across Jakarta, Singapore, Colombo, Dubai, Suez Canal, and Rotterdam with live AIS position simulation.</p>
-      </div>
-      
-      <!-- Interactive Policy Actions -->
-      <div class="flex flex-wrap items-center gap-2">
-        <button id="btn-route-suez" class="px-3 py-1.5 rounded-lg bg-slate-900 dark:bg-cyan-400 text-white dark:text-slate-950 font-mono text-xs font-semibold shadow-sm transition">
-          Direct Suez Corridor
-        </button>
-        <button id="btn-route-cape" class="px-3 py-1.5 rounded-lg bg-slate-100 dark:bg-white/10 text-slate-700 dark:text-white font-mono text-xs hover:bg-slate-200 transition">
-          Cape Alternate Route
-        </button>
-        <button id="btn-monsoon" class="px-3 py-1.5 rounded-lg bg-slate-100 dark:bg-white/10 text-slate-700 dark:text-white font-mono text-xs hover:bg-slate-200 transition">
-          Inject Storm Delay (+18h)
-        </button>
-        <button id="btn-steaming" class="px-3 py-1.5 rounded-lg bg-slate-100 dark:bg-white/10 text-slate-700 dark:text-white font-mono text-xs hover:bg-slate-200 transition">
-          Slow-Steaming (-18% Fuel)
-        </button>
-      </div>
-    </div>
-
-    <!-- The Leaflet Map Canvas -->
-    <div class="relative rounded-2xl overflow-hidden border border-slate-200 dark:border-white/10">
-      <div id="maritime-leaflet-map" class="w-full h-80 sm:h-96 md:h-[420px]"></div>
-    </div>
-
-    <!-- Port Waypoint Quick Inspect -->
-    <div id="port-card" class="mt-4 p-4 rounded-xl bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/5 text-xs font-mono text-slate-700 dark:text-white/70 flex flex-wrap items-center justify-between gap-4">
-      <div>
-        <span class="text-cyan-700 dark:text-cyan-400 font-semibold">SELECTED WAYPOINT:</span>
-        <span id="port-card-name" class="text-slate-900 dark:text-white font-bold ml-2">Port of Singapore (Transshipment Hub)</span>
-      </div>
-      <div class="flex items-center gap-5 text-slate-600 dark:text-white/60">
-        <span>Quay Crane: <strong class="text-slate-900 dark:text-white font-medium">34 moves/hr</strong></span>
-        <span>Dwell Time: <strong class="text-slate-900 dark:text-white font-medium">1.8 days</strong></span>
-        <span>Demurrage Risk: <strong class="text-emerald-600 dark:text-emerald-400 font-medium">Low (0.01)</strong></span>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ LIVE ORDERS & SHIPMENTS TABLE (LOADLOGIC DESIGN) ============ -->
-  <section id="orders-section" class="rounded-3xl bg-white dark:bg-[#0c1222] border border-slate-200/90 dark:border-white/10 shadow-sm p-6">
-    
-    <!-- Table Header with Counter & Filters -->
-    <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6">
-      <div class="flex items-center gap-3">
-        <h2 class="text-lg font-bold text-slate-900 dark:text-white tracking-tight">Active Shipments & Orders</h2>
-        <span class="px-2.5 py-0.5 rounded-full bg-slate-100 dark:bg-white/10 text-xs font-mono font-semibold text-slate-600 dark:text-white/80">264 Total</span>
-      </div>
-
-      <!-- Filter Pills (LoadLogic Style) -->
-      <div class="flex flex-wrap items-center gap-2 text-xs font-medium" id="order-filters">
-        <button class="filter-pill active px-3.5 py-1.5 rounded-xl bg-slate-900 text-white dark:bg-white dark:text-slate-950 font-semibold transition" data-status="all">All 264</button>
-        <button class="filter-pill px-3.5 py-1.5 rounded-xl bg-slate-100 text-slate-700 dark:bg-white/5 dark:text-white/70 hover:bg-slate-200 dark:hover:bg-white/10 transition" data-status="transit">In transit 53</button>
-        <button class="filter-pill px-3.5 py-1.5 rounded-xl bg-slate-100 text-slate-700 dark:bg-white/5 dark:text-white/70 hover:bg-slate-200 dark:hover:bg-white/10 transition" data-status="port">At Port 70</button>
-        <button class="filter-pill px-3.5 py-1.5 rounded-xl bg-slate-100 text-slate-700 dark:bg-white/5 dark:text-white/70 hover:bg-slate-200 dark:hover:bg-white/10 transition" data-status="cleared">Cleared 56</button>
-        <button class="filter-pill px-3.5 py-1.5 rounded-xl bg-slate-100 text-slate-700 dark:bg-white/5 dark:text-white/70 hover:bg-slate-200 dark:hover:bg-white/10 transition" data-status="delayed">Weather Buffer 85</button>
-      </div>
-    </div>
-
-    <!-- Table Rows Container -->
-    <div class="space-y-2.5 overflow-x-auto" id="orders-list">
-      
-      <!-- Order Row 1 -->
-      <div class="order-row min-w-[720px] p-4 rounded-2xl bg-slate-50/70 hover:bg-slate-100/80 dark:bg-white/5 dark:hover:bg-white/10 border border-slate-200/60 dark:border-white/5 transition flex items-center justify-between text-xs" data-status="port">
-        <div class="w-32 font-mono font-semibold text-slate-900 dark:text-white flex items-center gap-1.5">
-          <span class="w-2 h-2 rounded-full bg-amber-500"></span>
-          <span>#SC-324561324</span>
-        </div>
-        <div class="w-40 text-slate-700 dark:text-white/80 font-medium">
-          MV Arraihan Vanguard
-        </div>
-        <div class="w-48 text-slate-600 dark:text-white/70 flex items-center gap-2">
-          <span class="font-mono text-[10px] px-1.5 py-0.5 rounded bg-slate-200 dark:bg-white/10 font-bold">GB</span> London, UK
-          <span class="text-slate-400">→</span>
-          <span class="font-mono text-[10px] px-1.5 py-0.5 rounded bg-slate-200 dark:bg-white/10 font-bold">EE</span> Tallinn, EE
-        </div>
-        <div class="w-28 font-mono text-slate-500 dark:text-white/50">
-          12 Sep, 2026
-        </div>
-        <div class="w-28">
-          <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-amber-100 dark:bg-amber-950/40 text-amber-800 dark:text-amber-300 font-mono text-[11px] font-medium">
-            <span class="w-1.5 h-1.5 rounded-full bg-amber-500"></span>
-            At Port
-          </span>
-        </div>
-        <div>
-          <a href="#compendium-card" class="px-3 py-1.5 rounded-lg bg-white dark:bg-white/10 border border-slate-200 dark:border-white/10 font-medium hover:bg-slate-50 dark:hover:bg-white/20 transition text-[11px]">
-            Inspect
-          </a>
-        </div>
-      </div>
-
-      <!-- Order Row 2 -->
-      <div class="order-row min-w-[720px] p-4 rounded-2xl bg-slate-50/70 hover:bg-slate-100/80 dark:bg-white/5 dark:hover:bg-white/10 border border-slate-200/60 dark:border-white/5 transition flex items-center justify-between text-xs" data-status="transit">
-        <div class="w-32 font-mono font-semibold text-slate-900 dark:text-white flex items-center gap-1.5">
-          <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
-          <span>#SC-183896772</span>
-        </div>
-        <div class="w-40 text-slate-700 dark:text-white/80 font-medium">
-          Starlight Maritime
-        </div>
-        <div class="w-48 text-slate-600 dark:text-white/70 flex items-center gap-2">
-          <span class="font-mono text-[10px] px-1.5 py-0.5 rounded bg-slate-200 dark:bg-white/10 font-bold">ID</span> Jakarta, ID
-          <span class="text-slate-400">→</span>
-          <span class="font-mono text-[10px] px-1.5 py-0.5 rounded bg-slate-200 dark:bg-white/10 font-bold">NL</span> Rotterdam, NL
-        </div>
-        <div class="w-28 font-mono text-slate-500 dark:text-white/50">
-          14 Sep, 2026
-        </div>
-        <div class="w-28">
-          <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-emerald-100 dark:bg-emerald-950/40 text-emerald-800 dark:text-emerald-300 font-mono text-[11px] font-medium">
-            <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
-            In transit
-          </span>
-        </div>
-        <div>
-          <a href="#compendium-card" class="px-3 py-1.5 rounded-lg bg-white dark:bg-white/10 border border-slate-200 dark:border-white/10 font-medium hover:bg-slate-50 dark:hover:bg-white/20 transition text-[11px]">
-            Inspect
-          </a>
-        </div>
-      </div>
-
-      <!-- Order Row 3 -->
-      <div class="order-row min-w-[720px] p-4 rounded-2xl bg-slate-50/70 hover:bg-slate-100/80 dark:bg-white/5 dark:hover:bg-white/10 border border-slate-200/60 dark:border-white/5 transition flex items-center justify-between text-xs" data-status="transit">
-        <div class="w-32 font-mono font-semibold text-slate-900 dark:text-white flex items-center gap-1.5">
-          <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
-          <span>#SC-267189302</span>
-        </div>
-        <div class="w-40 text-slate-700 dark:text-white/80 font-medium">
-          Gulf Gateway Express
-        </div>
-        <div class="w-48 text-slate-600 dark:text-white/70 flex items-center gap-2">
-          <span class="font-mono text-[10px] px-1.5 py-0.5 rounded bg-slate-200 dark:bg-white/10 font-bold">AE</span> Dubai, AE
-          <span class="text-slate-400">→</span>
-          <span class="font-mono text-[10px] px-1.5 py-0.5 rounded bg-slate-200 dark:bg-white/10 font-bold">DE</span> Hamburg, DE
-        </div>
-        <div class="w-28 font-mono text-slate-500 dark:text-white/50">
-          15 Sep, 2026
-        </div>
-        <div class="w-28">
-          <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-emerald-100 dark:bg-emerald-950/40 text-emerald-800 dark:text-emerald-300 font-mono text-[11px] font-medium">
-            <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
-            In transit
-          </span>
-        </div>
-        <div>
-          <a href="#compendium-card" class="px-3 py-1.5 rounded-lg bg-white dark:bg-white/10 border border-slate-200 dark:border-white/10 font-medium hover:bg-slate-50 dark:hover:bg-white/20 transition text-[11px]">
-            Inspect
-          </a>
-        </div>
-      </div>
-
-      <!-- Order Row 4 -->
-      <div class="order-row min-w-[720px] p-4 rounded-2xl bg-slate-50/70 hover:bg-slate-100/80 dark:bg-white/5 dark:hover:bg-white/10 border border-slate-200/60 dark:border-white/5 transition flex items-center justify-between text-xs" data-status="cleared">
-        <div class="w-32 font-mono font-semibold text-slate-900 dark:text-white flex items-center gap-1.5">
-          <span class="w-2 h-2 rounded-full bg-cyan-500"></span>
-          <span>#SC-942625346</span>
-        </div>
-        <div class="w-40 text-slate-700 dark:text-white/80 font-medium">
-          Nordic Feeder Lines
-        </div>
-        <div class="w-48 text-slate-600 dark:text-white/70 flex items-center gap-2">
-          <span class="font-mono text-[10px] px-1.5 py-0.5 rounded bg-slate-200 dark:bg-white/10 font-bold">SG</span> Singapore, SG
-          <span class="text-slate-400">→</span>
-          <span class="font-mono text-[10px] px-1.5 py-0.5 rounded bg-slate-200 dark:bg-white/10 font-bold">NO</span> Oslo, NO
-        </div>
-        <div class="w-28 font-mono text-slate-500 dark:text-white/50">
-          18 Sep, 2026
-        </div>
-        <div class="w-28">
-          <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-cyan-100 dark:bg-cyan-950/40 text-cyan-800 dark:text-cyan-300 font-mono text-[11px] font-medium">
-            <span class="w-1.5 h-1.5 rounded-full bg-cyan-500"></span>
-            Cleared
-          </span>
-        </div>
-        <div>
-          <a href="#compendium-card" class="px-3 py-1.5 rounded-lg bg-white dark:bg-white/10 border border-slate-200 dark:border-white/10 font-medium hover:bg-slate-50 dark:hover:bg-white/20 transition text-[11px]">
-            Inspect
-          </a>
-        </div>
-      </div>
-
-    </div>
-
-  </section>
-
-  <!-- ============ SECTION: SELECTED PROJECTS & RESEARCH CODEBASES ============ -->
-  <section id="projects" class="space-y-6">
-    <div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
-      <div>
-        <span class="text-xs font-mono uppercase font-semibold text-cyan-700 dark:text-cyan-400 block mb-1">Codebases & Compendiums</span>
-        <h2 class="text-2xl font-bold text-slate-900 dark:text-white tracking-tight">Engineering Portfolio & Research</h2>
-        <p class="text-xs text-slate-500 dark:text-white/60">Verified quantitative models, simulation engines, and analytical decks from my GitHub repositories.</p>
-      </div>
-
-      <!-- Project Category Filters -->
-      <div class="flex flex-wrap gap-2 text-xs font-mono">
-        <button class="project-tab active px-3.5 py-1.5 rounded-xl bg-slate-900 text-white dark:bg-white dark:text-slate-950 font-medium transition" data-cat="all">All Codebases</button>
-        <button class="project-tab px-3.5 py-1.5 rounded-xl bg-white dark:bg-white/5 text-slate-700 dark:text-white/70 border border-slate-200 dark:border-white/10 hover:bg-slate-100 transition" data-cat="planning">Planning & Forecasting</button>
-        <button class="project-tab px-3.5 py-1.5 rounded-xl bg-white dark:bg-white/5 text-slate-700 dark:text-white/70 border border-slate-200 dark:border-white/10 hover:bg-slate-100 transition" data-cat="simulation">Simulation & Agents</button>
-        <button class="project-tab px-3.5 py-1.5 rounded-xl bg-white dark:bg-white/5 text-slate-700 dark:text-white/70 border border-slate-200 dark:border-white/10 hover:bg-slate-100 transition" data-cat="optimization">Optimization & DSS</button>
-      </div>
-    </div>
-
-    <!-- Flagship Showcase Card: Supply Chain Analytics Compendium -->
-    <article id="compendium-card" class="p-8 rounded-3xl bg-white dark:bg-[#0c1222] border border-cyan-300 dark:border-cyan-500/30 shadow-sm flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
-      <div class="max-w-2xl">
-        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-50 dark:bg-cyan-950/40 text-cyan-800 dark:text-cyan-300 border border-cyan-200 dark:border-cyan-500/30 text-xs font-mono font-medium mb-3">
-          <span class="w-2 h-2 rounded-full bg-cyan-500 animate-pulse"></span>
-          FLAGSHIP ANALYTICAL DECK · SIX CASES
-        </div>
-        <h3 class="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white tracking-tight mb-2">
-          Supply Chain Analytics Compendium
-        </h3>
-        <p class="text-xs sm:text-sm text-slate-600 dark:text-white/70 leading-relaxed mb-4">
-          Six end-to-end analytical cases covering multiple regression forecasting on 24-month time-series (R-squared 0.439 to 0.948, MAPE 10.57%), ABC classification across 36 SKUs, push versus pull inventory economics, and sourcing risk under supplier concentration in the semiconductor industry. Transparently reports rejected models rather than only favorable fits.
-        </p>
-        <div class="flex flex-wrap gap-2 text-xs font-mono text-cyan-700 dark:text-cyan-300">
-          <span class="px-2.5 py-1 bg-slate-100 dark:bg-white/5 rounded-md">Regression (24-mo)</span>
-          <span class="px-2.5 py-1 bg-slate-100 dark:bg-white/5 rounded-md">ABC Classification (36 SKUs)</span>
-          <span class="px-2.5 py-1 bg-slate-100 dark:bg-white/5 rounded-md">Push vs Pull Economics</span>
-          <span class="px-2.5 py-1 bg-slate-100 dark:bg-white/5 rounded-md">Sourcing Risk Analytics</span>
-        </div>
-      </div>
-      <div class="shrink-0">
-        <a href="https://docs.google.com/presentation/d/1JefxdfbX2Pg09J3zPT0e3LKRoDEggwdq/edit?usp=sharing&ouid=104847496384061111514&rtpof=true&sd=true" target="_blank" rel="noopener noreferrer" class="px-5 py-3 rounded-xl bg-slate-900 hover:bg-slate-800 dark:bg-cyan-400 dark:hover:bg-cyan-300 text-white dark:text-slate-950 font-semibold text-xs transition shadow-sm flex items-center gap-1.5">
-          <span>Open in Google Slides</span>
-          <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
-        </a>
-      </div>
-    </article>
-
-    <!-- Grid of Projects -->
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="projects-grid">
-      
-      <!-- Project 1: Inventory Brain -->
-      <article class="proj-card p-6 rounded-3xl bg-white dark:bg-[#0c1222] border border-slate-200/90 dark:border-white/10 shadow-sm flex flex-col justify-between" data-cat="planning">
-        <div>
-          <div class="flex items-center justify-between text-[11px] font-mono text-slate-500 dark:text-white/40 mb-2">
-            <span class="text-blue-600 dark:text-blue-400 font-semibold">Inventory Optimization</span>
-            <span>2026</span>
-          </div>
-          <h4 class="text-base font-bold text-slate-900 dark:text-white mb-2">Inventory Brain & Demand Platform</h4>
-          <p class="text-xs text-slate-600 dark:text-white/70 leading-relaxed mb-4">
-            Multi-echelon inventory optimization across distribution tiers, discrete-event simulation of replenishment policies under demand and lead-time variability, and scenario decision dashboard.
-          </p>
-        </div>
-        <div>
-          <div class="flex flex-wrap gap-1 font-mono text-[10px] text-slate-500 dark:text-white/50 mb-4 pt-3 border-t border-slate-100 dark:border-white/5">
-            <span class="px-2 py-0.5 bg-slate-100 dark:bg-white/5 rounded">Python</span>
-            <span class="px-2 py-0.5 bg-slate-100 dark:bg-white/5 rounded">SimPy</span>
-            <span class="px-2 py-0.5 bg-slate-100 dark:bg-white/5 rounded">Streamlit</span>
-          </div>
-          <a href="https://github.com/yzarrai/inventory-brain" target="_blank" rel="noopener noreferrer" class="text-xs font-semibold text-blue-600 dark:text-blue-400 hover:underline flex items-center gap-1">
-            <span>github.com/yzarrai/inventory-brain</span>
-            <span class="text-[10px]">↗</span>
-          </a>
-        </div>
-      </article>
-
-      <!-- Project 2: Retail Demand Forecasting ML -->
-      <article class="proj-card p-6 rounded-3xl bg-white dark:bg-[#0c1222] border border-slate-200/90 dark:border-white/10 shadow-sm flex flex-col justify-between" data-cat="planning">
-        <div>
-          <div class="flex items-center justify-between text-[11px] font-mono text-slate-500 dark:text-white/40 mb-2">
-            <span class="text-cyan-600 dark:text-cyan-400 font-semibold">Machine Learning Forecasting</span>
-            <span>2026</span>
-          </div>
-          <h4 class="text-base font-bold text-slate-900 dark:text-white mb-2">Demand & Stock Fluctuation ML</h4>
-          <p class="text-xs text-slate-600 dark:text-white/70 leading-relaxed mb-4">
-            Walk-forward benchmark of SARIMA, Prophet, and XGBoost on MAE/RMSE/MAPE; converted into service-level safety stock and reorder point recommendations with SHAP attribution.
-          </p>
-        </div>
-        <div>
-          <div class="flex flex-wrap gap-1 font-mono text-[10px] text-slate-500 dark:text-white/50 mb-4 pt-3 border-t border-slate-100 dark:border-white/5">
-            <span class="px-2 py-0.5 bg-slate-100 dark:bg-white/5 rounded">XGBoost</span>
-            <span class="px-2 py-0.5 bg-slate-100 dark:bg-white/5 rounded">SARIMA</span>
-            <span class="px-2 py-0.5 bg-slate-100 dark:bg-white/5 rounded">SHAP</span>
-          </div>
-          <a href="https://github.com/yzarrai/retail-demand-forecasting-ml" target="_blank" rel="noopener noreferrer" class="text-xs font-semibold text-cyan-600 dark:text-cyan-400 hover:underline flex items-center gap-1">
-            <span>retail-demand-forecasting-ml</span>
-            <span class="text-[10px]">↗</span>
-          </a>
-        </div>
-      </article>
-
-      <!-- Project 3: Multi-Agent Supply Chain Swarm -->
-      <article class="proj-card p-6 rounded-3xl bg-white dark:bg-[#0c1222] border border-slate-200/90 dark:border-white/10 shadow-sm flex flex-col justify-between" data-cat="simulation">
-        <div>
-          <div class="flex items-center justify-between text-[11px] font-mono text-slate-500 dark:text-white/40 mb-2">
-            <span class="text-emerald-600 dark:text-emerald-400 font-semibold">Autonomous Agent Swarm</span>
-            <span>2025</span>
-          </div>
-          <h4 class="text-base font-bold text-slate-900 dark:text-white mb-2">Multi-Agent Supply Chain AI</h4>
-          <p class="text-xs text-slate-600 dark:text-white/70 leading-relaxed mb-4">
-            4-agent autonomous swarm (Demand, Inventory, Risk, Logistics) using a 2-round debate protocol for Pareto-optimal trade-offs, MILP lot-sizing, and simulated ERP webhook dispatch.
-          </p>
-        </div>
-        <div>
-          <div class="flex flex-wrap gap-1 font-mono text-[10px] text-slate-500 dark:text-white/50 mb-4 pt-3 border-t border-slate-100 dark:border-white/5">
-            <span class="px-2 py-0.5 bg-slate-100 dark:bg-white/5 rounded">MILP</span>
-            <span class="px-2 py-0.5 bg-slate-100 dark:bg-white/5 rounded">DuckDB</span>
-            <span class="px-2 py-0.5 bg-slate-100 dark:bg-white/5 rounded">FastAPI</span>
-          </div>
-          <a href="https://github.com/yzarrai/supply-chain-agentic-ai" target="_blank" rel="noopener noreferrer" class="text-xs font-semibold text-emerald-600 dark:text-emerald-400 hover:underline flex items-center gap-1">
-            <span>supply-chain-agentic-ai</span>
-            <span class="text-[10px]">↗</span>
-          </a>
-        </div>
-      </article>
-
-      <!-- Project 4: Supply Chain Simulation LLM Agent -->
-      <article class="proj-card p-6 rounded-3xl bg-white dark:bg-[#0c1222] border border-slate-200/90 dark:border-white/10 shadow-sm flex flex-col justify-between" data-cat="simulation">
-        <div>
-          <div class="flex items-center justify-between text-[11px] font-mono text-slate-500 dark:text-white/40 mb-2">
-            <span class="text-purple-600 dark:text-purple-400 font-semibold">SimPy Simulation</span>
-            <span>2025</span>
-          </div>
-          <h4 class="text-base font-bold text-slate-900 dark:text-white mb-2">Supply Chain Simulation Agent</h4>
-          <p class="text-xs text-slate-600 dark:text-white/70 leading-relaxed mb-4">
-            Discrete-event simulation of 4-echelon replenishment using Common Random Numbers to cut Monte Carlo variance by 19% to 37% for statistical policy evaluation.
-          </p>
-        </div>
-        <div>
-          <div class="flex flex-wrap gap-1 font-mono text-[10px] text-slate-500 dark:text-white/50 mb-4 pt-3 border-t border-slate-100 dark:border-white/5">
-            <span class="px-2 py-0.5 bg-slate-100 dark:bg-white/5 rounded">SimPy</span>
-            <span class="px-2 py-0.5 bg-slate-100 dark:bg-white/5 rounded">LangChain</span>
-            <span class="px-2 py-0.5 bg-slate-100 dark:bg-white/5 rounded">Pydantic</span>
-          </div>
-          <a href="https://github.com/yzarrai/supply-chain-simulation-agent" target="_blank" rel="noopener noreferrer" class="text-xs font-semibold text-purple-600 dark:text-purple-400 hover:underline flex items-center gap-1">
-            <span>supply-chain-simulation-agent</span>
-            <span class="text-[10px]">↗</span>
-          </a>
-        </div>
-      </article>
-
-      <!-- Project 5: Stochastic Cold-Chain Planner -->
-      <article class="proj-card p-6 rounded-3xl bg-white dark:bg-[#0c1222] border border-slate-200/90 dark:border-white/10 shadow-sm flex flex-col justify-between" data-cat="optimization">
-        <div>
-          <div class="flex items-center justify-between text-[11px] font-mono text-slate-500 dark:text-white/40 mb-2">
-            <span class="text-amber-600 dark:text-amber-400 font-semibold">Stochastic MILP</span>
-            <span>2026</span>
-          </div>
-          <h4 class="text-base font-bold text-slate-900 dark:text-white mb-2">Stochastic Cold-Chain Planner</h4>
-          <p class="text-xs text-slate-600 dark:text-white/70 leading-relaxed mb-4">
-            Two-stage stochastic mathematical optimization pipeline for cold-chain vaccine distribution, modeling maritime disruption scenarios to recommend robust replenishment plans.
-          </p>
-        </div>
-        <div>
-          <div class="flex flex-wrap gap-1 font-mono text-[10px] text-slate-500 dark:text-white/50 mb-4 pt-3 border-t border-slate-100 dark:border-white/5">
-            <span class="px-2 py-0.5 bg-slate-100 dark:bg-white/5 rounded">MILP</span>
-            <span class="px-2 py-0.5 bg-slate-100 dark:bg-white/5 rounded">Stochastic</span>
-            <span class="px-2 py-0.5 bg-slate-100 dark:bg-white/5 rounded">Cold-Chain</span>
-          </div>
-          <a href="https://github.com/yzarrai/stochastic-coldchain-planner" target="_blank" rel="noopener noreferrer" class="text-xs font-semibold text-amber-600 dark:text-amber-400 hover:underline flex items-center gap-1">
-            <span>stochastic-coldchain-planner</span>
-            <span class="text-[10px]">↗</span>
-          </a>
-        </div>
-      </article>
-
-      <!-- Project 6: Procurement RAG Assistant -->
-      <article class="proj-card p-6 rounded-3xl bg-white dark:bg-[#0c1222] border border-slate-200/90 dark:border-white/10 shadow-sm flex flex-col justify-between" data-cat="optimization">
-        <div>
-          <div class="flex items-center justify-between text-[11px] font-mono text-slate-500 dark:text-white/40 mb-2">
-            <span class="text-rose-600 dark:text-rose-400 font-semibold">Procurement AI</span>
-            <span>2026</span>
-          </div>
-          <h4 class="text-base font-bold text-slate-900 dark:text-white mb-2">Procurement RAG Assistant</h4>
-          <p class="text-xs text-slate-600 dark:text-white/70 leading-relaxed mb-4">
-            Enterprise retrieval-augmented generation assistant for procurement documentation with clause-level citations and 5-layer grounding guardrail system preventing hallucination.
-          </p>
-        </div>
-        <div>
-          <div class="flex flex-wrap gap-1 font-mono text-[10px] text-slate-500 dark:text-white/50 mb-4 pt-3 border-t border-slate-100 dark:border-white/5">
-            <span class="px-2 py-0.5 bg-slate-100 dark:bg-white/5 rounded">BM25 + RRF</span>
-            <span class="px-2 py-0.5 bg-slate-100 dark:bg-white/5 rounded">Guardrails</span>
-            <span class="px-2 py-0.5 bg-slate-100 dark:bg-white/5 rounded">Contracts</span>
-          </div>
-          <a href="https://github.com/yzarrai/procure-rag" target="_blank" rel="noopener noreferrer" class="text-xs font-semibold text-rose-600 dark:text-rose-400 hover:underline flex items-center gap-1">
-            <span>github.com/yzarrai/procure-rag</span>
-            <span class="text-[10px]">↗</span>
-          </a>
-        </div>
-      </article>
-
-    </div>
-  </section>
-
-  <!-- ============ TECHNICAL CAPABILITIES & STACK ============ -->
-  <section id="skills" class="rounded-3xl bg-white dark:bg-[#0c1222] border border-slate-200/90 dark:border-white/10 shadow-sm p-6 sm:p-8">
-    <div class="mb-6">
-      <span class="text-xs font-mono uppercase font-semibold text-cyan-700 dark:text-cyan-400 block mb-1">Tooling & Competencies</span>
-      <h2 class="text-xl font-bold text-slate-900 dark:text-white tracking-tight">Supply Chain Stack & Optimization Frameworks</h2>
-    </div>
-
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-      <div class="p-5 rounded-2xl bg-slate-50 dark:bg-white/5 border border-slate-200/60 dark:border-white/5">
-        <h3 class="text-sm font-bold text-slate-900 dark:text-white mb-2">Supply Chain & Operations</h3>
-        <p class="text-xs text-slate-600 dark:text-white/70 leading-relaxed mb-4">
-          Demand Planning & Forecasting, Inventory Optimization, Safety Stock Modelling, Sourcing & Supplier Risk, Lean Six Sigma (DMAIC), Process Mining (Celonis, pm4py).
-        </p>
-        <div class="flex flex-wrap gap-1.5 font-mono text-[11px] text-cyan-700 dark:text-cyan-300">
-          <span class="px-2 py-0.5 bg-white dark:bg-white/10 rounded">Process Mining</span>
-          <span class="px-2 py-0.5 bg-white dark:bg-white/10 rounded">Safety Stock</span>
-          <span class="px-2 py-0.5 bg-white dark:bg-white/10 rounded">DMAIC</span>
-        </div>
-      </div>
-
-      <div class="p-5 rounded-2xl bg-slate-50 dark:bg-white/5 border border-slate-200/60 dark:border-white/5">
-        <h3 class="text-sm font-bold text-slate-900 dark:text-white mb-2">Data Science & Optimization</h3>
-        <p class="text-xs text-slate-600 dark:text-white/70 leading-relaxed mb-4">
-          Python, SQL, Celonis, SimPy (Discrete-Event Simulation), PuLP (MILP), Pandas, Polars, Scikit-learn, SARIMAX, XGBoost, SHAP, DuckDB, ChromaDB.
-        </p>
-        <div class="flex flex-wrap gap-1.5 font-mono text-[11px] text-blue-700 dark:text-blue-300">
-          <span class="px-2 py-0.5 bg-white dark:bg-white/10 rounded">Python</span>
-          <span class="px-2 py-0.5 bg-white dark:bg-white/10 rounded">SQL</span>
-          <span class="px-2 py-0.5 bg-white dark:bg-white/10 rounded">Celonis</span>
-          <span class="px-2 py-0.5 bg-white dark:bg-white/10 rounded">SimPy</span>
-        </div>
-      </div>
-
-      <div class="p-5 rounded-2xl bg-slate-50 dark:bg-white/5 border border-slate-200/60 dark:border-white/5">
-        <h3 class="text-sm font-bold text-slate-900 dark:text-white mb-2">Engineering & Delivery</h3>
-        <p class="text-xs text-slate-600 dark:text-white/70 leading-relaxed mb-4">
-          Git & GitHub, FastAPI, Docker, Power BI, Tableau, Streamlit, Automated ETL Pipelines, Working Knowledge of SAP, Oracle, Odoo, and Salesforce.
-        </p>
-        <div class="flex flex-wrap gap-1.5 font-mono text-[11px] text-emerald-700 dark:text-emerald-300">
-          <span class="px-2 py-0.5 bg-white dark:bg-white/10 rounded">Git</span>
-          <span class="px-2 py-0.5 bg-white dark:bg-white/10 rounded">FastAPI</span>
-          <span class="px-2 py-0.5 bg-white dark:bg-white/10 rounded">Docker</span>
-          <span class="px-2 py-0.5 bg-white dark:bg-white/10 rounded">Streamlit</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ CONTACT & CONTROL TOWER FOOTER ============ -->
-  <footer id="contact" class="rounded-3xl bg-white dark:bg-[#0c1222] border border-slate-200/90 dark:border-white/10 shadow-sm p-6 sm:p-8">
-    <div class="flex flex-col md:flex-row md:items-center justify-between gap-6 pb-6 border-b border-slate-100 dark:border-white/5">
-      <div>
-        <h3 class="text-lg font-bold text-slate-900 dark:text-white tracking-tight">Connect with Yusuf Zaidany Arraihan</h3>
-        <p class="text-xs text-slate-500 dark:text-white/60">Open to full-time roles, contract consulting, and global supply chain analytics engagements.</p>
-      </div>
-      <div class="flex flex-wrap items-center gap-3">
-        <button id="copy-email-btn" class="px-4 py-2.5 rounded-xl bg-slate-900 hover:bg-slate-800 dark:bg-white dark:hover:bg-slate-100 text-white dark:text-slate-950 font-semibold text-xs transition shadow-sm flex items-center gap-2">
-          <span>Copy Email</span>
-          <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" /></svg>
-        </button>
-        <button id="footer-cv-btn" class="px-4 py-2.5 rounded-xl border border-slate-300 dark:border-white/20 text-slate-800 dark:text-white font-medium text-xs hover:bg-slate-100 dark:hover:bg-white/10 transition">
-          Download CV
-        </button>
-        <a href="https://docs.google.com/presentation/d/1JefxdfbX2Pg09J3zPT0e3LKRoDEggwdq/edit?usp=sharing&ouid=104847496384061111514&rtpof=true&sd=true" target="_blank" rel="noopener noreferrer" class="px-4 py-2.5 rounded-xl border border-cyan-500/40 text-cyan-700 dark:text-cyan-300 font-medium text-xs hover:bg-cyan-50 dark:hover:bg-cyan-950/30 transition flex items-center gap-1.5">
-          <span>Analytics Compendium</span>
-          <span class="text-[10px]">↗</span>
-        </a>
-      </div>
-    </div>
-
-    <div class="pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-mono text-slate-500 dark:text-white/40">
-      <div>
-        Yusuf Zaidany Arraihan · Supply Chain Analytics & Control Tower
-      </div>
-      <div class="flex items-center gap-6">
-        <a href="https://github.com/yzarrai" target="_blank" rel="noopener noreferrer" class="hover:text-slate-900 dark:hover:text-white transition">GitHub</a>
-        <a href="https://linkedin.com/in/yzarraihan" target="_blank" rel="noopener noreferrer" class="hover:text-slate-900 dark:hover:text-white transition">LinkedIn</a>
-        <a href="mailto:yusufzarraihan@gmail.com" class="hover:text-slate-900 dark:hover:text-white transition">Email</a>
-      </div>
-    </div>
-  </footer>
-
-</main>
+</div>
 
 <!-- ============ MODAL: CV DOWNLOAD & COMPENDIUM ============ -->
 <div id="cv-modal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-black/60 backdrop-blur-sm">
@@ -956,7 +1092,7 @@
 <!-- Leaflet.js CDN -->
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
 
-<!-- ============ CLIENT INTERACTIONS ============ -->
+<!-- ============ CLIENT INTERACTIONS & DYNAMIC MOTION ============ -->
 <script>
   // ============ THEME SYSTEM (DEFAULT LIGHT MODE) ============
   (function initTheme() {
@@ -964,7 +1100,6 @@
     const themeToggle = document.getElementById('theme-toggle');
     const savedTheme = localStorage.getItem('theme');
     
-    // Default to light mode (LoadLogic / Pulse Clinic aesthetic) unless explicitly set to dark
     if (savedTheme === 'dark') {
       root.classList.add('dark');
     } else {
@@ -986,15 +1121,19 @@
     if (themeToggle) themeToggle.addEventListener('click', toggleTheme);
   })();
 
-  // ============ MOBILE NAVIGATION ============
-  const menuToggle = document.getElementById('menu-toggle');
-  const mobileMenu = document.getElementById('mobile-menu');
-  if (menuToggle && mobileMenu) {
-    menuToggle.addEventListener('click', () => {
-      mobileMenu.classList.toggle('hidden');
+  // ============ MOBILE SIDEBAR TOGGLE ============
+  const mobileMenuOpen = document.getElementById('mobile-menu-open');
+  const mobileSidebarClose = document.getElementById('mobile-sidebar-close');
+  const sidebar = document.getElementById('sidebar');
+
+  if (mobileMenuOpen && sidebar) {
+    mobileMenuOpen.addEventListener('click', () => {
+      sidebar.classList.toggle('hidden');
     });
-    document.querySelectorAll('.mobile-link').forEach(link => {
-      link.addEventListener('click', () => mobileMenu.classList.add('hidden'));
+  }
+  if (mobileSidebarClose && sidebar) {
+    mobileSidebarClose.addEventListener('click', () => {
+      sidebar.classList.add('hidden');
     });
   }
 
@@ -1028,6 +1167,7 @@
 
   bindModal('nav-cv-btn', 'cv-modal', 'cv-modal-close');
   bindModal('footer-cv-btn', 'cv-modal', 'cv-modal-close');
+  bindModal('sidebar-cv-btn', 'cv-modal', 'cv-modal-close');
 
   // ============ ORDER SHIPMENTS FILTER ============
   const filterPills = document.querySelectorAll('.filter-pill');
@@ -1101,6 +1241,78 @@
       });
     });
   }
+
+  // ============ DYNAMIC WAKE SPRAY & FOAM MOTION PARTICLES (CANVAS) ============
+  (function initWakeParticleSimulation() {
+    const canvas = document.getElementById('wake-particles-canvas');
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return;
+
+    let width = (canvas.width = canvas.offsetWidth);
+    let height = (canvas.height = canvas.offsetHeight);
+
+    window.addEventListener('resize', () => {
+      width = canvas.width = canvas.offsetWidth;
+      height = canvas.height = canvas.offsetHeight;
+    });
+
+    const particles = [];
+    const maxParticles = 65;
+
+    function spawnParticle() {
+      // Spawn around the bow of the ship (center lower area)
+      const bowX = width * 0.5;
+      const bowY = height * 0.88;
+
+      // Random side: left or right wake
+      const isLeft = Math.random() > 0.5;
+      const angle = isLeft ? (-Math.PI * 0.72 + (Math.random() - 0.5) * 0.3) : (-Math.PI * 0.28 + (Math.random() - 0.5) * 0.3);
+      const speed = 1.2 + Math.random() * 2.2;
+
+      particles.push({
+        x: bowX + (Math.random() - 0.5) * 24,
+        y: bowY + (Math.random() - 0.5) * 16,
+        vx: Math.cos(angle) * speed,
+        vy: Math.sin(angle) * speed * 1.5,
+        radius: 1.5 + Math.random() * 3.5,
+        alpha: 0.75 + Math.random() * 0.25,
+        decay: 0.008 + Math.random() * 0.012
+      });
+    }
+
+    function animateWake() {
+      requestAnimationFrame(animateWake);
+      ctx.clearRect(0, 0, width, height);
+
+      if (particles.length < maxParticles) {
+        spawnParticle();
+        if (Math.random() > 0.5) spawnParticle();
+      }
+
+      for (let i = particles.length - 1; i >= 0; i--) {
+        const p = particles[i];
+        p.x += p.vx;
+        p.y += p.vy;
+        p.alpha -= p.decay;
+        p.radius += 0.06;
+
+        if (p.alpha <= 0 || p.y < 0 || p.x < 0 || p.x > width) {
+          particles.splice(i, 1);
+          continue;
+        }
+
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+        ctx.fillStyle = 'rgba(255, 255, 255, ' + p.alpha + ')';
+        ctx.shadowColor = 'rgba(255, 255, 255, 0.6)';
+        ctx.shadowBlur = 4;
+        ctx.fill();
+      }
+    }
+
+    animateWake();
+  })();
 
   // ============ REAL-WORLD GEOGRAPHIC LEAFLET MAP ============
   (function initLeafletMaritimeMap() {
@@ -1257,6 +1469,17 @@
       const currentLng = p1[1] + (p2[1] - p1[1]) * segmentProgress;
 
       vesselMarker.setLatLng([currentLat, currentLng]);
+
+      const baseSpeed = isSlowSteaming ? 14.2 : 19.4;
+      const speed = isStorm ? (baseSpeed * 0.72).toFixed(1) : baseSpeed.toFixed(1);
+      document.getElementById('telemetry-speed').textContent = speed + ' knots';
+      document.getElementById('vessel-speed-badge').textContent = 'Speed: ' + speed + ' kts · ' + (isStorm ? 'Storm Swell' : isSlowSteaming ? 'Eco Steaming' : 'High Seas Cruising');
+      
+      const fuelEff = isSlowSteaming ? '-18.2% mt/nmi' : isStorm ? '+6.5% mt/nmi' : '-8.4% mt/nmi';
+      document.getElementById('telemetry-fuel').textContent = fuelEff;
+
+      const eta = isStorm ? '+18.0h (Monsoon Delay)' : isSlowSteaming ? '+12.4h (Planned Eco)' : '-14.2h (Optimal)';
+      document.getElementById('telemetry-eta').textContent = eta;
     }
 
     setInterval(updateVesselPosition, 200);
