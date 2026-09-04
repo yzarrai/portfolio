@@ -1,7 +1,7 @@
 /* ==========================================================================
    YUSUF ZAIDANY ARRAIHAN - MODERN TECH PORTFOLIO STYLESHEET
    Style: Ultra-Modern Tech UI/UX (Linear / Vercel Aesthetic)
-   Typography: Plus Jakarta Sans (Universal UI & Tabular Data)
+   Typography: Inter (SaaS / Linear / Pulse Aesthetic) (Universal UI & Tabular Data)
    Rules: Zero emojis, Zero em dashes, Production-Ready Architecture
    ========================================================================== */
 
@@ -37,9 +37,9 @@
   --gradient-card: linear-gradient(180deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.005) 100%);
   --gradient-radial-top: radial-gradient(ellipse 80% 45% at 50% -10%, rgba(59, 130, 246, 0.22), transparent 75%);
 
-  --font-heading: "Outfit", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  --font-body: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  --font-mono: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-heading: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-body: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-mono: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 
   --container-max: 1200px;
   --radius-sm: 6px;

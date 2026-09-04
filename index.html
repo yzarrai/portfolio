@@ -14,18 +14,18 @@
     theme: {
       extend: {
         fontFamily: {
-          sans: ['Plus Jakarta Sans', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
-          mono: ['Plus Jakarta Sans', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
+          sans: ['Inter', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
+          mono: ['Inter', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'monospace'],
         },
       }
     }
   };
 </script>
 
-<!-- Google Fonts: Plus Jakarta Sans -->
+<!-- Google Fonts: Inter (SaaS / Linear / Pulse Aesthetic) -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
 
 <!-- Leaflet.js CSS for Real-World Geographic Map -->
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
@@ -40,17 +40,19 @@
   }
 
   html, body {
-    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     overflow-x: hidden;
     transition: background-color 0.25s ease, color 0.25s ease;
     font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 
-  /* Universal typography refinement: Replace terminal monospace with sleek modern tabular figures */
+  /* Universal UI Tabular Figures & Numerics (Inter OpenType Features) */
   .font-mono {
-    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
-    font-feature-settings: 'tnum' 1, 'lnum' 1;
-    letter-spacing: -0.01em;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, monospace !important;
+    font-feature-settings: 'tnum' 1, 'lnum' 1, 'cv05' 1, 'cv08' 1;
+    letter-spacing: -0.015em;
   }
 
   /* Ship Hydrodynamic Sailing Animation */
@@ -193,56 +195,69 @@
         </button>
       </div>
 
-      <!-- Navigation Section -->
-      <nav id="sidebar-nav" class="space-y-1 text-xs font-medium text-slate-600 dark:text-white/70">
+      <!-- Navigation Section: Clean SaaS Grouping (Overview / Analytics / Contact) -->
+      <nav id="sidebar-nav" class="space-y-4 text-xs font-medium text-slate-600 dark:text-white/70">
         
-        <div class="text-[10px] font-mono uppercase font-semibold text-slate-400 dark:text-white/30 px-3 py-1.5 tracking-wider">
-          Workspace
+        <!-- Section 1: OVERVIEW -->
+        <div class="space-y-1">
+          <div class="text-[10px] uppercase font-semibold text-slate-400 dark:text-white/40 px-3 tracking-wider mb-1.5">
+            Overview
+          </div>
+
+          <a href="#hero" class="sidebar-link active flex items-center gap-3 px-3 py-2.5 rounded-xl bg-slate-100 text-slate-900 font-semibold dark:bg-white/10 dark:text-white transition">
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="3" width="7" height="7"></rect>
+              <rect x="14" y="3" width="7" height="7"></rect>
+              <rect x="14" y="14" width="7" height="7"></rect>
+              <rect x="3" y="14" width="7" height="7"></rect>
+            </svg>
+            <span>Dashboard & Ship</span>
+          </a>
+
+          <a href="#maritime-transport" class="sidebar-link flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-slate-100 dark:hover:bg-white/5 transition">
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polygon points="3 11 22 2 13 21 11 13 3 11"></polygon>
+            </svg>
+            <span>Sea Freight Map</span>
+          </a>
         </div>
 
-        <a href="#hero" class="sidebar-link active flex items-center gap-3 px-3 py-2.5 rounded-xl bg-slate-900 text-white dark:bg-white dark:text-slate-950 font-semibold transition">
-          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <rect x="3" y="3" width="7" height="7"></rect>
-            <rect x="14" y="3" width="7" height="7"></rect>
-            <rect x="14" y="14" width="7" height="7"></rect>
-            <rect x="3" y="14" width="7" height="7"></rect>
-          </svg>
-          <span>Dashboard & Ship</span>
-        </a>
+        <!-- Section 2: ANALYTICS & CODE -->
+        <div class="space-y-1">
+          <div class="text-[10px] uppercase font-semibold text-slate-400 dark:text-white/40 px-3 tracking-wider mb-1.5">
+            Analytics & Code
+          </div>
 
-        <a href="#maritime-transport" class="sidebar-link flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-slate-100 dark:hover:bg-white/5 transition">
-          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <polygon points="3 11 22 2 13 21 11 13 3 11"></polygon>
-          </svg>
-          <span>Sea Freight Map</span>
-        </a>
+          <a href="#projects" class="sidebar-link flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-slate-100 dark:hover:bg-white/5 transition">
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="16 18 22 12 16 6"></polyline>
+              <polyline points="8 6 2 12 8 18"></polyline>
+            </svg>
+            <span>Projects & Code</span>
+          </a>
 
+          <a href="#skills" class="sidebar-link flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-slate-100 dark:hover:bg-white/5 transition">
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
+            </svg>
+            <span>Technical Stack</span>
+          </a>
+        </div>
 
+        <!-- Section 3: CONNECT -->
+        <div class="space-y-1">
+          <div class="text-[10px] uppercase font-semibold text-slate-400 dark:text-white/40 px-3 tracking-wider mb-1.5">
+            Connect
+          </div>
 
-        <a href="#projects" class="sidebar-link flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-slate-100 dark:hover:bg-white/5 transition">
-          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <polyline points="16 18 22 12 16 6"></polyline>
-            <polyline points="8 6 2 12 8 18"></polyline>
-          </svg>
-          <span>Projects & Code</span>
-        </a>
-
-
-
-        <a href="#skills" class="sidebar-link flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-slate-100 dark:hover:bg-white/5 transition">
-          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
-          </svg>
-          <span>Technical Stack</span>
-        </a>
-
-        <a href="#contact" class="sidebar-link flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-slate-100 dark:hover:bg-white/5 transition">
-          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-            <polyline points="22,6 12,13 2,6"></polyline>
-          </svg>
-          <span>Contact Desk</span>
-        </a>
+          <a href="#contact" class="sidebar-link flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-slate-100 dark:hover:bg-white/5 transition">
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+              <polyline points="22,6 12,13 2,6"></polyline>
+            </svg>
+            <span>Contact Desk</span>
+          </a>
+        </div>
 
       </nav>
 
@@ -1726,6 +1741,37 @@
         });
       });
     });
+
+    // Sidebar Scroll Spy (Pulse / Linear Style Active Item Tracking)
+    const sidebarLinks = document.querySelectorAll('.sidebar-link');
+    const trackedSections = document.querySelectorAll('section[id], footer[id]');
+
+    function updateSidebarScrollSpy() {
+      const scrollY = window.pageYOffset || document.documentElement.scrollTop;
+      let currentActiveId = 'hero';
+
+      trackedSections.forEach(section => {
+        const top = section.offsetTop - 180;
+        const height = section.offsetHeight;
+        if (scrollY >= top && scrollY < top + height) {
+          currentActiveId = section.getAttribute('id');
+        }
+      });
+
+      sidebarLinks.forEach(link => {
+        const targetHref = link.getAttribute('href');
+        if (targetHref === '#' + currentActiveId) {
+          link.classList.add('bg-slate-100', 'text-slate-900', 'font-semibold', 'dark:bg-white/10', 'dark:text-white');
+          link.classList.remove('text-slate-600', 'dark:text-white/70');
+        } else {
+          link.classList.remove('bg-slate-100', 'text-slate-900', 'font-semibold', 'dark:bg-white/10', 'dark:text-white');
+          link.classList.add('text-slate-600', 'dark:text-white/70');
+        }
+      });
+    }
+
+    window.addEventListener('scroll', updateSidebarScrollSpy, { passive: true });
+    updateSidebarScrollSpy();
   })();
 
 </script>
