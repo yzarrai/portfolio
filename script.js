@@ -1,5 +1,5 @@
 /**
- * Yusuf Zaidany Arraihan - Portfolio Interactions
+ * Yusuf Zaidany Arraihan - Modern Portfolio Interactions
  * Standards: Zero emojis, Zero em dashes, Vanilla JS, Accessible markup
  */
 
@@ -7,7 +7,7 @@
   "use strict";
 
   // --------------------------------------------------------------------------
-  // 1. Theme Management (Light / Dark Mode)
+  // 1. Theme Management (Default: Dark Tech Theme)
   // --------------------------------------------------------------------------
   const themeToggleBtn = document.getElementById("theme-toggle");
   const htmlRoot = document.documentElement;
@@ -17,7 +17,8 @@
     if (savedTheme) {
       return savedTheme;
     }
-    return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+    // Default to dark theme for the modern tech aesthetic
+    return "dark";
   }
 
   function applyTheme(theme) {
@@ -30,17 +31,16 @@
 
   if (themeToggleBtn) {
     themeToggleBtn.addEventListener("click", function () {
-      const currentTheme = htmlRoot.getAttribute("data-theme") || "light";
+      const currentTheme = htmlRoot.getAttribute("data-theme") || "dark";
       const targetTheme = currentTheme === "dark" ? "light" : "dark";
       applyTheme(targetTheme);
     });
   }
 
   // --------------------------------------------------------------------------
-  // 2. Dispatch Live Clock & Issue Date
+  // 2. Real-Time UTC Dispatch Clock
   // --------------------------------------------------------------------------
   const clockEl = document.getElementById("live-clock");
-  const dateEl = document.getElementById("current-date");
 
   function updateClock() {
     if (!clockEl) return;
@@ -51,36 +51,26 @@
     clockEl.textContent = "UTC " + utcHours + ":" + utcMinutes + ":" + utcSeconds;
   }
 
-  function setIssueDate() {
-    if (!dateEl) return;
-    const now = new Date();
-    const options = { month: "long", year: "numeric" };
-    dateEl.textContent = now.toLocaleDateString("en-US", options);
-  }
-
   updateClock();
-  setIssueDate();
   setInterval(updateClock, 1000);
 
   // --------------------------------------------------------------------------
   // 3. Project Filter Tabs
   // --------------------------------------------------------------------------
-  const filterTabs = document.querySelectorAll(".filter-tab");
+  const filterBtns = document.querySelectorAll(".filter-btn");
   const projectCards = document.querySelectorAll(".project-card");
 
-  filterTabs.forEach(function (tab) {
-    tab.addEventListener("click", function () {
-      // Update active tab styling
-      filterTabs.forEach(function (t) {
-        t.classList.remove("active");
-        t.setAttribute("aria-selected", "false");
+  filterBtns.forEach(function (btn) {
+    btn.addEventListener("click", function () {
+      filterBtns.forEach(function (b) {
+        b.classList.remove("active");
+        b.setAttribute("aria-selected", "false");
       });
-      tab.classList.add("active");
-      tab.setAttribute("aria-selected", "true");
+      btn.classList.add("active");
+      btn.setAttribute("aria-selected", "true");
 
-      const filterValue = tab.getAttribute("data-filter");
+      const filterValue = btn.getAttribute("data-filter");
 
-      // Filter project cards
       projectCards.forEach(function (card) {
         const category = card.getAttribute("data-category");
         if (filterValue === "all" || category === filterValue) {
@@ -107,7 +97,7 @@
 
     setTimeout(function () {
       toast.style.opacity = "0";
-      toast.style.transform = "translateY(8px)";
+      toast.style.transform = "translateY(12px)";
       setTimeout(function () {
         if (toast.parentNode) {
           toast.parentNode.removeChild(toast);
@@ -139,7 +129,7 @@
   function handleCopySuccess() {
     if (!copyEmailBtn) return;
     copyEmailBtn.classList.add("copied");
-    showToast("Email address copied to clipboard: " + emailAddress);
+    showToast("Copied to clipboard: " + emailAddress);
     setTimeout(function () {
       copyEmailBtn.classList.remove("copied");
     }, 2000);
@@ -157,7 +147,7 @@
       document.execCommand("copy");
       handleCopySuccess();
     } catch (err) {
-      showToast("Please copy manually: " + text);
+      showToast("Please copy: " + text);
     }
     document.body.removeChild(textArea);
   }
@@ -222,7 +212,7 @@
   const trackedSections = document.querySelectorAll("section[id]");
 
   function updateActiveNavLink() {
-    const scrollPosition = window.scrollY + 140;
+    const scrollPosition = window.scrollY + 120;
 
     trackedSections.forEach(function (section) {
       const sectionTop = section.offsetTop;

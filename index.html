@@ -1,246 +1,340 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light">
+<html lang="en" data-theme="dark">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Yusuf Zaidany Arraihan | Supply Chain Analytics & Operations Research</title>
-  <meta name="description" content="Portfolio of Yusuf Zaidany Arraihan. Supply chain analytics professional specializing in demand forecasting, inventory optimization, process mining, and agentic simulation systems.">
+  <title>Yusuf Zaidany Arraihan | Supply Chain Analytics & Optimization Engineer</title>
+  <meta name="description" content="Portfolio of Yusuf Zaidany Arraihan. Supply chain analytics professional specializing in demand planning, multi-echelon inventory optimization, process mining, and agentic simulation systems.">
   
-  <!-- Typography -->
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,400&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
   
   <!-- Stylesheet -->
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <!-- Top Announcement / Dispatch Header -->
-  <div class="top-dispatch-bar">
-    <div class="site-container top-dispatch-inner">
-      <span class="dispatch-tag">FIELD DISPATCH</span>
-      <span class="dispatch-location">Surabaya, Indonesia | Open to relocation: GCC, EU</span>
-      <span class="dispatch-clock" id="live-clock">UTC 00:00:00</span>
-    </div>
-  </div>
+  <!-- Ambient Background Glows -->
+  <div class="ambient-glow glow-top" aria-hidden="true"></div>
+  <div class="ambient-glow glow-middle" aria-hidden="true"></div>
 
-  <!-- Primary Masthead -->
-  <header class="masthead">
-    <div class="site-container masthead-inner">
-      <div class="masthead-meta">
-        <span class="issue-meta">VOL. IV · NO. 26</span>
-        <span class="issue-date" id="current-date">September 2026</span>
-        <span class="issue-tagline">ANALYTICS & OPERATIONS CHRONICLE</span>
+  <!-- Sticky Glassmorphic Navigation -->
+  <header class="navbar-wrapper">
+    <nav class="navbar site-container" aria-label="Main Navigation">
+      <a href="#hero" class="nav-brand" aria-label="Yusuf Zaidany Arraihan Homepage">
+        <span class="brand-monogram">YA</span>
+        <span class="brand-text">
+          <span class="brand-name">Yusuf Z. Arraihan</span>
+          <span class="brand-role">Supply Chain Analytics</span>
+        </span>
+      </a>
+
+      <!-- Desktop Navigation Links -->
+      <ul class="nav-menu">
+        <li><a href="#record" class="nav-link">The Record</a></li>
+        <li><a href="#architecture" class="nav-link">Architecture</a></li>
+        <li><a href="#projects" class="nav-link">Case Studies</a></li>
+        <li><a href="#experience" class="nav-link">Chronicle</a></li>
+        <li><a href="#capabilities" class="nav-link">Capabilities</a></li>
+        <li><a href="#credentials" class="nav-link">Credentials</a></li>
+      </ul>
+
+      <!-- Action Controls -->
+      <div class="nav-actions">
+        <button id="theme-toggle" class="icon-control-btn" aria-label="Toggle visual theme" title="Toggle dark and light theme">
+          <svg class="theme-icon light-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="23"></line>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+            <line x1="1" y1="12" x2="3" y2="12"></line>
+            <line x1="21" y1="12" x2="23" y2="12"></line>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+          </svg>
+          <svg class="theme-icon dark-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+          </svg>
+        </button>
+
+        <button id="cv-download-btn" class="nav-cta-btn">
+          <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+            <polyline points="7 10 12 15 17 10"></polyline>
+            <line x1="12" y1="15" x2="12" y2="3"></line>
+          </svg>
+          <span>Curriculum Vitae</span>
+        </button>
       </div>
-
-      <div class="masthead-brand">
-        <h1 class="brand-title">YUSUF ZAIDANY ARRAIHAN</h1>
-        <p class="brand-subtitle">Supply Chain Analytics · Demand & Inventory Planning · Process Mining & Agentic Optimization</p>
-      </div>
-
-      <!-- Navigation & Utility Controls -->
-      <nav class="main-navigation" aria-label="Main Navigation">
-        <ul class="nav-links">
-          <li><a href="#summary" class="nav-link">Overview</a></li>
-          <li><a href="#the-record" class="nav-link">The Record</a></li>
-          <li><a href="#case-studies" class="nav-link">Selected Cases</a></li>
-          <li><a href="#experience" class="nav-link">Chronicle</a></li>
-          <li><a href="#capabilities" class="nav-link">Capabilities</a></li>
-          <li><a href="#credentials" class="nav-link">Credentials</a></li>
-          <li><a href="#contact" class="nav-link">Engagement</a></li>
-        </ul>
-
-        <div class="masthead-actions">
-          <button id="theme-toggle" class="control-btn" aria-label="Toggle visual theme" title="Toggle dark and light theme">
-            <svg class="theme-icon light-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="12" cy="12" r="5"></circle>
-              <line x1="12" y1="1" x2="12" y2="3"></line>
-              <line x1="12" y1="21" x2="12" y2="23"></line>
-              <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-              <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-              <line x1="1" y1="12" x2="3" y2="12"></line>
-              <line x1="21" y1="12" x2="23" y2="12"></line>
-              <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-              <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
-            </svg>
-            <svg class="theme-icon dark-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-            </svg>
-            <span class="btn-text">Theme</span>
-          </button>
-
-          <button id="cv-download-btn" class="action-btn primary-action">
-            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-              <polyline points="7 10 12 15 17 10"></polyline>
-              <line x1="12" y1="15" x2="12" y2="3"></line>
-            </svg>
-            <span>Download CV</span>
-          </button>
-        </div>
-      </nav>
-    </div>
+    </nav>
   </header>
 
   <main>
-    <!-- Section 1: Lead Front Page / Summary -->
-    <section id="summary" class="section front-page-section">
+    <!-- Section 1: Hero Section -->
+    <section id="hero" class="hero-section">
       <div class="site-container">
-        <div class="lead-grid">
+        
+        <div class="hero-status-strip">
+          <div class="status-beacon">
+            <span class="beacon-dot"></span>
+            <span class="beacon-text">Available for roles: GCC, EU, Global Remote</span>
+          </div>
+          <div class="utc-clock-badge">
+            <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"></circle>
+              <polyline points="12 6 12 12 16 14"></polyline>
+            </svg>
+            <span id="live-clock">UTC 00:00:00</span>
+          </div>
+        </div>
+
+        <div class="hero-content">
+          <div class="hero-pill-category">Supply Chain Analytics & Optimization</div>
+          <h1 class="hero-headline">
+            Turning operational log streams and supply volatility into deterministic replenishment intelligence.
+          </h1>
+          <p class="hero-subtext">
+            Supply chain analytics professional with a Bachelor of Management in Operations and Supply Chain (Cum Laude, GPA 3.60). Two years of hands-on practice building Python and SQL decision models across process mining, walk-forward demand forecasting, multi-echelon inventory optimization, and production MLOps.
+          </p>
+
+          <div class="hero-cta-group">
+            <a href="#projects" class="btn btn-primary">
+              <span>Inspect Engineering Work</span>
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            </a>
+
+            <a href="#contact" class="btn btn-secondary">
+              <span>Open Engagement Desk</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Quick Summary Metrics Bar -->
+        <div class="hero-quick-specs">
+          <div class="spec-card">
+            <span class="spec-label">Domain Focus</span>
+            <span class="spec-title">Procurement, Medical Distribution, Logistics</span>
+          </div>
+          <div class="spec-card">
+            <span class="spec-label">Core Tooling</span>
+            <span class="spec-title">Python, SQL, Celonis, SimPy, DuckDB, Power BI</span>
+          </div>
+          <div class="spec-card">
+            <span class="spec-label">Academic Distinction</span>
+            <span class="spec-title">Universitas Airlangga (Cum Laude, 3.60 / 4.00)</span>
+          </div>
+          <div class="spec-card">
+            <span class="spec-label">Verified Certifications</span>
+            <span class="spec-title">TU Eindhoven, Rutgers, Johns Hopkins, Google</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Section 2: The Record (Bento Grid Metrics) -->
+    <section id="record" class="section record-section">
+      <div class="site-container">
+        
+        <div class="section-head">
+          <div class="section-tag">VERIFIED OUTCOMES</div>
+          <h2 class="section-title">The Quantitative Record</h2>
+          <p class="section-desc">Measurable performance metrics delivered across international client engagements, corporate data audits, and healthcare operations.</p>
+        </div>
+
+        <div class="bento-grid">
           
-          <article class="lead-article">
-            <div class="article-kicker">FEATURE PROFILE · OPERATIONS & ANALYTICS</div>
-            <h2 class="lead-headline">Mapping operational friction, mining transaction data, and deploying verifiable replenishment intelligence.</h2>
-            
-            <p class="lead-deck">
-              Supply chain analytics professional holding a Bachelor of Management in Operations and Supply Chain (Cum Laude). Two years of direct practice translating operational log streams into rigorous inventory, procurement, and logistics decisions.
+          <div class="bento-card bento-card-highlight">
+            <div class="bento-badge">Contra.com Engagement</div>
+            <div class="bento-metric">22%</div>
+            <h3 class="bento-title">Average Cycle Time Reduction</h3>
+            <p class="bento-body">
+              Mined operational event logs using Celonis for international enterprise clients, identifying root bottlenecks, variant paths, and process rework loops that manual reviews had missed.
             </p>
-
-            <div class="article-body">
-              <p>
-                My work spans the complete analytics cycle. I start by mapping physical workflows on the floor, extracting raw transactional event logs, and applying process mining in Celonis and pm4py to pinpoint where orders stall or re-queue. From there, I build Python and SQL models for walk-forward demand forecasting, multi-echelon safety stock setting, and stochastic distribution planning under variable lead times.
-              </p>
-              <p>
-                Rather than treating analytics as isolated notebooks, I package models into reproducible pipelines, discrete-event simulations, interactive Streamlit and Power BI control rooms, and autonomous multi-agent systems with explicit guardrails. My domain background covers regulated medical device logistics, healthcare operations, and public infrastructure procurement.
-              </p>
+            <div class="bento-footer">
+              <span class="bento-tag">Process Mining (Celonis)</span>
+              <span class="bento-tag">Workflow Optimization</span>
             </div>
+          </div>
 
-            <div class="article-actions">
-              <a href="#case-studies" class="action-btn secondary-action">
-                <span>Explore Technical Cases</span>
-                <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <line x1="5" y1="12" x2="19" y2="12"></line>
-                  <polyline points="12 5 19 12 12 19"></polyline>
-                </svg>
-              </a>
-              <a href="#contact" class="action-btn text-action">
-                <span>Direct Contact Channels</span>
-              </a>
+          <div class="bento-card">
+            <div class="bento-badge">Data Automation</div>
+            <div class="bento-metric">14 hrs</div>
+            <h3 class="bento-title">Weekly Manual Effort Eliminated</h3>
+            <p class="bento-body">
+              Engineered end-to-end Python data ingestion and recurring reporting pipelines, completely removing error-prone spreadsheet tasks and automating stakeholder delivery.
+            </p>
+            <div class="bento-footer">
+              <span class="bento-tag">Python Automation</span>
+              <span class="bento-tag">Automated ETL</span>
             </div>
-          </article>
+          </div>
 
-          <!-- Editorial Sidebar Column -->
-          <aside class="lead-sidebar">
-            <div class="sidebar-block focus-block">
-              <h3 class="sidebar-title">DISPATCH BRIEFING</h3>
-              <ul class="dossier-list">
-                <li>
-                  <span class="dossier-label">Core Specialization</span>
-                  <span class="dossier-value">Demand Forecasting, Inventory Optimization, Process Mining</span>
-                </li>
-                <li>
-                  <span class="dossier-label">Primary Stack</span>
-                  <span class="dossier-value">Python, SQL, Celonis, SimPy, DuckDB, Power BI</span>
-                </li>
-                <li>
-                  <span class="dossier-label">Academic Distinction</span>
-                  <span class="dossier-value">Universitas Airlangga (GPA 3.60 / 4.00, Cum Laude)</span>
-                </li>
-                <li>
-                  <span class="dossier-label">Professional Credentials</span>
-                  <span class="dossier-value">TU Eindhoven, Rutgers, Johns Hopkins, Google</span>
-                </li>
-                <li>
-                  <span class="dossier-label">Linguistic Proficiency</span>
-                  <span class="dossier-value">English (IELTS C2, Native-Equivalent), German (B1), Indonesian</span>
-                </li>
-                <li>
-                  <span class="dossier-label">Relocation Mobility</span>
-                  <span class="dossier-value">Available for immediate placement in GCC and European Union</span>
-                </li>
-              </ul>
+          <div class="bento-card">
+            <div class="bento-badge">HIDATA Digital Technology</div>
+            <div class="bento-metric">98%</div>
+            <h3 class="bento-title">Model-Ready Data Accuracy</h3>
+            <p class="bento-body">
+              Audited internal relational databases using SQL, resolving structural data quality issues to build reliable input pipelines for predictive demand forecasting models.
+            </p>
+            <div class="bento-footer">
+              <span class="bento-tag">SQL Data Auditing</span>
+              <span class="bento-tag">Demand Modeling Inputs</span>
             </div>
+          </div>
 
-            <div class="sidebar-block notice-block">
-              <div class="notice-header">CURRENT INITIATIVES</div>
-              <p class="notice-text">
-                Currently preparing for the APICS CSCP examination (target 2027) while deepening technical implementations across SAP S/4HANA procurement modules and HL7 FHIR data standards for regulated medical supply networks.
-              </p>
+          <div class="bento-card bento-card-accent">
+            <div class="bento-badge">DMAIC Six Sigma Thesis</div>
+            <div class="bento-metric">42.6%</div>
+            <h3 class="bento-title">Non-Value Lead Time Eliminated</h3>
+            <p class="bento-body">
+              Analyzed 534 minutes of clinical patient flow. Identified a 182-minute post-lab re-queue bottleneck and designed a future-state workflow that increased cycle efficiency from 20.0% to 30.3%.
+            </p>
+            <div class="bento-footer">
+              <span class="bento-tag">Lean Six Sigma (DMAIC)</span>
+              <span class="bento-tag">Healthcare Flow Optimization</span>
             </div>
-          </aside>
+          </div>
 
         </div>
+
       </div>
     </section>
 
-    <!-- Section 2: The Record (Key Operational Ledger) -->
-    <section id="the-record" class="section ledger-section">
+    <!-- Section 3: Interactive Analytics Loop (Architecture Component) -->
+    <section id="architecture" class="section architecture-section">
       <div class="site-container">
-        <div class="section-header-row">
-          <div>
-            <span class="section-kicker">THE RECORD</span>
-            <h2 class="section-title">Verified Quantitative Outcomes</h2>
-          </div>
-          <p class="section-context">Measured results from client engagements, facility operational audits, and industrial simulations.</p>
+        
+        <div class="section-head">
+          <div class="section-tag">METHODOLOGY</div>
+          <h2 class="section-title">The Complete Analytics & Execution Loop</h2>
+          <p class="section-desc">From raw transaction event logs to multi-agent optimization and production ERP execution.</p>
         </div>
 
-        <div class="ledger-grid">
-          <div class="ledger-card">
-            <div class="ledger-metric">22%</div>
-            <div class="ledger-label">Average Cycle Time Reduction</div>
-            <p class="ledger-desc">Achieved for international operations clients at Contra.com by mining event logs, resolving process variants, and eliminating recurring workflow friction.</p>
-            <div class="ledger-source">Source: Contra.com Engagements (Sep 2024 - Present)</div>
+        <div class="architecture-flow">
+          
+          <div class="flow-step">
+            <div class="step-indicator">
+              <span class="step-num">01</span>
+              <span class="step-line"></span>
+            </div>
+            <div class="step-content">
+              <h3 class="step-title">Process Mining & Log Ingestion</h3>
+              <p class="step-desc">
+                Extract transactional event logs directly from ERP or database tables. Apply Celonis and pm4py algorithms to uncover hidden delays, rework loops, and variant deviations.
+              </p>
+              <div class="step-tech">
+                <span>Celonis</span>
+                <span>pm4py</span>
+                <span>SQL</span>
+              </div>
+            </div>
           </div>
 
-          <div class="ledger-card">
-            <div class="ledger-metric">14 hrs</div>
-            <div class="ledger-label">Manual Effort Cut Per Week</div>
-            <p class="ledger-desc">Engineered Python data ingestion and automated reporting scripts, completely replacing manual data entry across client reporting cycles.</p>
-            <div class="ledger-source">Source: Client Operations Automation Pipeline</div>
+          <div class="flow-step">
+            <div class="step-indicator">
+              <span class="step-num">02</span>
+              <span class="step-line"></span>
+            </div>
+            <div class="step-content">
+              <h3 class="step-title">Demand & Stochastic Modeling</h3>
+              <p class="step-desc">
+                Perform walk-forward temporal cross-validation benchmarking SARIMA, Prophet, and XGBoost. Use SHAP values to explain underlying macroeconomic and promotional demand drivers.
+              </p>
+              <div class="step-tech">
+                <span>XGBoost</span>
+                <span>SARIMA</span>
+                <span>SHAP</span>
+              </div>
+            </div>
           </div>
 
-          <div class="ledger-card">
-            <div class="ledger-metric">98%</div>
-            <div class="ledger-label">Model-Ready Data Accuracy</div>
-            <p class="ledger-desc">Audited and cleaned internal datasets via SQL at HIDATA Digital Technology, resolving structural anomalies for predictive demand systems.</p>
-            <div class="ledger-source">Source: HIDATA Digital Technology ML Audit</div>
+          <div class="flow-step">
+            <div class="step-indicator">
+              <span class="step-num">03</span>
+              <span class="step-line"></span>
+            </div>
+            <div class="step-content">
+              <h3 class="step-title">Inventory & Policy Optimization</h3>
+              <p class="step-desc">
+                Formulate Mixed-Integer Linear Programs (PuLP) for multi-echelon safety stock setting. Stress-test replenishment rules via SimPy discrete-event simulation under maritime delays.
+              </p>
+              <div class="step-tech">
+                <span>MILP (PuLP)</span>
+                <span>SimPy</span>
+                <span>Monte Carlo</span>
+              </div>
+            </div>
           </div>
 
-          <div class="ledger-card">
-            <div class="ledger-metric">42.6%</div>
-            <div class="ledger-label">Non-Value-Added Time Removed</div>
-            <p class="ledger-desc">Redesigned outpatient laboratory re-queue workflows using Lean Six Sigma DMAIC methodology, raising process cycle efficiency from 20.0% to 30.3%.</p>
-            <div class="ledger-source">Source: Universitas Airlangga Honours Thesis</div>
+          <div class="flow-step">
+            <div class="step-indicator">
+              <span class="step-num">04</span>
+            </div>
+            <div class="step-content">
+              <h3 class="step-title">Production MLOps & ERP Webhooks</h3>
+              <p class="step-desc">
+                Package models into containerized FastAPI services with MLflow registry gates, automated drift detection, and simulated SAP/Oracle ERP webhook dispatches.
+              </p>
+              <div class="step-tech">
+                <span>FastAPI</span>
+                <span>MLflow</span>
+                <span>Docker</span>
+              </div>
+            </div>
           </div>
+
         </div>
+
       </div>
     </section>
 
-    <!-- Section 3: Selected Case Studies & Technical Work -->
-    <section id="case-studies" class="section projects-section">
+    <!-- Section 4: Selected Engineering Projects (Case Studies) -->
+    <section id="projects" class="section projects-section">
       <div class="site-container">
-        <div class="section-header-row">
+        
+        <div class="section-head section-head-flex">
           <div>
-            <span class="section-kicker">PORTFOLIO DOSSIER</span>
-            <h2 class="section-title">Selected Analytical Cases & System Deployments</h2>
+            <div class="section-tag">ENGINEERING DOSSIER</div>
+            <h2 class="section-title">Selected Technical Case Studies</h2>
+            <p class="section-desc">Production-grade systems, mathematical optimization pipelines, and agentic simulation engines.</p>
           </div>
-          <div class="filter-controls" role="tablist" aria-label="Project filter tabs">
-            <button class="filter-tab active" data-filter="all" role="tab" aria-selected="true">All Works (8)</button>
-            <button class="filter-tab" data-filter="agentic" role="tab" aria-selected="false">Agentic AI & Simulation</button>
-            <button class="filter-tab" data-filter="planning" role="tab" aria-selected="false">Demand & Inventory</button>
-            <button class="filter-tab" data-filter="operations" role="tab" aria-selected="false">Optimization & Process Mining</button>
+
+          <!-- Category Filter Tabs -->
+          <div class="filter-tabs" role="tablist" aria-label="Project Categories">
+            <button class="filter-btn active" data-filter="all" role="tab" aria-selected="true">All (8)</button>
+            <button class="filter-btn" data-filter="agentic" role="tab" aria-selected="false">Agentic AI & Simulation</button>
+            <button class="filter-btn" data-filter="planning" role="tab" aria-selected="false">Demand & Inventory</button>
+            <button class="filter-btn" data-filter="operations" role="tab" aria-selected="false">Optimization & Process Mining</button>
           </div>
         </div>
 
         <div class="projects-grid" id="projects-container">
-          
-          <!-- Project 1: Multi-Agent Supply Chain Agentic AI -->
+
+          <!-- Project 1: Multi-Agent Supply Chain Swarm -->
           <article class="project-card" data-category="agentic">
-            <div class="card-meta">
-              <span class="card-year">2025</span>
-              <span class="card-category-tag">Agentic AI · Mathematical Optimization</span>
+            <div class="card-header">
+              <div class="card-meta">
+                <span class="card-tag">Multi-Agent AI · MILP</span>
+                <span class="card-year">2025</span>
+              </div>
+              <h3 class="card-title">Multi-Agent Supply Chain Agentic Swarm</h3>
             </div>
-            <h3 class="card-title">Multi-Agent Supply Chain Agentic Intelligence Swarm</h3>
-            <p class="card-summary">
-              An autonomous four-agent orchestration architecture (Demand, Inventory, Risk, and Logistics) operating under a two-round debate protocol to achieve Pareto-optimal operational trade-offs without manual reconciliation.
+            <p class="card-desc">
+              An autonomous four-agent orchestration architecture (Demand, Inventory, Risk, Logistics) operating under a two-round debate protocol to achieve Pareto-optimal operational trade-offs without manual reconciliation.
             </p>
-            <ul class="card-details">
-              <li>Couples Mixed-Integer Linear Programming (PuLP) stochastic lot-sizing with SARIMAX forecasting and a Monte Carlo digital twin for disruption stress testing.</li>
-              <li>Integrates a DuckDB and ChromaDB hybrid RAG data layer with an interactive control tower, human-in-the-loop sign-offs, and simulated SAP/Oracle ERP webhook dispatches.</li>
-              <li>Backed by a test suite of 90 automated validation tests ensuring deterministic boundary execution.</li>
+            <ul class="card-bullets">
+              <li>Coupled Mixed-Integer Linear Programming (PuLP) stochastic lot-sizing with SARIMAX forecasting and a Monte Carlo digital twin for disruption stress-testing.</li>
+              <li>Integrated a DuckDB and ChromaDB hybrid RAG data layer with an interactive control tower, human-in-the-loop approvals, and simulated SAP/Oracle ERP webhook dispatches.</li>
+              <li>Validated by 90 automated tests ensuring deterministic boundary execution.</li>
             </ul>
-            <div class="card-tech-stack">
+            <div class="tech-pills">
               <span>Python</span>
               <span>MILP (PuLP)</span>
               <span>SARIMAX</span>
@@ -249,9 +343,9 @@
               <span>FastAPI</span>
               <span>Docker</span>
             </div>
-            <div class="card-footer">
-              <a href="https://github.com/yzarrai/supply-chain-agentic-ai" target="_blank" rel="noopener noreferrer" class="project-link">
-                <span>Inspect Repository</span>
+            <div class="card-actions">
+              <a href="https://github.com/yzarrai/supply-chain-agentic-ai" target="_blank" rel="noopener noreferrer" class="card-link">
+                <span>View Repository</span>
                 <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                   <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
                   <polyline points="15 3 21 3 21 9"></polyline>
@@ -261,31 +355,33 @@
             </div>
           </article>
 
-          <!-- Project 2: Inventory Brain & Demand Planning Platform -->
+          <!-- Project 2: Inventory Brain & Planning Platform -->
           <article class="project-card" data-category="planning">
-            <div class="card-meta">
-              <span class="card-year">2026</span>
-              <span class="card-category-tag">Inventory Engineering · MLOps</span>
+            <div class="card-header">
+              <div class="card-meta">
+                <span class="card-tag">Multi-Echelon Optimization · MLOps</span>
+                <span class="card-year">2026</span>
+              </div>
+              <h3 class="card-title">Inventory Brain & Demand Planning Platform</h3>
             </div>
-            <h3 class="card-title">Inventory Brain & Demand Planning Platform</h3>
-            <p class="card-summary">
+            <p class="card-desc">
               An end-to-end planning platform engineered to optimize working capital and service levels across multi-echelon distribution networks subject to demand and lead-time variability.
             </p>
-            <ul class="card-details">
-              <li>Combines statistical demand forecasting with multi-tier inventory optimization across central warehouses and local fulfillment nodes.</li>
-              <li>Uses discrete-event simulation to stress-test replenishment policies under volatile supply schedules.</li>
-              <li>Includes an interactive decision dashboard allowing supply planners to run comparative scenario analyses prior to physical purchase orders.</li>
+            <ul class="card-bullets">
+              <li>Combines statistical demand forecasting with multi-tier inventory optimization across central distribution centers and local fulfillment nodes.</li>
+              <li>Employs discrete-event simulation to stress-test replenishment policies under volatile shipping schedules.</li>
+              <li>Includes an interactive decision dashboard allowing supply planners to run comparative scenario analyses prior to physical purchase order dispatch.</li>
             </ul>
-            <div class="card-tech-stack">
+            <div class="tech-pills">
               <span>Python</span>
-              <span>Forecasting</span>
-              <span>Discrete-Event Sim</span>
-              <span>Multi-Echelon Optimization</span>
+              <span>Multi-Echelon Sim</span>
+              <span>Optimization</span>
               <span>MLOps</span>
+              <span>Streamlit</span>
             </div>
-            <div class="card-footer">
-              <a href="https://github.com/yzarrai/inventory-brain" target="_blank" rel="noopener noreferrer" class="project-link">
-                <span>Inspect Repository</span>
+            <div class="card-actions">
+              <a href="https://github.com/yzarrai/inventory-brain" target="_blank" rel="noopener noreferrer" class="card-link">
+                <span>View Repository</span>
                 <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                   <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
                   <polyline points="15 3 21 3 21 9"></polyline>
@@ -295,32 +391,34 @@
             </div>
           </article>
 
-          <!-- Project 3: Retail Demand & Stock Fluctuation Forecasting -->
+          <!-- Project 3: Retail Demand & Stock Fluctuation Machine Learning -->
           <article class="project-card" data-category="planning">
-            <div class="card-meta">
-              <span class="card-year">2026</span>
-              <span class="card-category-tag">Machine Learning · Explainability</span>
+            <div class="card-header">
+              <div class="card-meta">
+                <span class="card-tag">Machine Learning · SHAP Attribution</span>
+                <span class="card-year">2026</span>
+              </div>
+              <h3 class="card-title">Demand & Stock Fluctuation Machine Learning</h3>
             </div>
-            <h3 class="card-title">Demand & Stock Fluctuation Forecasting Machine Learning</h3>
-            <p class="card-summary">
-              A rigorous benchmarking framework comparing classical statistical methods against boosted tree architectures under walk-forward temporal cross-validation.
+            <p class="card-desc">
+              A walk-forward temporal cross-validation benchmarking framework evaluating classical statistical models against gradient-boosted tree architectures.
             </p>
-            <ul class="card-details">
-              <li>Evaluated SARIMA and Prophet against XGBoost using MAE, RMSE, and MAPE metrics to prevent lookahead data leakage.</li>
-              <li>Directly translates forecast distributions into service-level safety stock equations and dynamic reorder points.</li>
-              <li>Implements SHAP feature attribution to explain key macro and promotional drivers behind each SKU demand shift.</li>
+            <ul class="card-bullets">
+              <li>Benchmarked SARIMA and Prophet against XGBoost using MAE, RMSE, and MAPE metrics to prevent lookahead data leakage.</li>
+              <li>Directly converts forecast distributions into service-level safety stocks and dynamic reorder points.</li>
+              <li>Applies SHAP feature attribution to explain which underlying macro and promotional drivers caused each SKU demand variation.</li>
             </ul>
-            <div class="card-tech-stack">
+            <div class="tech-pills">
               <span>Python</span>
               <span>XGBoost</span>
               <span>SARIMA</span>
               <span>Prophet</span>
               <span>SHAP</span>
-              <span>Time Series Analysis</span>
+              <span>Time Series</span>
             </div>
-            <div class="card-footer">
-              <a href="https://github.com/yzarrai/retail-demand-forecasting-ml" target="_blank" rel="noopener noreferrer" class="project-link">
-                <span>Inspect Repository</span>
+            <div class="card-actions">
+              <a href="https://github.com/yzarrai/retail-demand-forecasting-ml" target="_blank" rel="noopener noreferrer" class="card-link">
+                <span>View Repository</span>
                 <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                   <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
                   <polyline points="15 3 21 3 21 9"></polyline>
@@ -332,28 +430,30 @@
 
           <!-- Project 4: Supply Chain Analytics Compendium -->
           <article class="project-card" data-category="operations">
-            <div class="card-meta">
-              <span class="card-year">2026</span>
-              <span class="card-category-tag">Applied Research · Six Case Studies</span>
+            <div class="card-header">
+              <div class="card-meta">
+                <span class="card-tag">Applied Research · 6 Case Studies</span>
+                <span class="card-year">2026</span>
+              </div>
+              <h3 class="card-title">Supply Chain Analytics Compendium (Six Cases)</h3>
             </div>
-            <h3 class="card-title">Supply Chain Analytics Compendium: Six Analytical Cases</h3>
-            <p class="card-summary">
-              In-depth mathematical treatment of six core supply chain problems, documenting practical failures, edge conditions, and counter-intuitive findings alongside positive models.
+            <p class="card-desc">
+              Mathematical treatment of six supply chain problems, documenting practical failures, edge conditions, and counter-intuitive findings alongside successful models.
             </p>
-            <ul class="card-details">
-              <li>Analyzed 24-month trend and multiple regression series (R² from 0.439 to 0.948, out-of-sample MAPE 10.57%), ABC classification across 36 SKUs, and push-pull inventory tradeoffs.</li>
-              <li>Conducted sourcing exposure analysis under high semiconductor supplier concentration.</li>
-              <li>Explicitly rejected a statistically significant trend model for operational planning because its standard error reached 50% of the mean order size, highlighting why statistical p-values alone do not make a forecast usable.</li>
+            <ul class="card-bullets">
+              <li>Analyzed 24-month trend and multiple regression series (R-squared 0.439 to 0.948, out-of-sample MAPE 10.57%), ABC classification across 36 SKUs, and push-pull inventory tradeoffs.</li>
+              <li>Evaluated sourcing concentration risk within the semiconductor sector.</li>
+              <li>Deliberately rejected a statistically significant trend model for operational planning because its standard error reached 50% of the mean order size.</li>
             </ul>
-            <div class="card-tech-stack">
-              <span>Regression Modelling</span>
+            <div class="tech-pills">
+              <span>Regression Analysis</span>
               <span>ABC Stratification</span>
               <span>Push-Pull Economics</span>
-              <span>Supplier Risk Indexing</span>
+              <span>Sourcing Risk</span>
             </div>
-            <div class="card-footer">
-              <button class="project-link compendium-btn" data-target="compendium-modal">
-                <span>Inspect Case Overview</span>
+            <div class="card-actions">
+              <button class="card-link compendium-btn" data-target="compendium-modal">
+                <span>View Case Overview</span>
                 <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                   <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
                   <polyline points="14 2 14 8 20 8"></polyline>
@@ -362,31 +462,33 @@
             </div>
           </article>
 
-          <!-- Project 5: Supply Chain Simulation LLM Agent -->
+          <!-- Project 5: Grounded Supply Chain Simulation Agent -->
           <article class="project-card" data-category="agentic">
-            <div class="card-meta">
-              <span class="card-year">2025</span>
-              <span class="card-category-tag">Simulation · LangChain Agent</span>
+            <div class="card-header">
+              <div class="card-meta">
+                <span class="card-tag">Simulation · LangChain Agent</span>
+                <span class="card-year">2025</span>
+              </div>
+              <h3 class="card-title">Grounded Supply Chain Simulation Agent</h3>
             </div>
-            <h3 class="card-title">Grounded Supply Chain Simulation Agent</h3>
-            <p class="card-summary">
+            <p class="card-desc">
               A zero-hallucination agent architecture bridging discrete-event supply chain modeling with conversational query interfaces.
             </p>
-            <ul class="card-details">
-              <li>Constructed a four-echelon discrete-event simulation in SimPy implementing (s, Q) replenishment control.</li>
-              <li>Applied Common Random Numbers (CRN) to decrease Monte Carlo variance by 19% to 37%, ensuring statistical validity in comparative policy checks.</li>
-              <li>Constrained the LangChain agent to strict Pydantic tool schemas, verifying that every quantitative output originates from the simulation engine. Validated with 39+ automated tests.</li>
+            <ul class="card-bullets">
+              <li>Constructed a four-echelon discrete-event simulation in SimPy implementing (s, Q) replenishment policies.</li>
+              <li>Applied Common Random Numbers (CRN) to decrease Monte Carlo variance by 19% to 37%, ensuring statistical validity in comparative policy analyses.</li>
+              <li>Constrained the LangChain agent to strict Pydantic tool schemas so every quantitative claim originates from the simulation engine. Validated with 39+ automated tests.</li>
             </ul>
-            <div class="card-tech-stack">
+            <div class="tech-pills">
               <span>Python</span>
               <span>SimPy</span>
               <span>LangChain</span>
               <span>Pydantic</span>
-              <span>Variance Reduction</span>
+              <span>Monte Carlo</span>
             </div>
-            <div class="card-footer">
-              <a href="https://github.com/yzarrai/supply-chain-simulation-agent" target="_blank" rel="noopener noreferrer" class="project-link">
-                <span>Inspect Repository</span>
+            <div class="card-actions">
+              <a href="https://github.com/yzarrai/supply-chain-simulation-agent" target="_blank" rel="noopener noreferrer" class="card-link">
+                <span>View Repository</span>
                 <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                   <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
                   <polyline points="15 3 21 3 21 9"></polyline>
@@ -398,28 +500,30 @@
 
           <!-- Project 6: Stochastic Cold-Chain Distribution Planner -->
           <article class="project-card" data-category="operations">
-            <div class="card-meta">
-              <span class="card-year">2026</span>
-              <span class="card-category-tag">Mathematical Programming · Logistics</span>
+            <div class="card-header">
+              <div class="card-meta">
+                <span class="card-tag">Mathematical Programming · Logistics</span>
+                <span class="card-year">2026</span>
+              </div>
+              <h3 class="card-title">Stochastic Cold-Chain Distribution Planner</h3>
             </div>
-            <h3 class="card-title">Stochastic Cold-Chain Distribution Planner</h3>
-            <p class="card-summary">
+            <p class="card-desc">
               A two-stage stochastic optimization model designed for cold-chain vaccine logistics facing maritime bottlenecks and port congestion.
             </p>
-            <ul class="card-details">
-              <li>Formulated mixed-integer linear programs incorporating temperature integrity thresholds, transit decay, and storage constraints.</li>
-              <li>Modeled disruption scenarios across shipping lanes to generate distribution schedules that remain feasible under severe variance.</li>
-              <li>Generates actionable dispatch orders balancing total logistics cost against product spoilage probability.</li>
+            <ul class="card-bullets">
+              <li>Formulated mixed-integer linear programs incorporating temperature integrity thresholds, transit decay rates, and cold storage capacity limits.</li>
+              <li>Modeled maritime disruption scenarios across international shipping routes to generate distribution schedules that remain feasible under severe variance.</li>
+              <li>Generates actionable dispatch schedules balancing total transportation costs against vaccine spoilage probability.</li>
             </ul>
-            <div class="card-tech-stack">
+            <div class="tech-pills">
               <span>Python</span>
               <span>MILP</span>
-              <span>Stochastic Optimization</span>
-              <span>Cold Chain Integrity</span>
+              <span>Stochastic Programming</span>
+              <span>Cold-Chain Analytics</span>
             </div>
-            <div class="card-footer">
-              <a href="https://github.com/yzarrai/stochastic-coldchain-planner" target="_blank" rel="noopener noreferrer" class="project-link">
-                <span>Inspect Repository</span>
+            <div class="card-actions">
+              <a href="https://github.com/yzarrai/stochastic-coldchain-planner" target="_blank" rel="noopener noreferrer" class="card-link">
+                <span>View Repository</span>
                 <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                   <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
                   <polyline points="15 3 21 3 21 9"></polyline>
@@ -431,28 +535,30 @@
 
           <!-- Project 7: Procurement RAG Assistant -->
           <article class="project-card" data-category="agentic">
-            <div class="card-meta">
-              <span class="card-year">2026</span>
-              <span class="card-category-tag">Information Retrieval · Contract Risk</span>
+            <div class="card-header">
+              <div class="card-meta">
+                <span class="card-tag">Information Retrieval · Contract Risk</span>
+                <span class="card-year">2026</span>
+              </div>
+              <h3 class="card-title">Procurement RAG Assistant & Contract Scanner</h3>
             </div>
-            <h3 class="card-title">Procurement RAG Assistant & Contract Scanner</h3>
-            <p class="card-summary">
-              An enterprise contract intelligence system providing procurement teams with clause-level verification and automated legal risk identification.
+            <p class="card-desc">
+              An enterprise contract intelligence system providing procurement teams with clause-level citations and automated commercial risk scanning.
             </p>
-            <ul class="card-details">
-              <li>Employs hybrid retrieval combining BM25 keyword matching and dense vector embeddings using Reciprocal Rank Fusion (RRF).</li>
-              <li>Enforces a 5-layer grounding guardrail to block fabricated clauses and require explicit document citations.</li>
-              <li>Scans commercial text for non-standard indemnity obligations, uncapped liability clauses, and unfavorable penalty terms.</li>
+            <ul class="card-bullets">
+              <li>Implements hybrid retrieval uniting BM25 keyword matching and dense vector embeddings using Reciprocal Rank Fusion (RRF).</li>
+              <li>Enforces a 5-layer grounding guardrail to block fabricated clauses and require explicit contractual citations.</li>
+              <li>Automatically detects non-standard indemnity terms, uncapped liability clauses, and unfavorable commercial penalty terms.</li>
             </ul>
-            <div class="card-tech-stack">
+            <div class="tech-pills">
               <span>Python</span>
               <span>Hybrid Search (BM25 + RRF)</span>
               <span>Guardrails</span>
               <span>Contract Auditing</span>
             </div>
-            <div class="card-footer">
-              <a href="https://github.com/yzarrai/procure-rag" target="_blank" rel="noopener noreferrer" class="project-link">
-                <span>Inspect Repository</span>
+            <div class="card-actions">
+              <a href="https://github.com/yzarrai/procure-rag" target="_blank" rel="noopener noreferrer" class="card-link">
+                <span>View Repository</span>
                 <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                   <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
                   <polyline points="15 3 21 3 21 9"></polyline>
@@ -464,436 +570,415 @@
 
           <!-- Project 8: Decision Support & MLOps Systems -->
           <article class="project-card" data-category="operations">
-            <div class="card-meta">
-              <span class="card-year">2025</span>
-              <span class="card-category-tag">Process Mining · Production MLOps</span>
+            <div class="card-header">
+              <div class="card-meta">
+                <span class="card-tag">Process Mining · Production MLOps</span>
+                <span class="card-year">2025</span>
+              </div>
+              <h3 class="card-title">Decision Support & MLOps Systems</h3>
             </div>
-            <h3 class="card-title">Decision Support & MLOps Systems (Banking & Clinical)</h3>
-            <p class="card-summary">
+            <p class="card-desc">
               Three production decision support systems integrating event log process mining with closed-loop predictive retraining.
             </p>
-            <ul class="card-details">
+            <ul class="card-bullets">
               <li>Combines discrete-event simulation in SimPy, process mining via pm4py, and operational forecasting.</li>
-              <li>Configured MLflow registry transition gates, data drift alarms, and closed-loop model retraining triggers.</li>
-              <li>Implemented across loan origination workflows and clinical patient care routing.</li>
+              <li>Configured MLflow model registry transition gates, data drift alarms, and closed-loop model retraining triggers.</li>
+              <li>Deployed across financial loan origination pipelines and outpatient medical clinic routing.</li>
             </ul>
-            <div class="card-tech-stack">
+            <div class="tech-pills">
               <span>Python</span>
               <span>pm4py</span>
               <span>SimPy</span>
               <span>MLflow</span>
-              <span>Drift Monitoring</span>
+              <span>FastAPI</span>
             </div>
-            <div class="card-footer">
-              <div class="multi-links">
-                <a href="https://github.com/yzarrai/loanflow-dss" target="_blank" rel="noopener noreferrer" class="project-link mini">Loan DSS</a>
-                <a href="https://github.com/yzarrai/loanflow-mlops" target="_blank" rel="noopener noreferrer" class="project-link mini">Loan MLOps</a>
-                <a href="https://github.com/yzarrai/clinic-flow-dss" target="_blank" rel="noopener noreferrer" class="project-link mini">Clinic DSS</a>
+            <div class="card-actions">
+              <div class="multi-repo-links">
+                <a href="https://github.com/yzarrai/loanflow-dss" target="_blank" rel="noopener noreferrer" class="mini-tag-link">Loan DSS</a>
+                <a href="https://github.com/yzarrai/loanflow-mlops" target="_blank" rel="noopener noreferrer" class="mini-tag-link">Loan MLOps</a>
+                <a href="https://github.com/yzarrai/clinic-flow-dss" target="_blank" rel="noopener noreferrer" class="mini-tag-link">Clinic DSS</a>
               </div>
             </div>
           </article>
 
         </div>
+
       </div>
     </section>
 
-    <!-- Section 4: Professional Chronicle (Experience) -->
-    <section id="experience" class="section timeline-section">
+    <!-- Section 5: Professional Chronicle (Experience) -->
+    <section id="experience" class="section experience-section">
       <div class="site-container">
-        <div class="section-header-row">
-          <div>
-            <span class="section-kicker">THE CHRONICLE</span>
-            <h2 class="section-title">Professional Experience</h2>
-          </div>
-          <p class="section-context">Track record across operational consulting, commercial management, and public health systems.</p>
+        
+        <div class="section-head">
+          <div class="section-tag">CHRONICLE</div>
+          <h2 class="section-title">Professional Experience</h2>
+          <p class="section-desc">Practical history spanning international operational analytics, enterprise technical management, and public health systems.</p>
         </div>
 
-        <div class="chronicle-timeline">
+        <div class="timeline">
 
-          <!-- Role 1 -->
-          <article class="chronicle-entry">
-            <div class="chronicle-meta">
-              <span class="chronicle-period">Sep 2024 - Present</span>
-              <span class="chronicle-location">Remote, International Clients</span>
+          <!-- Item 1 -->
+          <div class="timeline-item">
+            <div class="timeline-aside">
+              <span class="timeline-date">Sep 2024 - Present</span>
+              <span class="timeline-type">Remote · International Clients</span>
             </div>
-            <div class="chronicle-content">
-              <div class="role-header">
-                <h3 class="role-title">Supply Chain & Operations Analytics</h3>
-                <span class="role-company">Contra.com</span>
+            <div class="timeline-card">
+              <div class="timeline-header">
+                <h3 class="timeline-role">Supply Chain & Operations Analytics</h3>
+                <span class="timeline-company">Contra.com</span>
               </div>
-              <ul class="role-achievements">
+              <ul class="timeline-bullets">
                 <li>Analysed operational event data and mapped end-to-end workflows for international clients, cutting cycle times by an average of 22% and removing around 14 hours of manual labor per week.</li>
                 <li>Applied process mining (Celonis) to client event logs to quantify hidden bottlenecks, recurring rework loops, and process variants that conventional manual review missed.</li>
-                <li>Built automated data extraction and reporting pipelines in Python, eliminating recurring manual data entry.</li>
+                <li>Built automated data extraction and reporting pipelines in Python, replacing manual data entry.</li>
                 <li>Translated quantitative findings into operational decisions directly with client stakeholders, overseeing implementation from scoping through deployment.</li>
               </ul>
             </div>
-          </article>
+          </div>
 
-          <!-- Role 2 -->
-          <article class="chronicle-entry">
-            <div class="chronicle-meta">
-              <span class="chronicle-period">Feb 2025 - Aug 2026</span>
-              <span class="chronicle-location">Surabaya, Indonesia (Hybrid)</span>
+          <!-- Item 2 -->
+          <div class="timeline-item">
+            <div class="timeline-aside">
+              <span class="timeline-date">Feb 2025 - Aug 2026</span>
+              <span class="timeline-type">Surabaya, Indonesia (Hybrid)</span>
             </div>
-            <div class="chronicle-content">
-              <div class="role-header">
-                <h3 class="role-title">Operations Manager, Project-Based</h3>
-                <span class="role-company">HIDATA Digital Technology</span>
+            <div class="timeline-card">
+              <div class="timeline-header">
+                <h3 class="timeline-role">Operations Manager (Project-Based)</h3>
+                <span class="timeline-company">HIDATA Digital Technology</span>
               </div>
-              <ul class="role-achievements">
+              <ul class="timeline-bullets">
                 <li>Audited internal databases using SQL to remediate data anomalies and prepare model-ready inputs for demand and performance prediction, achieving 98% data accuracy.</li>
                 <li>Translated business operational requirements into technical specifications for machine learning deployments.</li>
                 <li>Mapped internal operational workflows alongside engineering teams, identifying procedural bottlenecks that cut operational waste by 19%.</li>
               </ul>
             </div>
-          </article>
+          </div>
 
-          <!-- Role 3 -->
-          <article class="chronicle-entry">
-            <div class="chronicle-meta">
-              <span class="chronicle-period">Jan 2024 - Feb 2025</span>
-              <span class="chronicle-location">Surabaya, Indonesia</span>
+          <!-- Item 3 -->
+          <div class="timeline-item">
+            <div class="timeline-aside">
+              <span class="timeline-date">Jan 2024 - Feb 2025</span>
+              <span class="timeline-type">Surabaya, Indonesia</span>
             </div>
-            <div class="chronicle-content">
-              <div class="role-header">
-                <h3 class="role-title">Operations & Systems Analyst</h3>
-                <span class="role-company">Tuju Satu Studio</span>
+            <div class="timeline-card">
+              <div class="timeline-header">
+                <h3 class="timeline-role">Operations & Systems Analyst</h3>
+                <span class="timeline-company">Tuju Satu Studio</span>
               </div>
-              <ul class="role-achievements">
+              <ul class="timeline-bullets">
                 <li>Coordinated procurement and supply chain logistics for three government infrastructure projects, aligning technical requirements and delivery schedules with municipal and institutional stakeholders.</li>
                 <li>Designed operational workflows and resource allocation models for high-stakes facilities, including a high-containment biosafety laboratory.</li>
                 <li>Mapped and rebuilt procedural workflows to eliminate operational delays and meet national regulatory compliance standards.</li>
               </ul>
             </div>
-          </article>
+          </div>
 
-          <!-- Role 4 -->
-          <article class="chronicle-entry">
-            <div class="chronicle-meta">
-              <span class="chronicle-period">Feb 2024 - Jul 2024</span>
-              <span class="chronicle-location">Yogyakarta, Indonesia</span>
+          <!-- Item 4 -->
+          <div class="timeline-item">
+            <div class="timeline-aside">
+              <span class="timeline-date">Feb 2024 - Jul 2024</span>
+              <span class="timeline-type">Yogyakarta, Indonesia</span>
             </div>
-            <div class="chronicle-content">
-              <div class="role-header">
-                <h3 class="role-title">Operations & Procurement Intern</h3>
-                <span class="role-company">PT. Artha Genetikalab Indonesia</span>
+            <div class="timeline-card">
+              <div class="timeline-header">
+                <h3 class="timeline-role">Operations & Procurement Intern</h3>
+                <span class="timeline-company">PT. Artha Genetikalab Indonesia</span>
+                <span class="company-sub">Medical Device Importer & Distributor</span>
               </div>
-              <div class="role-badge">Medical Device Importer & Distributor</div>
-              <ul class="role-achievements">
+              <ul class="timeline-bullets">
                 <li>Coordinated procurement tracking and distribution for specialized medical devices delivered to healthcare facilities, operating under strict import controls.</li>
                 <li>Monitored international vendor lead times and distribution timelines using quantitative tracking tools.</li>
                 <li>Resolved logistics bottlenecks to maintain inventory continuity for temperature-controlled and regulated medical supplies.</li>
               </ul>
             </div>
-          </article>
+          </div>
 
-          <!-- Role 5 -->
-          <article class="chronicle-entry">
-            <div class="chronicle-meta">
-              <span class="chronicle-period">May 2023 - Dec 2023</span>
-              <span class="chronicle-location">Surabaya, Indonesia</span>
+          <!-- Item 5 -->
+          <div class="timeline-item">
+            <div class="timeline-aside">
+              <span class="timeline-date">May 2023 - Dec 2023</span>
+              <span class="timeline-type">Surabaya, Indonesia</span>
             </div>
-            <div class="chronicle-content">
-              <div class="role-header">
-                <h3 class="role-title">Research Assistant</h3>
-                <span class="role-company">Universitas Airlangga</span>
+            <div class="timeline-card">
+              <div class="timeline-header">
+                <h3 class="timeline-role">Research Assistant</h3>
+                <span class="timeline-company">Universitas Airlangga</span>
               </div>
-              <ul class="role-achievements">
+              <ul class="timeline-bullets">
                 <li>Conducted mathematical modeling and operational research on supply chain resilience and service quality improvement.</li>
-                <li>Extracted, cleansed, and synthesized operational datasets from community health centers into structured reports that supported an academic journal submission.</li>
+                <li>Extracted, cleansed, and synthesized operational datasets from community health centers into structured analytical reports that supported an academic journal submission.</li>
               </ul>
             </div>
-          </article>
+          </div>
 
-          <!-- Role 6 -->
-          <article class="chronicle-entry">
-            <div class="chronicle-meta">
-              <span class="chronicle-period">Nov 2022 - Apr 2023</span>
-              <span class="chronicle-location">Central Java, Indonesia</span>
+          <!-- Item 6 -->
+          <div class="timeline-item">
+            <div class="timeline-aside">
+              <span class="timeline-date">Nov 2022 - Apr 2023</span>
+              <span class="timeline-type">Central Java, Indonesia</span>
             </div>
-            <div class="chronicle-content">
-              <div class="role-header">
-                <h3 class="role-title">Quality Assurance Intern</h3>
-                <span class="role-company">Ministry of Health of the Republic of Indonesia</span>
+            <div class="timeline-card">
+              <div class="timeline-header">
+                <h3 class="timeline-role">Quality Assurance Intern</h3>
+                <span class="timeline-company">Ministry of Health of the Republic of Indonesia</span>
               </div>
-              <ul class="role-achievements">
+              <ul class="timeline-bullets">
                 <li>Audited hospital operations and digital healthcare data frameworks against national quality assurance benchmarks.</li>
                 <li>Evaluated patient records and medical documentation to measure clinical workflow performance and institutional metrics.</li>
               </ul>
             </div>
-          </article>
+          </div>
 
         </div>
+
       </div>
     </section>
 
-    <!-- Section 5: Technical Capabilities Ledger -->
+    <!-- Section 6: Capabilities & Technical Toolkit -->
     <section id="capabilities" class="section capabilities-section">
       <div class="site-container">
-        <div class="section-header-row">
-          <div>
-            <span class="section-kicker">TECHNICAL DOSSIER</span>
-            <h2 class="section-title">Core Competencies & Tooling Matrix</h2>
-          </div>
-          <p class="section-context">Categorized inventory of domain methods, programming languages, and enterprise software systems.</p>
+        
+        <div class="section-head">
+          <div class="section-tag">TOOLKIT</div>
+          <h2 class="section-title">Core Competencies & Technical Stack</h2>
+          <p class="section-desc">Categorized inventory of domain methodologies, programming libraries, and enterprise platforms.</p>
         </div>
 
-        <div class="skills-ledger">
+        <div class="capabilities-grid">
           
-          <div class="skill-category-row">
-            <div class="category-header">
-              <span class="category-code">CAT 01</span>
-              <h3>Supply Chain Analytics</h3>
-            </div>
-            <div class="category-tags">
-              <span class="tech-pill">Demand Planning & Forecasting</span>
-              <span class="tech-pill">Multi-Echelon Inventory Optimization</span>
-              <span class="tech-pill">Safety Stock & Reorder Point Modeling</span>
-              <span class="tech-pill">Sourcing & Supplier Risk Analytics</span>
-              <span class="tech-pill">Facility Location & p-Median Allocation</span>
-              <span class="tech-pill">Supply Chain KPI Dashboards</span>
+          <div class="capability-card">
+            <div class="capability-num">01</div>
+            <h3 class="capability-heading">Supply Chain Analytics</h3>
+            <div class="pill-group">
+              <span class="pill">Demand Planning & Forecasting</span>
+              <span class="pill">Multi-Echelon Inventory Optimization</span>
+              <span class="pill">Safety Stock & Reorder Points</span>
+              <span class="pill">Sourcing & Supplier Risk Indexing</span>
+              <span class="pill">p-Median Facility Location</span>
+              <span class="pill">Supply Chain KPIs</span>
             </div>
           </div>
 
-          <div class="skill-category-row">
-            <div class="category-header">
-              <span class="category-code">CAT 02</span>
-              <h3>Supply Chain Operations</h3>
-            </div>
-            <div class="category-tags">
-              <span class="tech-pill">Procurement Logistics</span>
-              <span class="tech-pill">Regulated Medical Distribution</span>
-              <span class="tech-pill">Cold-Chain Handling</span>
-              <span class="tech-pill">Lean Six Sigma (DMAIC)</span>
-              <span class="tech-pill">Business Process Modeling (BPMN)</span>
-              <span class="tech-pill">Service Quality Engineering</span>
+          <div class="capability-card">
+            <div class="capability-num">02</div>
+            <h3 class="capability-heading">Operations & Quality Engineering</h3>
+            <div class="pill-group">
+              <span class="pill">Procurement Logistics</span>
+              <span class="pill">Regulated Goods & Medical Distribution</span>
+              <span class="pill">Cold-Chain Handling</span>
+              <span class="pill">Lean Six Sigma (DMAIC)</span>
+              <span class="pill">Business Process Modeling (BPMN)</span>
+              <span class="pill">Service Quality Engineering</span>
             </div>
           </div>
 
-          <div class="skill-category-row">
-            <div class="category-header">
-              <span class="category-code">CAT 03</span>
-              <h3>Data Science & Computational Tools</h3>
-            </div>
-            <div class="category-tags">
-              <span class="tech-pill">Python</span>
-              <span class="tech-pill">SQL</span>
-              <span class="tech-pill">Celonis Process Mining</span>
-              <span class="tech-pill">pm4py</span>
-              <span class="tech-pill">SimPy (Discrete-Event)</span>
-              <span class="tech-pill">DuckDB</span>
-              <span class="tech-pill">Power BI</span>
-              <span class="tech-pill">Tableau</span>
-              <span class="tech-pill">Streamlit</span>
-              <span class="tech-pill">XGBoost</span>
-              <span class="tech-pill">SARIMA / Prophet</span>
+          <div class="capability-card">
+            <div class="capability-num">03</div>
+            <h3 class="capability-heading">Data Science & Computation</h3>
+            <div class="pill-group">
+              <span class="pill">Python</span>
+              <span class="pill">SQL</span>
+              <span class="pill">Celonis Process Mining</span>
+              <span class="pill">pm4py</span>
+              <span class="pill">SimPy (Discrete-Event)</span>
+              <span class="pill">DuckDB</span>
+              <span class="pill">Power BI</span>
+              <span class="pill">Tableau</span>
+              <span class="pill">Streamlit</span>
+              <span class="pill">XGBoost</span>
+              <span class="pill">SARIMA / Prophet</span>
             </div>
           </div>
 
-          <div class="skill-category-row">
-            <div class="category-header">
-              <span class="category-code">CAT 04</span>
-              <h3>Optimization, MLOps & Architecture</h3>
-            </div>
-            <div class="category-tags">
-              <span class="tech-pill">Linear & Integer Programming (MILP, PuLP)</span>
-              <span class="tech-pill">MLflow Model Registries</span>
-              <span class="tech-pill">FastAPI</span>
-              <span class="tech-pill">Docker</span>
-              <span class="tech-pill">LangChain & Agentic Protocols</span>
-              <span class="tech-pill">GitHub Actions CI/CD</span>
-              <span class="tech-pill">Automations (n8n, Zapier, Make)</span>
+          <div class="capability-card">
+            <div class="capability-num">04</div>
+            <h3 class="capability-heading">Optimization & MLOps</h3>
+            <div class="pill-group">
+              <span class="pill">Linear & Integer Programming (MILP, PuLP)</span>
+              <span class="pill">MLflow Model Registries</span>
+              <span class="pill">FastAPI</span>
+              <span class="pill">Docker</span>
+              <span class="pill">LangChain & Agentic AI</span>
+              <span class="pill">GitHub Actions CI/CD</span>
+              <span class="pill">Automations (n8n, Zapier, Make)</span>
             </div>
           </div>
 
-          <div class="skill-category-row">
-            <div class="category-header">
-              <span class="category-code">CAT 05</span>
-              <h3>Enterprise Platforms & Project Governance</h3>
-            </div>
-            <div class="category-tags">
-              <span class="tech-pill">SAP (S/4HANA Solutions Perspective)</span>
-              <span class="tech-pill">Oracle ERP Architecture</span>
-              <span class="tech-pill">Odoo</span>
-              <span class="tech-pill">Salesforce CRM</span>
-              <span class="tech-pill">HubSpot</span>
-              <span class="tech-pill">Jira</span>
-              <span class="tech-pill">Notion</span>
+          <div class="capability-card">
+            <div class="capability-num">05</div>
+            <h3 class="capability-heading">Enterprise Platforms</h3>
+            <div class="pill-group">
+              <span class="pill">SAP (S/4HANA Solutions Perspective)</span>
+              <span class="pill">Oracle ERP Architecture</span>
+              <span class="pill">Odoo</span>
+              <span class="pill">Salesforce CRM</span>
+              <span class="pill">HubSpot</span>
+              <span class="pill">Jira</span>
+              <span class="pill">Notion</span>
             </div>
           </div>
 
-          <div class="skill-category-row">
-            <div class="category-header">
-              <span class="category-code">CAT 06</span>
-              <h3>Linguistic Proficiency</h3>
-            </div>
-            <div class="category-tags">
-              <span class="tech-pill">English (IELTS C2 Mastery, CEFR Highest Band)</span>
-              <span class="tech-pill">German (B1 Level)</span>
-              <span class="tech-pill">Indonesian (Native Speaker)</span>
+          <div class="capability-card">
+            <div class="capability-num">06</div>
+            <h3 class="capability-heading">Linguistic Mastery</h3>
+            <div class="pill-group">
+              <span class="pill highlight-pill">English (IELTS C2 Mastery, CEFR Band 9 Equivalent)</span>
+              <span class="pill">German (B1 Proficiency)</span>
+              <span class="pill">Indonesian (Native Speaker)</span>
             </div>
           </div>
 
         </div>
+
       </div>
     </section>
 
-    <!-- Section 6: Academic Records & Credentials -->
+    <!-- Section 7: Academic Credentials & Thesis -->
     <section id="credentials" class="section credentials-section">
       <div class="site-container">
-        <div class="section-header-row">
-          <div>
-            <span class="section-kicker">ACADEMIC & CERTIFIED RECORD</span>
-            <h2 class="section-title">Formal Education & Credentials</h2>
-          </div>
-          <p class="section-context">Validated degrees, university thesis findings, and verified professional specializations.</p>
+        
+        <div class="section-head">
+          <div class="section-tag">CREDENTIALS</div>
+          <h2 class="section-title">Academic Record & Verified Certifications</h2>
+          <p class="section-desc">University degree distinctions, empirical thesis findings, and international professional credentials.</p>
         </div>
 
         <div class="credentials-layout">
           
           <!-- Degree Card -->
-          <div class="academic-feature-card">
-            <div class="academic-header">
-              <span class="institution-name">UNIVERSITAS AIRLANGGA</span>
-              <span class="academic-period">2018 - 2023</span>
+          <div class="degree-card">
+            <div class="degree-badge-row">
+              <span class="uni-name">UNIVERSITAS AIRLANGGA</span>
+              <span class="uni-period">2018 - 2023</span>
             </div>
             <h3 class="degree-title">Bachelor of Management in Operations and Supply Chain / Operations Research</h3>
-            <div class="academic-standing">
-              <span class="gpa-score">Grade: 3.60 / 4.00</span>
-              <span class="honour-tag">High Distinction (Cum Laude)</span>
+            <div class="degree-standing">
+              <span class="score-pill">Grade: 3.60 / 4.00</span>
+              <span class="cum-laude-pill">High Distinction (Cum Laude)</span>
             </div>
 
-            <div class="thesis-box">
+            <div class="thesis-card">
               <div class="thesis-kicker">UNDERGRADUATE THESIS INVESTIGATION</div>
-              <h4 class="thesis-title">Analysis of Service Quality Improvement Using the DMAIC Method at Hortus Medicus Clinic</h4>
-              <p class="thesis-desc">
-                Quantified clinical operations using Lean Six Sigma DMAIC. Measured an aggregate patient lead time of 534 minutes with 80% of total elapsed time falling into non-value-added delays.
+              <h4 class="thesis-heading">Analysis of Service Quality Improvement Using the DMAIC Method at Hortus Medicus Clinic</h4>
+              <p class="thesis-summary">
+                Quantified patient care journeys using Lean Six Sigma DMAIC. Measured an aggregate patient lead time of 534 minutes with 80% of total elapsed time classified into non-value-added delays.
               </p>
-              <div class="thesis-stats-row">
-                <div class="stat-item">
-                  <div class="stat-number">182 min</div>
-                  <div class="stat-label">Post-lab re-queue bottleneck identified from manual transfer</div>
+              
+              <div class="thesis-metrics-grid">
+                <div class="thesis-metric-box">
+                  <span class="tm-num">182 min</span>
+                  <span class="tm-label">Post-lab re-queue bottleneck identified from manual transfer</span>
                 </div>
-                <div class="stat-item">
-                  <div class="stat-number">42.6%</div>
-                  <div class="stat-label">Non-value-added lead time removed in redesigned future-state</div>
+                <div class="thesis-metric-box">
+                  <span class="tm-num">42.6%</span>
+                  <span class="tm-label">Non-value-added lead time removed in future-state design</span>
                 </div>
-                <div class="stat-item">
-                  <div class="stat-number">20% to 30.3%</div>
-                  <div class="stat-label">Process cycle efficiency improvement across clinical workflows</div>
+                <div class="thesis-metric-box">
+                  <span class="tm-num">20% to 30.3%</span>
+                  <span class="tm-label">Process cycle efficiency improvement across clinical workflows</span>
                 </div>
               </div>
             </div>
 
-            <div class="honors-bar">
-              <span class="honors-label">University Recognition:</span>
-              <span class="honors-item">University Ambassador 2021 (Duta Universitas Airlangga)</span>
-              <span class="honors-sep">·</span>
-              <span class="honors-item">KBMI (P2MW) National Funding Awardee</span>
+            <div class="award-footer">
+              <span class="award-item">University Ambassador 2021 (Duta Universitas Airlangga)</span>
+              <span class="award-sep">·</span>
+              <span class="award-item">KBMI (P2MW) National Funding Awardee</span>
             </div>
           </div>
 
-          <!-- Professional Certifications Grid -->
-          <div class="certifications-column">
-            <h3 class="cert-column-title">Professional Certifications</h3>
+          <!-- Certifications Grid -->
+          <div class="certs-list">
             
-            <div class="cert-entry">
-              <div class="cert-meta">
-                <span class="cert-issuer">Eindhoven University of Technology</span>
-                <span class="cert-status verified">Verified</span>
-              </div>
-              <div class="cert-name">Process Mining: Data Science in Action</div>
-              <p class="cert-scope">Conformance checking, discovery algorithms, Petri nets, and event log bottleneck analysis.</p>
+            <div class="cert-card">
+              <div class="cert-org">Eindhoven University of Technology</div>
+              <h4 class="cert-title">Process Mining: Data Science in Action</h4>
+              <p class="cert-details">Conformance checking, discovery algorithms, Petri nets, and event log bottleneck analysis.</p>
+              <span class="cert-badge verified">Verified Credential</span>
             </div>
 
-            <div class="cert-entry">
-              <div class="cert-meta">
-                <span class="cert-issuer">Rutgers Business School</span>
-                <span class="cert-status verified">Verified</span>
-              </div>
-              <div class="cert-name">Supply Chain Analytics Specialization (6 Courses)</div>
-              <p class="cert-scope">Analytics Essentials, Business Intelligence, Demand Analytics, Inventory Analytics, Sourcing Analytics.</p>
+            <div class="cert-card">
+              <div class="cert-org">Rutgers Business School</div>
+              <h4 class="cert-title">Supply Chain Analytics Specialization (6 Courses)</h4>
+              <p class="cert-details">Analytics Essentials, Business Intelligence, Demand Analytics, Inventory Analytics, Sourcing Analytics.</p>
+              <span class="cert-badge verified">Verified Credential</span>
             </div>
 
-            <div class="cert-entry">
-              <div class="cert-meta">
-                <span class="cert-issuer">Rutgers Business School</span>
-                <span class="cert-status verified">Verified</span>
-              </div>
-              <div class="cert-name">Supply Chain Management Specialization (5 Courses)</div>
-              <p class="cert-scope">Logistics, Operations, Planning, Sourcing, Management Strategy. Capstone: Medical Technology Corporation.</p>
+            <div class="cert-card">
+              <div class="cert-org">Rutgers Business School</div>
+              <h4 class="cert-title">Supply Chain Management Specialization (5 Courses)</h4>
+              <p class="cert-details">Logistics, Operations, Planning, Sourcing, Management Strategy. Capstone: Medical Technology Corporation.</p>
+              <span class="cert-badge verified">Verified Credential</span>
             </div>
 
-            <div class="cert-entry">
-              <div class="cert-meta">
-                <span class="cert-issuer">Johns Hopkins University</span>
-                <span class="cert-status verified">Verified</span>
-              </div>
-              <div class="cert-name">Health Informatics Specialization</div>
-              <p class="cert-scope">Clinical workflow analysis, healthcare information architectures, and medical data governance.</p>
+            <div class="cert-card">
+              <div class="cert-org">Johns Hopkins University</div>
+              <h4 class="cert-title">Health Informatics Specialization</h4>
+              <p class="cert-details">Clinical workflow analysis, healthcare information architectures, and medical data governance.</p>
+              <span class="cert-badge verified">Verified Credential</span>
             </div>
 
-            <div class="cert-entry">
-              <div class="cert-meta">
-                <span class="cert-issuer">Google</span>
-                <span class="cert-status verified">Verified</span>
-              </div>
-              <div class="cert-name">Google IT Automation with Python Professional Certificate</div>
-              <p class="cert-scope">System administration scripting, regex log parsing, configuration management, and automation.</p>
+            <div class="cert-card">
+              <div class="cert-org">Google</div>
+              <h4 class="cert-title">Google IT Automation with Python Professional Certificate</h4>
+              <p class="cert-details">System administration scripting, regex log parsing, configuration management, and automation.</p>
+              <span class="cert-badge verified">Verified Credential</span>
             </div>
 
-            <div class="cert-entry">
-              <div class="cert-meta">
-                <span class="cert-issuer">DeepLearning.AI & AWS</span>
-                <span class="cert-status verified">Verified</span>
-              </div>
-              <div class="cert-name">AI & Cloud Engineering Credentials</div>
-              <p class="cert-scope">Google AI Professional Certificate; LangChain Agentic Development (DeepLearning.AI); Cloud & GenAI (AWS).</p>
+            <div class="cert-card">
+              <div class="cert-org">DeepLearning.AI & AWS</div>
+              <h4 class="cert-title">AI & Cloud Engineering Credentials</h4>
+              <p class="cert-details">Google AI Professional Certificate, LangChain Agentic Development, and AWS Cloud & Generative AI.</p>
+              <span class="cert-badge verified">Verified Credential</span>
             </div>
 
           </div>
 
         </div>
+
       </div>
     </section>
 
-    <!-- Section 7: Engagement Desk & Contact -->
-    <section id="contact" class="section engagement-section">
+    <!-- Section 8: Engagement Desk & Contact -->
+    <section id="contact" class="section contact-section">
       <div class="site-container">
-        <div class="engagement-card">
-          <div class="engagement-header">
-            <span class="section-kicker">OPEN FOR ENGAGEMENT</span>
-            <h2 class="engagement-title">Operational Consultation & Employment Inquiries</h2>
-            <p class="engagement-deck">
-              Currently accepting conversations regarding supply chain analytics positions, inventory optimization mandates, and process mining implementations. Based in Surabaya, Indonesia with full mobility for international relocation across GCC and EU jurisdictions.
+        
+        <div class="contact-card">
+          <div class="contact-header">
+            <div class="section-tag">COMMUNICATIONS</div>
+            <h2 class="contact-headline">Operational Consultation & Employment Inquiries</h2>
+            <p class="contact-subtext">
+              Accepting inquiries regarding supply chain analytics positions, inventory optimization mandates, and process mining implementations. Based in Surabaya, Indonesia with full mobility for international relocation across GCC and EU jurisdictions.
             </p>
           </div>
 
-          <div class="engagement-actions-row">
+          <div class="contact-channels-grid">
             
             <div class="channel-card">
-              <span class="channel-label">Direct Email</span>
-              <div class="email-copy-wrapper">
-                <a href="mailto:yusufzarraihan@gmail.com" class="channel-val">yusufzarraihan@gmail.com</a>
-                <button id="copy-email-btn" class="copy-btn" title="Copy email address to clipboard" aria-label="Copy email address">
-                  <svg class="copy-icon" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <span class="channel-title">Direct Email</span>
+              <div class="email-copy-bar">
+                <span class="email-text">yusufzarraihan@gmail.com</span>
+                <button id="copy-email-btn" class="copy-action-btn" title="Copy email address to clipboard" aria-label="Copy email address">
+                  <svg class="copy-svg" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                     <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
                     <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
                   </svg>
-                  <span class="copy-feedback">Copied</span>
+                  <span class="copy-tip">Copied</span>
                 </button>
               </div>
             </div>
 
             <div class="channel-card">
-              <span class="channel-label">Telephone / WhatsApp</span>
-              <a href="tel:+6281235426184" class="channel-val">+62 812-3542-6184</a>
+              <span class="channel-title">Telephone / WhatsApp</span>
+              <a href="tel:+6281235426184" class="channel-link">+62 812-3542-6184</a>
             </div>
 
             <div class="channel-card">
-              <span class="channel-label">LinkedIn Profile</span>
-              <a href="https://linkedin.com/in/yzarraihan" target="_blank" rel="noopener noreferrer" class="channel-val ext-link">
+              <span class="channel-title">Professional Network</span>
+              <a href="https://linkedin.com/in/yzarraihan" target="_blank" rel="noopener noreferrer" class="channel-link ext-link">
                 <span>linkedin.com/in/yzarraihan</span>
                 <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                   <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
@@ -904,8 +989,8 @@
             </div>
 
             <div class="channel-card">
-              <span class="channel-label">Code Repositories</span>
-              <a href="https://github.com/yzarrai" target="_blank" rel="noopener noreferrer" class="channel-val ext-link">
+              <span class="channel-title">Code Repositories</span>
+              <a href="https://github.com/yzarrai" target="_blank" rel="noopener noreferrer" class="channel-link ext-link">
                 <span>github.com/yzarrai</span>
                 <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                   <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
@@ -917,80 +1002,76 @@
 
           </div>
         </div>
+
       </div>
     </section>
   </main>
 
-  <!-- Editorial Colophon & Footer -->
-  <footer class="colophon">
-    <div class="site-container colophon-inner">
-      <div class="colophon-block">
-        <div class="colophon-title">EDITORIAL COLOPHON</div>
-        <p class="colophon-text">
-          Designed and typeset in an editorial broadsheet aesthetic inspired by the Financial Times and classical operational journals. Typeset in Newsreader and Plus Jakarta Sans with tabular figures in JetBrains Mono.
-        </p>
+  <!-- Modern Footer -->
+  <footer class="site-footer">
+    <div class="site-container footer-inner">
+      <div class="footer-left">
+        <span class="footer-brand">Yusuf Zaidany Arraihan</span>
+        <span class="footer-copy">Supply Chain Analytics & Optimization Engineering</span>
       </div>
-      
-      <div class="colophon-block">
-        <div class="colophon-title">LOCATION & LEGAL DISPATCH</div>
-        <p class="colophon-text">
-          Surabaya, East Java, Indonesia. Available for international relocation to GCC and European Union territories.
-        </p>
+      <div class="footer-center">
+        <span>Surabaya, Indonesia · Open to relocation: GCC, EU</span>
       </div>
-
-      <div class="colophon-block text-right">
-        <a href="#summary" class="back-to-top">
-          <span>Back to Top of Page</span>
+      <div class="footer-right">
+        <a href="#hero" class="footer-back-top">
+          <span>Back to Top</span>
           <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <line x1="12" y1="19" x2="12" y2="5"></line>
             <polyline points="5 12 12 5 19 12"></polyline>
           </svg>
         </a>
-        <div class="copyright-notice">© 2026 Yusuf Zaidany Arraihan. All rights reserved.</div>
       </div>
     </div>
   </footer>
 
   <!-- Modal: CV Download & Summary -->
   <div id="cv-modal" class="modal-backdrop" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="cv-modal-title">
-    <div class="modal-box">
-      <div class="modal-header">
+    <div class="modal-container">
+      <div class="modal-head">
         <div>
-          <span class="modal-kicker">DOCUMENT ACCESS</span>
-          <h3 id="cv-modal-title" class="modal-title">Curriculum Vitae Access</h3>
+          <span class="modal-tag">DOCUMENT ACCESS</span>
+          <h3 id="cv-modal-title" class="modal-heading">Curriculum Vitae</h3>
         </div>
-        <button id="modal-close-btn" class="modal-close-btn" aria-label="Close dialog">
+        <button id="modal-close-btn" class="modal-close" aria-label="Close dialog">
           <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <line x1="18" y1="6" x2="6" y2="18"></line>
             <line x1="6" y1="6" x2="18" y2="18"></line>
           </svg>
         </button>
       </div>
-      <div class="modal-body">
-        <p>
-          The complete curriculum vitae contains verified academic transcripts, professional case records, and technical repository references for Yusuf Zaidany Arraihan.
+      
+      <div class="modal-content">
+        <p class="modal-intro">
+          The curriculum vitae contains verified academic credentials, comprehensive project documentation, and corporate references for Yusuf Zaidany Arraihan.
         </p>
-        <div class="cv-specs-box">
-          <div class="spec-row">
-            <span class="spec-name">Candidate</span>
-            <span class="spec-val">Yusuf Zaidany Arraihan</span>
+
+        <div class="modal-specs-list">
+          <div class="spec-entry">
+            <span class="se-label">Candidate</span>
+            <span class="se-val">Yusuf Zaidany Arraihan</span>
           </div>
-          <div class="spec-row">
-            <span class="spec-name">Degree</span>
-            <span class="spec-val">B.Mgmt in Operations & Supply Chain, Universitas Airlangga (Cum Laude)</span>
+          <div class="spec-entry">
+            <span class="se-label">Education</span>
+            <span class="se-val">B.Mgmt in Operations & Supply Chain, Universitas Airlangga (Cum Laude)</span>
           </div>
-          <div class="spec-row">
-            <span class="spec-name">Specialties</span>
-            <span class="spec-val">Demand Planning, Multi-Echelon Inventory, Celonis Process Mining, SimPy</span>
+          <div class="spec-entry">
+            <span class="se-label">Core Focus</span>
+            <span class="se-val">Demand Forecasting, Multi-Echelon Inventory, Celonis Process Mining, SimPy</span>
           </div>
-          <div class="spec-row">
-            <span class="spec-name">Mobility</span>
-            <span class="spec-val">Surabaya, Indonesia | Open to relocation: GCC, EU</span>
+          <div class="spec-entry">
+            <span class="se-label">Relocation</span>
+            <span class="se-val">Surabaya, Indonesia | Open to relocation: GCC, EU, Global Remote</span>
           </div>
         </div>
       </div>
-      <div class="modal-footer">
-        <a href="./Yusuf_Zaidany_Arraihan_CV.pdf" download="Yusuf_Zaidany_Arraihan_CV.pdf" id="confirm-cv-download" class="action-btn primary-action">
+
+      <div class="modal-foot">
+        <a href="./Yusuf_Zaidany_Arraihan_CV.pdf" download="Yusuf_Zaidany_Arraihan_CV.pdf" id="confirm-cv-download" class="btn btn-primary">
           <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
             <polyline points="7 10 12 15 17 10"></polyline>
@@ -998,8 +1079,8 @@
           </svg>
           <span>Download PDF Document</span>
         </a>
-        <a href="mailto:yusufzarraihan@gmail.com?subject=Curriculum%20Vitae%20Request%20-%20Yusuf%20Zaidany%20Arraihan" class="action-btn text-action">
-          Request Directly via Email
+        <a href="mailto:yusufzarraihan@gmail.com?subject=Curriculum%20Vitae%20Request%20-%20Yusuf%20Zaidany%20Arraihan" class="btn btn-secondary">
+          Request via Email
         </a>
       </div>
     </div>
@@ -1007,34 +1088,36 @@
 
   <!-- Modal: Compendium Case Details -->
   <div id="compendium-modal" class="modal-backdrop" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="compendium-modal-title">
-    <div class="modal-box">
-      <div class="modal-header">
+    <div class="modal-container">
+      <div class="modal-head">
         <div>
-          <span class="modal-kicker">RESEARCH DOSSIER</span>
-          <h3 id="compendium-modal-title" class="modal-title">Supply Chain Analytics Compendium: Six Cases</h3>
+          <span class="modal-tag">RESEARCH DOSSIER</span>
+          <h3 id="compendium-modal-title" class="modal-heading">Supply Chain Analytics Compendium: Six Cases</h3>
         </div>
-        <button id="compendium-close-btn" class="modal-close-btn" aria-label="Close dialog">
+        <button id="compendium-close-btn" class="modal-close" aria-label="Close dialog">
           <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <line x1="18" y1="6" x2="6" y2="18"></line>
             <line x1="6" y1="6" x2="18" y2="18"></line>
           </svg>
         </button>
       </div>
-      <div class="modal-body">
-        <p>
-          This compendium documents six distinct operational investigations spanning regression forecasting, SKU stratification, push-pull inventory mechanics, and semiconductor supply concentration risk.
+      
+      <div class="modal-content">
+        <p class="modal-intro">
+          This analytical compendium documents six distinct operational investigations spanning regression forecasting, SKU stratification, push-pull inventory mechanics, and semiconductor supply concentration risk:
         </p>
-        <ul class="modal-case-list">
+        <ul class="compendium-list">
           <li><strong>Case I: Trend & Multiple Regression Forecasting:</strong> Benchmarked a 24-month series yielding R-squared between 0.439 and 0.948 with an out-of-sample MAPE of 10.57%.</li>
           <li><strong>Case II: Model Rejection Analysis:</strong> Documented the deliberate rejection of a statistically significant trend model because its standard error reached half the mean order size, rendering it unusable for production replenishment.</li>
           <li><strong>Case III: ABC Inventory Stratification:</strong> Pareto classification across 36 SKUs balancing safety stock investment against stockout penalties.</li>
           <li><strong>Case IV: Push vs. Pull Trade-offs:</strong> Modeled holding costs against order setup economies under fluctuating consumption rates.</li>
           <li><strong>Case V: Sourcing Concentration Risk:</strong> Evaluated supply exposure and single-source supplier vulnerability within the semiconductor manufacturing sector.</li>
-          <li><strong>Case VI: Service Level Calibration:</strong> Dynamic safety stock tuning for lead-time variances.</li>
+          <li><strong>Case VI: Dynamic Safety Stock:</strong> Calibrated service-level safety stocks against variable lead times.</li>
         </ul>
       </div>
-      <div class="modal-footer">
-        <a href="mailto:yusufzarraihan@gmail.com?subject=Inquiry%20Regarding%20Supply%20Chain%20Analytics%20Compendium" class="action-btn primary-action">
+
+      <div class="modal-foot">
+        <a href="mailto:yusufzarraihan@gmail.com?subject=Inquiry%20Regarding%20Supply%20Chain%20Analytics%20Compendium" class="btn btn-primary">
           Request Presentation Deck (PPTX)
         </a>
       </div>
@@ -1044,7 +1127,7 @@
   <!-- Toast Notification Container -->
   <div id="toast-container" class="toast-container" aria-live="polite"></div>
 
-  <!-- JavaScript -->
+  <!-- Script -->
   <script src="script.js"></script>
 </body>
 </html>
