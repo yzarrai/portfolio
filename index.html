@@ -152,7 +152,7 @@
 </style>
 </head>
 
-<body class="bg-[#f4f6f5] text-slate-900 dark:bg-[#080c14] dark:text-white antialiased selection:bg-cyan-500 selection:text-white">
+<body class="bg-[#f4f6f5] text-slate-900 dark:bg-[#080c14] dark:text-white antialiased selection:bg-sky-500 selection:text-white">
 
 <div class="min-h-screen flex flex-col md:flex-row">
 
@@ -179,9 +179,9 @@
           <div>
             <div class="text-sm font-bold text-slate-900 dark:text-white tracking-tight leading-none mb-1 flex items-center gap-1.5">
               <span>Yusuf Arraihan</span>
-              <span class="text-[10px] text-slate-400 group-hover:text-cyan-600 dark:group-hover:text-cyan-400 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform font-mono font-normal">↗</span>
+              <span class="text-[10px] text-slate-400 group-hover:text-sky-600 dark:group-hover:text-sky-400 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform font-mono font-normal">↗</span>
             </div>
-            <div class="text-[11px] font-mono text-cyan-600 dark:text-cyan-400 font-medium">
+            <div class="text-[11px] font-mono text-sky-700 dark:text-sky-400 font-medium">
               github.com/yzarrai
             </div>
           </div>
@@ -310,7 +310,7 @@
             id="global-search" 
             placeholder="Search projects (e.g. compendium, inventory brain, MILP, SimPy, RAG)..." 
             autocomplete="off"
-            class="w-full pl-9 pr-14 py-1.5 text-xs rounded-xl bg-slate-100/80 dark:bg-white/5 border border-slate-200 dark:border-white/10 focus:outline-none focus:border-cyan-500 text-slate-800 dark:text-white placeholder:text-slate-400"
+            class="w-full pl-9 pr-14 py-1.5 text-xs rounded-xl bg-slate-100/80 dark:bg-white/5 border border-slate-200 dark:border-white/10 focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500 text-slate-800 dark:text-white placeholder:text-slate-400"
           />
           <button id="search-clear-btn" class="hidden absolute right-9 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 dark:hover:text-white p-0.5" aria-label="Clear search">
             <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
@@ -382,7 +382,7 @@
 
               <!-- Hero Actions -->
               <div class="flex flex-wrap items-center gap-3">
-                <a href="#projects" class="px-5 py-2.5 rounded-xl bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-semibold text-xs transition shadow-md flex items-center gap-1.5">
+                <a href="#projects" class="px-5 py-2.5 rounded-xl bg-[#0A2540] hover:bg-[#07192C] text-white dark:bg-sky-500 dark:hover:bg-sky-400 dark:text-slate-950 font-semibold text-xs transition shadow-md flex items-center gap-1.5">
                   <span>Engineering Projects & Code</span>
                   <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17l9.2-9.2M17 17V8H8"/></svg>
                 </a>
@@ -403,15 +403,15 @@
           </div>
           <div class="p-3.5 px-6">
             <div class="text-slate-500 dark:text-white/50 text-[10px] uppercase font-sans mb-0.5">Container Payload</div>
-            <div class="font-bold text-sm text-cyan-600 dark:text-cyan-400">18,450 TEU (92%)</div>
+            <div class="font-bold text-sm text-sky-700 dark:text-sky-400">18,450 TEU (92%)</div>
           </div>
           <div class="p-3.5 px-6">
             <div class="text-slate-500 dark:text-white/50 text-[10px] uppercase font-sans mb-0.5">Bunker Burn Efficiency</div>
-            <div id="telemetry-fuel" class="font-bold text-sm text-emerald-600 dark:text-emerald-400">-8.4% mt/nmi</div>
+            <div id="telemetry-fuel" class="font-bold text-sm text-slate-900 dark:text-white">-8.4% mt/nmi</div>
           </div>
           <div class="p-3.5 px-6">
             <div class="text-slate-500 dark:text-white/50 text-[10px] uppercase font-sans mb-0.5">Stochastic Lead Time</div>
-            <div id="telemetry-eta" class="font-bold text-sm text-purple-600 dark:text-purple-400">-14.2h (Optimal)</div>
+            <div id="telemetry-eta" class="font-bold text-sm text-slate-900 dark:text-white">-14.2h (Optimal)</div>
           </div>
         </div>
 
@@ -421,28 +421,28 @@
       <section id="record" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
 
           <div class="p-5 rounded-2xl bg-white dark:bg-[#0c1222] border border-slate-200/90 dark:border-white/10 shadow-sm">
-            <span class="text-[11px] font-mono text-cyan-700 dark:text-cyan-400 uppercase font-semibold block mb-1">Contra.com Consulting</span>
+            <span class="text-[11px] font-mono text-sky-700 dark:text-sky-400 uppercase font-semibold block mb-1">Contra.com Consulting</span>
             <div class="text-2xl font-bold text-slate-900 dark:text-white tracking-tight mb-1">22%</div>
             <div class="text-xs font-semibold text-slate-800 dark:text-white/90 mb-1">Average Cycle Time Cut</div>
             <p class="text-xs text-slate-500 dark:text-white/60 leading-relaxed">Mined event logs with Celonis to quantify bottleneck stages and rework loops.</p>
           </div>
 
           <div class="p-5 rounded-2xl bg-white dark:bg-[#0c1222] border border-slate-200/90 dark:border-white/10 shadow-sm">
-            <span class="text-[11px] font-mono text-blue-700 dark:text-blue-400 uppercase font-semibold block mb-1">Workflow Automation</span>
+            <span class="text-[11px] font-mono text-sky-700 dark:text-sky-400 uppercase font-semibold block mb-1">Workflow Automation</span>
             <div class="text-2xl font-bold text-slate-900 dark:text-white tracking-tight mb-1">14 hrs</div>
             <div class="text-xs font-semibold text-slate-800 dark:text-white/90 mb-1">Weekly Manual Work Cut</div>
             <p class="text-xs text-slate-500 dark:text-white/60 leading-relaxed">Built Python pipelines replacing recurring manual spreadsheet updates.</p>
           </div>
 
           <div class="p-5 rounded-2xl bg-white dark:bg-[#0c1222] border border-slate-200/90 dark:border-white/10 shadow-sm">
-            <span class="text-[11px] font-mono text-emerald-700 dark:text-emerald-400 uppercase font-semibold block mb-1">Enterprise Data Quality</span>
+            <span class="text-[11px] font-mono text-sky-700 dark:text-sky-400 uppercase font-semibold block mb-1">Enterprise Data Quality</span>
             <div class="text-2xl font-bold text-slate-900 dark:text-white tracking-tight mb-1">98%</div>
             <div class="text-xs font-semibold text-slate-800 dark:text-white/90 mb-1">Model-Ready Accuracy</div>
             <p class="text-xs text-slate-500 dark:text-white/60 leading-relaxed">Audited internal relational databases using SQL, cutting operational waste by 19%.</p>
           </div>
 
           <div class="p-5 rounded-2xl bg-white dark:bg-[#0c1222] border border-slate-200/90 dark:border-white/10 shadow-sm">
-            <span class="text-[11px] font-mono text-purple-700 dark:text-purple-400 uppercase font-semibold block mb-1">Lean Six Sigma Thesis</span>
+            <span class="text-[11px] font-mono text-sky-700 dark:text-sky-400 uppercase font-semibold block mb-1">Lean Six Sigma Thesis</span>
             <div class="text-2xl font-bold text-slate-900 dark:text-white tracking-tight mb-1">42.6%</div>
             <div class="text-xs font-semibold text-slate-800 dark:text-white/90 mb-1">Non-Value Time Removed</div>
             <p class="text-xs text-slate-500 dark:text-white/60 leading-relaxed">Applied DMAIC at Hortus Medicus Clinic, raising efficiency from 20.0% to 30.3%.</p>
@@ -455,15 +455,15 @@
         <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6">
           <div>
             <div class="flex items-center gap-2 mb-1">
-              <span class="w-2 h-2 rounded-full bg-cyan-500 animate-pulse"></span>
-              <span class="text-xs font-mono uppercase font-semibold text-cyan-700 dark:text-cyan-400">Cartographic AIS Engine</span>
+              <span class="w-2 h-2 rounded-full bg-sky-500 animate-pulse"></span>
+              <span class="text-xs font-mono uppercase font-semibold text-sky-800 dark:text-sky-400">Cartographic AIS Engine</span>
             </div>
             <h2 class="text-xl font-bold text-slate-900 dark:text-white tracking-tight">Sea Freight Routing & Stochastic Vessel Dispatch</h2>
             <p class="text-xs text-slate-500 dark:text-white/60">Cartographic transit across Jakarta, Singapore, Colombo, Dubai, Suez Canal, and Rotterdam.</p>
           </div>
           
           <div class="flex flex-wrap items-center gap-2">
-            <button id="btn-route-suez" class="px-3 py-1.5 rounded-lg bg-slate-900 dark:bg-cyan-400 text-white dark:text-slate-950 font-mono text-xs font-semibold shadow-sm transition">
+            <button id="btn-route-suez" class="px-3 py-1.5 rounded-lg bg-[#0A2540] dark:bg-sky-500 text-white dark:text-slate-950 font-mono text-xs font-semibold shadow-sm transition">
               Direct Suez Corridor
             </button>
             <button id="btn-route-cape" class="px-3 py-1.5 rounded-lg bg-slate-100 dark:bg-white/10 text-slate-700 dark:text-white font-mono text-xs hover:bg-slate-200 transition">
@@ -484,13 +484,13 @@
 
         <div id="port-card" class="mt-4 p-4 rounded-xl bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/5 text-xs font-mono text-slate-700 dark:text-white/70 flex flex-wrap items-center justify-between gap-4">
           <div>
-            <span class="text-cyan-700 dark:text-cyan-400 font-semibold">SELECTED WAYPOINT:</span>
+            <span class="text-sky-800 dark:text-sky-400 font-semibold">SELECTED WAYPOINT:</span>
             <span id="port-card-name" class="text-slate-900 dark:text-white font-bold ml-2">Port of Singapore (Transshipment Hub)</span>
           </div>
           <div class="flex items-center gap-5 text-slate-600 dark:text-white/60">
             <span>Quay Crane: <strong class="text-slate-900 dark:text-white font-medium">34 moves/hr</strong></span>
             <span>Dwell Time: <strong class="text-slate-900 dark:text-white font-medium">1.8 days</strong></span>
-            <span>Demurrage Risk: <strong class="text-emerald-600 dark:text-emerald-400 font-medium">Low (0.01)</strong></span>
+            <span>Demurrage Risk: <strong class="text-slate-900 dark:text-white font-medium">Low (0.01)</strong></span>
           </div>
         </div>
       </section>
@@ -499,13 +499,13 @@
       <section id="projects" class="space-y-6">
         <div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
           <div>
-            <span class="text-xs font-mono uppercase font-semibold text-cyan-700 dark:text-cyan-400 block mb-1">Codebases & Research</span>
+            <span class="text-xs font-mono uppercase font-semibold text-sky-800 dark:text-sky-400 block mb-1">Codebases & Research</span>
             <h2 class="text-2xl font-bold text-slate-900 dark:text-white tracking-tight">Engineering Portfolio</h2>
             <p class="text-xs text-slate-500 dark:text-white/60">Verified quantitative models, simulation engines, and analytical decks from my GitHub repositories.</p>
           </div>
 
           <div class="flex flex-wrap gap-2 text-xs font-mono">
-            <button class="project-tab active px-3.5 py-1.5 rounded-xl bg-slate-900 text-white dark:bg-white dark:text-slate-950 font-medium transition" data-cat="all">All Codebases</button>
+            <button class="project-tab active px-3.5 py-1.5 rounded-xl bg-[#0A2540] text-white dark:bg-white dark:text-slate-950 font-medium transition" data-cat="all">All Codebases</button>
             <button class="project-tab px-3.5 py-1.5 rounded-xl bg-white dark:bg-white/5 text-slate-700 dark:text-white/70 border border-slate-200 dark:border-white/10 hover:bg-slate-100 transition" data-cat="planning">Planning</button>
             <button class="project-tab px-3.5 py-1.5 rounded-xl bg-white dark:bg-white/5 text-slate-700 dark:text-white/70 border border-slate-200 dark:border-white/10 hover:bg-slate-100 transition" data-cat="simulation">Simulation</button>
             <button class="project-tab px-3.5 py-1.5 rounded-xl bg-white dark:bg-white/5 text-slate-700 dark:text-white/70 border border-slate-200 dark:border-white/10 hover:bg-slate-100 transition" data-cat="optimization">Optimization</button>
@@ -513,10 +513,10 @@
         </div>
 
         <!-- Flagship Compendium Card -->
-        <article id="compendium-card" class="p-8 rounded-3xl bg-white dark:bg-[#0c1222] border border-cyan-300 dark:border-cyan-500/30 shadow-sm flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+        <article id="compendium-card" class="p-8 rounded-3xl bg-gradient-to-br from-sky-50/40 via-white to-slate-50 dark:from-sky-950/20 dark:via-[#0c1222] dark:to-[#0c1222] border border-sky-300/70 dark:border-sky-500/30 shadow-sm flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
           <div class="max-w-2xl">
-            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-50 dark:bg-cyan-950/40 text-cyan-800 dark:text-cyan-300 border border-cyan-200 dark:border-cyan-500/30 text-xs font-mono font-medium mb-3">
-              <span class="w-2 h-2 rounded-full bg-cyan-500 animate-pulse"></span>
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-sky-100/70 dark:bg-sky-950/60 text-sky-900 dark:text-sky-300 border border-sky-200 dark:border-sky-700/50 text-xs font-mono font-medium mb-3">
+              <span class="w-2 h-2 rounded-full bg-sky-600 dark:bg-sky-400 animate-pulse"></span>
               FLAGSHIP ANALYTICAL DECK · SIX CASES
             </div>
             <h3 class="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white tracking-tight mb-2">
@@ -525,15 +525,15 @@
             <p class="text-xs sm:text-sm text-slate-600 dark:text-white/70 leading-relaxed mb-4">
               Six end-to-end analytical cases covering multiple regression forecasting on 24-month time-series (R-squared 0.439 to 0.948, MAPE 10.57%), ABC classification across 36 SKUs, push versus pull inventory economics, and sourcing risk under supplier concentration in the semiconductor industry. Transparently reports rejected models rather than only favorable fits.
             </p>
-            <div class="flex flex-wrap gap-2 text-xs font-mono text-cyan-700 dark:text-cyan-300">
-              <span class="px-2.5 py-1 bg-slate-100 dark:bg-white/5 rounded-md">Regression (24-mo)</span>
-              <span class="px-2.5 py-1 bg-slate-100 dark:bg-white/5 rounded-md">ABC Classification (36 SKUs)</span>
-              <span class="px-2.5 py-1 bg-slate-100 dark:bg-white/5 rounded-md">Push vs Pull Economics</span>
-              <span class="px-2.5 py-1 bg-slate-100 dark:bg-white/5 rounded-md">Sourcing Risk</span>
+            <div class="flex flex-wrap gap-2 text-xs font-mono text-sky-800 dark:text-sky-300">
+              <span class="px-2.5 py-1 bg-white dark:bg-white/5 border border-sky-100 dark:border-white/5 rounded-md">Regression (24-mo)</span>
+              <span class="px-2.5 py-1 bg-white dark:bg-white/5 border border-sky-100 dark:border-white/5 rounded-md">ABC Classification (36 SKUs)</span>
+              <span class="px-2.5 py-1 bg-white dark:bg-white/5 border border-sky-100 dark:border-white/5 rounded-md">Push vs Pull Economics</span>
+              <span class="px-2.5 py-1 bg-white dark:bg-white/5 border border-sky-100 dark:border-white/5 rounded-md">Sourcing Risk</span>
             </div>
           </div>
           <div class="shrink-0">
-            <a href="https://docs.google.com/presentation/d/1JefxdfbX2Pg09J3zPT0e3LKRoDEggwdq/edit?usp=sharing&ouid=104847496384061111514&rtpof=true&sd=true" target="_blank" rel="noopener noreferrer" class="px-5 py-3 rounded-xl bg-slate-900 hover:bg-slate-800 dark:bg-cyan-400 dark:hover:bg-cyan-300 text-white dark:text-slate-950 font-semibold text-xs transition shadow-sm flex items-center gap-1.5">
+            <a href="https://docs.google.com/presentation/d/1JefxdfbX2Pg09J3zPT0e3LKRoDEggwdq/edit?usp=sharing&ouid=104847496384061111514&rtpof=true&sd=true" target="_blank" rel="noopener noreferrer" class="px-5 py-3 rounded-xl bg-[#0A2540] hover:bg-[#07192C] dark:bg-sky-500 dark:hover:bg-sky-400 text-white dark:text-slate-950 font-semibold text-xs transition shadow-sm flex items-center gap-1.5">
               <span>Open in Google Slides</span>
               <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
             </a>
@@ -546,7 +546,7 @@
           <article id="proj-inventory-brain" class="proj-card p-6 rounded-3xl bg-white dark:bg-[#0c1222] border border-slate-200/90 dark:border-white/10 shadow-sm flex flex-col justify-between" data-cat="planning">
             <div>
               <div class="flex items-center justify-between text-[11px] font-mono text-slate-500 dark:text-white/40 mb-2">
-                <span class="text-blue-600 dark:text-blue-400 font-semibold">Inventory Optimization</span>
+                <span class="text-sky-800 dark:text-sky-300 bg-sky-50 dark:bg-sky-950/50 border border-sky-200/70 dark:border-sky-800/40 px-2 py-0.5 rounded-md font-semibold text-[10px]">Inventory Optimization</span>
                 <span>2026</span>
               </div>
               <h4 class="text-base font-bold text-slate-900 dark:text-white mb-2">Inventory Brain & Demand Platform</h4>
@@ -560,7 +560,7 @@
                 <span class="px-2 py-0.5 bg-slate-100 dark:bg-white/5 rounded">SimPy</span>
                 <span class="px-2 py-0.5 bg-slate-100 dark:bg-white/5 rounded">Streamlit</span>
               </div>
-              <a href="https://github.com/yzarrai/inventory-brain" target="_blank" rel="noopener noreferrer" class="text-xs font-semibold text-blue-600 dark:text-blue-400 hover:underline flex items-center gap-1">
+              <a href="https://github.com/yzarrai/inventory-brain" target="_blank" rel="noopener noreferrer" class="text-xs font-semibold text-sky-700 dark:text-sky-400 hover:text-sky-900 dark:hover:text-sky-300 flex items-center gap-1 group">
                 <span>inventory-brain</span>
                 <span class="text-[10px]">↗</span>
               </a>
@@ -570,7 +570,7 @@
           <article id="proj-demand-ml" class="proj-card p-6 rounded-3xl bg-white dark:bg-[#0c1222] border border-slate-200/90 dark:border-white/10 shadow-sm flex flex-col justify-between" data-cat="planning">
             <div>
               <div class="flex items-center justify-between text-[11px] font-mono text-slate-500 dark:text-white/40 mb-2">
-                <span class="text-cyan-600 dark:text-cyan-400 font-semibold">Machine Learning Forecasting</span>
+                <span class="text-sky-800 dark:text-sky-300 bg-sky-50 dark:bg-sky-950/50 border border-sky-200/70 dark:border-sky-800/40 px-2 py-0.5 rounded-md font-semibold text-[10px]">Machine Learning Forecasting</span>
                 <span>2026</span>
               </div>
               <h4 class="text-base font-bold text-slate-900 dark:text-white mb-2">Demand & Stock Fluctuation ML</h4>
@@ -584,7 +584,7 @@
                 <span class="px-2 py-0.5 bg-slate-100 dark:bg-white/5 rounded">SARIMA</span>
                 <span class="px-2 py-0.5 bg-slate-100 dark:bg-white/5 rounded">SHAP</span>
               </div>
-              <a href="https://github.com/yzarrai/retail-demand-forecasting-ml" target="_blank" rel="noopener noreferrer" class="text-xs font-semibold text-cyan-600 dark:text-cyan-400 hover:underline flex items-center gap-1">
+              <a href="https://github.com/yzarrai/retail-demand-forecasting-ml" target="_blank" rel="noopener noreferrer" class="text-xs font-semibold text-sky-700 dark:text-sky-400 hover:text-sky-900 dark:hover:text-sky-300 flex items-center gap-1 group">
                 <span>retail-demand-forecasting-ml</span>
                 <span class="text-[10px]">↗</span>
               </a>
@@ -594,7 +594,7 @@
           <article id="proj-multi-agent-ai" class="proj-card p-6 rounded-3xl bg-white dark:bg-[#0c1222] border border-slate-200/90 dark:border-white/10 shadow-sm flex flex-col justify-between" data-cat="simulation">
             <div>
               <div class="flex items-center justify-between text-[11px] font-mono text-slate-500 dark:text-white/40 mb-2">
-                <span class="text-emerald-600 dark:text-emerald-400 font-semibold">Autonomous Agent Swarm</span>
+                <span class="text-sky-800 dark:text-sky-300 bg-sky-50 dark:bg-sky-950/50 border border-sky-200/70 dark:border-sky-800/40 px-2 py-0.5 rounded-md font-semibold text-[10px]">Autonomous Agent Swarm</span>
                 <span>2025</span>
               </div>
               <h4 class="text-base font-bold text-slate-900 dark:text-white mb-2">Multi-Agent Supply Chain AI</h4>
@@ -608,7 +608,7 @@
                 <span class="px-2 py-0.5 bg-slate-100 dark:bg-white/5 rounded">DuckDB</span>
                 <span class="px-2 py-0.5 bg-slate-100 dark:bg-white/5 rounded">FastAPI</span>
               </div>
-              <a href="https://github.com/yzarrai/supply-chain-agentic-ai" target="_blank" rel="noopener noreferrer" class="text-xs font-semibold text-emerald-600 dark:text-emerald-400 hover:underline flex items-center gap-1">
+              <a href="https://github.com/yzarrai/supply-chain-agentic-ai" target="_blank" rel="noopener noreferrer" class="text-xs font-semibold text-sky-700 dark:text-sky-400 hover:text-sky-900 dark:hover:text-sky-300 flex items-center gap-1 group">
                 <span>supply-chain-agentic-ai</span>
                 <span class="text-[10px]">↗</span>
               </a>
@@ -618,7 +618,7 @@
           <article id="proj-simpy-agent" class="proj-card p-6 rounded-3xl bg-white dark:bg-[#0c1222] border border-slate-200/90 dark:border-white/10 shadow-sm flex flex-col justify-between" data-cat="simulation">
             <div>
               <div class="flex items-center justify-between text-[11px] font-mono text-slate-500 dark:text-white/40 mb-2">
-                <span class="text-purple-600 dark:text-purple-400 font-semibold">SimPy Simulation</span>
+                <span class="text-sky-800 dark:text-sky-300 bg-sky-50 dark:bg-sky-950/50 border border-sky-200/70 dark:border-sky-800/40 px-2 py-0.5 rounded-md font-semibold text-[10px]">SimPy Simulation</span>
                 <span>2025</span>
               </div>
               <h4 class="text-base font-bold text-slate-900 dark:text-white mb-2">Supply Chain Simulation Agent</h4>
@@ -632,7 +632,7 @@
                 <span class="px-2 py-0.5 bg-slate-100 dark:bg-white/5 rounded">LangChain</span>
                 <span class="px-2 py-0.5 bg-slate-100 dark:bg-white/5 rounded">Pydantic</span>
               </div>
-              <a href="https://github.com/yzarrai/supply-chain-simulation-agent" target="_blank" rel="noopener noreferrer" class="text-xs font-semibold text-purple-600 dark:text-purple-400 hover:underline flex items-center gap-1">
+              <a href="https://github.com/yzarrai/supply-chain-simulation-agent" target="_blank" rel="noopener noreferrer" class="text-xs font-semibold text-sky-700 dark:text-sky-400 hover:text-sky-900 dark:hover:text-sky-300 flex items-center gap-1 group">
                 <span>supply-chain-simulation-agent</span>
                 <span class="text-[10px]">↗</span>
               </a>
@@ -642,7 +642,7 @@
           <article id="proj-coldchain" class="proj-card p-6 rounded-3xl bg-white dark:bg-[#0c1222] border border-slate-200/90 dark:border-white/10 shadow-sm flex flex-col justify-between" data-cat="optimization">
             <div>
               <div class="flex items-center justify-between text-[11px] font-mono text-slate-500 dark:text-white/40 mb-2">
-                <span class="text-amber-600 dark:text-amber-400 font-semibold">Stochastic MILP</span>
+                <span class="text-sky-800 dark:text-sky-300 bg-sky-50 dark:bg-sky-950/50 border border-sky-200/70 dark:border-sky-800/40 px-2 py-0.5 rounded-md font-semibold text-[10px]">Stochastic MILP</span>
                 <span>2026</span>
               </div>
               <h4 class="text-base font-bold text-slate-900 dark:text-white mb-2">Stochastic Cold-Chain Planner</h4>
@@ -656,7 +656,7 @@
                 <span class="px-2 py-0.5 bg-slate-100 dark:bg-white/5 rounded">Stochastic</span>
                 <span class="px-2 py-0.5 bg-slate-100 dark:bg-white/5 rounded">Cold-Chain</span>
               </div>
-              <a href="https://github.com/yzarrai/stochastic-coldchain-planner" target="_blank" rel="noopener noreferrer" class="text-xs font-semibold text-amber-600 dark:text-amber-400 hover:underline flex items-center gap-1">
+              <a href="https://github.com/yzarrai/stochastic-coldchain-planner" target="_blank" rel="noopener noreferrer" class="text-xs font-semibold text-sky-700 dark:text-sky-400 hover:text-sky-900 dark:hover:text-sky-300 flex items-center gap-1 group">
                 <span>stochastic-coldchain-planner</span>
                 <span class="text-[10px]">↗</span>
               </a>
@@ -666,7 +666,7 @@
           <article id="proj-procure-rag" class="proj-card p-6 rounded-3xl bg-white dark:bg-[#0c1222] border border-slate-200/90 dark:border-white/10 shadow-sm flex flex-col justify-between" data-cat="optimization">
             <div>
               <div class="flex items-center justify-between text-[11px] font-mono text-slate-500 dark:text-white/40 mb-2">
-                <span class="text-rose-600 dark:text-rose-400 font-semibold">Procurement AI</span>
+                <span class="text-sky-800 dark:text-sky-300 bg-sky-50 dark:bg-sky-950/50 border border-sky-200/70 dark:border-sky-800/40 px-2 py-0.5 rounded-md font-semibold text-[10px]">Procurement AI</span>
                 <span>2026</span>
               </div>
               <h4 class="text-base font-bold text-slate-900 dark:text-white mb-2">Procurement RAG Assistant</h4>
@@ -680,7 +680,7 @@
                 <span class="px-2 py-0.5 bg-slate-100 dark:bg-white/5 rounded">Guardrails</span>
                 <span class="px-2 py-0.5 bg-slate-100 dark:bg-white/5 rounded">Contracts</span>
               </div>
-              <a href="https://github.com/yzarrai/procure-rag" target="_blank" rel="noopener noreferrer" class="text-xs font-semibold text-rose-600 dark:text-rose-400 hover:underline flex items-center gap-1">
+              <a href="https://github.com/yzarrai/procure-rag" target="_blank" rel="noopener noreferrer" class="text-xs font-semibold text-sky-700 dark:text-sky-400 hover:text-sky-900 dark:hover:text-sky-300 flex items-center gap-1 group">
                 <span>procure-rag</span>
                 <span class="text-[10px]">↗</span>
               </a>
@@ -689,7 +689,7 @@
           <article id="proj-loanflow-dss" class="proj-card p-6 rounded-3xl bg-white dark:bg-[#0c1222] border border-slate-200/90 dark:border-white/10 shadow-sm flex flex-col justify-between" data-cat="simulation">
             <div>
               <div class="flex items-center justify-between text-[11px] font-mono text-slate-500 dark:text-white/40 mb-2">
-                <span class="text-indigo-600 dark:text-indigo-400 font-semibold">Decision Support & MLOps</span>
+                <span class="text-sky-800 dark:text-sky-300 bg-sky-50 dark:bg-sky-950/50 border border-sky-200/70 dark:border-sky-800/40 px-2 py-0.5 rounded-md font-semibold text-[10px]">Decision Support & MLOps</span>
                 <span>2025</span>
               </div>
               <h4 class="text-base font-bold text-slate-900 dark:text-white mb-2">LoanFlow DSS & Clinic Operations</h4>
@@ -703,7 +703,7 @@
                 <span class="px-2 py-0.5 bg-slate-100 dark:bg-white/5 rounded">pm4py</span>
                 <span class="px-2 py-0.5 bg-slate-100 dark:bg-white/5 rounded">MLflow</span>
               </div>
-              <a href="https://github.com/yzarrai/loanflow-dss" target="_blank" rel="noopener noreferrer" class="text-xs font-semibold text-indigo-600 dark:text-indigo-400 hover:underline flex items-center gap-1">
+              <a href="https://github.com/yzarrai/loanflow-dss" target="_blank" rel="noopener noreferrer" class="text-xs font-semibold text-sky-700 dark:text-sky-400 hover:text-sky-900 dark:hover:text-sky-300 flex items-center gap-1 group">
                 <span>loanflow-dss</span>
                 <span class="text-[10px]">↗</span>
               </a>
@@ -713,7 +713,7 @@
           <article id="proj-dmaic-thesis" class="proj-card p-6 rounded-3xl bg-white dark:bg-[#0c1222] border border-slate-200/90 dark:border-white/10 shadow-sm flex flex-col justify-between" data-cat="optimization">
             <div>
               <div class="flex items-center justify-between text-[11px] font-mono text-slate-500 dark:text-white/40 mb-2">
-                <span class="text-emerald-600 dark:text-emerald-400 font-semibold">Six Sigma & OR Thesis</span>
+                <span class="text-sky-800 dark:text-sky-300 bg-sky-50 dark:bg-sky-950/50 border border-sky-200/70 dark:border-sky-800/40 px-2 py-0.5 rounded-md font-semibold text-[10px]">Six Sigma & OR Thesis</span>
                 <span>2023</span>
               </div>
               <h4 class="text-base font-bold text-slate-900 dark:text-white mb-2">Lean Six Sigma DMAIC Thesis</h4>
@@ -727,7 +727,7 @@
                 <span class="px-2 py-0.5 bg-slate-100 dark:bg-white/5 rounded">Process Mining</span>
                 <span class="px-2 py-0.5 bg-slate-100 dark:bg-white/5 rounded">Simulation</span>
               </div>
-              <a href="#record" class="text-xs font-semibold text-emerald-600 dark:text-emerald-400 hover:underline flex items-center gap-1">
+              <a href="#record" class="text-xs font-semibold text-sky-700 dark:text-sky-400 hover:text-sky-900 dark:hover:text-sky-300 flex items-center gap-1 group">
                 <span>View Verified Impact</span>
                 <span class="text-[10px]">↑</span>
               </a>
@@ -740,7 +740,7 @@
       <!-- ============ TECHNICAL CAPABILITIES & STACK ============ -->
       <section id="skills" class="rounded-3xl bg-white dark:bg-[#0c1222] border border-slate-200/90 dark:border-white/10 shadow-sm p-6 sm:p-8">
         <div class="mb-6">
-          <span class="text-xs font-mono uppercase font-semibold text-cyan-700 dark:text-cyan-400 block mb-1">Competencies & Frameworks</span>
+          <span class="text-xs font-mono uppercase font-semibold text-sky-800 dark:text-sky-400 block mb-1">Competencies & Frameworks</span>
           <h2 class="text-xl font-bold text-slate-900 dark:text-white tracking-tight">Supply Chain Stack & Optimization Frameworks</h2>
         </div>
 
@@ -750,7 +750,7 @@
             <p class="text-xs text-slate-600 dark:text-white/70 leading-relaxed mb-4">
               Demand Planning & Forecasting, Inventory Optimization, Safety Stock Modelling, Sourcing & Supplier Risk, Lean Six Sigma (DMAIC), Process Mining (Celonis, pm4py).
             </p>
-            <div class="flex flex-wrap gap-1.5 font-mono text-[11px] text-cyan-700 dark:text-cyan-300">
+            <div class="flex flex-wrap gap-1.5 font-mono text-[11px] text-sky-800 dark:text-sky-300">
               <span class="px-2 py-0.5 bg-white dark:bg-white/10 rounded">Process Mining</span>
               <span class="px-2 py-0.5 bg-white dark:bg-white/10 rounded">Safety Stock</span>
               <span class="px-2 py-0.5 bg-white dark:bg-white/10 rounded">DMAIC</span>
@@ -762,7 +762,7 @@
             <p class="text-xs text-slate-600 dark:text-white/70 leading-relaxed mb-4">
               Python, SQL, Celonis, SimPy (Discrete-Event Simulation), PuLP (MILP), Pandas, Polars, Scikit-learn, SARIMAX, XGBoost, SHAP, DuckDB, ChromaDB.
             </p>
-            <div class="flex flex-wrap gap-1.5 font-mono text-[11px] text-blue-700 dark:text-blue-300">
+            <div class="flex flex-wrap gap-1.5 font-mono text-[11px] text-sky-800 dark:text-sky-300">
               <span class="px-2 py-0.5 bg-white dark:bg-white/10 rounded">Python</span>
               <span class="px-2 py-0.5 bg-white dark:bg-white/10 rounded">SQL</span>
               <span class="px-2 py-0.5 bg-white dark:bg-white/10 rounded">Celonis</span>
@@ -775,7 +775,7 @@
             <p class="text-xs text-slate-600 dark:text-white/70 leading-relaxed mb-4">
               Git & GitHub, FastAPI, Docker, Power BI, Tableau, Streamlit, Automated ETL Pipelines, Working Knowledge of SAP, Oracle, Odoo, and Salesforce.
             </p>
-            <div class="flex flex-wrap gap-1.5 font-mono text-[11px] text-emerald-700 dark:text-emerald-300">
+            <div class="flex flex-wrap gap-1.5 font-mono text-[11px] text-sky-800 dark:text-sky-300">
               <span class="px-2 py-0.5 bg-white dark:bg-white/10 rounded">Git</span>
               <span class="px-2 py-0.5 bg-white dark:bg-white/10 rounded">FastAPI</span>
               <span class="px-2 py-0.5 bg-white dark:bg-white/10 rounded">Docker</span>
@@ -792,7 +792,7 @@
             <h3 class="text-lg font-bold text-slate-900 dark:text-white tracking-tight mb-1">Connect with Yusuf Arraihan</h3>
             <p class="text-xs text-slate-500 dark:text-white/60 mb-2">Open to full-time roles, contract consulting, and global supply chain analytics engagements.</p>
             <div class="inline-flex items-center gap-2 px-3 py-1 rounded-lg bg-slate-100 dark:bg-white/5 border border-slate-200 dark:border-white/10 text-xs font-mono text-slate-700 dark:text-white/80">
-              <svg class="w-3.5 h-3.5 text-cyan-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+              <svg class="w-3.5 h-3.5 text-sky-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
               <span class="select-all font-semibold">yusufzarraihan@gmail.com</span>
             </div>
           </div>
@@ -800,8 +800,8 @@
           <!-- Action Buttons Group -->
           <div class="flex flex-wrap items-center gap-2.5">
             <!-- Email Option A: Direct Open to Email (Gmail Web Compose) -->
-            <a href="https://mail.google.com/mail/?view=cm&fs=1&to=yusufzarraihan@gmail.com" target="_blank" rel="noopener noreferrer" class="px-4 py-2.5 rounded-xl bg-slate-900 hover:bg-slate-800 dark:bg-white dark:hover:bg-slate-100 text-white dark:text-slate-950 font-semibold text-xs transition shadow-sm flex items-center gap-2" title="Open and compose new email in Gmail (Web)">
-              <svg class="w-4 h-4 text-cyan-400 dark:text-cyan-600" fill="currentColor" viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+            <a href="https://mail.google.com/mail/?view=cm&fs=1&to=yusufzarraihan@gmail.com" target="_blank" rel="noopener noreferrer" class="px-4 py-2.5 rounded-xl bg-[#0A2540] hover:bg-[#07192C] dark:bg-white dark:hover:bg-slate-100 text-white dark:text-slate-950 font-semibold text-xs transition shadow-sm flex items-center gap-2" title="Open and compose new email in Gmail (Web)">
+              <svg class="w-4 h-4 text-sky-400 dark:text-sky-600" fill="currentColor" viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
               <span>Open Email (Gmail)</span>
               <span class="text-[10px]">↗</span>
             </a>
@@ -839,7 +839,7 @@
             Yusuf Arraihan · Supply Chain Analytics & Operations Portfolio
           </div>
           <div class="flex items-center gap-3">
-            <a href="mailto:yusufzarraihan@gmail.com" class="hover:text-cyan-600 dark:hover:text-cyan-400 transition" title="Open in default mail client (mailto:)">
+            <a href="mailto:yusufzarraihan@gmail.com" class="hover:text-sky-600 dark:hover:text-sky-400 transition" title="Open in default mail client (mailto:)">
               Mail Client (mailto:) ↗
             </a>
           </div>
@@ -860,7 +860,7 @@
     </button>
     
     <div class="mb-4">
-      <span class="text-[11px] font-mono text-cyan-600 dark:text-cyan-400 uppercase font-semibold block mb-1">Resume & Deck Access</span>
+      <span class="text-[11px] font-mono text-sky-800 dark:text-sky-400 uppercase font-semibold block mb-1">Resume & Deck Access</span>
       <h3 class="text-xl font-bold">Yusuf Arraihan</h3>
       <p class="text-xs text-slate-500 dark:text-white/50">Supply Chain Analytics · Demand Planning · Simulation</p>
     </div>
@@ -875,7 +875,7 @@
         <span>Download Official CV (PDF)</span>
       </a>
 
-      <a href="https://docs.google.com/presentation/d/1JefxdfbX2Pg09J3zPT0e3LKRoDEggwdq/edit?usp=sharing&ouid=104847496384061111514&rtpof=true&sd=true" target="_blank" rel="noopener noreferrer" class="w-full py-3 px-4 rounded-xl bg-cyan-500/10 hover:bg-cyan-500/20 text-cyan-700 dark:text-cyan-300 border border-cyan-500/30 font-medium text-center text-xs transition flex items-center justify-center gap-2">
+      <a href="https://docs.google.com/presentation/d/1JefxdfbX2Pg09J3zPT0e3LKRoDEggwdq/edit?usp=sharing&ouid=104847496384061111514&rtpof=true&sd=true" target="_blank" rel="noopener noreferrer" class="w-full py-3 px-4 rounded-xl bg-sky-500/10 hover:bg-sky-500/20 text-sky-800 dark:text-sky-300 border border-sky-500/30 font-medium text-center text-xs transition flex items-center justify-center gap-2">
         <span>View Analytics Compendium (Google Slides)</span>
         <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
       </a>
@@ -1235,7 +1235,7 @@
     let activeRouteCoords = suezRouteCoords;
 
     const routePolyline = L.polyline(activeRouteCoords, {
-      color: '#06b6d4',
+      color: '#0284c7',
       weight: 3.5,
       opacity: 0.85,
       dashArray: '7, 8'
@@ -1335,10 +1335,10 @@
 
     function setActiveBtn(btn, isActive) {
       if (isActive) {
-        btn.classList.add('bg-slate-900', 'dark:bg-cyan-400', 'text-white', 'dark:text-slate-950');
+        btn.classList.add('bg-[#0A2540]', 'dark:bg-sky-500', 'text-white', 'dark:text-slate-950');
         btn.classList.remove('bg-slate-100', 'dark:bg-white/10', 'text-slate-700', 'dark:text-white');
       } else {
-        btn.classList.remove('bg-slate-900', 'dark:bg-cyan-400', 'text-white', 'dark:text-slate-950');
+        btn.classList.remove('bg-[#0A2540]', 'dark:bg-sky-500', 'text-white', 'dark:text-slate-950');
         btn.classList.add('bg-slate-100', 'dark:bg-white/10', 'text-slate-700', 'dark:text-white');
       }
     }
@@ -1399,7 +1399,7 @@
         id: 'proj-compendium',
         title: 'Supply Chain Analytics Compendium (Flagship Deck)',
         category: 'Flagship Deck / 6 Cases',
-        badgeColor: 'bg-cyan-100 text-cyan-800 dark:bg-cyan-950/50 dark:text-cyan-300',
+        badgeColor: 'bg-sky-50 text-sky-800 border border-sky-200/80 dark:bg-sky-950/50 dark:text-sky-300 dark:border-sky-800/50',
         subtitle: 'Six cases: multiple regression forecasting (MAPE 10.57%), ABC classification (36 SKUs), push vs pull inventory economics, semiconductor sourcing risk',
         targetId: 'compendium-card',
         externalUrl: 'https://docs.google.com/presentation/d/1JefxdfbX2Pg09J3zPT0e3LKRoDEggwdq/edit?usp=sharing&ouid=104847496384061111514&rtpof=true&sd=true',
@@ -1411,7 +1411,7 @@
         id: 'proj-inventory-brain',
         title: 'Inventory Brain & Demand Planning Platform',
         category: 'Inventory Optimization',
-        badgeColor: 'bg-blue-100 text-blue-800 dark:bg-blue-950/50 dark:text-blue-300',
+        badgeColor: 'bg-sky-50 text-sky-800 border border-sky-200/80 dark:bg-sky-950/50 dark:text-sky-300 dark:border-sky-800/50',
         subtitle: 'Multi-echelon inventory optimization across distribution tiers, discrete-event simulation of replenishment policies under lead-time variance, scenario dashboard',
         targetId: 'proj-inventory-brain',
         externalUrl: 'https://github.com/yzarrai/inventory-brain',
@@ -1423,7 +1423,7 @@
         id: 'proj-demand-ml',
         title: 'Demand & Stock Fluctuation Forecasting ML',
         category: 'Machine Learning',
-        badgeColor: 'bg-cyan-100 text-cyan-800 dark:bg-cyan-950/50 dark:text-cyan-300',
+        badgeColor: 'bg-sky-50 text-sky-800 border border-sky-200/80 dark:bg-sky-950/50 dark:text-sky-300 dark:border-sky-800/50',
         subtitle: 'Walk-forward benchmarking of SARIMA, Prophet, and XGBoost on MAE/RMSE/MAPE; service-level safety stock recommendations with SHAP attribution',
         targetId: 'proj-demand-ml',
         externalUrl: 'https://github.com/yzarrai/retail-demand-forecasting-ml',
@@ -1435,7 +1435,7 @@
         id: 'proj-multi-agent-ai',
         title: 'Multi-Agent Supply Chain Agentic AI',
         category: 'Agentic Swarm',
-        badgeColor: 'bg-emerald-100 text-emerald-800 dark:bg-emerald-950/50 dark:text-emerald-300',
+        badgeColor: 'bg-sky-50 text-sky-800 border border-sky-200/80 dark:bg-sky-950/50 dark:text-sky-300 dark:border-sky-800/50',
         subtitle: '4-agent autonomous swarm (Demand, Inventory, Risk, Logistics) with 2-round debate protocol for Pareto-optimal trade-offs, MILP lot-sizing, and ERP webhooks',
         targetId: 'proj-multi-agent-ai',
         externalUrl: 'https://github.com/yzarrai/supply-chain-agentic-ai',
@@ -1447,7 +1447,7 @@
         id: 'proj-simpy-agent',
         title: 'Supply Chain Simulation LLM Agent',
         category: 'Discrete-Event Sim',
-        badgeColor: 'bg-purple-100 text-purple-800 dark:bg-purple-950/50 dark:text-purple-300',
+        badgeColor: 'bg-sky-50 text-sky-800 border border-sky-200/80 dark:bg-sky-950/50 dark:text-sky-300 dark:border-sky-800/50',
         subtitle: 'Discrete-event simulation of 4-echelon replenishment using Common Random Numbers to cut Monte Carlo variance by 19% to 37% for statistical policy evaluation',
         targetId: 'proj-simpy-agent',
         externalUrl: 'https://github.com/yzarrai/supply-chain-simulation-agent',
@@ -1459,7 +1459,7 @@
         id: 'proj-coldchain',
         title: 'Stochastic Cold-Chain Distribution Planner',
         category: 'Stochastic MILP',
-        badgeColor: 'bg-amber-100 text-amber-800 dark:bg-amber-950/50 dark:text-amber-300',
+        badgeColor: 'bg-sky-50 text-sky-800 border border-sky-200/80 dark:bg-sky-950/50 dark:text-sky-300 dark:border-sky-800/50',
         subtitle: 'Two-stage stochastic mathematical optimization for cold-chain vaccine distribution, modeling maritime disruption scenarios for robust planning',
         targetId: 'proj-coldchain',
         externalUrl: 'https://github.com/yzarrai/stochastic-coldchain-planner',
@@ -1471,7 +1471,7 @@
         id: 'proj-procure-rag',
         title: 'Procurement RAG Assistant',
         category: 'Enterprise RAG',
-        badgeColor: 'bg-rose-100 text-rose-800 dark:bg-rose-950/50 dark:text-rose-300',
+        badgeColor: 'bg-sky-50 text-sky-800 border border-sky-200/80 dark:bg-sky-950/50 dark:text-sky-300 dark:border-sky-800/50',
         subtitle: 'Enterprise RAG assistant for procurement documentation with clause-level citations and 5-layer grounding guardrail system preventing hallucination',
         targetId: 'proj-procure-rag',
         externalUrl: 'https://github.com/yzarrai/procure-rag',
@@ -1483,7 +1483,7 @@
         id: 'proj-loanflow-dss',
         title: 'Decision Support & MLOps Systems (LoanFlow DSS)',
         category: 'DSS & MLOps',
-        badgeColor: 'bg-indigo-100 text-indigo-800 dark:bg-indigo-950/50 dark:text-indigo-300',
+        badgeColor: 'bg-sky-50 text-sky-800 border border-sky-200/80 dark:bg-sky-950/50 dark:text-sky-300 dark:border-sky-800/50',
         subtitle: 'Decision support and MLOps platforms across loan origination and clinic operations, combining SimPy simulation, process mining (pm4py), and MLflow drift monitoring',
         targetId: 'proj-loanflow-dss',
         externalUrl: 'https://github.com/yzarrai/loanflow-dss',
@@ -1495,7 +1495,7 @@
         id: 'proj-dmaic-thesis',
         title: 'Lean Six Sigma DMAIC Thesis (Hortus Medicus Clinic)',
         category: 'Six Sigma & Simulation',
-        badgeColor: 'bg-emerald-100 text-emerald-800 dark:bg-emerald-950/50 dark:text-emerald-300',
+        badgeColor: 'bg-sky-50 text-sky-800 border border-sky-200/80 dark:bg-sky-950/50 dark:text-sky-300 dark:border-sky-800/50',
         subtitle: 'Analysis of Service Quality Improvement at Hortus Medicus Clinic using DMAIC and discrete-event simulation, reducing waiting queue time by 42.6%',
         targetId: 'proj-dmaic-thesis',
         externalUrl: '#record',
@@ -1531,7 +1531,7 @@
         searchResultsList.innerHTML = `
           <div class="p-4 text-center text-slate-500 dark:text-white/50 space-y-1">
             <p class="font-medium">No projects found matching "<span class="text-slate-900 dark:text-white font-semibold">${query}</span>"</p>
-            <p class="text-[11px] text-slate-400">Try searching: <span class="font-mono text-cyan-600 dark:text-cyan-400">compendium, inventory, milp, simpy, rag, forecast, or six sigma</span></p>
+            <p class="text-[11px] text-slate-400">Try searching: <span class="font-mono text-sky-700 dark:text-sky-400">compendium, inventory, milp, simpy, rag, forecast, or six sigma</span></p>
           </div>
         `;
         searchDropdown.classList.remove('hidden');
@@ -1556,7 +1556,7 @@
             </div>
             <div class="flex items-center gap-2">
               ${item.isExternal ? 
-                `<span class="text-[10px] font-mono text-cyan-600 dark:text-cyan-400 font-semibold px-2 py-1 rounded bg-cyan-50 dark:bg-cyan-950/40">Slides ↗</span>` : 
+                `<span class="text-[10px] font-mono text-sky-700 dark:text-sky-400 font-semibold px-2 py-1 rounded bg-sky-50 dark:bg-sky-950/40 border border-sky-200/50 dark:border-sky-800/40">Slides ↗</span>` : 
                 `<span class="text-[10px] font-mono text-slate-400 group-hover:text-slate-900 dark:group-hover:text-white transition">Jump to Card ↓</span>`
               }
             </div>
@@ -1585,9 +1585,9 @@
         const target = document.getElementById(item.targetId);
         if (target) {
           target.scrollIntoView({ behavior: 'smooth', block: 'center' });
-          target.classList.add('ring-4', 'ring-cyan-500', 'scale-[1.01]', 'transition-all');
+          target.classList.add('ring-4', 'ring-sky-500', 'scale-[1.01]', 'transition-all');
           setTimeout(() => {
-            target.classList.remove('ring-4', 'ring-cyan-500', 'scale-[1.01]');
+            target.classList.remove('ring-4', 'ring-sky-500', 'scale-[1.01]');
           }, 2500);
           return;
         }
