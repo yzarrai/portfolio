@@ -70,7 +70,7 @@
 <!-- ============ HERO SECTION (100VH CINEMATIC) ============ -->
 <section id="hero" class="relative h-screen w-full overflow-hidden">
 
-  <!-- Background Video -->
+  <!-- Background Video: Maritime Container Ship & Global Logistics -->
   <video
     id="hero-video"
     class="absolute inset-0 w-full h-full object-cover"
@@ -78,8 +78,11 @@
     loop
     muted
     playsinline
-    src="https://cdn.sceneai.art/Hero%20Section%20Video/01d1f8de-fec0-4bf5-8b48-9fc2dbc8c6b0.mp4"
-  ></video>
+    poster="assets/images/hero-containership-poster.jpg"
+  >
+    <source src="assets/videos/container-ship-hero.mp4" type="video/mp4" />
+    <source src="https://archive.org/download/Marco_Polo_-_Largest_container_ship_to_ever_call_on_the_Port_of_Savannah/Marco_Polo_-_Largest_container_ship_to_ever_call_on_the_Port_of_Savannah.mp4" type="video/mp4" />
+  </video>
 
   <!-- Dark Gradient Overlay for Readability -->
   <div class="absolute inset-0 bg-gradient-to-b from-black/30 via-black/45 to-[#050811] pointer-events-none"></div>
