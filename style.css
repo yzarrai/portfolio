@@ -1,7 +1,7 @@
 /* ==========================================================================
    YUSUF ZAIDANY ARRAIHAN - MODERN TECH PORTFOLIO STYLESHEET
    Style: Ultra-Modern Tech UI/UX (Linear / Vercel Aesthetic)
-   Typography: Outfit (Headings), Plus Jakarta Sans (Body), JetBrains Mono (Data)
+   Typography: Plus Jakarta Sans (Universal UI & Tabular Data)
    Rules: Zero emojis, Zero em dashes, Production-Ready Architecture
    ========================================================================== */
 
@@ -39,7 +39,7 @@
 
   --font-heading: "Outfit", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   --font-body: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  --font-mono: "JetBrains Mono", Menlo, Monaco, Consolas, monospace;
+  --font-mono: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 
   --container-max: 1200px;
   --radius-sm: 6px;
