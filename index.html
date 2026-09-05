@@ -995,6 +995,7 @@
   (function initTheme() {
     const root = document.documentElement;
     const themeToggle = document.getElementById('theme-toggle');
+    const topThemeToggle = document.getElementById('top-theme-toggle');
     const savedTheme = localStorage.getItem('theme');
     
     if (savedTheme === 'dark') {
@@ -1016,6 +1017,7 @@
     }
 
     if (themeToggle) themeToggle.addEventListener('click', toggleTheme);
+    if (topThemeToggle) topThemeToggle.addEventListener('click', toggleTheme);
   })();
 
   // ============ MOBILE DRAWER & OFF-CANVAS NAVIGATION ============
@@ -1122,13 +1124,7 @@
     }, { passive: true });
   })();
 
-  // ============ SYNC TOP THEME TOGGLE ============
-  const topThemeToggle = document.getElementById('top-theme-toggle');
-  if (topThemeToggle && themeToggle) {
-    topThemeToggle.addEventListener('click', () => {
-      themeToggle.click();
-    });
-  }
+// Theme sync handled inside initTheme()
 
   // ============ MODAL HANDLER ============
   function bindModal(btnId, modalId, closeId) {
@@ -1364,6 +1360,14 @@
       maxZoom: 8,
       scrollWheelZoom: false
     });
+
+    // Ensure map tiles recalculate accurately upon render & viewport changes
+    setTimeout(() => {
+      map.invalidateSize();
+    }, 200);
+    window.addEventListener('resize', () => {
+      map.invalidateSize();
+    }, { passive: true });
 
     const lightTiles = 'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png';
     const darkTiles = 'https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png';
