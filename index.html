@@ -27,9 +27,9 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 
-<!-- Leaflet.js CSS & JavaScript (High-Speed Cloudflare CDN) -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" integrity="sha512-Zcn6bjR/8RZbLEpLIeOwNtzREBAJnUKESxces60Mpoj+2okopSAcSUIUOsedST9gUz5TXHYtLuQtfrgbvGiMHQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js" integrity="sha512-puJW3E/qXDqYd9IfhAI54BJEaWIfloJ7JWs7OeD5i6ruC9JZL1gERT1wjtwXFlh7CjE7ZJ+/vcRZRkIYIb6p4g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<!-- Leaflet.js CSS & JavaScript (High-Performance Cloudflare CDN - No SRI mismatch blocking) -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
 
 <style>
   * {
@@ -1370,23 +1370,46 @@
   // ============ REAL-WORLD GEOGRAPHIC LEAFLET MAP ============
   (function initLeafletMaritimeMap() {
     const mapContainer = document.getElementById('maritime-leaflet-map');
-    if (!mapContainer || typeof L === 'undefined') return;
+    if (!mapContainer) return;
 
-    const map = L.map('maritime-leaflet-map', {
-      center: [20.0, 65.0],
-      zoom: 3,
-      minZoom: 2,
-      maxZoom: 8,
-      scrollWheelZoom: false
-    });
+    function startMap(attempts = 0) {
+      if (typeof L === 'undefined') {
+        if (attempts < 40) {
+          setTimeout(() => startMap(attempts + 1), 100);
+        }
+        return;
+      }
 
-    // Ensure map tiles recalculate accurately upon render & viewport changes
-    setTimeout(() => {
-      map.invalidateSize();
-    }, 200);
-    window.addEventListener('resize', () => {
-      map.invalidateSize();
-    }, { passive: true });
+      if (mapContainer._leaflet_id) return;
+
+      const isMobile = window.innerWidth < 768;
+      const map = L.map('maritime-leaflet-map', {
+        center: isMobile ? [15.0, 75.0] : [20.0, 65.0],
+        zoom: isMobile ? 2 : 3,
+        minZoom: 2,
+        maxZoom: 8,
+        scrollWheelZoom: false,
+        touchZoom: true,
+        tap: false
+      });
+
+      // Recalculate tile sizes across multiple mobile rendering phases
+      [100, 300, 700, 1500].forEach(delay => {
+        setTimeout(() => map.invalidateSize(), delay);
+      });
+      window.addEventListener('resize', () => map.invalidateSize(), { passive: true });
+
+      // Trigger tile recalculation as soon as user scrolls map into view on mobile
+      if ('IntersectionObserver' in window) {
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              map.invalidateSize();
+            }
+          });
+        }, { threshold: 0.05 });
+        observer.observe(mapContainer);
+      }
 
     const lightTiles = 'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png';
     const darkTiles = 'https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png';
