@@ -27,8 +27,9 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 
-<!-- Leaflet.js CSS for Real-World Geographic Map -->
-<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+<!-- Leaflet.js CSS & JavaScript (High-Speed Cloudflare CDN) -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" integrity="sha512-Zcn6bjR/8RZbLEpLIeOwNtzREBAJnUKESxces60Mpoj+2okopSAcSUIUOsedST9gUz5TXHYtLuQtfrgbvGiMHQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js" integrity="sha512-puJW3E/qXDqYd9IfhAI54BJEaWIfloJ7JWs7OeD5i6ruC9JZL1gERT1wjtwXFlh7CjE7ZJ+/vcRZRkIYIb6p4g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
 <style>
   * {
@@ -46,6 +47,25 @@
     font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Leaflet Map Explicit Dimensions for Phone & Desktop (Prevents 0px collapse) */
+  #maritime-leaflet-map {
+    width: 100% !important;
+    min-height: 320px !important;
+    height: 360px !important;
+    z-index: 1;
+    position: relative;
+  }
+  @media (min-width: 640px) {
+    #maritime-leaflet-map {
+      height: 390px !important;
+    }
+  }
+  @media (min-width: 768px) {
+    #maritime-leaflet-map {
+      height: 420px !important;
+    }
   }
 
   /* Custom Sidebar Smooth Sticky Scrolling (Zero ugly scrollbars) */
@@ -986,8 +1006,7 @@
   Copied to clipboard
 </div>
 
-<!-- Leaflet.js CDN -->
-<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+
 
 <!-- ============ CLIENT INTERACTIONS & DYNAMIC MOTION ============ -->
 <script>
