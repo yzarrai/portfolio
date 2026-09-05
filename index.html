@@ -41,11 +41,26 @@
 
   html, body {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    overflow-x: hidden;
+    overflow-x: clip;
     transition: background-color 0.25s ease, color 0.25s ease;
     font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Custom Sidebar Smooth Sticky Scrolling (Zero ugly scrollbars) */
+  #sidebar {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  #sidebar::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Smooth Smart Mobile Header Transition */
+  #top-navbar {
+    transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
+    will-change: transform, opacity;
   }
 
   /* Universal Inter Typography: Pure clean sans-serif across all elements */
@@ -158,8 +173,11 @@
 
 <div class="min-h-screen flex flex-col md:flex-row">
 
+  <!-- Mobile Drawer Backdrop Overlay -->
+  <div id="sidebar-backdrop" class="fixed inset-0 bg-slate-950/50 backdrop-blur-xs z-40 hidden transition-opacity duration-300 opacity-0 md:hidden" aria-hidden="true"></div>
+
   <!-- ============ LEFT SIDEBAR (PULSE CLINIC & LOADLOGIC STYLE) ============ -->
-  <aside id="sidebar" class="w-full md:w-64 lg:w-72 shrink-0 md:sticky md:top-0 md:h-screen bg-white dark:bg-[#0c1222] border-r border-slate-200/90 dark:border-white/10 flex flex-col justify-between p-5 z-40 transition-colors">
+  <aside id="sidebar" class="fixed inset-y-0 left-0 z-50 w-72 bg-white dark:bg-[#0c1222] border-r border-slate-200/90 dark:border-white/10 flex flex-col justify-between p-5 transition-transform duration-300 ease-out -translate-x-full md:translate-x-0 md:static md:sticky md:top-0 md:h-screen md:w-64 lg:w-72 md:shrink-0 md:self-start md:overflow-y-auto shadow-2xl md:shadow-none">
     
     <!-- Top: Personal Profile & Branding (NOT LoadLogic) -->
     <div class="space-y-6">
@@ -189,9 +207,9 @@
           </div>
         </a>
 
-        <!-- Mobile Drawer Toggle -->
-        <button id="mobile-sidebar-close" class="md:hidden p-1.5 text-slate-500 hover:text-slate-900 dark:hover:text-white" aria-label="Toggle menu">
-          <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" /></svg>
+        <!-- Mobile Drawer Close Button -->
+        <button id="mobile-sidebar-close" class="md:hidden p-1.5 text-slate-500 hover:text-slate-900 dark:hover:text-white rounded-lg hover:bg-slate-100 dark:hover:bg-white/5 transition" aria-label="Close menu">
+          <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>
         </button>
       </div>
 
@@ -306,14 +324,21 @@
   <!-- ============ RIGHT WORKSPACE / CONTENT AREA ============ -->
   <div class="flex-1 flex flex-col min-w-0">
     
-    <!-- Top Workspace Utility Bar -->
-    <div class="sticky top-0 z-30 h-16 bg-white/95 dark:bg-[#0c1222]/90 backdrop-blur-md border-b border-slate-200/90 dark:border-white/10 px-4 sm:px-8 flex items-center justify-between gap-4 transition-colors">
+    <!-- Top Workspace Utility Bar with Smart Mobile Auto-Hide -->
+    <header id="top-navbar" class="sticky top-0 z-30 h-16 bg-white/95 dark:bg-[#0c1222]/90 backdrop-blur-md border-b border-slate-200/90 dark:border-white/10 px-4 sm:px-8 flex items-center justify-between gap-4 transition-colors">
       
       <!-- Left: Mobile Menu Trigger & Search -->
-      <div class="flex items-center gap-3 flex-1 max-w-xl">
-        <button id="mobile-menu-open" class="md:hidden p-2 rounded-xl border border-slate-200 dark:border-white/10 text-slate-700 dark:text-white" aria-label="Open menu">
+      <div class="flex items-center gap-2.5 flex-1 max-w-xl">
+        <button id="mobile-menu-open" class="md:hidden p-2 rounded-xl border border-slate-200 dark:border-white/10 text-slate-700 dark:text-white hover:bg-slate-100 dark:hover:bg-white/5 transition shrink-0" aria-label="Open navigation menu">
           <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" /></svg>
         </button>
+
+        <!-- Mobile Brand Monogram Indicator -->
+        <a href="#hero" class="md:hidden flex items-center gap-2 mr-1 shrink-0" title="Yusuf Arraihan">
+          <div class="w-8 h-8 rounded-xl bg-slate-950 dark:bg-white flex items-center justify-center text-white dark:text-slate-950 font-bold text-xs shadow-sm">
+            YA
+          </div>
+        </a>
 
         <div class="relative w-full" id="search-container">
           <svg class="w-4 h-4 text-slate-400 absolute left-3 top-1/2 -translate-y-1/2 pointer-events-none" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -345,9 +370,19 @@
         </div>
       </div>
 
+      <!-- Right: Quick Theme Toggle & Active Indicator -->
+      <div class="flex items-center gap-2 shrink-0">
+        <button id="top-theme-toggle" class="p-2 rounded-xl border border-slate-200 dark:border-white/10 bg-slate-50 dark:bg-white/5 text-slate-700 dark:text-white hover:bg-slate-100 dark:hover:bg-white/10 transition shadow-sm" aria-label="Toggle Theme" title="Toggle Light / Dark Theme">
+          <svg class="w-4 h-4 hidden dark:block text-amber-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+          </svg>
+          <svg class="w-4 h-4 block dark:hidden text-slate-700" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+          </svg>
+        </button>
+      </div>
 
-
-    </div>
+    </header>
 
     <!-- Scrollable Workspace Body -->
     <main class="flex-1 p-4 sm:p-6 lg:p-8 space-y-8 max-w-7xl w-full">
@@ -983,19 +1018,115 @@
     if (themeToggle) themeToggle.addEventListener('click', toggleTheme);
   })();
 
-  // ============ MOBILE SIDEBAR TOGGLE ============
-  const mobileMenuOpen = document.getElementById('mobile-menu-open');
-  const mobileSidebarClose = document.getElementById('mobile-sidebar-close');
-  const sidebar = document.getElementById('sidebar');
+  // ============ MOBILE DRAWER & OFF-CANVAS NAVIGATION ============
+  (function initMobileDrawer() {
+    const mobileMenuOpen = document.getElementById('mobile-menu-open');
+    const mobileSidebarClose = document.getElementById('mobile-sidebar-close');
+    const sidebar = document.getElementById('sidebar');
+    const backdrop = document.getElementById('sidebar-backdrop');
+    if (!sidebar) return;
 
-  if (mobileMenuOpen && sidebar) {
-    mobileMenuOpen.addEventListener('click', () => {
-      sidebar.classList.toggle('hidden');
+    function openDrawer() {
+      sidebar.classList.remove('-translate-x-full');
+      sidebar.classList.add('translate-x-0');
+      if (backdrop) {
+        backdrop.classList.remove('hidden');
+        requestAnimationFrame(() => {
+          backdrop.classList.remove('opacity-0');
+          backdrop.classList.add('opacity-100');
+        });
+      }
+      document.body.classList.add('overflow-hidden');
+    }
+
+    function closeDrawer() {
+      sidebar.classList.remove('translate-x-0');
+      sidebar.classList.add('-translate-x-full');
+      if (backdrop) {
+        backdrop.classList.remove('opacity-100');
+        backdrop.classList.add('opacity-0');
+        setTimeout(() => {
+          if (!sidebar.classList.contains('translate-x-0')) {
+            backdrop.classList.add('hidden');
+          }
+        }, 300);
+      }
+      document.body.classList.remove('overflow-hidden');
+    }
+
+    if (mobileMenuOpen) mobileMenuOpen.addEventListener('click', openDrawer);
+    if (mobileSidebarClose) mobileSidebarClose.addEventListener('click', closeDrawer);
+    if (backdrop) backdrop.addEventListener('click', closeDrawer);
+
+    // Auto-close drawer when clicking any navigation link
+    const navLinks = sidebar.querySelectorAll('.sidebar-link, #sidebar-cv-btn');
+    navLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        if (window.innerWidth < 768) {
+          closeDrawer();
+        }
+      });
     });
-  }
-  if (mobileSidebarClose && sidebar) {
-    mobileSidebarClose.addEventListener('click', () => {
-      sidebar.classList.add('hidden');
+  })();
+
+  // ============ SMART STICKY HEADER (AUTO-HIDE ON SCROLL DOWN, SLOW REVEAL ON SCROLL UP) ============
+  (function initSmartStickyHeader() {
+    const topNavbar = document.getElementById('top-navbar');
+    if (!topNavbar) return;
+
+    let lastScrollY = window.scrollY;
+    let ticking = false;
+    const threshold = 60;   // Don't hide within top 60px
+    const scrollDelta = 6;  // Minimum scroll delta to avoid jitter
+
+    function onScroll() {
+      const currentScrollY = window.scrollY;
+      const isMobile = window.innerWidth < 768;
+
+      if (isMobile) {
+        if (currentScrollY <= threshold) {
+          // Near the very top: always display navbar
+          topNavbar.classList.remove('-translate-y-full', 'opacity-0', 'pointer-events-none');
+          topNavbar.classList.add('translate-y-0', 'opacity-100');
+        } else if (currentScrollY > lastScrollY + scrollDelta) {
+          // Scrolling DOWN: slide up and fade out smoothly
+          topNavbar.classList.add('-translate-y-full', 'opacity-0', 'pointer-events-none');
+          topNavbar.classList.remove('translate-y-0', 'opacity-100');
+        } else if (currentScrollY < lastScrollY - scrollDelta) {
+          // Scrolling UP: glide down slowly and gracefully
+          topNavbar.classList.remove('-translate-y-full', 'opacity-0', 'pointer-events-none');
+          topNavbar.classList.add('translate-y-0', 'opacity-100');
+        }
+      } else {
+        // Desktop: always visible
+        topNavbar.classList.remove('-translate-y-full', 'opacity-0', 'pointer-events-none');
+        topNavbar.classList.add('translate-y-0', 'opacity-100');
+      }
+
+      lastScrollY = Math.max(0, currentScrollY);
+      ticking = false;
+    }
+
+    window.addEventListener('scroll', () => {
+      if (!ticking) {
+        window.requestAnimationFrame(onScroll);
+        ticking = true;
+      }
+    }, { passive: true });
+
+    window.addEventListener('resize', () => {
+      if (window.innerWidth >= 768) {
+        topNavbar.classList.remove('-translate-y-full', 'opacity-0', 'pointer-events-none');
+        topNavbar.classList.add('translate-y-0', 'opacity-100');
+      }
+    }, { passive: true });
+  })();
+
+  // ============ SYNC TOP THEME TOGGLE ============
+  const topThemeToggle = document.getElementById('top-theme-toggle');
+  if (topThemeToggle && themeToggle) {
+    topThemeToggle.addEventListener('click', () => {
+      themeToggle.click();
     });
   }
 
