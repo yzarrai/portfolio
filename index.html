@@ -27,9 +27,14 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 
-<!-- Leaflet.js CSS & JavaScript (High-Performance Cloudflare CDN - No SRI mismatch blocking) -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" />
-<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+<!-- Leaflet.js CSS & JavaScript (Local Assets First with High-Performance CDN Fallback) -->
+<link rel="stylesheet" href="assets/leaflet/leaflet.min.css" onerror="this.onerror=null;this.href='https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css';" />
+<script src="assets/leaflet/leaflet.min.js"></script>
+<script>
+  if (typeof L === 'undefined') {
+    document.write('<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"><\/script>');
+  }
+</script>
 
 <style>
   * {
@@ -1368,19 +1373,25 @@
   })();
 
   // ============ REAL-WORLD GEOGRAPHIC LEAFLET MAP ============
-  (function initLeafletMaritimeMap() {
+  (function initLeafletMaritimeMap(attempts = 0) {
     const mapContainer = document.getElementById('maritime-leaflet-map');
     if (!mapContainer) return;
 
-    function startMap(attempts = 0) {
-      if (typeof L === 'undefined') {
-        if (attempts < 40) {
-          setTimeout(() => startMap(attempts + 1), 100);
-        }
-        return;
+    if (typeof L === 'undefined') {
+      if (attempts < 60) {
+        setTimeout(() => initLeafletMaritimeMap(attempts + 1), 50);
+      } else {
+        console.warn('Leaflet failed to load after retries.');
       }
+      return;
+    }
 
-      if (mapContainer._leaflet_id) return;
+    if (mapContainer._leaflet_id) return;
+
+    try {
+      if (L.Icon && L.Icon.Default) {
+        L.Icon.Default.imagePath = 'assets/leaflet/images/';
+      }
 
       const isMobile = window.innerWidth < 768;
       const map = L.map('maritime-leaflet-map', {
@@ -1393,13 +1404,12 @@
         tap: false
       });
 
-      // Recalculate tile sizes across multiple mobile rendering phases
+      // Recalculate tile sizes across rendering phases
       [100, 300, 700, 1500].forEach(delay => {
         setTimeout(() => map.invalidateSize(), delay);
       });
       window.addEventListener('resize', () => map.invalidateSize(), { passive: true });
 
-      // Trigger tile recalculation as soon as user scrolls map into view on mobile
       if ('IntersectionObserver' in window) {
         const observer = new IntersectionObserver((entries) => {
           entries.forEach(entry => {
@@ -1411,212 +1421,219 @@
         observer.observe(mapContainer);
       }
 
-    const lightTiles = 'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png';
-    const darkTiles = 'https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png';
+      const lightTiles = 'https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}';
+      const darkTiles = 'https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Dark_Gray_Base/MapServer/tile/{z}/{y}/{x}';
 
-    let currentTileLayer = null;
+      let currentTileLayer = null;
 
-    function applyTileLayer(isDark) {
-      if (currentTileLayer) map.removeLayer(currentTileLayer);
-      currentTileLayer = L.tileLayer(isDark ? darkTiles : lightTiles, {
-        attribution: '&copy; <a href="https://carto.com/">CARTO</a> &copy; <a href="https://openstreetmap.org">OpenStreetMap</a>',
-        subdomains: 'abcd',
-        maxZoom: 19
-      }).addTo(map);
-    }
+      function applyTileLayer(isDark) {
+        if (currentTileLayer) map.removeLayer(currentTileLayer);
+        currentTileLayer = L.tileLayer(isDark ? darkTiles : lightTiles, {
+          attribution: '&copy; <a href="https://www.esri.com/">Esri</a> &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+          maxZoom: 16
+        }).addTo(map);
+      }
 
-    const isInitiallyDark = document.documentElement.classList.contains('dark');
-    applyTileLayer(isInitiallyDark);
+      const isInitiallyDark = document.documentElement.classList.contains('dark');
+      applyTileLayer(isInitiallyDark);
 
-    window.addEventListener('themeChanged', (e) => {
-      applyTileLayer(e.detail.isDark);
-    });
-
-    const suezRouteCoords = [
-      [-6.10, 106.88], // Tanjung Priok, Jakarta
-      [-5.90, 105.80], // Sunda Strait
-      [1.26, 103.82],  // Port of Singapore
-      [4.21, 99.85],   // Malacca Strait
-      [5.95, 94.80],   // North Sumatra Passage
-      [6.95, 79.85],   // Colombo, Sri Lanka
-      [14.50, 65.00],  // Central Arabian Sea
-      [25.01, 55.06],  // Jebel Ali, Dubai
-      [12.58, 43.33],  // Bab-el-Mandeb Strait
-      [20.00, 38.50],  // Red Sea Passage
-      [29.97, 32.55],  // Suez Canal South Gate
-      [31.26, 32.30],  // Port Said (Mediterranean)
-      [34.50, 24.00],  // South of Crete
-      [37.20, 11.50],  // Strait of Sicily
-      [35.98, -5.60],  // Strait of Gibraltar
-      [37.00, -9.00],  // Cape St. Vincent
-      [48.50, -5.00],  // Ushant / Brittany
-      [49.80, -2.50],  // English Channel
-      [51.95, 4.14]    // Port of Rotterdam
-    ];
-
-    const capeRouteCoords = [
-      [-6.10, 106.88], // Jakarta
-      [1.26, 103.82],  // Singapore
-      [4.21, 99.85],   // Malacca
-      [6.95, 79.85],   // Colombo
-      [-12.0, 75.0],   // South Indian Ocean
-      [-26.0, 52.0],   // Madagascar Sea Lane
-      [-34.8, 20.0],   // Cape Agulhas
-      [-33.9, 18.4],   // Cape Town, South Africa
-      [-15.0, 5.0],    // South Atlantic Open Lane
-      [0.0, -10.0],    // Equator Atlantic
-      [15.0, -20.0],   // West Africa Offshore
-      [28.0, -16.0],   // Canary Islands
-      [37.0, -9.5],    // Portugal Offshore
-      [48.5, -5.5],    // Bay of Biscay
-      [51.95, 4.14]    // Port of Rotterdam
-    ];
-
-    let activeRouteCoords = suezRouteCoords;
-
-    const routePolyline = L.polyline(activeRouteCoords, {
-      color: '#0284c7',
-      weight: 3.5,
-      opacity: 0.85,
-      dashArray: '7, 8'
-    }).addTo(map);
-
-    const ports = [
-      { name: 'Tanjung Priok (Jakarta)', coords: [-6.10, 106.88], dwell: '2.4 days', crane: '28 moves/hr', demurrage: 'Low (0.02)' },
-      { name: 'Port of Singapore', coords: [1.26, 103.82], dwell: '1.8 days', crane: '34 moves/hr', demurrage: 'Minimal (0.005)' },
-      { name: 'Port of Colombo', coords: [6.95, 79.85], dwell: '2.1 days', crane: '30 moves/hr', demurrage: 'Low (0.01)' },
-      { name: 'Port of Jebel Ali (Dubai)', coords: [25.01, 55.06], dwell: '2.0 days', crane: '32 moves/hr', demurrage: 'Minimal (0.008)' },
-      { name: 'Suez Canal (Port Said)', coords: [31.26, 32.30], dwell: '0.8 days (convoy)', crane: 'N/A (transit)', demurrage: 'Medium (0.04)' },
-      { name: 'Port of Rotterdam', coords: [51.95, 4.14], dwell: '1.9 days', crane: '36 moves/hr', demurrage: 'Minimal (0.004)' },
-      { name: 'Port of Cape Town', coords: [-33.9, 18.4], dwell: '2.8 days', crane: '24 moves/hr', demurrage: 'Moderate (0.03)' }
-    ];
-
-    const portIcon = L.divIcon({
-      className: 'custom-port-icon',
-      html: '<div style="width:12px;height:12px;border-radius:50%;background:#06b6d4;border:2.5px solid #ffffff;box-shadow:0 0 8px rgba(6,182,212,0.6);"></div>',
-      iconSize: [12, 12],
-      iconAnchor: [6, 6]
-    });
-
-    ports.forEach(port => {
-      const marker = L.marker(port.coords, { icon: portIcon }).addTo(map);
-      marker.bindPopup(`
-        <div style="font-size:12px;line-height:1.4;">
-          <strong style="color:#0284c7;font-size:13px;">${port.name}</strong><br>
-          <span style="color:#64748b;">Dwell Time:</span> <strong>${port.dwell}</strong><br>
-          <span style="color:#64748b;">Quay Cranes:</span> <strong>${port.crane}</strong><br>
-          <span style="color:#64748b;">Demurrage Risk:</span> <strong>${port.demurrage}</strong>
-        </div>
-      `);
-      marker.on('click', () => {
-        document.getElementById('port-card-name').textContent = port.name;
+      window.addEventListener('themeChanged', (e) => {
+        applyTileLayer(e.detail.isDark);
       });
-    });
 
-    const vesselIcon = L.divIcon({
-      className: 'vessel-marker',
-      html: `
-        <div style="position:relative;width:32px;height:32px;display:flex;align-items:center;justify-content:center;">
-          <div style="position:absolute;inset:0;border-radius:50%;background:rgba(6,182,212,0.35);animation:ping 2s cubic-bezier(0,0,0.2,1) infinite;"></div>
-          <div style="width:20px;height:20px;border-radius:50%;background:#0f172a;border:2px solid #ffffff;display:flex;align-items:center;justify-content:center;box-shadow:0 0 10px rgba(0,0,0,0.4);">
-            <svg style="width:11px;height:11px;color:#38bdf8;" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M12 2L4 20l8-3 8 3L12 2z"/>
-            </svg>
+      const suezRouteCoords = [
+        [-6.10, 106.88], // Tanjung Priok, Jakarta
+        [-5.90, 105.80], // Sunda Strait
+        [1.26, 103.82],  // Port of Singapore
+        [4.21, 99.85],   // Malacca Strait
+        [5.95, 94.80],   // North Sumatra Passage
+        [6.95, 79.85],   // Colombo, Sri Lanka
+        [14.50, 65.00],  // Central Arabian Sea
+        [25.01, 55.06],  // Jebel Ali, Dubai
+        [12.58, 43.33],  // Bab-el-Mandeb Strait
+        [20.00, 38.50],  // Red Sea Passage
+        [29.97, 32.55],  // Suez Canal South Gate
+        [31.26, 32.30],  // Port Said (Mediterranean)
+        [34.50, 24.00],  // South of Crete
+        [37.20, 11.50],  // Strait of Sicily
+        [35.98, -5.60],  // Strait of Gibraltar
+        [37.00, -9.00],  // Cape St. Vincent
+        [48.50, -5.00],  // Ushant / Brittany
+        [49.80, -2.50],  // English Channel
+        [51.95, 4.14]    // Port of Rotterdam
+      ];
+
+      const capeRouteCoords = [
+        [-6.10, 106.88], // Jakarta
+        [1.26, 103.82],  // Singapore
+        [4.21, 99.85],   // Malacca
+        [6.95, 79.85],   // Colombo
+        [-12.0, 75.0],   // South Indian Ocean
+        [-26.0, 52.0],   // Madagascar Sea Lane
+        [-34.8, 20.0],   // Cape Agulhas
+        [-33.9, 18.4],   // Cape Town, South Africa
+        [-15.0, 5.0],    // South Atlantic Open Lane
+        [0.0, -10.0],    // Equator Atlantic
+        [15.0, -20.0],   // West Africa Offshore
+        [28.0, -16.0],   // Canary Islands
+        [37.0, -9.5],    // Portugal Offshore
+        [48.5, -5.5],    // Bay of Biscay
+        [51.95, 4.14]    // Port of Rotterdam
+      ];
+
+      let activeRouteCoords = suezRouteCoords;
+
+      const routePolyline = L.polyline(activeRouteCoords, {
+        color: '#0284c7',
+        weight: 3.5,
+        opacity: 0.85,
+        dashArray: '7, 8'
+      }).addTo(map);
+
+      const ports = [
+        { name: 'Tanjung Priok (Jakarta)', coords: [-6.10, 106.88], dwell: '2.4 days', crane: '28 moves/hr', demurrage: 'Low (0.02)' },
+        { name: 'Port of Singapore', coords: [1.26, 103.82], dwell: '1.8 days', crane: '34 moves/hr', demurrage: 'Minimal (0.005)' },
+        { name: 'Port of Colombo', coords: [6.95, 79.85], dwell: '2.1 days', crane: '30 moves/hr', demurrage: 'Low (0.01)' },
+        { name: 'Port of Jebel Ali (Dubai)', coords: [25.01, 55.06], dwell: '2.0 days', crane: '32 moves/hr', demurrage: 'Minimal (0.008)' },
+        { name: 'Suez Canal (Port Said)', coords: [31.26, 32.30], dwell: '0.8 days (convoy)', crane: 'N/A (transit)', demurrage: 'Medium (0.04)' },
+        { name: 'Port of Rotterdam', coords: [51.95, 4.14], dwell: '1.9 days', crane: '36 moves/hr', demurrage: 'Minimal (0.004)' },
+        { name: 'Port of Cape Town', coords: [-33.9, 18.4], dwell: '2.8 days', crane: '24 moves/hr', demurrage: 'Moderate (0.03)' }
+      ];
+
+      const portIcon = L.divIcon({
+        className: 'custom-port-icon',
+        html: '<div style="width:12px;height:12px;border-radius:50%;background:#06b6d4;border:2.5px solid #ffffff;box-shadow:0 0 8px rgba(6,182,212,0.6);"></div>',
+        iconSize: [12, 12],
+        iconAnchor: [6, 6]
+      });
+
+      ports.forEach(port => {
+        const marker = L.marker(port.coords, { icon: portIcon }).addTo(map);
+        marker.bindPopup(`
+          <div style="font-size:12px;line-height:1.4;">
+            <strong style="color:#0284c7;font-size:13px;">${port.name}</strong><br>
+            <span style="color:#64748b;">Dwell Time:</span> <strong>${port.dwell}</strong><br>
+            <span style="color:#64748b;">Quay Cranes:</span> <strong>${port.crane}</strong><br>
+            <span style="color:#64748b;">Demurrage Risk:</span> <strong>${port.demurrage}</strong>
           </div>
-        </div>
-      `,
-      iconSize: [32, 32],
-      iconAnchor: [16, 16]
-    });
+        `);
+        marker.on('click', () => {
+          const portCardEl = document.getElementById('port-card-name');
+          if (portCardEl) portCardEl.textContent = port.name;
+        });
+      });
 
-    let currentSegment = 2;
-    let segmentProgress = 0.35;
-    let vesselMarker = L.marker(activeRouteCoords[currentSegment], { icon: vesselIcon }).addTo(map);
+      const vesselIcon = L.divIcon({
+        className: 'vessel-marker',
+        html: `
+          <div style="position:relative;width:32px;height:32px;display:flex;align-items:center;justify-content:center;">
+            <div style="position:absolute;inset:0;border-radius:50%;background:rgba(6,182,212,0.35);animation:ping 2s cubic-bezier(0,0,0.2,1) infinite;"></div>
+            <div style="width:20px;height:20px;border-radius:50%;background:#0f172a;border:2px solid #ffffff;display:flex;align-items:center;justify-content:center;box-shadow:0 0 10px rgba(0,0,0,0.4);">
+              <svg style="width:11px;height:11px;color:#38bdf8;" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 2L4 20l8-3 8 3L12 2z"/>
+              </svg>
+            </div>
+          </div>
+        `,
+        iconSize: [32, 32],
+        iconAnchor: [16, 16]
+      });
 
-    let isStorm = false;
-    let isSlowSteaming = false;
+      let currentSegment = 2;
+      let segmentProgress = 0.35;
+      let vesselMarker = L.marker(activeRouteCoords[currentSegment], { icon: vesselIcon }).addTo(map);
 
-    function updateVesselPosition() {
-      const step = isStorm ? 0.003 : isSlowSteaming ? 0.004 : 0.007;
-      segmentProgress += step;
-      if (segmentProgress >= 1.0) {
-        segmentProgress = 0;
-        currentSegment++;
-        if (currentSegment >= activeRouteCoords.length - 1) {
-          currentSegment = 0;
+      let isStorm = false;
+      let isSlowSteaming = false;
+
+      function updateVesselPosition() {
+        const step = isStorm ? 0.003 : isSlowSteaming ? 0.004 : 0.007;
+        segmentProgress += step;
+        if (segmentProgress >= 1.0) {
+          segmentProgress = 0;
+          currentSegment++;
+          if (currentSegment >= activeRouteCoords.length - 1) {
+            currentSegment = 0;
+          }
+        }
+
+        const p1 = activeRouteCoords[currentSegment];
+        const p2 = activeRouteCoords[currentSegment + 1];
+        const currentLat = p1[0] + (p2[0] - p1[0]) * segmentProgress;
+        const currentLng = p1[1] + (p2[1] - p1[1]) * segmentProgress;
+
+        vesselMarker.setLatLng([currentLat, currentLng]);
+
+        const baseSpeed = isSlowSteaming ? 14.2 : 19.4;
+        const speed = isStorm ? (baseSpeed * 0.72).toFixed(1) : baseSpeed.toFixed(1);
+        const speedEl = document.getElementById('telemetry-speed');
+        if (speedEl) speedEl.textContent = speed + ' knots';
+        const speedBadge = document.getElementById('vessel-speed-badge');
+        if (speedBadge) speedBadge.textContent = 'Speed: ' + speed + ' kts · ' + (isStorm ? 'Storm Swell' : isSlowSteaming ? 'Eco Steaming' : 'High Seas Cruising');
+        
+        const fuelEff = isSlowSteaming ? '-18.2% mt/nmi' : isStorm ? '+6.5% mt/nmi' : '-8.4% mt/nmi';
+        const fuelEl = document.getElementById('telemetry-fuel');
+        if (fuelEl) fuelEl.textContent = fuelEff;
+
+        const eta = isStorm ? '+18.0h (Monsoon Delay)' : isSlowSteaming ? '+12.4h (Planned Eco)' : '-14.2h (Optimal)';
+        const etaEl = document.getElementById('telemetry-eta');
+        if (etaEl) etaEl.textContent = eta;
+      }
+
+      setInterval(updateVesselPosition, 200);
+
+      const btnSuez = document.getElementById('btn-route-suez');
+      const btnCape = document.getElementById('btn-route-cape');
+      const btnStorm = document.getElementById('btn-monsoon');
+      const btnSteaming = document.getElementById('btn-steaming');
+
+      function setActiveBtn(btn, isActive) {
+        if (!btn) return;
+        if (isActive) {
+          btn.classList.add('bg-[#0A2540]', 'dark:bg-sky-500', 'text-white', 'dark:text-slate-950');
+          btn.classList.remove('bg-slate-100', 'dark:bg-white/10', 'text-slate-700', 'dark:text-white');
+        } else {
+          btn.classList.remove('bg-[#0A2540]', 'dark:bg-sky-500', 'text-white', 'dark:text-slate-950');
+          btn.classList.add('bg-slate-100', 'dark:bg-white/10', 'text-slate-700', 'dark:text-white');
         }
       }
 
-      const p1 = activeRouteCoords[currentSegment];
-      const p2 = activeRouteCoords[currentSegment + 1];
-      const currentLat = p1[0] + (p2[0] - p1[0]) * segmentProgress;
-      const currentLng = p1[1] + (p2[1] - p1[1]) * segmentProgress;
+      if (btnSuez && btnCape) {
+        btnSuez.addEventListener('click', () => {
+          activeRouteCoords = suezRouteCoords;
+          routePolyline.setLatLngs(activeRouteCoords);
+          currentSegment = 2;
+          segmentProgress = 0;
+          setActiveBtn(btnSuez, true);
+          setActiveBtn(btnCape, false);
+        });
 
-      vesselMarker.setLatLng([currentLat, currentLng]);
-
-      const baseSpeed = isSlowSteaming ? 14.2 : 19.4;
-      const speed = isStorm ? (baseSpeed * 0.72).toFixed(1) : baseSpeed.toFixed(1);
-      document.getElementById('telemetry-speed').textContent = speed + ' knots';
-      const speedBadge = document.getElementById('vessel-speed-badge'); if (speedBadge) speedBadge.textContent = 'Speed: ' + speed + ' kts · ' + (isStorm ? 'Storm Swell' : isSlowSteaming ? 'Eco Steaming' : 'High Seas Cruising');
-      
-      const fuelEff = isSlowSteaming ? '-18.2% mt/nmi' : isStorm ? '+6.5% mt/nmi' : '-8.4% mt/nmi';
-      document.getElementById('telemetry-fuel').textContent = fuelEff;
-
-      const eta = isStorm ? '+18.0h (Monsoon Delay)' : isSlowSteaming ? '+12.4h (Planned Eco)' : '-14.2h (Optimal)';
-      document.getElementById('telemetry-eta').textContent = eta;
-    }
-
-    setInterval(updateVesselPosition, 200);
-
-    const btnSuez = document.getElementById('btn-route-suez');
-    const btnCape = document.getElementById('btn-route-cape');
-    const btnStorm = document.getElementById('btn-monsoon');
-    const btnSteaming = document.getElementById('btn-steaming');
-
-    function setActiveBtn(btn, isActive) {
-      if (isActive) {
-        btn.classList.add('bg-[#0A2540]', 'dark:bg-sky-500', 'text-white', 'dark:text-slate-950');
-        btn.classList.remove('bg-slate-100', 'dark:bg-white/10', 'text-slate-700', 'dark:text-white');
-      } else {
-        btn.classList.remove('bg-[#0A2540]', 'dark:bg-sky-500', 'text-white', 'dark:text-slate-950');
-        btn.classList.add('bg-slate-100', 'dark:bg-white/10', 'text-slate-700', 'dark:text-white');
+        btnCape.addEventListener('click', () => {
+          activeRouteCoords = capeRouteCoords;
+          routePolyline.setLatLngs(activeRouteCoords);
+          currentSegment = 2;
+          segmentProgress = 0;
+          setActiveBtn(btnCape, true);
+          setActiveBtn(btnSuez, false);
+        });
       }
+
+      if (btnStorm) {
+        btnStorm.addEventListener('click', () => {
+          isStorm = !isStorm;
+          setActiveBtn(btnStorm, isStorm);
+        });
+      }
+
+      if (btnSteaming) {
+        btnSteaming.addEventListener('click', () => {
+          isSlowSteaming = !isSlowSteaming;
+          setActiveBtn(btnSteaming, isSlowSteaming);
+        });
+      }
+    } catch(err) {
+      console.error('Error initializing Leaflet Maritime map:', err);
     }
-
-    if (btnSuez && btnCape) {
-      btnSuez.addEventListener('click', () => {
-        activeRouteCoords = suezRouteCoords;
-        routePolyline.setLatLngs(activeRouteCoords);
-        currentSegment = 2;
-        segmentProgress = 0;
-        setActiveBtn(btnSuez, true);
-        setActiveBtn(btnCape, false);
-      });
-
-      btnCape.addEventListener('click', () => {
-        activeRouteCoords = capeRouteCoords;
-        routePolyline.setLatLngs(activeRouteCoords);
-        currentSegment = 2;
-        segmentProgress = 0;
-        setActiveBtn(btnCape, true);
-        setActiveBtn(btnSuez, false);
-      });
-    }
-
-    if (btnStorm) {
-      btnStorm.addEventListener('click', () => {
-        isStorm = !isStorm;
-        setActiveBtn(btnStorm, isStorm);
-      });
-    }
-
-    if (btnSteaming) {
-      btnSteaming.addEventListener('click', () => {
-        isSlowSteaming = !isSlowSteaming;
-        setActiveBtn(btnSteaming, isSlowSteaming);
-      });
-    }
-
   })();
 
   // ============ GLOBAL PROJECTS SEARCH & COMMAND PALETTE ============
